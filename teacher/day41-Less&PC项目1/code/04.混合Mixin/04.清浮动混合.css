@@ -1,0 +1,16 @@
+.outer {
+  width: 400px;
+  *zoom: 1;
+}
+.outer:after {
+  content: "\200B";
+  height: 0;
+  display: block;
+  clear: both;
+}
+.outer .con1 {
+  height: 100px;
+}
+.outer .con2 {
+  width: 100px;
+}

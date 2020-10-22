@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            对象：
+                是由一系列的键值对（key value）组成
+                key：
+                    一定是一个字符串
+                value：
+                    可以是任意类型的
+                    其中如果值是function的话，对应的属性被称作为方法
+
+            获取和设置对象属性
+                1.点操作符： 会把 点 后的值当做字符串解析 ，点后应该直接跟对象的属性
+                2.[]操作符(通用的)：中括号中可以运算及直接解析变量,也可以直接书写对象的属性（必须是字符串格式）
+
+                []括号操作符的使用场景：
+                    1.当key值是一个变量的时候
+                    2.当key值是一个不规则字符的时候
+
+         */
+        var friend;
+        var a = "age";
+        var person = {
+            name: "小王",
+            1:"我是1",
+            age: 18,
+            isMarry: false,
+            score: 89.1,
+            // friend: "小丽", //如果属性名是一个变量，在对象中也会把这个变量当做一个字符串解析，根本不回去解析变量的值
+            GirlFriend: "小丽", //如果属性名是一个变量，在对象中也会把这个变量当做一个字符串解析，根本不回去解析变量的值
+            do: function () {
+                console.log("吹水");
+            }
+        }
+
+
+        //获取属性的值可以是 点操作符  也可以是中括号操作符
+        // console.log(person.GirlFriend); //小丽
+        // console.log(person.friend); //undefined
+        console.log(person[friend]); //小丽
+        // console.log(person["GirlFriend"]); //小丽
+        // console.log(person["age"]); //小丽
+        // console.log(person[a]); //小丽
+
+
+        //设置
+        var com = "computer"; //想要把computer当做对象的一个key值  
+        person[com] = "thinkpad";
+
+        person["content-type"] = "application/javascript";
+    </script>
+</body>
+
+</html>

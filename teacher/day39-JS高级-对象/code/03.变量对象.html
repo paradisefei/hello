@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            变量对象：
+1.变量对象是官方的专业名词，保存当前作用域所有的属性和方法
+2.在执行上下文中，变量对象被创建和激活，只有变量对象被激活，我们才能获取到当前作用域定义的属性和方法
+3.变量对象分为 全局变量对象和局部变量对象
+4.全局的变量对象其实就是window对象，因为所有的全局变量和全局的函数 都是window对象的属性和方法
+5.局部变量对象：
+    - 创建局部执行上下文时候产生局部变量对象
+    - 在变量对象中创建形参和实参
+    - 把所有的函数声明放到变量对象中(函数优先提升),此时如果有重名的属性，则直接覆盖
+    - 把当前作用域中所有的变量，以键值对的形式保存在变量对象中，此时所有的变量的值都应该是undefined
+    - 当提升的变量如果和形参或函数有重名的，则不会干扰已经存在的这些属性(只有当执行到变量被赋值了，才会进行覆盖)
+
+
+                
+        
+        
+        */
+
+        //全局变量对象
+        /* window = {
+            a: undefined
+            do :undefined
+        }
+        a = 1; //window.a =1
+        do = function () { //window.do = fn
+
+        } */
+
+
+        //局部变量对象
+        function fn(a, b) {
+            /* 
+                创建变量对象：
+                var VO = {
+                    arguments:{
+                        0:1,
+                        1:2,
+                        2:3,
+                        length:3
+                    }
+                    a:1,
+                    b:2
+                    doIt:function(){},
+                    num:function(){},
+                    num:undefined,
+                    count:undefined
+                }
+            
+            
+            */
+            console.log(num);
+            var num = 2;
+            var count = 3;
+
+            function doIt() {
+                console.log("do")
+            }
+
+            function num() {
+                console.log(num);
+            }
+
+        }
+        // fn(1, 2, 3);
+
+
+
+        function fn(a, b) {
+            /* 
+                VO = {
+                    arguments:{},
+                    a:fun,
+                    b:2
+                    
+                }
+            
+            */
+            console.log(b); //2 
+            console.log(a);
+            var b = 10;
+            console.log(b);
+
+            function a() {
+                console.log("a");
+            }
+        }
+        fn(1, 2)
+    </script>
+</body>
+
+</html>

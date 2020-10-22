@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关键帧的书写</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        .box1{
+            animation-name: change1;
+            animation-duration: 2s;
+            /* 动画方式，控制的是每两个关键帧之间的方式 */
+            animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+            animation-delay: 1s;
+            /* 动画执行次数  是个number  或者infinite代表无穷 */
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+
+            animation:change1 2s linear 1s infinite alternate;
+
+        }
+        @keyframes change1 {
+            from{
+                background-color: yellow;
+            }
+            to{
+                background-color: pink;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box box1"></div>
+</body>
+</html>

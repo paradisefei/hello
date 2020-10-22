@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* alert(a);//a根本就不是变量，它是来打酱油的。
+        a = 0;//暂时认为他是，严格意义上来说。 */
+
+        /* alert(a);//undefined
+        var a = 0;
+        alert(a);//0 */
+
+        //我叫不着急。
+        //不要太相信自己的想像能力。
+        /*
+        function a (){
+            alert('我是函数');
+        }
+        var a ;
+
+        alert(a);//函数代码
+
+        a = '我是变量';
+
+        alert(a);//我是变量
+
+
+        */
+
+        /* alert(a);//undefined
+        var a = '我是变量';
+        function a (){
+            alert('我是函数');
+        }
+        alert(a);//我是函数。 */
+
+
+        /*
+        function a(){
+            alert('我是函数');
+        }
+        var a;
+
+        alert(a);//函数代码
+        a++;
+        alert(a);//NaN
+        a = '我是变量';
+
+        alert(a);//我是变量
+
+        */
+
+        /* alert(a);//代码
+        a++;
+        alert(a);//NaN
+        var a = '我是变量';
+        function a(){
+            alert('我是函数');
+        }
+        alert(a);//我是变量 */
+
+        /* alert(a);
+        var a = 0;
+        alert(a);
+        function fn(){
+            alert(a);
+            var a = 1;
+            alert(a);
+        }
+
+        fn();
+
+        alert(a); */
+
+        //undefined 0 undefined 1 0
+
+        /* alert(a);
+        var a = 0;
+        alert(a);
+
+        function fn(){
+            alert(a);
+            a= 1;
+            alert(a);
+        }
+        
+        fn();
+
+        alert(a); */
+
+        alert(a);
+        var a = 0;
+        alert(a);
+
+        function fn(){
+            alert(a);
+            a = 1;
+            alert(a);
+        }
+
+        fn();
+
+        var fn = function(){
+            alert(a);
+            var a = 0;
+            alert(a++);
+        }
+
+        fn();
+        
+        alert(a);
+
+    </script>
+</body>
+</html>

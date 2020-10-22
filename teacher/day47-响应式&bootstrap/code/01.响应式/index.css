@@ -1,0 +1,14 @@
+.box {
+  width: 100px;
+  height: 100px;
+}
+@media screen and (orientation: landscape) {
+  .box {
+    background-color: #70706c;
+  }
+}
+@media screen and (orientation: portrait) {
+  .box {
+    background-color: red;
+  }
+}

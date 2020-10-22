@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*         ### 晨测
+            - 使用extends书写一个继承
+
+            - 解释Promise可以处理的问题
+
+            - 解释promise的三种状态
+
+            - then方法的返回值
+
+            - 解析Promise的静态方法  
+            all allsettled race resolve reject
+
+            - 谈一谈async和await
+
+            - 谈一谈import */
+
+        /* class Person {
+            constructor(name) {
+                this.name = name;
+            }
+            do() {
+                console.log("do");
+            }
+        }
+
+        class Student extends Person {
+            constructor(age, name) {
+                super(name);
+                this.age = age;
+            }
+            eat() {
+                console.log("eat");
+            }
+        } */
+
+
+        Promise.resolve().then(() => {}).catch(() => {})
+        Promise.reject().then(() => {}).catch(() => {})
+
+        /* 
+        调用then是成功状态的promise 
+            - then中没有返回Promise对象，就返回一个成功的promise对象（promiseResult：undefined）
+            - then中没有返回Promise对象, 但是返回了一个值，就返回一个成功的promise对象（promiseResult：return的值）
+            - then函数中的函数如果返回一个Promise对象，则then就接受到了这个promise对象，就把这个promise对象作为then方法的返回值返回出去
+
+        调用then是失败状态的promise 
+            - then直接返回一个失败的promise
+        
+        */
+
+        /* 
+            async的返回值：
+                - 里边没有promise返回失败状态 或者是 没有抛出错误，则async函数返回成功状态的promise，并且promise的值就是async函数的中return的值
+                - 如果async函数 抛出错误 或者 是里边等待了一个失败的promise对象，则async的返回值是失败的promise对象，promise对象的值就是 reject的参数 或 错误
+
+            await的返回值：
+                如果等待的promise对象是成功，则返回resolve的参数，如果是失败，则没有返回值
+
+                如果await后边是非promise对象，则await的返回值，看后边代码的运行
+        
+        
+        */
+        async function fn() {
+            console.log(1)
+            const data = await console.log(1);
+            console.log(data)
+            return '1';
+        }
+        console.log(fn())
+    </script>
+</body>
+
+</html>

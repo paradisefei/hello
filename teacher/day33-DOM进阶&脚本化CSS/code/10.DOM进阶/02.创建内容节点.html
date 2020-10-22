@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建内容节点</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var oList = document.querySelector('.list');
+        var oBtn = document.getElementById('btn');
+        /* 
+            创建内容节点方法1：
+                document.createTextNode("文本内容");
+                文本节点被创建，也是暂时放在内存中，并不属于任何的元素
+                需要使用appendChild来插入到li中
+
+
+            创建内容节点方法2：
+                直接使用 innerHTML或innerText或textContent等属性设置
+
+        
+        */
+        oBtn.onclick = function () {
+            //创建一个新的li元素
+            var newLi = document.createElement("li");
+
+            //创建文本节点方法1
+            /* var newLiContent = document.createTextNode("我是新的li");
+            //给li插入内容
+            newLi.appendChild(newLiContent);
+            console.log(newLi) */
+
+            //创建文本节点方法2
+            newLi.innerHTML = "我是一个新的li";
+            console.log(newLi);
+
+
+        }
+    </script>
+</body>
+
+</html>

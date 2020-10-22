@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            A.toString(B):把A转换成B进制的值
+            parseInt(A,B):把B进制的A转换成10进制
+        
+        */
+
+        //生成10位的随机数（数字和字母）
+        //36进制包含了所有的数字和字母，只要生成[0,36)的一个随机整数，转换成36进制，即可得到一个随机数字字母
+        // Math.floor(Math.random() * 36) //生成[0,36)
+        // Math.floor(Math.random() * 36).toString(36)//转换为36进制
+        let str = "";
+        for (let i = 0; i < 10; i++) {
+            str += Math.floor(Math.random() * 36).toString(36);
+        }
+        console.log(str);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<script>
+
+var arr = [5, 4, 3, 2, 1];
+
+/* for (var i = 1; i < arr.length; i++) {
+    console.log(i);
+} */
+
+//每轮排序的次数问题（每i轮排序的次数应该为N-i次）
+//外层循环控制的是轮数、圈数。
+//5个数比较总共比较了4轮，因为每轮都会比较出最大的值所以每轮比较我都会相应的减少一次。总结起来就是第i轮的比较的排序的次数应该为`(N-i)次`
+for (var i = 1 ; i < arr.length; i++) {//第i轮进行比较的次数是n-i  5-0  。假如是第一轮  那5个数就应该比较 4次 假如是第二轮  那5个数就应该比较 3    我们这样说是依据n-i  也就是说n-i始终控制着我的本轮的比较的次数呢。
+    //内层循环控制的是每次的比较。
+    for (var j = 0; j < arr.length - i ;j++){//i = 1     j<5-i j<4
+        if (arr[j] > arr[j+1]) {
+            var tmp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = tmp;
+        }
+    }
+
+    console.log(i);
+}
+
+console.log(arr);
+</script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        #sp {
+            width: 192px;
+            height: 240px;
+            /* border:1px solid pink; */
+            background-color: #FFFFFF;
+            font-size: 0px;
+        }
+
+        #sp div {
+            display: inline-block;
+            width: 64px;
+            height: 55px;
+            margin-top: 5px;
+            /* border:1px solid yellow; */
+            text-align: center;
+        }
+
+        #sp div span {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            /* border: 1px solid pink; */
+            background-image: url('./imgs/sprite.png');
+        }
+
+        #sp div strong {
+            display: block;
+            width: 100%;
+            height: 24px;
+            line-height: 24px;
+            /* border:1px solid green; */
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        #sp div span.huafei {
+            background-position: -168px 0px;
+        }
+
+        #sp div:hover span.huafei{
+            background-position: -420px 0px;
+        }
+
+
+        #sp div span.jipiao {
+            background-position: -84px 0px;
+        }
+        #sp div:hover span.jipiao{
+            background-position: -616px 0px;
+        } 
+
+        #sp div:hover strong{
+            color:#c2000d;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sp">
+        <div>
+            <span class="huafei"></span>
+            <strong>话费</strong>
+        </div>
+        <div>
+            <span class="jipiao"></span>
+            <strong>机票</strong>
+        </div>
+        <div>
+            <span></span>
+            <strong>酒店</strong>
+        </div>
+        <div>
+            <span></span>
+            <strong>游戏</strong>
+        </div>
+        <div>
+            <span></span>
+            <strong>加油卡</strong>
+        </div>
+        <div>
+            <span></span>
+            <strong>火车票</strong>
+        </div>
+        <div>
+            <span></span>
+            <strong>众筹</strong>
+        </div>
+        <div>
+            <span></span>
+            <strong>理财</strong>
+        </div>
+        <div>
+            <span></span>
+            <strong>白条</strong>
+        </div>
+        <div>
+            <span></span>
+            <strong>电影票</strong>
+        </div>
+        <div>
+            <span></span>
+            <strong>企业购</strong>
+        </div>
+        <div>
+            <span></span>
+            <strong>礼品卡</strong>
+        </div>
+    </div>
+</body>
+
+</html>

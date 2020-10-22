@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #shaizi{
+            width:350px;
+            height:225px;
+            border:1px solid pink;
+            /*启用flex布局*/
+            display:flex;
+            /*让他能够换行*/
+            flex-wrap:wrap;
+
+            /*横向*/
+            justify-content: space-between;
+            /*纵向*/
+            align-items: center;
+        }
+        #shaizi > div{
+            width:100px;
+            height:100px;
+            box-sizing:border-box;
+            padding:5px;
+            border:1px solid gray;
+
+            display:flex;
+        }
+        /*设置红球和篮球*/
+        .red,.blue{
+            width:25px;
+            height:25px;
+            border:1px solid gray;
+
+            border-radius: 50%;
+        }
+        .red{
+            background-image:radial-gradient(red,black)
+        }
+        .blue{
+            background-image:radial-gradient(blue,black)
+        }
+        /*第一个球*/
+        #s1{
+            justify-content: center;
+            align-items: center;
+        }
+        /*第二个球球*/
+        #s2{
+            /*更改主轴方向*/
+            flex-direction: column;
+            /*主轴内容居中*/
+            justify-content: space-evenly;
+            /*垂直轴居中*/
+            align-items: center;
+        }
+        /*第三个小球*/
+        #s3{
+            flex-direction: column;
+        }
+        #s3 > div:nth-of-type(2){
+            align-self: center;
+        }
+        #s3 > div:nth-of-type(3){
+            align-self: flex-end;
+        }
+        /*第四个*/
+        #s4{
+            justify-content: space-around;
+        }
+        #s4 > .column{
+            /* border:1px solid blue; */
+            display: flex;
+            /*竖着放*/
+            flex-direction: column;
+            /*设置其中的伸缩项横向排列*/
+            justify-content: space-around;
+        }
+        /*第五个小球球*/
+        #s5{
+            justify-content: space-around;
+        }
+        #s5 > .column{
+            /* border:1px solid blue; */
+            display: flex;
+            /*竖着放*/
+            flex-direction: column;
+            /*设置其中的伸缩项横向排列*/
+            justify-content: space-around;
+
+            border:1px solid green;
+        }
+        #s5 > div:nth-of-type(2){
+            position:absolute;
+            /*align-self: center; */
+
+            align-self: center;
+        }
+        /*最后一个小球球*/
+        #s6{
+            justify-content: space-around;
+        }
+        #s6 > .column{
+            border:1px solid blue;
+            display: flex;
+            /*竖着放*/
+            flex-direction: column;
+            /*设置其中的伸缩项横向排列*/
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <div id="shaizi">
+        <div id="s1">
+            <div class="red"></div>
+        </div>
+        <div id="s2">
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+        <div id="s3">
+            <div class="blue"></div>
+            <div class="blue"></div>
+            <div class="blue"></div>
+        </div>
+        <div id="s4">
+            <div class="column">
+                <div class="red"></div>
+                <div class="red"></div>
+            </div>
+            <div class="column">
+                <div class="red"></div>
+                <div class="red"></div>
+            </div>
+        </div>
+        <div id="s5">
+            <div class="column">
+                <div class="blue"></div>
+                <div class="blue"></div>
+            </div>
+            <div class="blue"></div>
+            <div class="column">
+                <div class="blue"></div>
+                <div class="blue"></div>
+            </div>
+        </div>
+        <div id="s6">
+            <div class="column">
+                <div class="blue"></div>
+                <div class="blue"></div>
+                <div class="blue"></div>
+            </div>
+            <div class="column">
+                <div class="blue"></div>
+                <div class="blue"></div>
+                <div class="blue"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <span style="font-size:12px;">崔旺真英俊！</span> -->
+    <div style="width:300px;height:300px;border:1px solid yellow;display: flex;">
+        <div style="width:100px;height:100px;border:1px solid green;position:absolute;align-self: flex-end;"></div>
+    </div>
+</body>
+</html>

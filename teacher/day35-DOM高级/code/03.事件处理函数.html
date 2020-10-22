@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理函数</title>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con">con</div>
+        </div>
+    </div>
+    <script>
+        /* 
+            事件处理函数：（DOM2级事件）
+                -addEventListener()
+                    * 参数1：type 事件名称（不要添加on）
+                    * 参数2：事件函数，当事件发生以后执行
+                    * 参数3：可忽略，代表捕获或冒泡 默认false冒泡
+
+                - 可以对同一个元素同一个事件绑定多次
+                - 可以选择捕获或者冒泡
+                - 有的事件是DOM2级事件，只能通过DOM2级的方式去绑定 （DOMContentLoaded事件）
+         */
+        var oOuter = document.querySelector('.outer');
+        var oInner = document.querySelector('.inner');
+        var oCon = document.querySelector('.con');
+
+        /* oCon.addEventListener("click", function () {
+            alert("oCon1");
+        }, false)
+        oCon.addEventListener("click", function () {
+            alert("oCon2");
+        }, false)
+        oCon.addEventListener("click", function () {
+            alert("oCon3");
+        }, false)
+        oCon.addEventListener("click", function () {
+            alert("oCon4");
+        }, false) */
+
+        /* oOuter.addEventListener("click", function () {
+            alert("oOuter");
+        }, false)
+        oInner.addEventListener("click", function () {
+            alert("oInner");
+        }, true)
+        oCon.addEventListener("click", function () {
+            alert("oCon");
+        }, false) */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+.center(@w, @h, @bg) {
+    width: @w;
+    height: @h;
+    background-color: @bg;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+
+.outer {
+    .center(@w: 500px, @h: 500px, @bg: red);
+
+    >.inner {
+        //通过形参：实参 的方法传参的时候 位置可以随意书写
+        .center(@h: 300px, @w: 200px, green);
+
+        .con {
+            .center(100px, 100px, yellow);
+        }
+    }
+}

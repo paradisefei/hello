@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览器窗口大小</title>
+    <style>
+        .box {
+            height: 10000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        document.onclick = function () {
+            //当clientHeight和clientWidth用到html身上 则变成了浏览器窗口的大小
+            //因为IE低版本把body当做根元素，所以在ie6以下获取浏览器窗口的大小是通过document.body.clientWidth
+            console.log(document.documentElement.clientHeight);
+            console.log(document.body.clientHeight);
+
+            //兼容性
+            var winWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //创建一个普通的对象
+        var obj1 = {
+            name: "小王",
+            age: 12
+        }
+
+        //使用Object.defineProperty设置对象属性
+        //Object.defineProperty(obj,key,{des})
+        //如果修改的是普通属性，则只修改你要修改的秒速，其他默认都是true
+        Object.defineProperty(obj1, "age", {
+            value: 18,
+            //没有添加的描述默认是true
+        })
+        //age依然可以被修改
+        obj1.age = 20;
+        console.log(obj1);
+
+
+
+
+        //当对象是使用create创建的时候，修改属性或描述的情况
+        var obj2 = Object.create(null, {
+            name: {
+                value: "xiaowang",
+                writable: true,
+                enumerable: false,
+                // configurable: false
+            }
+        });
+        Object.defineProperty(obj2, "name", {
+            value: "xiaohong",
+            enumerable: true, //需要创建name属性的时候，设置的描述configurable 为true 才能修改name的描述属性
+        })
+        console.log(obj2)
+        for (var key in obj2) {
+            console.log(key)
+        }
+
+
+        (function (w) {
+            var verson = 1.1;
+            w.my = {};
+            w.my.fn = function () {
+                console.log(verson)
+            }
+        })(window)
+        my.fn()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #f{
+            border:2px solid pink;
+            /*父元素成为了弹性容器，其中的子元素横向排列了*/
+            display:flex;
+            /*设置主轴的方向*/
+            /* flex-direction: row-reverse; */
+
+            /* height:800px; */
+            width:450px;
+
+            /* flex-wrap: wrap-reverse; */
+
+            /* height:400px; */
+            /* height:500px; */
+
+            justify-content: space-evenly;
+
+            flex-wrap: wrap;
+
+            height: 500px;
+
+            align-items: stretch;
+
+        }
+        #f > div{
+            width:100px;
+            height:100px;
+            /* height:auto; */
+            /* 初恋 */
+        }
+        #f > div:first-of-type{
+            background-color: darkcyan;
+            /* margin-top:10px; */
+
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #f > div:nth-of-type(2){
+            background-color: darkgreen;
+        }
+        #f > div:nth-of-type(3){
+            background-color: chartreuse;
+        }
+        #f > div:nth-of-type(4){
+            background-color: darkmagenta;
+        }
+        #f > div:nth-of-type(5){
+            background-color: sienna;
+        }
+        #f > div:nth-of-type(6){
+            background-color: olive;
+            align-self: stretch;
+
+            height:auto;
+        }
+        #f > div > div{
+            width:20px;
+            height:20px;
+            border:1px solid pink;
+            background-color:orange;
+        }
+    </style>
+</head>
+<body>
+    <div id="f">
+        <div>
+            <div>1</div>
+        </div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+</body>
+</html>

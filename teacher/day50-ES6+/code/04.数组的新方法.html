@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Array对象的静态方法
+                - Array.from() 将类数组转换为数组(自己定义的类数组，NodeList，HTMLCon...,arguments)
+                - Array.of ：new Array(),如果传递一个参数并且是数字的时候，那么就会创建一个新数组，长度为这个数字
+                        弥补new Array的不足
+        */
+        // Array.from()
+        {
+            const obj1 = {
+                0: "a",
+                1: "b",
+                2: "c",
+                length: 3
+            }
+            const obj2 = {
+                0: "a",
+                1: "b",
+                2: "c"
+            }
+            //类数组的条件：1.key值从0开始依次自然递增，2.拥有length属性
+            console.log(Array.from(obj1))
+            console.log(Array.from(obj2))
+        }
+
+        //Array.of
+        {
+            const arr1 = new Array(4, 5);
+            console.log(arr1); //[4,5]
+
+            const arr2 = new Array(4);
+            console.log(arr2); //[,,,,]
+            console.log([, , , , ].length) //4  如果最后一个逗号后为空，则这个逗号是结尾
+
+            const arr3 = Array.of(4);
+            console.log(arr3);
+
+            const arr4 = Array.of(4, 5);
+            console.log(arr4);
+        }
+
+
+        /* 
+            数组原型对象上的新方法
+                copyWithIn(); 复制当前数组中的某些值，覆盖当前数组中的某些值
+                    - 参数1：开始替换的位置
+                    - 参数2：开始读取复制的位置
+                    - 参数3：读取复制的结束位置(不包含)，如果不写 则默认到末尾
+                fill():填充数组
+                    - 第一个参数就是填充的内容
+                    - 第二个和第三个参数：填充的起始和结束位置
+
+
+                //遍历数组的方法：
+                every：所有的回调函数都返回true 则every方法返回true
+                some 只要有一个回调函数返回true 则some方法返回true
+                filter: 把每一个回调函数返回true所对应的item值 综合起来组成一个新的数组
+                map: 遍历数组，返回一个新的数组，新数组的长度和原数组相同，新数组的每一个值，是每一回调函数的返回值
+                forEach：遍历数组，没有返回值
+                reduce：返回的是最后一次回调函数返回的值
+                find：返回第一个匹配的元素（返回的是回调函数第一次返回true的item）
+                findIndex：返回第一个匹配的元素的下标（返回的是回调函数第一次返回true的index)
+
+                includes：判断是否包含某个元素  返回布尔值
+                flat():拉平数组（数组扁平化）
+
+                entries():拿到了数组的键值对的遍历器对象
+
+        
+        */
+        {
+            const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            const reArr1 = arr1.copyWithin(1, 6, 8);
+            console.log(arr1, reArr1)
+        }
+
+        {
+            const arr1 = [1, 2, 3, 4, 5, 6];
+            const reArr1 = arr1.fill("a"); //全部填充
+            console.log(arr1, reArr1) //改变原数组 返回改变后的数组
+
+            const arr2 = [1, 2, 3, 4, 5, 6];
+            const reArr2 = arr2.fill("a", 3, 6); //全部填充
+            console.log(arr2, reArr2) //改变原数组 返回改变后的数组
+        }
+
+        {
+            const arr = ["lao wang", "xiao wang", "li ly", "zhong wang", "da wang", "ni"];
+            //返回第一个姓li的名字
+            const re = arr.find(function (item, index) {
+                /* if (item.startsWith("li ")) {
+                    return true;
+                } */
+
+                return item.startsWith("li ");
+            })
+            console.log(re);
+        }
+
+        {
+            const arr = ["lao wang", "xiao wang", "li ly", "zhong wang", "da wang", "ni"];
+            //返回第一个姓li的名字
+            const re = arr.findIndex(function (item, index) {
+                return item.startsWith("li ");
+            })
+            console.log(re);
+        }
+
+        {
+            const arr = [1, 2, 3, 4, [5], 6]
+            console.log(arr.includes(2)); //t
+            console.log(arr.includes(5)); //f
+            console.log(arr.includes([5])); //f //比较是地址的比较
+        }
+
+        {
+            const arr1 = [1, 2, [3, 4]];
+            console.log(arr1.flat(1))
+
+            const arr2 = [1, 2, [3, [4, 5]]];
+            console.log(arr2.flat(Infinity))
+        }
+
+        {
+            const arr1 = ["a", "b", "c", "d", "e"];
+            const iter = arr1.entries(); //返回的是一个iterator（遍历器对象）对象
+            //遍历器对象有一个next方法，可以依次遍历iterator中的内容
+            console.log(iter);
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+
+            for (let i of arr1.entries()) {
+                console.log(i) //拿到了 每一次的[key,value]的值
+            }
+        }
+
+        {
+            const arr1 = ["a", "b", "c", "d", "e"];
+            const iter = arr1.keys(); //返回的是一个iterator（遍历器对象）对象
+            //遍历器对象有一个next方法，可以依次遍历iterator中的内容
+            console.log(iter);
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+
+            for (let i of arr1.keys()) {
+                console.log(i) //拿到了 每一次的[key]的值
+            }
+        }
+
+
+        {
+            const arr1 = ["a", "b", "c", "d", "e"];
+            const iter = arr1.values(); //返回的是一个iterator（遍历器对象）对象
+            //遍历器对象有一个next方法，可以依次遍历iterator中的内容
+            console.log(iter);
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+            console.log(iter.next());
+
+            for (let i of arr1.values()) {
+                console.log(i) //拿到了 每一次的[value]的值
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <div id="box">box</div>
+    <script>
+        $(function () {
+            //$.fn === $.prototype  只有实例化对象才能调用
+            $.fn.extend({
+                fly: function () {
+                    console.log("我要飞~");
+                },
+                red: function () {
+                    $(this).css("backgroundColor", "red");
+                }
+            });
+
+            $.extend({
+                eat: function () {
+                    console.log("来我家吃晚安肉");
+                },
+            })
+
+
+            // $.fly();
+            // $("#box").fly();
+            // $("#box").red();
+
+
+
+            // $("#box").eat();
+            $.eat();
+        })
+    </script>
+</body>
+
+</html>

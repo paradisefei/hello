@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            then方法的返回值：
+                1.then中的函数如果 没有书写return 或者promise等，那么本身返回一个promise的fulfilled状态的对象
+                2.then中的函数，如果返回一个promise对象，then的返回值就是这个promise对象，promise对象的状态和内部返回的promise状态一直
+                3.then中的函数，返回值不是一个promise对象，则then还是返回成功状态的promise对象
+                4.如果then中的函数出错了（有异常了），则then返回一个失败的promise对象
+         
+         */
+        const pro1 = new Promise((resolve, reject) => {
+            console.log("准备请求a数据")
+            setTimeout(() => {
+                let flag = true;
+                if (flag) {
+                    console.log("请求成功")
+                    //假设现在请求了数据为data
+                    const data = {
+                        name: "xiaowang"
+                    }
+                    //resolve 和 reject两个同时书写，以第一个为准
+                    resolve(data);
+                    //无论返回成功还是失败，后边的代码都会继续执行完成
+                    console.log("最后的代码")
+                } else {
+                    console.log("请求失败")
+                    //假设现在请求了数据为data
+                    const err = "errorMessage:your code has bug";
+                    //resolve 和 reject两个同时书写，以第一个为准
+                    reject(err);
+                    //无论返回成功还是失败，后边的代码都会继续执行完成
+                    console.log("最后的代码")
+                }
+
+            }, 1000)
+        });
+
+
+
+        const thenResult = pro1.then((success) => {
+            console.log(success);
+            //A数据请求完成之后，请求B数据，B数据也是异步请求，需要放在promise中处理
+            return new Promise((resolve, reject) => {
+                console.log("A已经请求完成了，我现在开始请求B")
+                setTimeout(() => {
+                    console.log("B请求完成");
+                    //请求到的数据
+                    const data = {
+                        age: "18"
+                    }
+                    
+                    reject("err");
+                }, 2000)
+            })
+            // throw new Error();
+            // return 1;
+        })
+
+
+        console.log("then返回值", thenResult)
+
+        console.log("promise返回值", pro1);
+        console.log("整个同步代码执行完成");
+    </script>
+</body>
+
+</html>

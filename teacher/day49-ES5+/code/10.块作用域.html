@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            使用let声明的变量 只在代码块中生效，所以就拥有了块级作用域
+        */
+        /* var a = 1;
+        if (a > 0) {
+            var b = 2;
+        }
+        console.log(b); //2 */
+
+        //b在快级作用域中
+        /* var a = 1;
+        if (a > 0) {
+            let b = 2;
+        }
+        console.log(b); //b is not defined */
+
+        //块作用域是代码块 {} 所构成的作用域
+
+        {
+            let a = 1;
+            console.log(a); //1
+            {
+                let b = 2;
+                console.log(a, b); {
+                    let c = 3;
+                    console.log(a, b, c);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

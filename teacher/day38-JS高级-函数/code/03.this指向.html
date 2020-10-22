@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            this是函数中的一个变量，他指向的对象是根据函数调用时候决定的
+            函数调用有4中方式
+                - test() 自己调用
+                - obj.test() 上下文对象调用
+                - new test() 实例化调用
+                - test.call() call调用
+         */
+
+        function fn1() {
+            console.log(this);
+        }
+        //1.自调用（默认绑定）  自调用的this指向window
+        fn1();
+        [1, 2, 3].forEach(function (item, index) {
+            console.log(this); //window 回调函数是自己调用的，数组调用的是forEach 而不是forEach中的回调
+        })
+        setTimeout(function () {
+            console.log(this); //当事件到了之后调用，回调函数自己调用,指向window
+        })
+
+
+
+        // 2.对象调用（隐式绑定）
+        var obj = {
+            name: "lily",
+            fn: fn1 //把fn1变量保存的引用地址 给了fn
+        }
+        obj.fn() //此时调用的fn1函数  函数调用有一个上下文对象obj  所以this指向的是obj
+
+        document.onclick = fn; //事件函数this指向 绑定事件的元素
+
+
+        //3.隐式丢失
+        var obj1 = {
+            name: "lily",
+            fn: fn1 //把fn1变量保存的引用地址 给了fn
+        }
+        var fn2 = obj1.fn; //把obj1的fn属性保存的引用地址给了fn2
+        fn2(); //window 这个属于默认绑定 自调用  和obj1没有任何关系
+
+
+        //4.实例化调用
+        var f = new fn1(); //this指向实例化对象 指向f变量保存的对象
+
+
+        //5.显示绑定（硬绑定）call apply bind
+        fn1.call(window) //window
+        fn1.call(obj1) //obj1
+
+        /* 
+            总结：如何确定this指向
+                - 首先确实是否是硬绑定，如果是则this指向call所规定的对象
+                - 是否是实例化调用，如果是实例化调用，则this指向实例化对象
+                - 判断函数调用是否是被上下文对象调用的，如果是 则this指向上下文对象（要注意是否存在隐式丢失现象）
+                - 函数自调用 返回window
+
+         */
+    </script>
+</body>
+
+</html>

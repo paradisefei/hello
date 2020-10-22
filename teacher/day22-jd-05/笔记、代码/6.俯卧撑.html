@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* var count = 1;
+        while(true){
+            console.log('崔旺：我正在做第' + count + '个俯卧撑!------------');
+
+            console.log('动作一：趴下');
+            console.log('动作二：双臂弯曲，身体下压');
+
+            if (count === 3) {
+                console.log('静哥真英俊！');
+                break;
+            }
+
+            console.log('动作三：双臂用力，让身体抬起');
+
+            count++;
+        } */
+
+
+        //1 <= 5 true 
+        //2 <= 5 true
+        //3 <= 5 true
+        /* for (var day = 1;day <= 5 ;day++) {
+            console.log('今天是周' + day + '---------------');
+
+            if (day === 3) {
+                console.log('今天表现不错，不用写作业!');
+                continue;
+            }
+            console.log('打开电脑');
+            console.log('打开编辑器');
+            console.log('开始写bug');
+        } */
+
+
+        /*
+            i= 1  1<=5 true
+
+                j=1 j<=5 true
+
+                    j === 2 false
+                    console.log(1+'----------');
+                    console.log(1+'----------');
+
+                j=2 2<=5 true
+
+                    j === 2 true
+                    break;
+            i=2  2<=5 true
+                j=1 j <=5 true
+                    j === 2 false
+                    console.log(2+'----------');
+                    console.log(1+'----------');
+
+            i=3 3<=5 true
+                j= 1 j<=5 true
+                console.log(3+'----------');
+                console.log(1+'----------');
+
+                j=2 j<=5 true
+                    j===2 true
+        */
+        for (var i = 1; i <=5 ; i++) {
+            for (var j = 1; j <= 5; j++) {
+                if (j == 2){
+                    break;
+                }
+                console.log(i+'----------');
+                console.log(j+'----------');
+            }
+        }
+    </script>
+</body>
+</html>

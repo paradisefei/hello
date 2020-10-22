@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #f{
+            border:2px solid pink;
+            /*父元素成为了弹性容器，其中的子元素横向排列了*/
+            display:flex;
+            width:800px;
+            height: 600px;
+        }
+        #f > div{
+            width:100px;
+            height:100px;
+            /*不压缩*/
+            /* flex-shrink: 0; */
+        }
+        #f > div:first-of-type{
+            background-color: darkcyan;
+        }
+        #f > div:nth-of-type(2){
+            background-color: darkgreen;
+        }
+        #f > div:nth-of-type(3){
+            background-color: chartreuse;
+        }
+        #f > div:nth-of-type(4){
+            background-color: darkmagenta;
+        }
+        #f > div:nth-of-type(5){
+            background-color: sienna;
+        }
+        #f > div:nth-of-type(6){
+            background-color: olive;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="f">
+        <div>
+            1
+        </div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>66</div>
+    </div>
+</body>
+</html>
+</body>
+</html>

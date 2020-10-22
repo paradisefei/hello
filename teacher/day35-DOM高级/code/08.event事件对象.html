@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <a href="##">a</a>
+    </div>
+    <script>
+        var oBox = document.getElementById('box')
+        oBox.onclick = function (e) {
+            //获取event事件对象
+            //event事件对象中保存了一切和事件相关的信息
+
+            //主流浏览器版本获取：在事件函数中默认有一个参数，这个参数就是event事件对象
+            //在ie中，事件函数没有默认传参，但是event对象保存在window对象上，直接通过window.event获取
+            // console.log(e);
+            // console.log(window.event);
+
+            //兼容性处理
+            var e = e || window.event;
+        }
+    </script>
+</body>
+
+</html>

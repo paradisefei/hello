@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #banner{
+            position: relative;
+            margin:0 auto;
+            width:1130px;
+            height:286px;
+            /* border:1px solid yellow; */
+            overflow: hidden;
+        }
+        #banner ul{
+            position:absolute;
+            top:0;
+            left:0;
+            margin:0px;
+            padding:0px;
+            width:5650px;
+            height:100%;
+            list-style-type:none;
+        }
+        #banner ul li {
+            float:left;
+        }
+        #banner ul li img{
+            width:1130px;
+        }
+        
+        /*要写的箭头*/
+        #banner .arrow{
+            position:absolute;
+            width:40px;
+            height:70px;
+
+            top:50%;
+            margin-top:-35px;
+            background-image:url('./imgs/icon-slides.png');
+
+        }
+        #banner .arrow-prev{
+
+            left:0px;
+            background-position: -84px 0;
+        }
+        #banner .arrow-next{
+
+            right:0px;
+
+            background-position: -126px 0;
+        }
+
+
+        #banner:hover .arrow-prev{
+            background-position: 0px 0;
+        }
+        #banner:hover .arrow-next{
+            background-position: -42px 0;
+        }
+        /*底部小点点*/
+        #banner-bottom{
+            position:absolute;
+            width:100px;
+            height: 10px;
+
+            /*水平居中*/
+            left:50%;
+            margin-left:-50px;
+
+            top:256px;
+        }
+        #banner-bottom div{
+            width:10px;
+            height:10px;
+            /* border:1px solid yellow; */
+
+            float:left;
+            margin-left:5px;
+            margin-right:5px;
+
+            background-color: rgba(0,0,0,.6);
+        }
+        #banner-bottom div.active{
+            background-color:rgba(255,255,255,.6);
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="./imgs/0121365f23ed70a80120a82197289b.jpg" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./imgs/012f595f23ab03a80120a8218c8e64.png" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./imgs/0148a25f23aaf6a801215aa038b8a3.png" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./imgs/0149115f23ab31a80120a8212535f0.png" />
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./imgs/015e9c5f23ab15a801215aa0795d4e.png" />
+                </a>
+            </li>
+        </ul>
+        <!-- 上一张下一张的两个箭头 -->
+        <div class="arrow arrow-prev"></div>
+        <div class="arrow arrow-next"></div>
+        <div id="banner-bottom">
+            <div></div>
+            <div class="active"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+</html>

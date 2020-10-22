@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //将一个引用类型赋值给变量时，变量存储的是引用类型的地址。
+       /*  //a和b指向的是同一个地址。
+        var a = [];
+        var b = a;
+
+        //foo和foo1指向的是同一个地址。 foo1里面放置的是foo的地址。
+        function foo(){
+
+        }
+        var foo1 = foo; */
+
+
+        /*引用的是同一个地址*/
+        //一个引用类型可以有多个名字，一个改变引用类型的值，另外一个的值也会改变。s
+        /* var a = [];
+        var b = a;
+        a[0] = 1;
+
+        console.log(b); */
+
+
+        //一个函数本身也是值，一个对象，所以可以被当做实参传入到函数中。但是如果传入的是普通值是赋值，如果传入的是引用类型赋的是地址。
+        /* function foo0(a){//a='hello'
+
+        }
+
+        foo0('hello');
+
+        function foo1(arr){
+            arr[0] = 'helloworld';
+        }
+
+        var arr = [1,2,3,4,5];
+
+        foo1(arr);
+        console.log(arr); */
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>替换节点</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var oList = document.querySelector('.list');
+        // var oListLis = document.querySelectorAll('.list li')//静态的，哪怕元素被删完了，获取的值也不变
+        var oListLis = oList.getElementsByTagName('li'); //一旦有元素被删除，则获取的值会动态发生改变
+
+        var oBtn = document.getElementById('btn');
+        /* 
+            替换节点：
+                replaceChild
+                【被替换元素的父级.replaceChild(准备替换的元素,被替换的元素)】
+        */
+        oBtn.onclick = function () {
+            var newLi = document.createElement("li");
+            newLi.innerHTML = "新元素";
+
+            //把新元素替换第二个li
+            // oList.replaceChild(newLi, oListLis[1]);
+
+            //把最后一个li 替换第一个li
+            oList.replaceChild(oListLis[oListLis.length - 1], oListLis[0])
+
+        }
+    </script>
+</body>
+
+</html>

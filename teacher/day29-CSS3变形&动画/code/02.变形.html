@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .list{
+            width: 1150px;
+            margin:0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        .list .item{
+            width: 200px;
+            background-color: rgba(100,100,100,.5);
+            margin: 20px 0;
+            /* 当子元素需要3d变换的时候，需要在父级开启3d */
+            transform-style: preserve-3d;
+            /* 开启近大远小的效果 */
+            perspective: 300px;
+        }
+        .item .con{
+            width: 100%;
+            height: 250px;
+            font-size: 20px;
+            text-align: center;
+            color: #fff;
+            transition: all .5s;
+        }
+
+        .item:nth-child(1) .con{
+            background-color: aqua;
+            /* 
+                改变变形的原点：
+                x：固定值（left center right）  百分比   px单位
+                y：固定值（top center bottom）  百分比   px单位
+             */
+            transform-origin: center bottom;
+        }
+        .item:nth-child(1):hover .con{
+            transform:rotateX(90deg);
+        }
+
+
+
+        .item:nth-child(2) .con{
+            background-color: cadetblue;
+            transform-origin: center center;
+        }
+        .item:nth-child(2):hover .con{
+            transform:rotateY(30deg);
+        }
+
+        .item:nth-child(3) .con{
+            background-color: chartreuse;
+            transform-origin: 50px 50px;
+        }
+        .item:nth-child(3):hover .con{
+            transform:rotate(30deg);
+        }
+
+        .item:nth-child(4) .con{
+            background-color: saddlebrown;
+        }
+        .item:nth-child(4):hover .con{
+            /* transform:translateX(30px); */
+            transform:translateX(50%);
+        }
+
+
+        .item:nth-child(5) .con{
+            background-color: red;
+        }
+        .item:nth-child(5):hover .con{
+            transform:translateY(30px);
+        }
+
+
+        .item:nth-child(6) .con{
+            background-color: saddlebrown;
+        }
+        .item:nth-child(6):hover .con{
+            transform:translateZ(-40px);
+        }
+
+        .item:nth-child(7) .con{
+            background-color: gold;
+        }
+        .item:nth-child(7):hover .con{
+            transform:translate(30px,30px);
+        }
+
+        .item:nth-child(8) .con{
+            background-color: greenyellow;
+            transform-origin: left center;
+        }
+        .item:nth-child(8):hover .con{
+            transform:scaleX(.7);
+        }
+
+        .item:nth-child(9) .con{
+            background-color: peru;
+            transform-origin: left center;
+        }
+        .item:nth-child(9):hover .con{
+            transform:scaleY(1.2);
+        }
+
+        .item:nth-child(10) .con{
+            background-color: hotpink;
+            transform-origin: center center;
+        }
+        .item:nth-child(10):hover .con{
+            /* transform:scale(1.2,0.9); */
+            transform:scale(1.2);
+            /* transform: scaleZ(1.2); */
+        }
+
+        .item:nth-child(11) .con{
+            background-color: darkseagreen;
+        }
+        .item:nth-child(11):hover .con{
+            transform:skewX(30deg)
+        }
+
+        .item:nth-child(12) .con{
+            background-color: deepskyblue;
+        }
+        .item:nth-child(12):hover .con{
+            transform:skewY(30deg)
+        }
+
+        .item:nth-child(13) .con{
+            background-color: rebeccapurple;
+        }
+        .item:nth-child(13):hover .con{
+            transform:skew(30deg,20deg)
+        }
+
+        .item:nth-child(14) .con{
+            background-color: wheat;
+        }
+        .item:nth-child(14):hover .con{
+            /* 多个变形 使用一个transform属性  否则会覆盖  多个变形书写顺序会影响显示效果 */
+            transform:rotateY(30deg) translateX(30px);
+        }
+
+        .item:nth-child(15) .con{
+            background-color: teal;
+        }
+        .item:nth-child(15):hover .con{
+            /* 多个变形 使用一个transform属性  否则会覆盖  多个变形书写顺序会影响显示效果 */
+            transform: translateX(30px) rotateY(30deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <ul class="list">
+            <li class="item">
+                <div class="con">
+                    rotateX <br>
+                    沿着x轴旋转 <br>
+                    值为正：上部分向屏幕里移动，下部分向屏幕外移动 <br>
+                    默认沿着y轴的中心，和x轴旋转
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    rotateY <br>
+                    角度为正的时候：左侧出来 右侧进入
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    rotate <br>
+                    值为正：顺时针
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    translateX <br>
+                    值为正 则向右移动
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    translateY <br>
+                    值为正 则向下移动
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    translateZ <br>
+                    值为正 则向右移动
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    translate <br>
+                    translate(x,y):如果只传入一个参数，则只代表x
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    scaleX <br>
+                    x轴改变
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    scaleY <br>
+                    y轴改变
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    scale <br>
+                    scale() 1个参数 控制x和y  2个参数 分别为x和y
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    skewX <br>
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    skewY <br>
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    skew <br>
+                    一个参数只代表x <br>
+                    两个参数代表x 和 y
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    旋转后移动
+                </div>
+            </li>
+            <li class="item">
+                <div class="con">
+                    移动后旋转
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

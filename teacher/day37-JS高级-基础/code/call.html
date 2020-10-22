@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // a.call(b); //调用了a 并且a中的this执向是的b
+
+
+        function fn1() {
+            console.log(1);
+
+        }
+
+        function fn2() {
+            console.log(2);
+        }
+        // fn1.call(fn2); //1
+        // fn1.call.call(fn2); //2
+
+        fn1.call(a)//call的作用 1，调用的fn1
+    </script>
+</body>
+
+</html>

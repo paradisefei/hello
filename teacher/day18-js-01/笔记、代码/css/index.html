@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./font/css/font-awesome.css">
+    <title>Document</title>
+    <style>
+        /*内容初始化*/
+        html {
+            font-size: 5.3332vw;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        /*页面头部*/
+        #header {
+            width: 100vw;
+            height: calc(calc(1rem * 120)/40);
+
+            /* border:1px solid green; */
+            padding: 0 calc(calc(1rem * 30)/40);
+            box-sizing: border-box;
+
+            background-color: rgb(93, 202, 207);
+
+            /*设置其中的子元素平分空白*/
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        /*菜单按钮*/
+        #menu a {
+            text-decoration: none;
+            font-size: calc(calc(1rem * 60)/40);
+            color: #FFF;
+
+            /*设置底部距离*/
+            margin-bottom: calc(calc(1rem * 12)/40);
+        }
+
+        /*搜索框*/
+        #header form {
+            /* border:1px solid green; */
+            width: calc(calc(1rem * 518)/40);
+            height: calc(calc(1rem * 60)/40);
+
+
+            /*设置底部距离*/
+            margin-bottom: calc(calc(1rem * 12)/40);
+        }
+
+        #header form input {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            outline: none;
+
+            font-size: calc(calc(1rem * 28)/40);
+            border-radius: calc(calc(1rem * 10)/40);
+            padding-left: calc(calc(1rem * 26)/40);
+            box-sizing: border-box;
+        }
+
+        /*头像*/
+        #pho {
+            width: calc(calc(1rem * 60)/40);
+            height: calc(calc(1rem * 60)/40);
+            /* border:1px solid green; */
+            border-radius: 50%;
+            overflow: hidden;
+
+            /*设置底部距离*/
+            margin-bottom: calc(calc(1rem * 12)/40);
+        }
+
+        #pho img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /*页面banner*/
+        #banner{
+            /* border:1px solid pink; */
+            height:calc(calc(1rem * 248)/40);
+            padding: 0 calc(calc(1rem * 30)/40);
+            box-sizing: border-box;
+
+            display:flex;
+        }
+        #banner ul{
+            width:100%;
+            /* border:1px solid cadetblue; */
+
+            display:flex;
+            align-items: center;
+        }
+        #banner ul li{
+            flex-grow: 1;
+        }
+
+        #banner ul li a{
+            /* border:1px solid green; */
+            height:calc(calc(1rem * 168)/40);
+
+            /*这里是让a里面的图标字体和文字能够垂直显示*/
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+
+            font-size:calc(calc(1rem * 24)/40);
+            text-decoration:none;
+        }
+        #banner ul li a span{
+            display: block;
+            width:calc(calc(1rem * 114)/40);
+            height:calc(calc(1rem * 114)/40);
+            /* border:1px solid blue; */
+            border-radius: 50%;
+            font-size:calc(calc(1rem * 60)/40);
+            color:#FFF;
+            margin-bottom: calc(calc(1rem * 20)/40);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #banner ul li:first-of-type a span{
+            background-color:rgb(249,105,156);
+        }
+        #banner ul li:nth-of-type(2) a span{
+            background-color:rgb(255,121,124);
+        }
+        #banner ul li:nth-of-type(3) a span{
+            background-color:rgb(45,154,215);
+        }
+        #banner ul li:nth-of-type(4) a span{
+            background-color:rgb(255,184,2);
+        }
+
+        #banner ul li a strong{
+            color:rgb(128,128,128);
+        }
+        /*底部菜单*/
+        #menu-bottom{
+           
+            width:100vw;
+            height: calc(calc(1rem * 90)/40);
+            /* border:1px solid red; */
+            background-color: #FFF;
+            border-top:calc(calc(1rem)/40) solid rgb(236,236,236);
+            box-shadow: 0 calc(calc(1rem * -6)/40) calc(calc(1rem * 10)/40) #ececec;
+
+            position:fixed;
+            bottom:0;
+            left:0;
+
+            padding: 0 calc(calc(1rem * 30)/40);
+            box-sizing: border-box;
+        }
+
+        #menu-bottom ul{
+            height:100%;
+            /* border:1px solid olive; */
+            display: flex;
+        }
+        #menu-bottom ul li{
+            height:100%;
+            flex-grow: 1;
+            /* border:1px solid red; */
+
+            display:flex;
+            align-items: center;
+        }
+
+        #menu-bottom ul li a{
+            width:100%;
+            /* border:1px solid purple; */
+            text-decoration:none;
+            color:rgb(128,128,128);
+
+
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #menu-bottom ul li a span{
+            font-size:calc(calc(1rem * 50)/40);
+        }
+        #menu-bottom ul li a strong{
+            font-size:calc(calc(1rem * 24)/40);
+        }
+
+        #menu-bottom ul li a.active{
+            color:rgb(93,202,207);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div id="menu">
+            <a href="#" class="fa fa-navicon"></a>
+        </div>
+        <form action="#" method="POST">
+            <input type="text" name="search" placeholder="请输入目的地/酒店/景点" />
+        </form>
+        <div id="pho">
+            <img src="./image/pho.png" />
+        </div>
+    </div>
+    <!-- 页面banner -->
+    <div id="banner">
+        <ul>
+            <li>
+
+                <a href="#">
+                    <span class="fa fa-building"></span>
+                    <strong>酒店预订</strong>
+                </a>
+            </li>
+            <li>
+
+                <a href="#">
+                    <span class="fa fa-plane"></span>
+                    <strong>附近酒店</strong>
+                </a>
+            </li>
+            <li>
+
+                <a href="#">
+                    <span class="fa fa-usd"></span>
+                    <strong>今日特价</strong>
+                </a>
+            </li>
+            <li>
+
+                <a href="#">
+                    <span class="fa fa-university"></span>
+                    <strong>景点推荐</strong>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 底部菜单-->
+    <div id="menu-bottom">
+        <ul>
+            <li>
+
+                <a href="#" class="active">
+                    <span class="fa fa-home"></span>
+                    <strong>首页</strong>
+                </a>
+            </li>
+            <li>
+
+                <a href="#">
+                    <span class="fa fa-compass"></span>
+                    <strong>发现</strong>
+                </a>
+            </li>
+            <li>
+
+                <a href="#">
+                    <span class="fa fa-space-shuttle"></span>
+                    <strong>客服</strong>
+                </a>
+            </li>
+            <li>
+
+                <a href="#">
+                    <span class="fa fa-user"></span>
+                    <strong>我的</strong>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

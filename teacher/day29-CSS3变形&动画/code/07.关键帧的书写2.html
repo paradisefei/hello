@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关键帧的书写</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        .box1{
+            animation:change2 2s 1s;
+        }
+
+        /* 关键帧的动画开始的时候，都会直接变为0%的状态，
+        关键帧的动画执行结束后，会直接变为默认状态 */
+        @keyframes change1 {
+            from{
+                background-color: yellow;
+            }
+            to{
+                background-color: pink;
+            }
+        }
+
+        /* 关键帧如果没有书写开始和结束状态，或者开始和结束状态没有某个属性的时候，默认状态就是他的开始和结束状态 */
+        @keyframes change2 {
+            50%{
+                width: 200px;
+                height: 200px;
+                background-color: yellow;
+            }
+        }
+
+        /* 所有的属性都是独立的 */
+        @keyframes change1 {
+            40%{
+                background-color: yellow;
+            }
+            60%{
+                background-color: pink;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+</body>
+</html>

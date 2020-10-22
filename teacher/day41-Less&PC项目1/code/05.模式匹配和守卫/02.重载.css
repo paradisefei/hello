@@ -1,0 +1,16 @@
+/* 
+    重载：
+        一个混合可能有多种形式（参数数量不同）
+        可以根据调用混合时 传递的参数个数来选择使用某一个混合
+        
+
+
+*/
+.outer {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  line-height: 30px;
+  box-sizing: border-box;
+  color: red;
+}

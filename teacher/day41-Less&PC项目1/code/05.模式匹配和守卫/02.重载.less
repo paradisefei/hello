@@ -1,0 +1,27 @@
+/* 
+    重载：
+        一个混合可能有多种形式（参数数量不同）
+        可以根据调用混合时 传递的参数个数来选择使用某一个混合
+        
+
+
+*/
+.center1(@color) {
+    text-align: center;
+    box-sizing: border-box;
+    color: @color;
+}
+
+.center1(@color, @lh) {
+    text-align: center;
+    line-height: @lh;
+    box-sizing: border-box;
+    color: @color;
+}
+
+
+.outer {
+    width: 200px;
+    height: 200px;
+    .center1(red, 30px)
+}

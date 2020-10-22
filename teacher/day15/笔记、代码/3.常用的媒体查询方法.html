@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*当做手机、小屏幕*/
+        @media (max-width:768px) {
+            body{
+                color:red;
+            }
+        }
+
+        /*当做小屏幕设备、平板电脑*/
+        @media (min-width:768px) and (max-width:992px) {
+            body{
+                color:hotpink;
+            }
+        }
+
+        /*中等屏幕设备，pc电脑桌面*/
+        @media (min-width:992px) and (max-width:1200px) {
+            body{
+                color:green;
+            }
+        }
+        /*大屏幕设备*/
+        @media (min-width:1200px){
+            body{
+                color:skyblue;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    崔旺真英俊！
+</body>
+
+</html>

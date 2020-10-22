@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单事件</title>
+</head>
+<body>
+    <div id="box">
+        <input type="text" id="ipt">
+    </div>
+    <script>
+        /* 
+            表单事件：  
+                - input事件 当表单内容发生改变触发
+                - change事件 当表单内容发生改变并且失去焦点的时候触发
+        
+        */
+
+        var oIpt = document.getElementById("ipt");
+       oIpt.oninput = function(){
+            console.log(oIpt.value)
+        } 
+
+        // oIpt.onchange = function(){
+        //     console.log(oIpt.value)
+        // }
+    </script>
+</body>
+</html>

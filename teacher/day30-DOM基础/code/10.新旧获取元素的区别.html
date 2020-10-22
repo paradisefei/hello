@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="wrap">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        // 旧方法
+        /* var oWrap = document.getElementById("wrap");
+        var oWrapLis = oWrap.getElementsByTagName("li");
+        //oWrapLis.length-->4 
+        //如果按照下边的方法进行，则会进入死循环，因为遍历的条件的li的长度，但是每次遍历都会创建新的li添加到wrap中
+        //oWrapLis 获取的li的长度就会发生变化，进入死循环
+        //oWrapLis 获取的元素是动态的，可以实时监听元素的内容
+        for(var i = 0; i< oWrapLis.length;i++){
+            //每次遍历进来，都创建一个新的li标签，插入到wrap中
+            var newLi = document.createElement("li");//js中创建一个li
+            oWrap.appendChild(newLi);//把新创建的li插入到wrap中
+        } */
+
+
+
+        // 新方法
+        var oWrap = document.getElementById("wrap");
+        var oWrapLis = document.querySelectorAll("#wrap li");
+        //oWrapLis.length-->4 
+        //新方法获取的元素是静态的，一旦获取到，就不再监听原有元素了（元素无论怎么改变  通过新方法获取的内容是不可变的）
+        for (var i = 0; i < oWrapLis.length; i++) {
+            var newLi = document.createElement("li"); //js中创建一个li
+            oWrap.appendChild(newLi); //把新创建的li插入到wrap中
+        }
+    </script>
+</body>
+
+</html>

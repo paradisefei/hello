@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 1000px;
+            height: 500px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .box {
+            width: 60px;
+            height: 60px;
+            background-color: red;
+            position: absolute;
+            left: 100px;
+            top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="box"></div>
+    </div>
+    <script>
+        var oOuter = document.querySelector('.outer');
+        var oBox = document.querySelector('.box');
+        var l = 100; //初始位置
+        var a = 1;
+
+        setInterval(function () {
+            if (l >= oOuter.clientWidth - oBox.offsetWidth || l <= 0) {
+                a = -a;
+            }
+            l += a;
+            oBox.style.left = l + "px";
+        }, 1)
+    </script>
+</body>
+</html>

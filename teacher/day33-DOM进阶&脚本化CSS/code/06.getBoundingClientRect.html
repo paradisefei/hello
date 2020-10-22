@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getBoundingClientRect</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 300px;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        /* 
+        getBoundingClientRect
+            返回一个对象：
+                width/height：获取的是（border+content+padding）的宽高
+                left：获取元素左边框左边缘 距离 视口左侧的距离
+                right：获取元素右边框右边缘 距离 视口左侧的距离
+                top:获取元素上边框上边缘 距离 视口上侧的距离
+                bottom:获取元素下边框下边缘 距离 视口上侧的距离
+        
+        
+        */
+        var oBox = document.querySelector(".box");
+        console.log(oBox.getBoundingClientRect())
+    </script>
+</body>
+
+</html>

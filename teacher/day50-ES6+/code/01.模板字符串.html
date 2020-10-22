@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+        <p>我的姓名是 <span>XXX</span></p>
+        <p>我的性别是 <span>XXX</span></p>
+        <p>我的年龄是 <span>XXX</span></p>
+    </div>
+    <script>
+        const obj = {
+            name: "lily1",
+            sex: "nv",
+            age: 18
+        }
+
+        function setSex(sex) {
+            return sex ? sex : "nan";
+        }
+
+        // 传统写法
+        /* const oBox = document.querySelector(".box");
+        oBox.innerHTML = '<p>我的姓名是 <span>' + obj.name + '</span></p>\
+        <p>我的性别是 <span>' + obj.sex + '</span></p>\
+        <p>我的年龄是 <span>' + obj.age + '</span></p>'; */
+
+
+        //模板字符串
+        //模板字符串使用反引号，变量嵌套使用${} 里边可以书写基础运算
+        const oBox = document.querySelector(".box");
+        oBox.innerHTML = `
+            <p>我的姓名是 <span>${obj.name==="lily"?obj.name:"你不配"}</span></p>
+            <p>我的性别是 <span>${setSex(obj.sex)}</span></p>
+            <p>我的年龄是 <span>${obj.age + 4}</span></p>
+        `;
+    </script>
+</body>
+
+</html>

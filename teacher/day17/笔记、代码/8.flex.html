@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #f{
+            width:750px;
+            height: 100px;
+            border:1px solid green;
+            display: flex;
+        }
+
+        #f > div{
+            /*缺少多少空间能够完全放下  150px*/
+            width:300px;
+
+            border:1px solid blue;
+            box-sizing: border-box;
+            /*#f容器中缺少150px被评分成了3份，每隔元素都占一份50px，锁一个每隔元素都将在原有的基础上减去50px*/
+            flex-shrink: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="f">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>

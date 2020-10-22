@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07.间歇调用练习.html</title>
+</head>
+
+<body>
+    <h2 class="info">敌军还有5秒到达战场</h2>
+    <script>
+        var oInfo = document.querySelector(".info");
+
+        var num = 5; //倒计时的时间
+        var infoTimer = setInterval(function () {
+            num--;
+            if (num <= 0) {
+                oInfo.innerHTML = "全军出击";
+                //到达临界值的时候，取消计时器
+                //取消计时器是取消的以后的执行，但是当前的计时器函数会依然执行完成
+                clearInterval(infoTimer);
+                return;
+            }
+            oInfo.innerHTML = "敌军还有" + num + "秒到达战场";
+        }, 1000)
+    </script>
+</body>
+
+</html>

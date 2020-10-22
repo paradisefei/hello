@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <ul class="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        /* 
+            非事件委托版本：
+                1.给所有的li绑定点击事件
+                2.点击按钮添加一个新的li元素
+        
+         */
+
+        /* var oBox = document.querySelector('.box')
+        var oBoxLis = oBox.getElementsByTagName("li");
+        var oBtn = document.getElementById('btn');
+        Array.from(oBoxLis).forEach(function (item, index) {
+            item.onclick = function () {
+                this.style.background = "red";
+            }
+        })
+
+        //点击BTN 添加一个新的li
+        oBtn.onclick = function () {
+            var newLi = document.createElement("li");
+            newLi.textContent = "我是新的li";
+            document.querySelector('.box').appendChild(newLi)
+
+            //添加完元素再次绑定
+            Array.from(oBoxLis).forEach(function (item, index) {
+                item.onclick = function () {
+                    this.style.background = "red";
+                }
+            })
+        } */
+
+
+
+        /* 
+            事件委托版本：
+                - 1.给所有的元素绑定点击事件(给要绑定元素的祖辈元素来绑定事件)
+                - 2.event事件对象中 有一个target属性，代表的是当前事件发生的时候，精确的鼠标定位
+                
+
+            什么是事件委托：
+                事件就是普通的事件
+                委托就是自己不绑定事件，而是把事件委托给父元素或者祖辈元素进行绑定，根据冒泡原理，触发事件
+            事件委托优点：
+                - 减少for循环，提升效率
+                - 可以对未来的元素绑定事件
+                - 原理是：事件冒泡
+        
+         */
+
+        var oBox = document.querySelector('.box');
+        var oBoxLis = document.querySelectorAll('.box li');
+        var oBtn = document.getElementById('btn');
+
+        //想要让每一个li都有点击事件，给oBox绑定事件（无论点击哪一个li，oBox的事件都会触发）
+        oBox.onclick = function (e) {
+            console.log(e);
+            //判定当前target是li的时候，才变红
+            //nodeName 获取节点名称  元素节点的节点名称是标签名，大写的
+            if (e.target.nodeName.toLowerCase() === "li") {
+                e.target.style.background = "red";
+            }
+
+        }
+
+        //点击BTN添加新元素
+        oBtn.onclick = function () {
+            var newLi = document.createElement("li");
+            newLi.textContent = "新的li";
+            oBox.appendChild(newLi);
+        }
+    </script>
+</body>
+
+</html>

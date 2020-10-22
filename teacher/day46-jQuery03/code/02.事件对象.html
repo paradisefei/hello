@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <div id="box">box</div>
+    <script>
+        $(function () {
+            //源码没有提供input事件简写，可以在源码中添加
+            $("#box").click(function (e) {
+                console.log(e)
+                //调用的是jQuery的Event事件对象的构造函数上的原型对象上的preventDefault方法
+                e.preventDefault();
+                e.stopPropagation();
+            })
+        })
+    </script>
+</body>
+
+</html>

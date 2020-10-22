@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <script>
+        function abc() {
+            alert(0);
+        };
+        function Foo() {
+            abc = function () {
+                alert(4);
+            };
+            return this;
+        }
+        var abc;
+        Foo.prototype.abc = function () {
+            alert(1);
+        };
+        Foo.abc = function () {
+            alert(2);
+        };
+
+
+        abc = function () {
+            alert(6);
+        };
+
+        Foo.abc();
+        abc();
+        Foo().abc();
+        abc();
+        new Foo.abc();
+        new Foo().abc();
+        new new Foo().abc();
+        // function Foo() {
+        //     abc = function () {
+        //         alert(4);
+        //     };
+        //     return this;
+        // }
+        // Foo.prototype.abc = function () {
+        //     alert(1);
+        // };
+        // Foo.abc = function () {
+        //     alert(2);
+        // };
+
+        // function abc() {
+        //     alert(0);
+        // };
+        // var abc = function () {
+        //     alert(6);
+        // };
+
+
+        // Foo.abc(); //2
+        // abc(); //6
+        // Foo().abc(); //4
+        // abc(); //4
+        // new Foo.abc(); //2
+        // new Foo().abc(); //1
+        // new new Foo().abc(); //1
+
+
+        /* function abc() {
+            alert(0);
+        };
+        var abc; //如果变量声明和函数名相同，如果变量在没有赋值的情况下，不会影响函数执行
+        console.log(abc); // */
+
+
+        // abc = function () {
+        //     alert(6);
+        // };
+    </script>
+</body>
+
+</html>

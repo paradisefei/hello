@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clientWidth</title>
+    <style>
+        .box {
+            width: 500px;
+            padding: 20px;
+            margin: 40px;
+            background-color: red;
+            border: 1px solid #000;
+            /* visibility: hidden; */
+            overflow: auto;
+        }
+
+        .con {
+            width: 4000px;
+            height: 30px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">mao</button>
+    <div class="box">
+        <div class="con"></div>
+    </div>
+    <script>
+        var oBox = document.querySelector(".box");
+        var oBtn = document.querySelector("#btn");
+
+        oBtn.onclick = function () {
+            //当一个元素有滚动条的时候，获取所有可以滚动区域的大小
+            console.log(oBox.scrollWidth); //4200
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            A instanceof B:
+                B的原型对象在A的原型链上
+
+            自己封装一个函数 instanceof(A,B)
+        
+        */
+
+        function instanceOf(A, B) {
+            //首先获取B的原型对象 然后再判断
+            var BPrototype = B.prototype;
+
+            /* A.__proto__ === BPrototype
+            A.__proto__.__proto__ === BPrototype
+            A.__proto__.__proto__.__proto__ === BPrototype
+            当A.__proto__.__proto__.__proto__ 为null说明走到原型链的顶端，直接返回false */
+
+            while (A.__proto__) {
+                if (A.__proto__ === BPrototype) {
+                    return true;
+                }
+                A = A.__proto__;
+            }
+
+            return false;
+        }
+        console.log(instanceOf(Object, Function))
+        console.log(instanceOf(Object, Object))
+        console.log(instanceOf(Function, Object))
+        console.log(instanceOf(Function, Function))
+        console.log(instanceOf(Object, Array))
+    </script>
+</body>
+
+</html>

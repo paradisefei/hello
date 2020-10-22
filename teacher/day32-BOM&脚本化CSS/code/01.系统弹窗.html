@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            prompt() 当用户点击取消的时候，则返回一个null 否则返回输入的内容
+        
+         */
+
+        function callFather() {
+            var result = prompt("叫爸爸", "爸爸");
+            if (result) {
+                //叫了
+                if (result === "爸爸") {
+                    var areYouSure = confirm("你确实叫的是我？");
+                    if (areYouSure) {
+                        alert("儿子乖")
+                    } else {
+                        //如果叫的不是爸爸
+                        callFather();
+                    }
+                } 
+                else {
+                    //如果叫的不是爸爸
+                    callFather();
+                }
+            } 
+        else {
+                //没有叫
+                callFather();
+            }
+        }
+        callFather();
+    </script>
+</body>
+
+</html>

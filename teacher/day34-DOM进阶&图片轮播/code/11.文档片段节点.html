@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11.文档片段节点.html</title>
+</head>
+
+<body>
+    <ul class="list">
+
+    </ul>
+    <script>
+        var data = {
+            news: [
+                "深夜,某男子竟然。。。。。",
+                "原来某男子是静哥",
+                "。。。。。无法描述",
+                "在吃鸡",
+                "深夜,某男子竟然。。。。。",
+                "原来某男子是静哥",
+                "。。。。。无法描述",
+                "在吃鸡",
+                "深夜,某男子竟然。。。。。",
+                "原来某男子是静哥",
+                "。。。。。无法描述",
+                "在吃鸡",
+            ]
+        }
+
+        var oList = document.querySelector('.list')
+        //创建一个文档碎片节点（容器）
+        var oFrag = document.createDocumentFragment();
+        //根据数据生成结构
+        //1.遍历新闻数据
+        data.news.forEach(function (item, index) {
+            //如果直接插入元素，那么将会有很多次的重绘重排 非常影响性能
+            /* //创建一个li
+            var newLi = document.createElement("li");
+            //创建内容
+            newLi.textContent = item;
+            //插入ul中
+            oLis.appendChild(newLi); */
+
+            //先把创建的元素保存起来 然后最后一次性插入
+            var newLi = document.createElement("li");
+            newLi.textContent = item;
+            //每次把新创建的li 放到碎片节点的容器中保存
+            oFrag.appendChild(newLi);
+        })
+
+        //等全部元素放入容器之后，一次性把碎片节点的内容放入ul中
+        oList.appendChild(oFrag)
+    </script>
+</body>
+
+</html>

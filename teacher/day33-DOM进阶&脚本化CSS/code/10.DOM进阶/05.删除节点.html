@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>删除节点</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var oList = document.querySelector('.list');
+        // var oListLis = document.querySelectorAll('.list li')//静态的，哪怕元素被删完了，获取的值也不变
+        var oListLis = oList.getElementsByTagName('li'); //一旦有元素被删除，则获取的值会动态发生改变
+
+        var oBtn = document.getElementById('btn');
+        /* 
+            删除节点：
+                使用 removeChild方法
+                【被删除元素的父级.removeChild(被删除的元素)】 
+                
+                如果想要点击按钮连续删除，注意被删除元素获取的动态的获取
+        */
+        oBtn.onclick = function () {
+            console.log(oListLis)
+            //点击删除第1个li
+            oList.removeChild(oListLis[0]);
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统滚动条</title>
+    <style>
+        #con {
+            height: 4000px;
+
+        }
+
+        #btn {
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点击我</button>
+    <div id="con"></div>
+    <script>
+        /* 
+            window.scrollTo(x,y):
+                设置系统滚动条的位置信息
+        
+         */
+        var oBtn = document.getElementById("btn");
+        oBtn.onclick = function () {
+            window.scrollTo(0, 300)
+        }
+    </script>
+</body>
+
+</html>

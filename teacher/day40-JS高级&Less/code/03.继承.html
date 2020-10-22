@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.借用构造函数继承：只能继承构造函数中添加的属性和方法
+        //封装一个父类
+        /* function Animal(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Animal.prototype.say = function () {
+            cosnole.log("吼~")
+        }
+
+        //封装一个子类
+        function Cat(color, name, age) {
+            //本来Animal的this指向的是Animal的实例化对象
+            //现在让Animal的this指向Cat的实例化对象
+            //并且给Animal传参
+            Animal.call(this, name, age)
+            this.color = color;
+        }
+        Cat.prototype.do = function () {
+            console.log("玩红外线");
+        }
+
+
+        var cat1 = new Cat("white", "baozi", 2);
+        var cat2 = new Cat("coffce", "wanan", 3);
+        console.log(cat1, cat2) */
+
+
+        //2.原型链继承
+        //  function Animal(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        // }
+        // Animal.prototype.say = function () {
+        //     cosnole.log("吼~")
+        // }
+        // var ani = new Animal();
+        // ani.do = function () {
+
+        // }
+
+        // function Cat(color, name, age) {
+        //     this.color = color;
+        // }
+        // //Cat的实例化对象想要使用Animal的原型对象上的方法，需要修改Cat的原型链
+        // //千万不要把Animal的原型对象直接赋值给Cat的原型对象，否则修改Cat Animal也修改了，因为赋值是地址值的赋值
+        // // Cat.prototype = Animal.prototype;
+        // //再次考虑，还有谁可以访问Animal的原型对象？Animal的实例化对象
+        // //把父类的实例化对象 赋值给 子类的原型对象  此时可以实现原型链继承
+        // Cat.prototype = new Animal();
+        // //如果重新设置了原型对象，那么新的原型对象的constructor就可能出问题
+        // //为了保证程序合理，要把constructor指向修改正确
+        // Cat.prototype.constructor = Cat; //修正constructor
+        // Cat.prototype.do = function () {
+        //     console.log("玩红外线");
+        // }
+        // var cat1 = new Cat("white");
+        // console.log(cat1)
+        // console.log(cat1.say)
+        // console.log(cat1.constructor)
+        // console.log(Cat.prototype.constructor) 
+
+
+        //3.组合继承  原型链继承+构造函数继承
+        function Animal(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Animal.prototype.say = function () {
+            cosnole.log("吼~")
+        }
+        var ani = new Animal();
+        ani.do = function () {
+
+        }
+
+        function Cat(color, name, age) {
+            this.color = color;
+            //构造函数继承
+            Animal.call(this, name, age)
+        }
+        //原型链继承
+        Cat.prototype = new Animal();
+        Cat.prototype.constructor = Cat;
+        Cat.prototype.do = function () {
+            console.log("玩红外线");
+        }
+        var cat1 = new Cat("white", "wanan", "2");
+        console.log(cat1)
+        console.log(cat1.say)
+        console.log(cat1.constructor)
+        console.log(Cat.prototype.constructor);
+    </script>
+</body>
+
+</html>

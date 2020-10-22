@@ -1,0 +1,46 @@
+/* 
+    <div class="outer">
+        <ul class="list">
+            <p class="con">
+                <a href="">点击</a>
+                <span>1100</span>
+            </p>
+        </ul>
+    </div>
+*/
+.outer {
+  height: 300px;
+}
+.outer > .list {
+  height: 200px;
+}
+.outer > .list > .con {
+  overflow: hidden;
+}
+.outer > .list > .con:hover {
+  background-color: #fff;
+}
+.outer > .list a {
+  color: #ccc;
+}
+.outer > .list span {
+  border: 1px solid #000;
+}
+ul {
+  width: 200px;
+}
+ul > li {
+  overflow: hidden;
+}
+ul > li:nth-child(1) {
+  color: #ccc;
+}
+ul > li:nth-child(2) {
+  color: #ccc;
+}
+ul > li:nth-child(3) {
+  color: #ccc;
+}
+ul > li:nth-child(4) {
+  color: #ccc;
+}

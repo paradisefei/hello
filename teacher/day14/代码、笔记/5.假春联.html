@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            html,body{
+                margin:0;
+                padding:0;
+                height:100%;
+
+            }
+            body > div{
+                width:100px;
+                height:10px;
+                line-height:400px;
+                background-color:rgb(216, 44, 44);
+                border:1px solid pink;
+                text-align:center;
+                overflow: hidden;
+                font-size:50px;
+                margin:50px;
+                color:rgb(246, 233, 23);
+
+                transition-property: height;
+                transition-duration: 1s;
+                transition-timing-function: ease-in;
+
+            }
+            body > div:hover{
+                width:100px;
+                height:400px;
+
+            }
+            div.p{
+                display:inline-block;
+                line-height: normal;
+                vertical-align: middle;
+                width:60px;
+                /* border:1px solid green; */
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="p">
+                黄莺鸣翠柳
+            </div>
+        </div>
+    </body>
+</html>

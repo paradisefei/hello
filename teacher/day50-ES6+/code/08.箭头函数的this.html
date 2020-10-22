@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            箭头函数：
+                this：箭头函数没有自己的this(他的this不能在不同的环境中发生改变)，
+                    箭头函数的this在定义的时候就已经确定了，在箭头函数中使用this，其实是定义的时候他所在父级函数的this
+        
+        */
+        /* const fn1 = () => console.log(this);
+
+        fn1(); //w
+
+        document.onclick = fn1; //w
+
+        const obj = {
+            name: "lily",
+            do: fn1
+        }
+        obj.do(); //w
+
+        const obj1 = {
+            name: "lily",
+            do: function () {
+                fn1();
+            }
+        }
+        obj1.do(); //w
+
+        const obj2 = {
+            name: "lily",
+            do: () => {
+                fn1();
+            }
+        }
+        obj2.do(); //w */
+
+
+
+        const obj1 = {
+            name: "lily",
+            do: () => {
+                // this-->window
+                const fn1 = () => {
+                    console.log(this); //window
+                }
+                fn1();
+            }
+        }
+        obj1.do()
+
+        const obj2 = {
+            name: "lily",
+            do: function () {
+                // this--obj2
+                const fn1 = () => {
+                    console.log(this); //
+                }
+                fn1()
+            }
+        }
+        // obj2.do()
+        const fn3 = obj2.do;
+        fn3();
+    </script>
+</body>
+
+</html>

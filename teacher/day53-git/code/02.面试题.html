@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+         const p1 = () => (new Promise((resolve, reject) => {
+            console.log(1);
+            let p2 = new Promise((resolve, reject) => {
+                console.log(2);
+                const timeOut1 = setTimeout(() => {
+                    console.log(3);
+                    resolve(4);
+                }, 0)
+                resolve(5)
+            })
+            resolve(6);
+            p2.then((arg) => {
+                console.log(arg);
+            })
+        }));
+
+        const timeOut2 = setTimeout(() => {
+            console.log(8);
+            const p3 = new Promise(reject => {
+                reject(9);
+            }).then(res => {
+                console.log(res);
+            })
+        }, 0)
+        p1().then((arg) => {
+            console.log(arg);
+        })
+        console.log(10) 
+        /*
+            代码分为同步代码和异步代码
+            异步代码分为微任务和宏任务
+
+            then()中的参数不是函数,那么会在内部被替换为(x) => x,此时调用该then()时原样返回Promise对象
+            值穿透
+
+            promise对象原本就有一个值,调用了then()之后没有给返回值时
+        */
+
+//1 2 10 5 6 8 9 3
+
+/*         function Promise(){}
+        Promise.prototype.then = function(onResolved,onRejected){
+            if(this._status === 'resolved'){
+                onResolved()
+            }
+        } */
+        // console.log(Promise.resolve(1));//1.返回一个值为1的成功状态的promise对象
+        // console.log(Promise.resolve(1).then(2));//2.then()中的参数不是函数,那么会在内部被替换为(x) => x,此时调用该then()时原样返回Promise对象
+        console.log(Promise.resolve(1).then(2).then(Promise.resolve(3)));//3.如何then()中的参数是一个promise对象,那它也不是回调函数,此时调用then()依然原样返回Promise对象
+        // console.log(Promise.resolve(1).then(2).then(new Promise((resolve,reject)=>{
+        //     resolve(10);
+        // })));
+        console.log(Promise.resolve(1).then(2).then(Promise.resolve(3)).then(console.log));
+        Promise.resolve(1).then(2).then(Promise.resolve(3)).then(console.log);
+        // console.log(Promise.resolve(1).then(2).then(Promise.resolve(3)).then());
+        // console.log(console.log);
+
+
+        console.log(Promise.resolve(1080).then((success) => {
+
+        }))
+        const pro2 = new Promise();
+        console.log(pro2)
+
+        Promise.resolve(1)
+        .then(2)
+        .then(Promise.resolve(3))
+        .then(console.log) 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关键帧的书写</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        /* @keyframes 用来定义一个关键帧
+        格式是@keyframes name {}
+        关键帧不是针对某个元素定义的，而是定义好之后，任意元素都可以使用 */
+        .box1{
+            /* animation:change1 2s infinite; */
+        }
+
+        /* 关键帧的起始位置可以书写为from（0%）  结束位置书写为to（100%） */
+        @keyframes change1 {
+            from{
+                background-color: green;
+            }
+            to{
+                background-color: pink;
+            }
+        }
+
+        .box2{
+            animation:change3 2s infinite;
+        }
+        @keyframes change2 {
+            from{
+                background-color: green;
+            }
+        
+            50%{
+                background-color: yellow;
+            }
+
+            to{
+                background-color: pink;
+            }
+        }
+
+
+        @keyframes change3 {
+            0%{
+                background-color: green;
+            }
+            20%{
+                transform: rotate(20deg) skew(10deg);
+                width: 120px;
+                height: 80px;
+            }
+            40%{
+                transform: rotate(-20deg) skew(00deg) scale(1.2);
+                width: 120px;
+                height: 80px;
+            }
+            50%{
+                background-color: yellow;
+            }
+            70%{
+                transform: translate(10px,10px) rotateY(20deg) rotateX(30deg);
+                width: 120px;
+                height: 80px;
+            }
+            100%{
+                background-color: pink;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+</body>
+</html>

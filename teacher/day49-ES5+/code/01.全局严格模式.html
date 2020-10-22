@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>严格模式</title>
+</head>
+
+<body>
+    <script>
+        "use strict"; //在全局开启严格模式
+
+        //变量必须声明才能使用
+        /* a = 1; //a is not defined
+        console.log(a); */
+
+
+        //严格模式下，如果函数自己调用，this是undefined
+        /* function fn1() {
+            console.log(this);
+        }
+        fn1();
+        window.fn1(); */
+
+
+        //严格模式下，创建了eval作用域
+        /* // eval("alert(1)");//eval可以把一串字符串代码运行
+        eval("var a = 1;");
+        console.log(a); */
+
+        //禁止调用栈
+        /* function fn() {
+            console.log(arguments)
+            console.log(arguments.callee)
+        }
+        fn() */
+
+        //严格模式下不可以删除变量
+        /* a = 1;
+        delete a;
+        console.log(a); */
+    </script>
+</body>
+
+</html>

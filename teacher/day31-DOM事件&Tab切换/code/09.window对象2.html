@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window</title>
+</head>
+<body>
+    <script>
+        var a  = 1;//全局变量
+        function fn(){
+            //a = b  去查找b被称作为RHS查询  去查找a被称作LHS查询
+            //如果RHS查询找不到 就会报错 XXX is not defined
+            //如果LHS查询找不到 就会创建一个相应的全局变量
+            var b = c = d = 2;
+
+            //如果想要在局部作用域中 声明一个全局变量
+            window.e = "eeee";
+        }
+        fn()
+        // console.log(b)//报错
+        console.log(a,c,d,e);// 1 2 2
+
+        
+
+    </script>
+</body>
+</html>

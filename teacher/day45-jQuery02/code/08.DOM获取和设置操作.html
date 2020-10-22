@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js'></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div class="box" study='jq'>
+        <a href="##">hello world</a>
+        <input type="text" value="请输入">
+    </div>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                /* 
+                    html()---innerHTML
+                    text()---innerText
+
+                    val()---value
+
+
+                    prop/attr ---attribute
+                    attr主要设置自定义的属性
+                    prop主要设置自有的属性 和表单属性
+                 */
+                /* console.log($(".box").html())
+                console.log($(".box").text()) */
+
+                // $(".box").html("<span>span</span>")
+                // $(".box").text("<span>span</span>")
+
+                // console.log($("input").val())
+                // $("input").val("15701665563")
+
+                // $(".box").attr("user", "lily")
+                // $(".box").prop("user", "lily")
+
+                // $("input").attr("type", "number")
+                // $("input").prop("type", "number")
+                console.log($("input").prop("type"))
+                console.log($(".box").attr("study"))
+
+                $(".box").removeAttr("study")
+            })
+        })
+    </script>
+</body>
+
+</html>

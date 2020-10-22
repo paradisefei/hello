@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Car(speed) {
+            this.speed = speed;
+            return "hello"
+        }
+
+        //如果构造函数return一个对象，则实例化的返回值丢弃实例化对象，返回return的值
+        //如果构造函数return一个基本值，则忽略 ，仍然返回实例化对象
+        console.log(new Car(200));
+    </script>
+</body>
+
+</html>

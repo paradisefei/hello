@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13.键盘事件.html</title>
+</head>
+
+<body>
+    hello world
+    <script>
+        /* 
+            键盘事件 
+                要么绑定给可输入的表单元素
+                要么绑定给document
+
+            在event事件对象中 有一个keyCode属性  保存当前按键的键码
+        
+         */
+        /* document.onkeydown = function (e) {
+            console.log(e.keyCode);
+            if (e.keyCode === 40) {
+                console.log("好贱哦")
+            }
+        } */
+
+
+
+        // 阻止复制
+        document.onkeydown = function (e) {
+            //判断一些ctrl 或者 shift等配合键的时候，直接使用event事件对象中的属性即可
+            // console.log(e)
+            // if (e.keyCode === 17 && e.keyCode === 67) {
+            //     alert("你复制个鬼哦~")
+            // }
+
+            if (e.ctrlKey && e.keyCode === 67) {
+                alert("你复制个鬼哦~");
+                return false;
+            }
+
+        }
+
+        $(".bigimg li").each(function (index, item) {
+            console.log(item.find(".pic").attr("title"))
+        })
+    </script>
+</body>
+
+</html>

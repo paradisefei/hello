@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">
+            <div class="con">con</div>
+        </div>
+    </div>
+    <script>
+        /* 
+            动态绑定（DOM0级绑定事件方式）:
+                写法：把一个匿名函数赋值给了 某个元素的事件属性
+                    当这个元素的事件属性被触发，则执行后边的匿名函数
+                    事件函数的内部是异步代码
+
+                元素对于一个事件属性来说，只有一个值，
+                所以当使用动态绑定，对一个元素绑定多次事件的时候，会被覆盖
+         
+                动态绑定事件：
+                    是冒泡类型的
+         */
+        var oOuter = document.querySelector('.outer');
+        var oInner = document.querySelector('.inner');
+        var oCon = document.querySelector('.con');
+
+        /* oCon.onclick = function () {
+            alert(1);
+        }
+        oCon.onclick = function () {
+            alert(2);
+        }
+        oCon.onclick = function () {
+            alert(3);
+        }
+        oCon.onclick = function () {
+            alert(4);
+        } */
+
+
+        oOuter.onclick = function () {
+            alert("oOuter")
+        }
+        oCon.onclick = function () {
+            alert("con")
+        }
+        oInner.onclick = function () {
+            alert("oInner")
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js'></script>
+    <style>
+        .con {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">走你</button>
+    <div class="con">
+
+
+    </div>
+    <script>
+        $(function () {
+            //累加动画
+            /* $("#btn").click(function () {
+                $(".con").animate({
+                    // left: "+=10"
+                    left: "300px"
+                }, 500)
+            }) */
+
+            $("#btn").click(function () {
+                /* $(".con").animate({
+                    left: "1000px"
+                }, 500, function () {
+                    $(".con").animate({
+                        top: "400px"
+                    }, 500, function () {
+                        $(".con").animate({
+                            left: "0"
+                        }, 500, function () {
+                            $(".con").animate({
+                                top: "100px"
+                            }, 500, function () {
+
+                            })
+                        })
+                    })
+                }) */
+
+                /* 
+                    当多个动画连续调用的时候，其实动画是一起设置上去的，
+                    但是某个动画没有执行完成的时候，其他的动画要在动画队列中等待执行
+                
+                */
+                $(".con").animate({
+                        left: "1000px"
+                    }, 500)
+                    .animate({
+                        top: "400px"
+                    }, 500)
+                    .animate({
+                        left: "0"
+                    }, 500)
+                    .animate({
+                        top: "100px"
+                    }, 500)
+                    .css("background", "green")
+            })
+        })
+    </script>
+</body>
+
+</html>

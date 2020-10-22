@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js'></script>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        $(function () {
+            $(".box").mouseenter(function () {
+                $(this).stop(true, false).animate({
+                    width: "500px"
+                }, 1000)
+            })
+            $(".box").mouseleave(function () {
+                $(this).stop(true, false).animate({
+                    width: "300px"
+                }, 1000)
+            })
+            /* 
+                stop()
+                    stop本身就是停止当前动画
+                    - 第一个参数 控制是否清空当前动画队列
+                    - 第二个参数 控制当前被停止的动画 是否走到末尾
+
+            
+            */
+            $(".box").click(function () {
+                $(this).stop(true, true).animate({
+                    height: "500px"
+                }, 5000)
+            })
+        })
+    </script>
+</body>
+
+</html>

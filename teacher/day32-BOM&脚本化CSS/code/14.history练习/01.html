@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>01.html</h1>
+    <a href="./02.html">02</a>
+    <a href="./03.html">03</a>
+    <button id="btn">点击</button>
+    <script>
+        var oBtn = document.getElementById("btn");
+
+        oBtn.onclick = function () {
+            /* 
+                    history控制浏览器的历史记录
+                    back方法：回退1个记录
+                    forward方法：前进1个记录
+                    go方法：可以前进或后退1个或多个记录
+            */
+            // window.history.back()
+            // window.history.forward()
+            // window.history.go(-2);
+            window.history.go(1);
+        }
+    </script>
+</body>
+
+</html>

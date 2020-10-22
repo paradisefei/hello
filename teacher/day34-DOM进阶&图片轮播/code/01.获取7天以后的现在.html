@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        
+            获取7天以后的现在：
+                需要知道现在的时间
+                获取当前的时间的 天,然后把当前的 天  加7
+                把得到的最新的天  设置给当前的时间
+         */
+
+        /* var now = new Date();
+        var day = now.getDate() + 7; //比如今天是4号  得到的是一个number  11
+        var result = new Date().setDate(now.getDate() + 7)
+        console.log(new Date(result)) */
+
+
+        // new Date().setDate(new Date().getDate() + 7);
+
+
+        /* 方法2
+        
+            获取当前的时间戳
+        */
+        var result = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7)
+        console.log(result)
+    </script>
+</body>
+
+</html>

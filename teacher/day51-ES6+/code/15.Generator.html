@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Generator:状态机  里边保存很多的状态
+            是异步编程的一种解决方法
+        
+         */
+
+        function* gen() {
+            console.log(0); //随着第一次next的调用
+            yield console.log(1);
+            yield console.log(2);
+            yield console.log(3);
+            yield console.log(4);
+            yield console.log(5);
+        }
+        const re = gen(); //gen调用以后，返回一个迭代器对象
+        console.log(re);
+        re.next(); //每次调用1次 next方法 就会一次调用yield后边的语句
+        re.next();
+        re.next();
+        re.next();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>根据类名获取</title>
+</head>
+
+<body>
+    <div id="box">
+        <p class="content">蛋黄的长裙</p>
+        <p>蓬松的头发</p>
+        <p class="content">锄禾和当午</p>
+    </div>
+
+    <p>李白睡的香</p>
+    <script>
+        /* 
+            通过类名获取元素（不兼容IE678）
+            getElementsByClassName()
+        */
+        var oBox = document.getElementById("box");
+        var oContent = oBox.getElementsByClassName("content");
+        console.log(oContent);
+
+        for(var i = 0;i<oContent.length;i++){
+            oContent[i].style.backgroundColor = "pink";
+        }
+
+    </script>
+</body>
+
+</html>

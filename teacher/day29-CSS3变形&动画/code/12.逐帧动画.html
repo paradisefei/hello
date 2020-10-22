@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12.逐帧动画.html</title>
+    <style>
+        .bike{
+            width: 130px;
+            height: 130px;
+            background:url(../images/bike.png) 0 0 no-repeat;
+            /* 逐帧动画其实控制的是timing-function（动画方式） 让位置移动变成阶跃式变化 */
+            animation:bike .1s steps(32) infinite;
+        }
+        @keyframes bike{
+            from{
+                background:url(../images/bike.png) 0 0 no-repeat;
+            }
+            to{
+                background:url(../images/bike.png) 0 -4160px no-repeat;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bike"></div>
+</body>
+</html>

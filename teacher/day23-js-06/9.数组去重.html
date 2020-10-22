@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //
+        //将这个数组去重。
+        var arr1 = [1,1];
+        //现在定义一个空数组。这个空数组用来存储不重复的值。
+        var newArr = [];
+        /*
+            i=0 i<2 0<2 true
+                val = 1;
+                flag = true
+
+                j=0 j<0 false
+
+                //flag=true
+                //newArr[0] = 1;
+
+            i=1 1<2 true
+                val = 1;
+                flag = true
+
+                j=0 j<1 0<1 true
+                    if (newArr[0] === 1)//1===1  true
+                        flag = false;
+                        break;
+                
+                //flag = false
+
+            i=2 2<2 false 搞定了。
+
+        */
+        for (var i = 0 ; i < arr1.length ;i++) {
+            
+            var val = arr1[i];
+
+            var flag = true;//用来判断是否应该将这个值放入到新数组中。  默认就是往里面放。
+
+            for (var j = 0; j < newArr.length ; j++) {
+                if (newArr[j] === val) {
+                    flag = false;
+                    break;
+                }
+            }
+
+            if (flag) {
+                newArr[newArr.length] = val;
+            }
+        }
+        console.log(newArr);
+    </script>
+</body>
+</html>

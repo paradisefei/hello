@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js"></script>
+</head>
+
+<body>
+    <script>
+        console.log($) //jQuery成功引入
+
+        //执行时机
+        window.onload = function () {
+            console.log("当DOM及所有的资源全部加载完成 才会执行，并且因为是DOM0级事件，所以只能绑定1次")
+        }
+
+        window.addEventListener("load", function () {
+            console.log("当DOM及所有的资源全部加载完成 才会执行，但是可以绑定多次")
+        })
+
+        window.addEventListener("DOMContentLoaded", function () {
+            console.log("当所有的DOM节点加载完成以后即可执行")
+        })
+
+        //$("css选择器的时候") 是一个选择器 选择了匹配的元素，返回一个jQuery的实例化对象  是一个类数组
+        //document是js的一个对象，js对象不能直接使用jq的方法，所以在js对象外直接套住一个$(),则就会把这个对象转换成jq对象
+        $(document).ready(function () {
+            console.log("jQuery中，当DOM节点加载完成后执行")
+            console.log("可以多次执行")
+        });
+        //被称作为jq包裹
+        $(function () {
+            cosnole.log("上边的简写")
+            console.log("可以多次执行")
+        })
+    </script>
+</body>
+
+</html>

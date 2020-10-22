@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>头部导航栏布局</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="outer">
+        <!-- 头部区域 -->
+        <header class="header">
+            <div class="headerTop_out">
+                <div class="headerTop">
+                    <div class="headerTop_left">
+                        <p>尚品汇欢迎您</p>
+                        <p>
+                            请
+                            <a href="javascript:;">登录</a>
+                            <a href="javascript:;">免费注册</a>
+                        </p>
+                    </div>
+                    <div class="headerTop_right">
+                        <a href="javascript:;">我的订单</a>
+                        <a href="javascript:;">我的购物车</a>
+                        <a href="javascript:;">我的尚品汇</a>
+                        <a href="javascript:;">尚品汇会员</a>
+                        <a href="javascript:;">企业采购</a>
+                        <a href="javascript:;">关注尚品汇</a>
+                        <a href="javascript:;">合作招聘</a>
+                        <a href="javascript:;">商家后台</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="headerBottom">
+                <h1 class="logo">
+                    <a href="javascript:;">
+                        <img src="./images/Logo.png" alt="">
+                    </a>
+                </h1>
+                <div class="header_search">
+                    <input type="text">
+                    <button>搜索</button>
+                </div>
+            </div>
+        </header>
+        <div class="allnav_outer">
+            <div class="allnav">
+                <h2>所有商品分类</h2>
+                <nav>
+                    <a href="javascript:;">服装城</a>
+                    <a href="javascript:;">美妆馆</a>
+                    <a href="javascript:;">尚品汇超市</a>
+                    <a href="javascript:;">全球购</a>
+                    <a href="javascript:;">闪购</a>
+                    <a href="javascript:;">团购</a>
+                    <a href="javascript:;">有趣</a>
+                    <a href="javascript:;">秒杀</a>
+                </nav>
+            </div>
+        </div>
+        <section class="con">
+            <div class="conPoint">
+                <a href="javascript:;">手机、数码、通讯手机</a>
+                <a href="javascript:;">Apple苹果</a>
+                <a>iphone 6S系类</a>
+            </div>
+            <div class="mainCon">
+                <div class="previewArea">
+                    <div class="preview">
+                        <!-- 小图区域 -->
+                        <div class="smallArea">
+                            <img src="./images/s1.png" alt="">
+                            <!-- 蒙版区域 -->
+                            <!-- <div class="mask"></div> -->
+                        </div>
+                        <!-- 大图区域 -->
+                        <!-- <div class="bigArea">
+                            <img src="./images/b1.png" alt="">
+                        </div> -->
+                    </div>
+                    <div class="prescroll">
+                        <p class="left">&lt;</p>
+                        <div class="listOut">
+                            <ul class="list">
+                            </ul>
+                        </div>
+                        <p class="right">&gt;</p>
+                    </div>
+                </div>
+                <div class="detailArea">
+                    <div class="priceArea">
+
+                    </div>
+                    <div class="chooseInsert">
+                    </div>
+                    <div class="chooseArea">
+
+                    </div>
+                    <div class="goodsNum">
+                        <div class="num">
+                            <input type="text" value="1">
+                            <button class="plus">+</button>
+                            <button class="mins">-</button>
+                        </div>
+                        <div class="addCart">加入购物车</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="./js/data.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            var thumbnailIndex = 0;
+            //每一个功能封装一个函数，避免变量冲突，减少使用全局变量
+            manifier();
+
+            function manifier() {
+                /* 
+                    1.鼠标移入，创建蒙版和大图，并插入到页面中
+                    2.鼠标移动，鼠标永远在蒙版的中心，鼠标移动，获取蒙版移动的位置信息
+                    3.鼠标移出，删除事件
+                
+                 */
+                var oPreview = document.querySelector('.preview');
+                var oSmallArea = document.querySelector(".smallArea");
+                var oMask = null;
+                var oBigImg = null;
+                var oBigArea = null;
+                var data = goodData.imgsrc;
+                oPreview.onmouseenter = function () {
+                    oMask = document.createElement("div");
+                    oMask.classList.add("mask");
+                    oSmallArea.appendChild(oMask);
+
+                    oBigArea = document.createElement("div");
+                    oBigArea.classList.add("bigArea");
+                    oBigImg = new Image();
+                    oBigImg.src = data[thumbnailIndex].b;
+                    oBigArea.appendChild(oBigImg);
+                    oPreview.appendChild(oBigArea);
+
+                    oPreview.onmousemove = function (e) {
+                        var oMaskMove = {
+                            x: e.clientX - oSmallArea.getBoundingClientRect().left - oMask
+                                .offsetWidth / 2,
+                            y: e.clientY - oSmallArea.getBoundingClientRect().top - oMask
+                                .offsetHeight / 2,
+                        }
+
+                        //临界值判断
+                        if (oMaskMove.x >= oSmallArea.offsetWidth - oMask.offsetWidth) {
+                            oMaskMove.x = oSmallArea.offsetWidth - oMask.offsetWidth
+                        } else if (oMaskMove.x <= 0) {
+                            oMaskMove.x = 0;
+                        }
+                        if (oMaskMove.y >= oSmallArea.offsetHeight - oMask.offsetHeight) {
+                            oMaskMove.y = oSmallArea.offsetHeight - oMask.offsetHeight
+                        } else if (oMaskMove.y <= 0) {
+                            oMaskMove.y = 0;
+                        }
+
+                        oMask.style.left = oMaskMove.x + "px"
+                        oMask.style.top = oMaskMove.y + "px"
+
+
+                        var scale = (oBigImg.offsetWidth - oBigArea.clientWidth) / (oSmallArea
+                            .clientWidth -
+                            oMask.offsetWidth);
+                        var oBigImgMove = {
+                            x: oMaskMove.x * scale,
+                            y: oMaskMove.y * scale,
+                        }
+                        oBigImg.style.left = -oBigImgMove.x + "px";
+                        oBigImg.style.top = -oBigImgMove.y + "px";
+                    }
+                    oPreview.onmouseleave = function () {
+                        oSmallArea.removeChild(oMask);
+                        oPreview.removeChild(oBigArea);
+                        oPreview.onmousemove = null;
+                        oPreview.onmouseleave = null;
+                        oMask = null;
+                        oBigImg = null;
+                        oBigArea = null;
+                    }
+
+
+                }
+
+            }
+
+
+
+            thumbnailData();
+
+            function thumbnailData() {
+                var data = goodData.imgsrc;
+                var oList = document.querySelector('.listOut .list')
+                data.forEach(function (item) {
+                    var newLi = document.createElement("li");
+                    var newImg = new Image();
+                    newImg.src = item.s;
+                    newLi.appendChild(newImg);
+                    oList.appendChild(newLi);
+                })
+            }
+
+
+
+            thumbnailMove();
+
+            function thumbnailMove() {
+                /* 
+                    1.用一个变量保存初始化位置（初始化位置会改变）
+                    2.获取可以移动的总距离(li的总长度减去屏幕中显示的总长度  * li的宽度)
+                    3.获取每次移动的距离
+                    4.点击右侧按钮 让初始化变量累加每次移动的距离
+
+                    5.每次点击按钮的时候，如果还剩下两张以上的图片，则正常走，否则直接走到末尾
+                */
+                var oListLis = document.querySelectorAll('.listOut .list li')
+                var oList = document.querySelector('.listOut .list')
+                var oRight = document.querySelector('.previewArea .prescroll .right')
+                var oLeft = document.querySelector('.previewArea .prescroll .left')
+                var tempLength = 0;
+                var allMove = (oListLis.length - 5) * oListLis[0].offsetWidth;
+                var everyMove = 2 * oListLis[0].offsetWidth;
+                oRight.onclick = function () {
+                    if (allMove - tempLength >= everyMove) {
+                        tempLength += everyMove;
+                    } else {
+                        tempLength = allMove;
+                    }
+                    oList.style.transform = "translateX(-" + tempLength + "px)";
+                }
+
+                oLeft.onclick = function () {
+                    if (tempLength >= everyMove) {
+                        tempLength -= everyMove;
+                    } else {
+                        tempLength = 0;
+                    }
+                    oList.style.transform = "translateX(-" + tempLength + "px)";
+                }
+            }
+
+
+            //点击缩略图
+            thumbnailClick();
+
+            function thumbnailClick() {
+                var oListLisImg = document.querySelectorAll('.listOut .list li img');
+                var oSmallAreaImg = document.querySelector('.smallArea img')
+                oListLisImg.forEach(function (item, index) {
+                    item.onclick = function () {
+                        oSmallAreaImg.src = item.src;
+                        thumbnailIndex = index;
+                    }
+                })
+            }
+
+            //价格区域数据动态加载
+            priceAreaData();
+
+            function priceAreaData() {
+
+                var oPriceArea = document.querySelector('.priceArea');
+                var data = goodData.goodsDetail;
+                var str = `<h3 class="title">${data.title}</h3>
+                        <p class="con">${data.recommend}</p>
+                        <div class="price">
+                            <div class="priceDetail">
+                                <p>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</p>
+                                <p>￥ <span>${data.price}</span> 元</p>
+                            </div>
+                            <div class="buy">
+                                <p>促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销</p>
+                                <p><span>${data.promoteSales.type}</span>${data.promoteSales.content}</p>
+                            </div>
+                        </div>
+                        <div class="support">
+                            <div class="supportDetail">
+                                <p>支&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持</p>
+                                <p>${data.support}</p>
+                            </div>
+                            <div class="address">
+                                <p>配&nbsp;送&nbsp;至</p>
+                                <p>${data.address}</p>
+                            </div>
+                        </div>`
+                oPriceArea.innerHTML = str;
+
+            }
+
+
+            chooseData();
+
+            function chooseData() {
+                var data = goodData.goodsDetail.crumbData;
+                var oChooseArea = document.querySelector('.chooseArea')
+                data.forEach(function (item) {
+                    //遍历数据生成dl
+                    var oDl = document.createElement("dl");
+                    // 遍历生成dt
+                    var oDt = document.createElement("dt");
+                    oDt.innerHTML = item.title;
+                    //插入dt
+                    oDl.appendChild(oDt);
+                    //遍历生成dd
+                    item.data.forEach(function (item) {
+                        var oDd = document.createElement("dd");
+                        oDd.innerHTML = item.type;
+                        //把dd插入到dl中
+                        oDl.appendChild(oDd);
+                    })
+                    console.log(oDl)
+                    //把dl插入到页面中
+                    oChooseArea.appendChild(oDl);
+                })
+            }
+        
+        
+            
+        })
+    </script>
+</body>
+
+</html>

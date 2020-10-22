@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Math的扩展
+                1.n次方 旧方法：Math.pow();   新方法 ： **运算符
+        
+        */
+
+        console.log(Math.pow(3, 3))
+        console.log(3 ** 3)
+        console.log(2 ** 10)
+        console.log(2 ** 1000)
+
+        console.log(2 ** 2 ** 3) //2的8次方  从右向左计算
+
+
+        /* 
+            进制表示：  
+                二进制： 以 0b为开头
+                八进制：以0o开头
+        
+        */
+        let num1 = 0b110; //二进制
+        console.log(num1); //打印的时候是转换成了10进制
+        let num2 = 010; //旧版本提供了定义八进制的写法 前边加一个0
+        console.log(num2);
+        let num3 = 0o10; //新版本提供了定义八进制的写法 前边加一个0o
+        console.log(num3);
+
+
+        /* 
+            Math.trunc()方法会将数字的小数部分去掉，只保留整数部分
+
+            Math.sign() 判断一个数字的正数还是负数 还是0 或者是NaN
+                -返回值是-1 则代表负数
+                - 返回值是0 代表0
+                - 返回值是1 代表正数
+
+            Math.sqrt()平方根
+
+            Math.cbrt()立方根
+
+            Math.hypot() 求所有参数平方和的平方根
+
+        
+         */
+
+        console.log(Math.trunc(1.21)) //1
+        console.log(Math.trunc(-1.21)) //-1
+        console.log(Math.trunc("-1.21a")) //NaN
+
+
+        console.log(Math.sign(-3))
+        console.log(Math.sign(0))
+        console.log(Math.sign(4))
+
+        console.log(Math.sqrt(2))
+        console.log(Math.cbrt(27))
+
+        console.log(Math.hypot(3, 4)) //5
+    </script>
+</body>
+
+</html>

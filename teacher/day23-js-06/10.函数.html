@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //我要一个5行5列的表格。
+    
+        printTable();
+
+        function printTable() {
+            document.write('<table border="1" width="812">');
+            for (var row = 1; row <= 5; row++) {
+                document.write('<tr>');
+                for (var col = 1; col <= 5; col++) {
+                    document.write('<td>&nbsp;</td>');
+                }
+                document.write('</tr>');
+            }
+            document.write('</table>');
+        }    
+
+        // printTable();
+
+        function printTable(){
+            console.log('崔旺真英俊！');
+        }
+
+        printTable();
+
+        function alert(){
+            console.log('闫海静真英俊!');
+        }
+        alert('闫海静真英俊!');
+    </script>
+
+</body>
+
+</html>

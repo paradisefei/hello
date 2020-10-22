@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 800px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .inner {
+            width: 800px;
+            overflow: auto;
+        }
+
+        .inner .con {
+            width: 5000px;
+            display: flex;
+        }
+
+        .con img {
+            width: 800px;
+            height: 400px;
+        }
+
+        .btns .left,
+        .btns .right {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(100, 200, 50, .5);
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .btns .left {
+            left: 10px;
+        }
+
+        .btns .right {
+            right: 10px;
+        }
+
+        .list {
+            position: absolute;
+            display: flex;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .list li {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, .5);
+            margin: 0 10px;
+            text-align: center;
+            line-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        如果一个元素相对于 拥有滚动条的元素定位时候，那么定位的元素会随着滚动条移动
+    -->
+    <div class="outer">
+        <div class="inner">
+            <div class="con">
+                <img src="../../images/06.jpg" alt="">
+                <img src="../../images/07.jpg" alt="">
+                <img src="../../images/08.jpg" alt="">
+                <img src="../../images/09.jpg" alt="">
+                <img src="../../images/10.jpg" alt="">
+            </div>
+
+            <div class="btns">
+                <p class="left">&lt;</p>
+                <p class="right">&gt;</p>
+            </div>
+
+            <ul class="list">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oInner = document.querySelector('.inner');
+        var oImgs = document.querySelectorAll('.inner .con img');
+        var i = 0; //设置一个变量来代表图片
+        var moveTimer = null,
+            changeTimer = null;
+        //书写计时器，每隔两秒执行一次
+        changeTimer = setInterval(function () {
+            //因为i代表图片 所以直接让i累加
+            i++;
+
+            //判断临界值，当图片走到最后的时候，让i变成0
+            if (i >= oImgs.length) {
+                i = 0;
+            }
+
+            //让图片更换（以动画的方式更换） 动画通用版
+            //起始位置
+            var startPoint = oInner.scrollLeft;
+            //结束位置
+            var endPoint = i * oImgs[i].offsetWidth;
+            //起始步数
+            var startStep = 0;
+            //结束步数
+            var endStep = 30;
+            //每一步所走的距离
+            var everyStep = (endPoint - startPoint) / (endStep - startStep);
+
+            //动画
+            moveTimer = setInterval(function () {
+                startStep++;
+                if (startStep >= endStep) {
+                    clearInterval(moveTimer);
+                }
+                //让起始位置累加
+                startPoint += everyStep;
+                oInner.scrollLeft = startPoint;
+            }, 20)
+        }, 2000)
+    </script>
+</body>
+
+</html>

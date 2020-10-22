@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 1;
+        var b = 2;
+        console.log(a + b +3 + 4 +5);
+
+        /* console.log(1 + 2 + 3+ 4 + 5 +6 + 7 + 8 + 9 + 10); */
+
+        var str1 = '1';
+        var str2 = '2';
+
+        /* console.log(str1 + str2);//字符串。 */
+
+        /* console.log(str1 + 2);//只要有一个操作数是字符串，将另一个操作数自动转换为字符串。
+
+        console.log('1' + true); */
+
+        // console.log(1 + true);//Number类型 ，结果是2 因为true被转换为了1
+
+
+        //这个里面的true都被转换为了1
+        /* console.log(true + true + true); */
+
+        // console.log(-(-1));//这里的+号指的是正号  表示后面的数是一个正数。
+
+        /* console.log(+'a'); */
+
+        /* console.log('1' - '1'); */
+
+        /* console.log('a' - true);//NaN - 1  NaN */
+
+        // 给我3种方法将一个字符串'250'转换为数字250
+
+        /* console.log(Number('250'));
+        console.log(parseInt('250'));
+        console.log(parseFloat('250'));
+        console.log('250' - 0);
+        console.log(+'250'); */
+
+        /* console.log(1 * 2);
+        console.log('1' * 2); */
+
+        /* console.log(0 / 100); */
+
+        // console.log(100 / 0 );
+        //NaN
+        // console.log(Infinity + -Infinity);
+        //Infinity
+        //console.log(Infinity + Infinity);
+
+        // console.log(0/0);//NaN
+
+        // console.log(5 % 2);//1
+        /* console.log(0 % 2);
+        console.log(1 % 2); */
+
+        // console.log(5 % 0);
+
+        /* console.log(-5 % 2);
+        console.log(5 % -2);
+        console.log(-5 % -2); */
+
+       /*  var x = 11;
+        console.log(x % 2); */
+
+        /*假如我有一个数，这个数和8取，你看他的余数为肯定0~7之间*/
+        /*假如我有一个数，这个数和9取，你看他的余数为肯定0~8之间*/
+
+        /* var num = 678;
+        console.log(parseInt(num / 100));
+        console.log(parseInt(num /10 % 10));
+        console.log(parseInt(num % 10)); */
+
+        /*数 / 要求的位 % 10 再取整*/
+        var num = 8921;
+        console.log(parseInt(num /1000 % 10));
+        console.log(parseInt(num /100 % 10));
+        console.log(parseInt(num /10 % 10));
+        console.log(parseInt(num /1 % 10));
+        
+    </script>
+</body>
+</html>

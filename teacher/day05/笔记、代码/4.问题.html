@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        /* body{
+            font-size:0px;
+        } */
+        span{
+            font-size:150px;
+            background-color:blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 问题的原因：html标签中换行回车会被当做一个空格来处理，所以行内元素会有空白 -->
+    <!-- 
+        浏览器中的字体最小的字号是12px，设置为0px也会生效（这是个例外）。
+        解决方式1：将父元素的font-size设置为0px。
+        解决方式2：以后再说。
+    -->
+    <span>G</span>
+    <span>o</span>
+    <span>o</span>
+    <span>g</span>
+    <span>l</span>
+    <span>e</span>
+
+</body>
+
+</html>

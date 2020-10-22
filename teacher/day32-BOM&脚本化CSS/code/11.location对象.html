@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11.location对象.html</title>
+</head>
+
+<body>
+    <script>
+        console.log(window.location)
+
+        //http://127.0.0.1:5500/day04-BOM&%E8%84%9A%E6%9C%AC%E5%8C%96CSS/code/11.location%E5%AF%B9%E8%B1%A1.html
+        console.log(window.location.href) //获取当前的url地址
+        document.onclick = function () {
+            location.href = "http://www.baidu.com"; //location.href也可以进行重定向操作
+        }
+
+        console.log(location.protocol) //http:  协议：file:  ftp: http: https: ws: wss:
+
+        console.log(location.host) //主机地址+端口号
+        console.log(location.hostname) //主机地址
+        console.log(location.port) //端口号
+        console.log(location.pathname) //目录
+        console.log(location.search) //查询字符串
+        console.log(location.hash) //哈希值
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type="radio"]:checked{
+            margin-left:1000px;
+        }
+        div{
+            color:orange;
+        }
+        div::after{
+            /* content:' <h1>能行不？</h1>'; */
+            /* content:url('./img/tb.gif'); */
+            /* content:'(' attr(data-say) attr(class) ')'; */
+            content:attr(abc);
+            display:block;
+            width:300px;
+            height:300px;
+            border:1px solid yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <input type="radio" name="sex" value="0" />
+    <input type="radio" name="sex" value="1" />
+
+    <div id="hello" class="word" data-say="哈哈吼吼">闫海静真英俊</div>
+</body>
+</html>

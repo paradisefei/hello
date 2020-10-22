@@ -1,0 +1,47 @@
+<mxfile host="e298b0e3-78e1-40df-8cea-c2e1e44e04f1" modified="2020-09-09T07:08:09.865Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.48.2 Chrome/78.0.3904.130 Electron/7.3.2 Safari/537.36" etag="kj8pShDT5vh3iXOPljfG" version="13.1.3">
+    <diagram id="6hGFLwfOUW9BJ-s0fimq" name="Page-1">
+        <mxGraphModel dx="974" dy="510" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="50">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="350" y="540" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="Person的实例化对象&lt;br&gt;p" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="550" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="51" target="54">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="Person构造函数的&lt;br&gt;prototype" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="470" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="__proto__" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="270" y="590" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="54">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="660" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="54" value="Object构造函数的&lt;br&gt;prototype" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="370" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="__proto__" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="500" y="510" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="__proto__" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="430" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="null" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="280" width="40" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="1.每一个函数都有自己的显式原型&lt;br&gt;2.每一个对象都有一个隐式原型&lt;br&gt;3.对象的隐式原型指向器构造函数的显示原型&lt;br&gt;&lt;br&gt;原型链：&lt;br&gt;通过隐式原型__proto__构成一个链式结构，被称作为原型链&lt;br&gt;当获取某个对象的属性的时候，会沿着原型链向上一次查找&lt;br&gt;当设置某个对象的时候，不会使用原型链，而是直接设置给当前的对象" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="30" y="340" width="400" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

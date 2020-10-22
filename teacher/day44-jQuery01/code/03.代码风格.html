@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <style>
+        .outer {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer"></div>
+    <div class="outer"></div>
+    <div class="outer"></div>
+    <div class="outer"></div>
+    <div class="outer"></div>
+    <div class="outer"></div>
+    <div class="outer"></div>
+    <script>
+        $(function () {
+            //无论是一个还是多个，获取的jQuery对象都是类数组，可以直接使用jq的方法，但是不能直接使用js方法
+            console.log($(".outer"));
+            console.log($(".outer")[0]); //取出js对象
+
+
+            //链式调用，因为每一次jq方法执行都会返回一个jq对象（他自己操作的那个对象），所以能够链式调用
+            $(".outer").css("background-color", "red").show(1000);
+            // console.log($(".outer").css("background-color", "red"))
+            // console.log($(".outer").css("background-color", "red").hide())
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #f{
+            width:750px;
+            height:100px;
+            display:flex;
+            border:1px solid blue;
+        }
+        #f > div{
+            box-sizing: border-box;
+            border:1px solid olivedrab;
+            width:100px;
+        }
+        /*
+            750px - 300px =450px;
+
+            下面的公式没用到这个值，先放着，让你看看。450px/(0.8+1+0.7)
+
+             0.8 占比 0.8/2.5  450 * (0.8/2.5)
+             1   占比 1/2.5    450 * (1/2.5) 
+             0.7 占比 0.7/2.5  450 * (0.7/2.5)
+
+        
+        
+        */
+    </style>
+</head>
+<body>
+    <div id="f">
+        <div style="flex-grow:0.8">100+144</div>
+        <div style="flex-grow: 1;">100+180</div>
+        <div style="flex-grow: 0.7;">100+126</div>
+    </div>
+</body>
+</html>

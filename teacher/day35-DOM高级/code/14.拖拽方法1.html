@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+
+        //1.给Box绑定鼠标按下事件
+        oBox.onmousedown = function (e) {
+            //当鼠标按下以后，因为无论怎么拖拽，鼠标相对于box的位置是不会改变的
+            //所以首先要获取 鼠标到box边缘的距离信息
+            //距离信息分为x和y 我们使用对象保存这两个信息
+            var mouseToBox = {
+                x: e.offsetX,
+                y: e.offsetY
+            }
+
+            //当鼠标按下以后，再给box绑定move事件，因为只有按下才可以拖拽
+            //move事件绑定给document，让元素无论移动到哪里 都可以正常使用
+            document.onmousemove = function (e) {
+                //只要元素移动，clientX就会发生变化
+                //元素的定位 就是clientX 减去 按下的时候获取的offsetX
+                var resultPoint = {
+                    x: e.clientX - mouseToBox.x,
+                    y: e.clientY - mouseToBox.y
+                }
+
+                //判断临界值
+                //获取窗口的宽高
+                var winWH = {
+                    width: document.documentElement.clientWidth,
+                    height: document.documentElement.clientHeight,
+                }
+                //获取box的宽高
+                var oBoxWH = {
+                    width: oBox.offsetWidth,
+                    height: oBox.offsetHeight,
+                }
+                if (resultPoint.x >= winWH.width - oBoxWH.width) {
+                    resultPoint.x = winWH.width - oBoxWH.width
+                } else if (resultPoint.x <= 0) {
+                    resultPoint.x = 0;
+                }
+                if (resultPoint.y >= winWH.height - oBoxWH.height) {
+                    resultPoint.y = winWH.height - oBoxWH.height
+                } else if (resultPoint.y <= 0) {
+                    resultPoint.y = 0;
+                }
+
+
+                //赋值操作
+                oBox.style.left = resultPoint.x + "px";
+                oBox.style.top = resultPoint.y + "px";
+            }
+
+            //松开以后不需要元素再移动，所以清除move事件
+            document.onmouseup = function () {
+                //清除move事件，解除移动控制
+                document.onmousemove = null;
+                //清除自身，节省空间，下次点击的时候还要再次添加上去
+                document.onmouseup = null;
+
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07.间歇调用动画.html</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: fixed;
+            left: 0;
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">走你~</button>
+    <button id="btn2">婷婷~</button>
+    <div class="box"></div>
+    <script>
+        var oBox = document.querySelector(".box");
+        var oBtn1 = document.getElementById("btn1");
+        var oBtn2 = document.getElementById("btn2");
+        var oBoxMoveTimer = null; //初始化box移动计时器
+        var oBoxLeft = 0; //初始化box的位置
+        //绑定点击事件
+        oBtn1.onclick = function () {
+            //每次点击都会添加一个新的计时器，那么新计时器就和旧的计时器进行累加，导致bug产生
+            //所以每次重新点击的时候，把旧的计时器给清掉，然后添加新的计时器，保证当前效果只有一个计时器运行
+            // clearInterval(oBoxMoveTimer);
+            //当点击的时候，给box一个定时器，让box每隔xx毫秒 向右移动xpx
+            oBoxMoveTimer = setInterval(function () {
+                //oBox.style.left获取和设置的都是 行内样式
+                oBoxLeft += 1;
+                oBox.style.left = oBoxLeft + "px";
+            }, 1000 / 60)
+        }
+
+        //点击停止按钮 直接清理计时器
+        oBtn2.onclick = function () {
+            clearInterval(oBoxMoveTimer);
+        }
+    </script>
+</body>
+
+</html>

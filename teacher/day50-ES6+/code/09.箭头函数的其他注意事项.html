@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.箭头函数不能当作构造函数
+        const fn1 = (name) => {
+            this.name = name
+        }
+        // new fn1(); //fn1 is not a constructor
+
+        //2.箭头函数没有arguments对象
+        const fn2 = (...rest) => {
+            console.log(rest)
+            // console.log(arguments); //arguments is not defined
+        }
+        fn2(1, 2, 3, 4, 5)
+    </script>
+</body>
+
+</html>

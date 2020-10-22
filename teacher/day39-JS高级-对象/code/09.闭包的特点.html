@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            闭包的作用（优点）：
+- 让局部变量在函数执行结束以后，仍然存在于内存当中，延长了局部变量的声明周期
+- 可以让外部作用域读写内部作用域的变量
+
+            闭包的生命周期：
+- 产生：当进入外部函数的时候就产生了，也就是没有执行内部函数的时候就已经产生了
+- 死亡：因为内部函数引用外部变量的原因，所以闭包存在，当内部函数变成垃圾对象的时候，闭包就消失了
+
+
+            闭包的缺点：
+- 函数执行完成之后，局部变量不会销毁，长时间占用内存，还可能造成内存泄漏
+- 解决方法：减少使用、及时释放
+         */
+
+
+function fn1() {
+    var a = 2;
+
+    function inner() {
+        a++;
+        console.log(a);
+    }
+    return inner;
+}
+
+//inner是定义在fn1中，所以inner可以读取fn1中定义的变量
+//本来inner是局部的函数，但是fn1调用后，把inner返回出去赋值给了一个全局变量f1
+//此时调用全局的f1，就可以读取fn1中的局部变量了
+var f1 = fn1(); //f1就是inner了
+f1(); //3
+f1(); //4
+f1(); //5
+f1(); //6
+f1 = null;
+
+
+var f2 = fn1();
+f2(); //3
+f2(); //4
+f2(); //5
+f1(); //7
+    </script>
+</body>
+
+</html>

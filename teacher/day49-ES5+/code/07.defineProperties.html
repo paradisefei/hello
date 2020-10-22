@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>defineProperties</title>
+</head>
+
+<body>
+    <script>
+        //创建一个普通的对象
+        var obj1 = {
+            name: "小王",
+            age: 12
+        }
+
+        //使用Object.defineProperties 设置对象属性
+        //Object.defineProperties(obj,{des})
+        //其他和defineProperty一样，除了一个书写多个 一个是书写一个
+        Object.defineProperties(obj1, {
+            name: {
+                value: "laowang"
+            },
+            age: {
+                value: 200
+            },
+            sex: {
+                value: "nv" //如果添加新属性，则默认描述都是false
+            }
+        })
+        console.log(obj1)
+
+        for (var key in obj1) {
+            console.log(key);
+        }
+    </script>
+</body>
+
+</html>

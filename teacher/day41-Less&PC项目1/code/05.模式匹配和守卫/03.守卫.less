@@ -1,0 +1,15 @@
+.lh(@l) when(@l<=100) {
+    line-height: @l + 0px;
+}
+
+.lh(@l) when(@l>100)and(@l<=200) {
+    line-height: @l / 2 + 0px;
+}
+
+.lh(@l) when(@l>200) {
+    line-height: @l * 2 + 0px;
+}
+
+.outer {
+    .lh(300);
+}

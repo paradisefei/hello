@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  color: #123456;
+}
+.con {
+  width: 50px;
+}
+.con p {
+  font-size: 40px;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            create方法的第二个参数是一个对象
+            对象内格式是  key：{value：xxxx，xxx：xxx}
+
+            value:当前key的值
+            writable:当前属性是否可以被写入 默认是false
+            enumerable:当前属性是否可以被枚举  默认是false
+            configurable:当前属性的描述是否可以被修改 和 当前属性是否能够被删除  默认是false
+        
+        */
+        var obj1 = Object.create(null, {
+            name: {
+                value: "xiaowang",
+                writable: false,
+                enumerable: false,
+                configurable: false
+            }
+            
+        });
+        console.log(obj1)
+
+        //尝试修改属性的值
+        obj1.name = "xiaoli";
+        console.log(obj1);
+
+        //尝试枚举
+        for (var key in obj1) {
+            console.log(key);
+        }
+
+        //尝试删除
+        // delete obj1.name;
+        // console.log(obj1);
+
+
+        //当打印出来的系统提供的对象属性颜色 为浅紫色的时候 代表这个属性不可以枚举
+        for (var key2 in Object.prototype) {
+            console.log(key2)
+        }
+
+
+
+        //如果直接给这个create创建的对象 设置属性的时候，此时扩展的属性是不受描述影响的
+        obj1.age = 18;
+        console.log(obj1)
+        //可以被枚举
+        for (var key in obj1) {
+            console.log(key);
+        }
+        //可以被删除
+        delete obj1.age;
+        console.log(obj1)
+    </script>
+</body>
+
+</html>

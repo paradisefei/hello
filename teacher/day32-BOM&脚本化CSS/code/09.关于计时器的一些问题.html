@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计时器小问题</title>
+</head>
+
+<body>
+    <script>
+        //在非箭头函数写，计时器的this都是指向window
+        setTimeout(function () {
+            console.log(this); //window
+        }, 1000)
+
+        document.onclick = function () {
+            console.log(this) //document
+            setTimeout(function () {
+                console.log(this); //window
+            }, 1000)
+        }
+
+        var obj = {
+            name: "lily",
+            fn: function () {
+                console.log(this) //obj
+                setTimeout(function () {
+                    console.log(this); //window
+                }, 1000)
+            }
+        }
+        obj.fn()
+
+
+
+        //面试题
+        //计时器也是一个异步代码，要等待同步代码执行完成才能执行异步代码
+        //等计时器执行的时候 i就已经变成5了
+        for (var i = 0; i < 5; i++) {
+            setTimeout(function () {
+                console.log(i); //55555
+            }, 1000)
+        }
+
+        //修改代码打印0 1 2 3 4 
+        for (var i = 0; i < 5; i++) {
+            (function (a) {
+                setTimeout(function () {
+                    console.log(a); //55555
+                }, 1000)
+            })(i)
+        }
+    </script>
+</body>
+
+</html>

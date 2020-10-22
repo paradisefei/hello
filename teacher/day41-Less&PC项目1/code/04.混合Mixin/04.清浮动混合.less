@@ -1,0 +1,24 @@
+.clearFix() {
+    //开启haslayout（就是高版本的BFC）
+    *zoom: 1; //*是css hack  *代表ie5,6,7，8支持
+
+    &:after {
+        content: "\200B";
+        height: 0;
+        display: block;
+        clear: both;
+    }
+}
+
+.outer {
+    width: 400px;
+    .clearFix();
+
+    .con1 {
+        height: 100px;
+    }
+
+    .con2 {
+        width: 100px;
+    }
+}

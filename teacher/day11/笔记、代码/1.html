@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            margin:0;
+            padding:0;
+            list-style-type: none;
+            width:400px;
+            /* border:1px solid pink; */
+            border-top:1px solid green;
+            border-right:1px solid green;
+        }
+        ul::after{
+            content:'';
+            display:block;
+            clear: both;
+        }
+        ul li {
+            width:100px;
+            height:100px;
+            /* border:1px solid green; */
+            float:left;
+            box-sizing: border-box;
+            border-left:1px solid green;
+            border-bottom: 1px solid green;
+        }
+        table{
+            width:400px;
+        }
+        td{
+            height:100px;
+        }
+        table,td{
+            border:1px solid green;
+            border-collapse:collapse;
+        }
+    </style>
+</head>
+<body>
+    <!-- <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul> -->
+    <table border="1">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            需求： 同时请求三个数据，要最先请求到的数据
+
+            使用promise.race([XXX,XXX,XXX])
+            race方法返回promise对象，promise对象的状态是race中第一个执行完成的那个promise的状态（无论成功还是失败）
+        
+         */
+
+
+        const pro1 = new Promise((resolve, reject) => {
+            console.log("请求a~")
+            setTimeout(() => {
+                console.log("a请求成功");
+                resolve("a数据");
+                reject("GG");
+            }, 3000)
+        })
+        const pro2 = new Promise((resolve, reject) => {
+            console.log("请求b~")
+            setTimeout(() => {
+                console.log("b请求成功")
+                resolve("b数据");
+
+            }, 2000)
+        })
+        const pro3 = new Promise((resolve, reject) => {
+            console.log("请求c~")
+            setTimeout(() => {
+                console.log("c请求成功")
+                resolve("c数据");
+            }, 1500)
+        })
+
+        const resultePor = Promise.race([pro1, pro2, pro3]);
+        console.log(resultePor);
+
+
+        resultePor.then((success) => {
+            console.log(success);
+        }).catch((err) => {
+            console.log(err); //GG
+        })
+    </script>
+</body>
+
+</html>

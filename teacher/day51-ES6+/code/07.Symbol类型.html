@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            js数据类型：
+                基本：String Boolean Number Null Undefined Symbol BigInt
+                引用：Object
+    
+         */
+
+        const obj1 = {
+            name: "laowang",
+            age: 18,
+            sex: "nv",
+            do: "eat",
+            think: "PhP是不是世界上最好的语言",
+        }
+
+        //obj1对象可能你不知道里边会有哪些属性
+        //当你需求给对象设置一些属性和方法的时候，可能重名覆盖其他的属性，或者可能被其他人覆盖你的属性
+        obj1.do = "drink"; //你可以能覆盖原有属性，也可能被人覆盖
+
+        //为了避免上边的情况，我们希望设置一个独一无二的值，永远不可能覆盖别人，也永远不可能被人覆盖
+
+        //所以symbol类型诞生，symbol类型每次创建的值都是独一无二的
+
+
+        //1.使用symbol创建一个值（不需要new）
+        //Symbol的参数，没有任何作用，只是为了方便我们识别是哪一个值
+        const sy1 = Symbol("sy1");
+        const sy2 = Symbol("sy2");
+        console.log(sy1);
+        console.log(sy2);
+        console.log(sy1 == sy2);
+        console.log(typeof sy1) //'symbol'
+
+
+        //给obj1扩展一个属性（不能覆盖别人 也不能被人覆盖）
+        /* obj1[Symbol("think")] = "hello"; //如果这样设置的话，你永远都获取不到设置的这个值了
+        obj1[Symbol("say")] = "world"; 
+        console.log(obj1) */
+
+        const sy3 = Symbol("think");
+        const sy4 = Symbol("say");
+        obj1[sy3] = "hello";
+        obj1[sy4] = "world";
+        obj1[Symbol()] = "baibai";
+        console.log(obj1)
+        //使用
+        console.log(obj1[sy3]);
+        console.log(obj1[sy4]);
+
+
+        // 1.Symbol传入的参数 没有意义  方便识别
+        //2.Symbol不能使用new调用，而是直接使用
+        //3.Symbol不能转数字
+        //4.要用变量保存这个Symbol 否则以后就拿不到了
+        //5.Symbol默认不能被遍历出来
+
+        for (let key in obj1) {
+            console.log(key);
+        }
+        const SymbolArr = Object.getOwnPropertySymbols(obj1); //拿到Symbol的值 组成一个数组
+        console.log(SymbolArr)
+        console.log(obj1[SymbolArr[0]]) //获取symbol 的值
+        console.log(obj1[SymbolArr[1]])
+        console.log(obj1[SymbolArr[2]]) //只有这样的遍历才能拿到 没有设置变量保存的Symbol的值
+    </script>
+</body>
+
+</html>

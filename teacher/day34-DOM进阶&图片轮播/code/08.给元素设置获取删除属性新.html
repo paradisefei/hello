@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建属性节点并插入</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div class="box" id="con" data-study="DOM">box</div>
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oBox = document.querySelector('.box');
+        /* 
+           H5建议 自己给元素设置自定义属性的时候，添加一个date- 前缀
+
+           每一个元素都有一个dataset属性，dataset属性上保存了所有的自定属性
+
+           使用dataset获取的时候 不需要添加data-前缀
+
+           设置也是通过dataset设置，直接给dataset对象设置属性，就可以设置给元素了
+
+            删除自定义属性，就是删除dataset对象上的某个属性
+         */
+        oBtn.onclick = function () {
+            //点击btn 获取box的某个属性的值
+            console.log(oBox.dataset.study);
+
+            //设置新属性
+            oBox.dataset.eat = "pig";
+
+            //删除自定义属性
+            delete oBox.dataset.study;
+
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            其他的类型也有toString方法，但是和Object对象上的toString方法得到的结果不同
+            Object上的toString方法可以得到[object XXXX]的一个字符串  可以精确的确定对象的类类型
+
+            Object.prototype.toString.call(被检测的值)
+        
+         */
+        var str = "213";
+        console.log(Object.prototype.toString.call(str)) //"[object String]"
+        console.log(Object.prototype.toString.call(123)) //"[object Number]"
+        console.log(Object.prototype.toString.call([])) //"[object Array]"
+        console.log(Object.prototype.toString.call({})) //"[object Object]"
+        console.log(Object.prototype.toString.call(function () {})) //"[object Function]"
+    </script>
+</body>
+
+</html>

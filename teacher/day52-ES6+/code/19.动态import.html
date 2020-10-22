@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.onclick = function () {
+            /* 
+                import动态加载js模块
+                只要加载进来就可以执行，
+                但是我们可以需要的时候再使用import加载，而不是初始化页面的时候一次性引入所有的模块
+            
+                import返回的是一个promise对象，如果正常加载进来，则返回成功promise，否则返回失败promise、
+
+                既然返回的是promise对象，则可以使用then catch方法
+            */
+            const re = import("./02.js");
+            console.log(re);
+        }
+    </script>
+</body>
+
+</html>

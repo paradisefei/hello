@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            DOMContentLoaded事件：  
+                当所有的节点加载完成后执行（不需要等待图片加载）
+
+            window.onload事件:
+                所有的节点及资源全部加载完成以后执行
+         */
+
+        //  window.addEventListener("DOMContentLoaded", function () {
+        //     //获取img
+        //     var oImg = document.querySelector('img');
+        //     alert(oImg.offsetWidth);//0
+        // }) 
+
+        window.onload = function () {
+            //获取img
+            var oImg = document.querySelector('img');
+            alert(oImg.offsetWidth);
+        }
+    </script>
+</head>
+
+<body>
+    <img src="./img/10.jpg" alt="">
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* for (var i = 1 ;i < 3 ;i++) {
+            console.log(i+'-----------------');
+            for (j=1 ; j <3 ;j++) {
+                console.log(j);
+            }
+        } */
+
+        //我要一个5行5列的表格。
+
+        //
+        /* document.write('<table border="1" width="810">');
+        for (var row = 1; row <= 5; row++) {
+            // document.write('<tr>');
+            for (var col = 1 ; col <= 5 ; col++) {
+                document.write('<td>&nbsp;&nbsp;</td>');
+            }
+            // document.write('<tr></tr>');
+        }
+        document.write('</table>'); */
+
+        //我要一个等腰三角形
+        for (var i = 1; i <= 7 ; i+=2) {
+
+            //2. 想空格的事现在我要解决的是空格问题。
+            var c = (7-i) / 2;
+            
+            for (var k = 0 ; k < c ;k++) {
+                document.write('&nbsp;');
+            }
+
+            ////1. 输出星星，这个星星现在是直角三角形。
+            for (var j = 0 ; j < i;j++) {
+                document.write('*');
+            }
+
+            document.write('<br />');
+        }
+        /*
+            *<br/>
+            ***<br/>
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            ES5定义类
+         */
+
+        /* function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.eat = function () {
+            console.log("吃饭");
+        } */
+
+        /* 
+            ES6语法糖 
+            使用class 定义类
+        
+         */
+
+        class Person {
+            //constructor:当new的时候，会自动调用这个方法，必须存在（书写公有属性）
+            constructor(name, age) {
+                //其实写在构造函数中的属性 都放在了constructor中
+                this.name = name;
+                this.age = age;
+            }
+            //直接书写在class中的方法 其实就是原型对象上的公有方法
+            eat() {
+                console.log("吃饭");
+            }
+
+            //如果直接在class中书写属性，则还是实例化对象所有的（这样写无法传参）
+            sex = "男";
+
+            // static定义的属性和方法 其实都是静态属性和方法  是构造函数对象上的
+            static hi = "hello";
+        }
+
+        //也可以通过原型对象扩展原型方法
+        Person.prototype.drink = function () {
+            console.log("大乌苏");
+        }
+
+        const p1 = new Person("laowang", 20)
+        const p2 = new Person("xiaowang", 10)
+        console.log(p1, p2)
+        console.log(p1.eat === p2.eat)
+        console.dir(Person)
+        {
+            const arr = [function(){
+                console.log(this[4]);
+            },1,2,3,'hello']
+            arr[0]();
+        }
+        {
+            console.log(Number(null));
+            console.log(Number(undefined));
+            
+        }
+    </script>
+</body>
+
+</html>

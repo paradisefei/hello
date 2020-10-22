@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="add">点击添加</button>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            需求：给每一个li创建一个a标签（删除）插入进去
+
+         */
+
+        var oList = document.querySelector('.list')
+        var oListLis = document.querySelectorAll('.list li')
+        var oAdd = document.getElementById('add');
+
+        oAdd.onclick = function () {
+            for (var i = 0; i < oListLis.length; i++) {
+                var oNewA = document.createElement("a");
+                oNewA.innerHTML = "删除";
+                oListLis[i].appendChild(oNewA);
+            }
+        }
+    </script>
+</body>
+
+</html>

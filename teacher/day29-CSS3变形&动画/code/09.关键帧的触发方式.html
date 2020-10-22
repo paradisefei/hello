@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09.关键帧的触发方式.html</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        .box1{
+            animation:change1 2s linear 0s infinite alternate;
+        }
+        /* 通过hover来把动画调用添加到元素中 */
+        .box:hover{
+            animation:change1 2s linear 0s infinite alternate;
+        }
+        @keyframes change1 {
+            from{
+                background-color: yellow;
+            }
+            to{
+                background-color: pink;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box " id="box"></div>
+    <script>
+        var oBox = document.getElementById("box");
+        document.onclick = function(){
+            //1.当点击的时候给元素一个box1的类，类里边是动画
+            // oBox.classList.add("box1")
+
+            //2.直接把动画的样式设置给box
+            // oBox.style.animation = "change1 2s linear 0s infinite alternate"
+        }
+    </script>
+</body>
+</html>

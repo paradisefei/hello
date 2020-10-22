@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var oHtml = document.getElementsByTagName("html")[0];
+        var oBody = document.getElementsByTagName("body")[0];
+        var oHead = document.getElementsByTagName("head")[0];
+        console.log(oBody,oHtml)
+
+        //html和body标签比较特殊，只能有一个，所以DOM提供了一个简写获取的方法
+        console.log(document.documentElement);//获取html元素
+        console.log(document.body);//获取body元素
+        console.log(document.head);//获取head元素
+
+        //验证
+        console.log(oHtml === document.documentElement)//true
+        console.log(oBody === document.body)//true
+        console.log(oHead === document.head)//true
+    </script>
+</body>
+</html>

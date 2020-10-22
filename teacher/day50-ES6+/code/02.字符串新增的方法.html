@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            1.trim()：去掉两端空格
+            2.trimStart():取掉首部空格
+            3.trimEnd():取掉尾部空格
+         */
+        {
+
+
+            const str = "    li pei  hua    ";
+            const reStr = str.trim();
+            console.log(str);
+            console.log(reStr);
+
+
+            //如果想去掉所有空格
+            /* let newStr = "";
+            for (let i = 0; i < str.length; i++) {
+                if (str[i] === " ") {
+                    continue;
+                }
+                newStr += str[i];
+            }
+            console.log(newStr) */
+
+            let newStr = str.replace(/\s+/g, "");
+            console.log(newStr)
+
+
+            let say = "你TMD就是个hp";
+            console.log(say.replace(/TMD|hp/g, "***"))
+        }
+
+
+        /* 
+            包含：
+            startsWith：判断开头没有包含某个字符串
+            endsWith ：结尾
+            includes：任意位置
+        
+         */
+
+        {
+            let str = "hello  world";
+            console.log(str.startsWith("he")) //true
+            console.log(str.startsWith("h")) //true
+            console.log(str.endsWith("rld")) //true
+            console.log(str.endsWith("d")) //true
+            console.log(str.includes("  ")) //true
+            console.log(str.includes("or")) //true
+        }
+
+
+        /* 
+            重复
+            repeat：重复
+        
+         */
+        {
+            let str = "静哥你好 s 啊";
+            let newStr = str.repeat(10); //将字符串复制为10份
+            console.log(newStr)
+        }
+
+        /* 
+            补充字符：
+                padStart(len,"str"):用str把字符串补充到 len的长度
+                padEnd
+         */
+
+        {
+            let str = "海静哥哥";
+            console.log(str.padStart(10, "嘿呀"));
+            console.log(str.padEnd(10, "嘿呀"));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.Tab切换方法1.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #tab {
+            width: 606px;
+            margin: 50px auto 0;
+            border: 1px solid #000;
+        }
+
+        .title {
+            display: flex;
+        }
+
+        .title h2 {
+            width: 200px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+        }
+
+        /* 交集选择器 选择h2标签，并且h2标签还拥有active类名的 */
+        .title h2.active {
+            background-color: red;
+            color: #fff;
+        }
+
+        .content {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .content li {
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 40px;
+        }
+
+        .content li:nth-child(1) {
+            background-color: aquamarine;
+        }
+
+        .content li:nth-child(2) {
+            background-color: palegoldenrod;
+        }
+
+        .content li:nth-child(3) {
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <!-- Tab切换外层 -->
+        <div id="tab">
+            <!-- Tab切换标题区域 -->
+            <div class="title">
+                <!-- 如果有特殊的样式，则直接给类名，然后点击切换类名即可 -->
+                <h2 class="active">标题一</h2>
+                <h2>标题二</h2>
+                <h2>标题三</h2>
+            </div>
+            <!-- Tab切换内容区域 -->
+            <ul class="content">
+                <li>内容一</li>
+                <li>内容二</li>
+                <li>内容三</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oTitleH2s = document.querySelectorAll(".title>h2");
+        var oContentLis = document.querySelectorAll(".content>li");
+        var oContent = document.querySelector(".content");
+        var TabTimer = null;
+
+        //第一个for循环仅仅只是为了给所有的标题绑定点击事件
+        for (var i = 0; i < oTitleH2s.length; i++) {
+            oTitleH2s[i].onclick = function () {
+                clearInterval(TabTimer);
+                //第二个for循环是为了遍历每一个标题，判断哪一个标题是当前点击的
+                for (var i = 0; i < oTitleH2s.length; i++) {
+                    //依次遍历oTitleH2s的元素，判断哪一个是当前点击的对象
+                    if (oTitleH2s[i] === this) {
+                        oTitleH2s[i].className = "active";
+
+                        //当判断点击的this就是oTitleH2s[i]的时候，开始执行跳转动画
+                        //起始位置：当前滚动条的位置
+                        var startPoint = oContent.scrollTop;
+                        //结束位置： i就是目标的位置 i*一个li的高度
+                        var endPoint = i * oContentLis[0].offsetHeight;
+                        //起始步数和结束步数
+                        var startStep = 0;
+                        var endStep = 32;
+                        var everyStep = (endPoint - startPoint) / (endStep - startStep);
+                        //动画开始
+                        TabTimer = setInterval(function () {
+                            //步数加1  用来判断临界值
+                            startStep++;
+                            if (startStep >= endStep) {
+                                clearInterval(TabTimer);
+                            }
+                            /* //scrollTop 可以直接被设置为一个小数，但是不能参加运算的时候有小数
+                            console.log(everyStep, oContent.scrollTop)
+                            oContent.scrollTop += everyStep; */
+
+                            //让起始位置的变量每次 加上 每次走的距离
+                            startPoint += everyStep;
+                            //把改变的变量赋值给滚动条
+                            oContent.scrollTop = startPoint;
+                        }, 16)
+
+                    } else {
+                        oTitleH2s[i].className = ""
+                    }
+                }
+            }
+        }
+
+
+
+
+        /* 
+            js代码分为两类，第一类是同步代码  第二类是异步代码
+            先执行完所有的同步代码，然后再去执行异步代码
+
+            异步代码：
+                - 定时器
+                - 事件（绑定事件是同步，事件执行是异步）
+        */
+        /* for (var j = 0; j < 3; j++) {
+            oTitleH2s[j].onclick = function () {
+                console.log(j)//3 3 3
+            }
+        }
+
+        console.log(j);//3 */
+    </script>
+</body>
+
+</html>

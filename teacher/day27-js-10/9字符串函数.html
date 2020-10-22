@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // charAt()，根据传入的位置取得其所在的字符。
+        /* var string = 'hello world!';
+
+        console.log(string.charAt(1));//用的比较少
+        console.log(string[1]); */
+
+        //charCodeAt()，根据传入的位置取得其所在的字符编码（unicode码）。（不常用）
+        /* var string = 'hello world!';
+        console.log(string.charCodeAt(1));//e */
+
+        //String.fromCharCode()，根据传入的unicode码，转换为相应的字符。返回转化后的字符。
+        // console.log(String.fromCharCode(101));
+
+        // concat()，将一或多个字符串拼接起来返回拼接的到的新字符串。
+        /* var str1 = 'a';
+        var str2 = 'b';
+        var str3 = 'c';
+
+        console.log(str1.concat(str2,str3,'defghijklmn'));
+
+        console.log(str1 + str2 + str3 + 'defghijklmn'); */
+        //* indexOf(searchValue[,offset])，从一个字符串中向后搜索给定的子字符串，然后返回子字符串的位置（如果没有找到该子字符串，则返回-1）。第二个参数可以指定从哪开始(默认从0位置开始查找)；（常用）
+        //* lastIndexOf()，从一个字符串中向前搜索给定的子字符串，然后返回子字符串的位置（如果没有找到该子字符串，则返回-1）。
+
+        /* var str = 'hello';
+        console.log(str.indexOf('e',2)); */
+
+        /* var str = 'helloello';
+        console.log(str.lastIndexOf('e')); */
+
+
+        //replace()方法，替换子字符串。（其他功能讲正则的时候说）将某个字符串置换成某个字符串。
+
+        /* var str = "崔旺真英俊";
+        var res = str.replace('崔旺','闫海静');
+        console.log(res); */
+
+       /*  var text = 'cat,bat,sat,fat,hat';
+
+        var result = text.replace('at','bb');
+        console.log(result); */
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        /*1. 定义图标字体*/
+        /*@font-face 让浏览器可以从web服务器下载字体。这就意味着不必依赖用户机器中的字体了。*/
+        @font-face {
+            /*定义一个字体的名字，这个名字随意*/
+            font-family: 'yhjzyj';
+            /*引入的字体是资源，所以我要让用户浏览器知道从哪里下载哪个字体*/
+            /*一定要注意引入的字体的路径问题。如果字体不生效显示的是 口 */
+            src: url('./font/iconfont.eot');
+            src: url('./font/iconfont.eot?#iefix') format('embedded-opentype'),
+                url('./font/iconfont.woff2') format('woff2'),
+                url('./font/iconfont.woff') format('woff'),
+                url('./font/iconfont.ttf') format('truetype'),
+                url('./font/iconfont.svg#iconfont') format('svg');
+        }
+
+        /*2. 使用图标字体*/
+        .iconfont {
+            font-family: "yhjzyj" !important;
+            font-size: 16px;
+            font-style: normal;
+            /*
+                font-smoothing:这个属性是css3中新增的属性，表示的是字体抗锯齿（让字体看起来更清晰。）
+                -webkit-
+                -moz-
+            */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        span:hover{
+            color:red;
+            font-size:200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 3.在HTML中使用字体-->
+    <span class="iconfont">&#xe61e;</span>
+</body>
+
+</html>

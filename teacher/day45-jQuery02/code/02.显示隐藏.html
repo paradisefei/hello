@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js'></script>
+    <style>
+        .con {
+            width: 300px;
+            background-color: red;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <button id="show">显示</button>
+        <button id="hide">隐藏</button>
+        <div class="con">
+            除了直接使用毫秒来控制速度外, jQuery 还提供了三种预设速度参数字符串: slow 、normal 和 fast ,分别对应 600 毫秒、400 毫秒和 200
+            毫秒，不管是传递毫秒数还是传递预设字符串,如果不小心传递错误或者传递空字符串。 那么它将采用默认值:400 毫秒除了直接使用毫秒来控制速度外, jQuery 还提供了三种预设速度参数字符串: slow 、normal
+            和 fast ,分别对应 600 毫秒、400 毫秒和 200 毫秒，不管是传递毫秒数还是传递预设字符串,如果不小心传递错误或者传递空字符串。 那么它将采用默认值:400 毫秒
+        </div>
+
+    </div>
+    <script>
+        $(function () {
+            console.dir($(".con")[0])
+            Element.prototype.show = function () {
+                // console.log(this)
+                this.style.display = "block";
+            };
+            Element.prototype.hide = function () {
+                // console.log(this)
+                this.style.display = "none";
+            };
+
+
+
+            $("#show").click(function () {
+                $(".con").show(1000);
+                //$(".con")[0].show()
+            })
+            $("#hide").click(function () {
+                $(".con").hide(1000);
+                // $(".con")[0].hide();
+            })
+
+            // jQuery.each({
+            //     "sex": "nv",
+            //     "age": 18
+            // }, function (name, prop) {
+
+            // })
+
+        })
+    </script>
+</body>
+
+</html>

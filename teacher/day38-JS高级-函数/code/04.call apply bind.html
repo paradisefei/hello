@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            call、apply、bind：
+                - 每一个函数都有这三个方法
+                - 这三个方法作用一致，都是改变函数运行时的上下文指向，其实就是改变函数中的this指向
+
+            call\apply 功能一样，但是参数不一样的
+                fn.call(fn的this指向,fn函数的参数 参数和参数之间逗号隔开)
+                fn.apply(fn的this指向,[数组，里边书写的是fn的参数])
+                fn.bind(fn的this指向,fn函数的参数 参数和参数之间逗号隔开) 和call类似
+
+            call\apply都是改变了this指向 并且调用了函数
+            bind 只是改变了this指向，并且返回了一个新函数的引用，并没有调用函数
+
+        
+         */
+
+        function fn() {
+            console.log(this);
+        }
+
+        fn.call(); //window
+        fn.call(null); //window
+        fn.call(undefined); //window
+        fn.call("abc"); //string的包装对象  String
+        fn.call(123); //number的包装对象  Number
+        fn.call(true); //boolean的包装对象  Boolean
+
+
+
+        /* 
+            练习：求一系列值最大值和最小值
+         */
+        var arr = [1, 2, 3, 4, 5];
+        Math.max(1, 2, 3, 4, 5);
+        Math.max.call(Math, 1, 2, 3, 4, 5);
+
+        var max1 = Math.max.bind(Math, 1, 2, 3, 4, 5);
+        max1()
+
+        Math.max.apply(Math, arr);
+
+
+        /*  将伪数组转成数组 */
+
+        var arrObj = {
+            0: "a",
+            1: "b",
+            2: "c",
+            3:  3,
+            length: 4
+        }
+        //slice方法就是返回新数组，所以让伪数组调用数组的slice方法，就会返回一个新的数组
+        var arr2 = Array.prototype.slice.call(arrObj)
+        console.log(arr2)
+        // var arr2 = Array.prototype.slice.call(arrObj,0)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            width:500px;
+            margin:0;
+            padding:0;
+            list-style-type: none;
+        }
+        ul li{
+            height:40px;
+
+            border:1px solid yellow;
+
+            overflow:hidden;
+        }
+
+        ul li:hover{
+            height:500px;
+            /* border:1px solid green; */
+        }
+
+        ul li:hover > div{
+            height:460px;
+            /* border:1px solid pink; */
+
+            text-align: center;
+            height:460px;
+            line-height:460px;
+        }
+        ul li > div > img{
+            height:400px;
+        }
+        ul li:hover > div > img{
+            vertical-align: middle;
+        }
+
+        h2{
+            padding:0;
+            margin:0;
+            height:40px;
+            line-height:40px;
+            padding-left:20px;
+
+            background-color: RGB(208, 232, 245);
+            color:#FFF;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <h2>张三</h2>
+            <div>
+                    <img src="./img/Clark.jpg" />
+            </div>
+        </li>
+        <li>
+            <h2>李四</h2>
+            <div>
+                222222
+            </div>
+        </li>
+        <li>
+            <h2>王五</h2>
+            <div>
+                33333
+            </div>
+        </li>
+        <li>
+            <h2>赵六</h2>
+            <div>
+                444444
+            </div>
+        </li>
+        <li>
+            <h2>田七</h2>
+            <div>
+                
+            </div>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, sex) {
+            this.name = name;
+            this.sex = sex;
+        }
+
+        var p = new Person('张三','nan');
+        Person.prototype.say = function(){
+            console.log('崔旺真英俊!');
+        }
+        // Person.say();//现在是找不到的。
+
+
+        // p.say();
+
+
+        //七夕青蛙   孤寡  
+
+
+        console.log(p instanceof Person);
+        console.log(p instanceof Object);
+
+        var a = [];
+
+        console.log(a instanceof Object);
+
+
+        /* var b = 1;
+        console.log(b instanceof Object); */
+
+        var c = 'abc';
+        // console.log(c.length);//字符串的长度。//包装对象。
+
+        console.log(c instanceof Object);
+
+
+
+        function Dog(){
+
+        }
+        function Person(){
+
+        }
+
+        var p = new Person();
+
+        console.log(p instanceof Dog);
+    </script>
+</body>
+
+</html>

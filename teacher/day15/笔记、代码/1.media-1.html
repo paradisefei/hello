@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Document</title>
+    <!-- <link href="test.css" type="text/css" rel="stylesheet" media="print and (color),screen and (color)"/> -->
+<!--     <link href="test.css" type="text/css" rel="stylesheet" media="screen and (min-width:600px) and (max-width:800px)"/>
+ -->    
+ 
+    <!-- <link href="test.css" type="text/css" rel="stylesheet" media="(min-width:600px) and (max-width:800px)"/> -->
+    <!-- <link href="test.css" type="text/css" rel="stylesheet" media="orientation"/> -->
+
+    <style>
+        /*适用于所有的媒体类型*/
+        /* body{
+            color:green;
+        } */
+        /*all 代表所有*/
+        /* @media{
+            body{
+                color:red;
+            }
+        } */
+        /*竖屏*/
+        @media all and (orientation:portrait){
+            body{
+                color:pink;
+                font-size:100px;
+            }
+        }
+        /*横屏*/
+        @media all and (orientation:landscape){
+            body{
+                color:red;
+                font-size:150px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    闫海静真英俊
+</body>
+</html>

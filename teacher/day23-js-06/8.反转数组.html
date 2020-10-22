@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //上面我创建了一个新的容器将反转后的数组放进去了。
+        /* var arr = [1,2,3];
+        //321
+        var newArr = [];//用来装倒叙的数组的。//没东西
+        for (var i = arr.length-1 ;i>=0 ;i--) {//i=2  i>=0 true //i=1 1>=0 true//i=0 0>=0 true //i=-1 -1>=0 false
+            newArr[newArr.length] = arr[i];//newArr[0] = 3//newArr[1] = 2//newArr[2] = 1
+        }
+        console.log(newArr); */
+
+        //我要在自身的基础上进行反转。
+
+        var arr = ['a', 'b', 'c', 'd'];
+        /*
+            i = 0; i< 2 true
+                console.log(i);//0
+                console.log(arr.length-1 - i);//3-0 //3
+            i = 1; i<2 1<2 true
+                console.log(i);//1
+                console.log(arr.length -1 - i);//4-1-1//2
+
+        */
+        for (var i = 0; i < arr.length / 2; i++) {
+            /* console.log(i);//这个是前面的下标
+            console.log(arr.length - 1 - i);//后边的下标 */
+
+            //将要对调的值获得
+            /* console.log(arr[i]);
+            console.log(arr[arr.length-1-i]); */
+
+            //开始交换对应的值
+            var tmp = arr[i];
+            arr[i] = arr[arr.length - 1 - i];
+            arr[arr.length - 1 - i] = tmp;
+
+            console.log('-----------------------');
+        }
+
+        console.log(arr);
+    </script>
+</body>
+
+</html>

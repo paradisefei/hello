@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window</title>
+</head>
+<body>
+    <script>
+        var a  = 1;//全局变量
+
+        function fn1 (){//全局的方法
+            console.log("hello fn1")
+        }
+
+        console.log(a)
+        console.log(fn1)
+
+        //Global是ES规定的全局对象，但是我们浏览器是没有实现这个Global
+        //但是window对象扮演了Global对象的角色（window对象在js中就是一个全局对象）
+        // Global is not defined
+        // console.log(Global)
+
+        console.log(window.a);
+        console.log(window.fn1);
+        //isNaN方法先把值转换成Number类型，然后检测这个是否是NaN 如果是则返回true
+        console.log(window.isNaN("a"))//false
+
+
+        //window对象还有一个身份 就是代表当前的浏览器的实例
+
+
+
+        
+
+    </script>
+</body>
+</html>

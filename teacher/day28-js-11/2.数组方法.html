@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    /*
+    * Array.prototype.push()，接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后数组的长度。
+
+    * Array.prototype.pop()，从数组末尾移除最后一项，减少数组的length值，然后返回移除的项。
+
+    * Array.prototype.unshift()，在数组前端添加任意个数选项并返回新数组的长度。
+
+    * Array.prototype.shift()，移除数组中的第一个项并返回该项，同时将数组长度减1。
+    */
+
+        /* var arr = [];
+
+        arr[arr.length] = 'red';
+
+        console.log(arr);
+
+        arr.push('blue','green');
+
+        console.log(arr);
+
+        console.log(arr.pop());
+
+        console.log(arr);
+
+        arr.unshift('pink','hotpink');
+
+        console.log(arr);
+
+        console.log(arr.shift());
+
+        console.log(arr); */
+
+
+    //发现是Array.prototype开头的，那说明是给Array的实例对象使用的。
+
+   /*  function test(){
+        console.log(arguments);
+    }
+
+    test();
+
+    var arr= [];
+    console.log(arr); */
+
+    /*
+    Array.prototype.splice()，向数组的中部插入项。
+
+    整体格式：`arr.splice(起始项,删除的个数,要插入的项目1,要插入的项目2......)`
+    */
+
+    // var colors = ['red','green','blue','yellow'];
+    //起始项从0开始，删除1个。
+    /* var delColors = colors.splice(1,2);
+
+    console.log(delColors);
+    console.log(colors); */
+
+    /* var replaceColors = colors.splice(1,1,'pink','white');
+    console.log(replaceColors);
+
+    console.log(colors); */
+
+    /* var i = colors.splice(1,0,'pink','black');
+    console.log(i);
+
+    console.log(colors); */
+
+    //Array.prototype.concat(value1,.....,valuen)，基于当前数组中的所有项创建一个新数组。这个方法会先创建当前数组一个副本，然后将接收到的参数添加到这个副本的末尾。最后返回新构建的数组。
+
+    /* var value = [0,1,2,3]; */
+    /* var newValue = value.concat();
+    console.log(newValue);
+    console.log(newValue == value);
+
+    value[0] = 'hello';
+
+    console.log(newValue); */
+
+    /* var newValue = value.concat(4,5,6);
+    console.log(newValue);
+    console.log(value); */
+
+    /* var newValue = value.concat([4,5,6,[7,8,9]]);
+    console.log(newValue); */
+
+
+    // Array.prototype.join()，使用指定的字符串拼接数组中的每个元素，组成一个字符串。
+
+    // var colors = ['red','green','blue','yellow'];
+
+    // console.log(colors.join('-+-*/'));
+
+    // console.log(colors.reverse());
+
+    // var colors = ['red','green','blue','yellow'];
+
+
+    /* var colors = ['red','green','blue','yellow'];
+
+    var colors1 = colors.slice();
+    console.log(colors1);
+    console.log(colors) */
+
+    var values = [0,5,1,15,10];
+    /* values.sort(function(value1,value2){
+        //函数中如果返回的是负数则第一个数在前面。如果返回的是正数则第二个数放在前面。如果两个参数相等返回0.
+
+        if (value1 < value2) {
+            return -1;//返回负数第一个数放在前面
+        } else if (value1 > value2) {
+            return 1;//返回正数第一个放在后面。
+        } else {
+            return 0;//返回0不动了。
+        }
+    }); */
+
+
+    /* values.sort(function(value1,value2){
+        return value1-value2;//如果第一个数-第二个数=负数说明第一个数小，就应该放在前面。
+    }); */
+
+   /*  values.sort(function(value1,value2){
+        return value2-value1;
+    })
+    console.log(values); */
+
+
+    /* var values = [0,5,1,15,10,[3,4]];
+
+    // console.log(values.toString());
+
+    console.log(values.indexOf(15)); */
+
+    /*
+
+    * Array.prototype.forEach()，对数组中的每一项运行给定函数，这个方法没有返回值(返回值是`undefiend`)。
+    * Array.prototype.map()，对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
+    * Array.prototype.filter()，对数组中的每一项运行给定函数，返回该函数会返回true的项组成的数组。
+    * Array.prototype.every()，对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则返回true
+    * Array.prototype.some()，对数组中的每一项运行给定函数，如果该函数对任一项返回true，则返回true。
+    */
+
+    // var colors = ['red','green','blue','yellow'];
+    
+    /* document.write('<table border="1" width="856">');
+    colors.forEach(function(value,index,arr){
+        // console.log(value + '======' + index);
+        document.write("<tr>");
+        document.write("<td>"+ value +"</td>");
+        document.write("</tr>");
+    })
+    document.write('</table>'); */
+
+    /* function test(){
+        // console.log(arguments);
+
+        arguments.forEach(function(value,index,arr){
+
+        })
+    }
+    test(1,2,3); */
+
+    /* for(var i = 0; i < colors.length ; i++){
+        if ( i == 1){
+            break;
+        } 
+
+        console.log(i);
+    } */
+
+    /* colors.forEach(function(vaue,index,arr){
+        if (index == 1) {
+            break;
+        }
+
+        console.log(index);
+    }) */
+
+    
+    //Array.prototype.map()，对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
+
+    //返回一个新数组，新数组的每一项都是由传入的函数的返回值决定的。
+    /* var colors = ['red','green','blue','yellow'];
+
+    var result = colors.map(function(val,ind,arr){
+        // return val + '!hehe!';
+
+        // return '哈哈';
+
+        //如果我想让下标为1和2的返回xxx，其他的返回xxx。
+        if (ind == 1 || ind == 2) {
+            ind = 'xxx';
+        }
+
+        return val+ind;
+    })
+
+    console.log(result); */
+
+
+    // Array.prototype.filter()，对数组中的每一项运行给定函数，返回该函数会返回true的项组成的数组。
+    var colors = ['red','green','blue','yellow'];
+
+    /* var res = colors.filter(function(value,index,arr){
+        if (value == 'green' || value == 'yellow') {
+            return true;
+        }
+        return false;
+    });
+
+    console.log(res); */
+
+    //Array.prototype.every()，对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则返回true//最后返回的是布尔值的true或false。
+   /*  var res = colors.every(function(value,index,arr){
+        if (value == 'green' || value == 'yellow') {
+            return true;
+        }
+        return false;
+
+        return true;
+    });
+
+    console.log(res); */
+
+
+    //Array.prototype.some()，对数组中的每一项运行给定函数，如果该函数对每一项都返回true，则返回true//最后返回的是布尔值的true或false。
+
+
+
+    /* var colors = ['red','green','blue','yellow'];
+    var res = colors.some(function(value,index,arr){
+        if (value == 'green' || value == 'yellow') {
+            return true;
+        }
+        return false;
+
+    });
+
+    console.log(res); */
+
+/*     var colors = ['red','green','blue','yellow'];
+
+    console.log(Array.isArray(colors)); */
+
+
+    //Array.from方法用于将类数组对象转为真正的数组：类数组对象（array-like object，有length属性和索引元素）和可遍历对象。
+    /* function test(){
+        var res = Array.from(arguments);
+        console.log(res);
+    }
+
+    test(1,2,3); */
+
+    //Array.of用于将一组值转换为数组。返回新数组。
+
+    /* var arr = Array.of(1,2,3,4,5,6);
+    console.log(arr); */
+
+/*     var a = new Array(10);
+    console.log(a);
+
+    var b = Array.of(10);
+    console.log(b); */
+
+
+    /* var arr = [1,5,NaN,20,15];
+
+    console.log(arr.includes(NaN));//
+
+    console.log(arr.indexOf(NaN));//indexOf进行的是全等于匹配  NaN和什么都不相等所以返回-1 */
+
+    </script>
+</body>
+</html>

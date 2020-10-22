@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <button id="btn">移除事件</button>
+    <div id="box">
+        <p>1</p>
+        <p>2 <span>2</span></p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+    </div>
+    <script>
+        $(function () {
+            /* 
+                on用来绑定事件
+                    参数1：事件类型
+                    参数2：事件委托对象（可选）
+                    参数3：给事件函数传递数据（可以选） 通过e.data接受
+                    参数4：事件函数
+            
+            */
+
+            function colorChange(e) {
+                console.log(e);
+                // this直接指向事件委托的对象
+                console.log(this);
+                $(this).css("color", "red")
+            }
+            $("#box").on("click", "p", {
+                name: "laoli"
+            }, colorChange)
+            $("#box").on("click", "p", {
+                name: "laoli"
+            }, function (e) {
+                console.log(e);
+                // this直接指向事件委托的对象
+                console.log(this);
+                $(this).css("background", "green")
+            })
+            $("#box").on("click", "p", {
+                name: "laoli"
+            }, function (e) {
+                console.log(e);
+                // this直接指向事件委托的对象
+                console.log(this);
+                $(this).css("font-size", "12px")
+            })
+
+            $("#btn").click(function () {
+                $("#box").off("click", colorChange)
+            })
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            async定义的函数，调用以后会返回一个promise对象
+                async函数返回值：
+                    - 默认情况下返回 成功状态的promise对象，值是undefined
+                    - 如果return了一个值，则返回是成功的promise对象，值是return的内容 
+                    - 如果return了一个promise对象，则async函数的返回值就是这个promise对象
+        
+         */
+        async function fn() {
+            console.log("hello 我是async函数");
+            await new Promise((resolve, reject) => {
+                resolve(1);
+                // reject(1);
+            })
+        }
+
+        const re = fn();
+        console.log(re);
+    </script>
+</body>
+
+</html>

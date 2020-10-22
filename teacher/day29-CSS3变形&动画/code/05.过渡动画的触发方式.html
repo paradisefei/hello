@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*只要元素的样式发生改变，并且元素上有过渡动画属性，那么无论通过什么方式改变了元素的样式，过渡动画都会触发 */
+
+        /* .box:hover{
+            transition: none;
+            background-color: pink;
+        } */
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            transition: all 2s;
+        }
+
+        .red{
+            background-color: red;
+            width: 200px;
+            height: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="btn">点击改变颜色</button>
+    <div class="box" id="box"></div>
+    <script>
+        var oBtn = document.getElementById("btn");
+        var oBox = document.getElementById("box");
+        //点击按钮让box的颜色变为pink
+        oBtn.onclick = function(){
+            // oBox.style.background = "pink";
+            oBox.classList.add("red");//添加一个类名
+        }
+    </script>
+</body>
+</html>

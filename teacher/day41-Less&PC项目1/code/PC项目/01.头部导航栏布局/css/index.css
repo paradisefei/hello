@@ -1,0 +1,29 @@
+.header .headerTop_out {
+  width: 100%;
+  background-color: #eaeaea;
+}
+.header .headerTop_out .headerTop {
+  width: 1200px;
+  margin: 0 auto;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .headerTop_out .headerTop_left {
+  display: flex;
+}
+.header .headerTop_out .headerTop_left p {
+  margin-right: 10px;
+}
+.header .headerTop_out .headerTop_left a + a {
+  border-left: 1px solid #3c3c3c;
+  padding-left: 5px;
+}
+.header .headerTop_out .headerTop_right a {
+  margin-right: 5px;
+}
+.header .headerTop_out .headerTop_right a + a {
+  border-left: 1px solid #3c3c3c;
+  padding-left: 5px;
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 800px;
+            border: 1px solid #000;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .inner {
+            width: 800px;
+            overflow: auto;
+        }
+
+        .inner .con {
+            width: 5000px;
+            display: flex;
+        }
+
+        .con img {
+            width: 800px;
+            height: 400px;
+        }
+
+        .btns .left,
+        .btns .right {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(100, 200, 50, .5);
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .btns .left {
+            left: 10px;
+        }
+
+        .btns .right {
+            right: 10px;
+        }
+
+        .list {
+            position: absolute;
+            display: flex;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .list li {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, .5);
+            margin: 0 10px;
+            text-align: center;
+            line-height: 20px;
+        }
+
+        .list li.active {
+            background-color: rgba(255, 255, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        如果一个元素相对于 拥有滚动条的元素定位时候，那么定位的元素会随着滚动条移动
+    -->
+    <div class="outer">
+        <div class="inner">
+            <div class="con">
+                <img src="../images/01.jpg" alt="">
+                <img src="../images/02.jpg" alt="">
+                <img src="../images/03.jpg" alt="">
+                <img src="../images/04.jpg" alt="">
+                <img src="../images/05.jpg" alt="">
+                <img src="../images/01.jpg" alt="">
+            </div>
+
+            <div class="btns">
+                <p class="left">&lt;</p>
+                <p class="right">&gt;</p>
+            </div>
+
+            <ul class="list">
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oInner = document.querySelector('.inner');
+        var oImgs = document.querySelectorAll('.inner .con img');
+        var oLeft = document.querySelector('.left');
+        var oRight = document.querySelector('.right');
+        var oListLis = document.querySelectorAll('.list li');
+        var i = 0; //设置一个变量来代表图片
+        var moveTimer = null,
+            changeTimer = null;
+
+        //滚动条滚动动画函数 
+        function move() {
+            //让图片更换（以动画的方式更换） 动画通用版
+            //起始位置
+            var startPoint = oInner.scrollLeft;
+            //结束位置
+            var endPoint = i * oImgs[i].offsetWidth;
+            //起始步数
+            var startStep = 0;
+            //结束步数
+            var endStep = 30;
+            //每一步所走的距离
+            var everyStep = (endPoint - startPoint) / (endStep - startStep);
+
+            //动画
+            moveTimer = setInterval(function () {
+                startStep++;
+                if (startStep >= endStep) {
+                    clearInterval(moveTimer);
+                }
+                //让起始位置累加
+                startPoint += everyStep;
+                oInner.scrollLeft = startPoint;
+            }, 20)
+        }
+
+        //清除计时器封装函数 
+        function clearTimer() {
+            //点击以后清除所有计时器
+            clearInterval(changeTimer)
+            clearInterval(moveTimer)
+        }
+
+        //设置一个下标的封装函数
+        function setIndex() {
+            //每次点击完 先遍历所有的下标 让样式清空
+            oListLis.forEach(function (item, index) {
+                item.className = "";
+            })
+            //给当前要走到的下标一个active类
+            // 如果i是5是5 应该让i的是变成0, 才能和下标合作
+            oListLis[i === 5 ? 0 : i].className = "active"
+        }
+
+        //向左走逻辑
+        function moveLeft() {
+            //因为i代表图片 所以直接让i累加
+            i++;
+            //判断临界值，当图片走到最后的时候，让i变成0
+
+            if (i >= oImgs.length) {
+                //i可以为5，此时的i为5和i为0代表的是同一张图片 所以下一次i的值应该变成1
+                i = 1;
+                //此时当i变成1  在动画运动之前，应该把滚动条瞬间变成i为0时候的位置（0）
+                oInner.scrollLeft = 0;
+            }
+        }
+
+        //向右走逻辑
+        function moveRight() {
+            /* 如果i为0 则代表是第一张图， i--之后，i应该变为4*/
+            i--;
+            if (i < 0) {
+                i = oImgs.length - 2;
+                //本来是第一张图，要瞬间变到最后一张（5个图片的宽度）
+                oInner.scrollLeft = (oImgs.length - 1) * oImgs[i].offsetWidth;
+            }
+        }
+
+        //自动走函数
+        function autoMove() {
+            //书写计时器，每隔两秒执行一次
+            changeTimer = setInterval(function () {
+                moveLeft();
+                move()
+                setIndex();
+            }, 2000)
+        }
+
+
+        //刚进入页面自动走
+        autoMove();
+
+        //点击右侧按钮
+        oRight.onclick = function () {
+            clearTimer()
+            moveLeft();
+            move();
+            setIndex();
+            //每次点击业务逻辑执行完之后，继续设置自动走
+            autoMove();
+        }
+
+
+        //点击右侧按钮
+        oLeft.onclick = function () {
+            clearTimer()
+            moveRight()
+            move();
+            setIndex();
+            //每次点击业务逻辑执行完之后，继续设置自动走
+            autoMove();
+        }
+
+        //下标切换
+        //给所有的下标绑定点击事件
+        oListLis.forEach(function (item, index) {
+            item.onclick = function () {
+                clearTimer()
+                //先清空所有的
+                oListLis.forEach(function (item, index) {
+                    item.className = ""
+                })
+
+                //给当前的样式
+                this.className = "active";
+
+                //点击以后，获取当前点击元素的下标，给到i就可以了
+                i = index;
+
+                move();
+                setIndex();
+                //每次点击业务逻辑执行完之后，继续设置自动走
+                autoMove();
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Cat() {
+
+        }
+        Cat.prototype.eat = function () {
+            console.log("猫粮")
+        }
+
+        function Dog() {
+
+        }
+        Dog.prototype.eat = function () {
+            console.log("狗粮")
+        }
+        var cat1 = new Cat();
+        var dog1 = new Dog();
+
+        function eat(obj) {
+            obj.eat();
+        }
+
+        eat(cat)
+        eat(dog)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab切换方法2.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #tab {
+            width: 606px;
+            margin: 50px auto 0;
+            border: 1px solid #000;
+        }
+
+        .title {
+            display: flex;
+        }
+
+        .title h2 {
+            width: 200px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+        }
+
+        /* 交集选择器 选择h2标签，并且h2标签还拥有active类名的 */
+        .title h2.active {
+            background-color: red;
+            color: #fff;
+        }
+
+        .content li {
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 40px;
+            display: none;
+        }
+
+        .content li.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <!-- Tab切换外层 -->
+        <div id="tab">
+            <!-- Tab切换标题区域 -->
+            <div class="title">
+                <!-- 如果有特殊的样式，则直接给类名，然后点击切换类名即可 -->
+                <h2 class="active">标题一</h2>
+                <h2>标题二</h2>
+                <h2>标题三</h2>
+            </div>
+            <!-- Tab切换内容区域 -->
+            <ul class="content">
+                <li class="show">内容一</li>
+                <li>内容二</li>
+                <li>内容三</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oTitleH2s = document.querySelectorAll(".title>h2");
+        var oContentLis = document.querySelectorAll(".content>li");
+
+        //外层for循环只是为了绑定点击事件  和  给每一个标题设置一个保存下标的属性
+        for (var i = 0; i < oTitleH2s.length; i++) {
+            //js是没有提供一个方法 可以获得一个元素在兄弟中的下标的，我们自己写
+            //我们给每一个h2元素扩展一个属性 index   保存的是他的下标
+            //搭了一个for循环的顺风车
+            oTitleH2s[i].index = i;
+            oTitleH2s[i].onclick = function () {
+                //每次点击 先把所有的特殊样式全部清空
+                //里边for循环只是为了清空样式
+                for (var i = 0; i < oTitleH2s.length; i++) {
+                    oTitleH2s[i].className = "";
+                    oContentLis[i].className = "";
+                }
+                //全部清空之后，给当前点击的元素及对应的元素添加特殊样式
+                this.className = "active";
+                
+                //this代表当前点击的元素，因为当前点击的元素已经扩展了index属性，值为下标
+                //所以可以通过this.index得到当前元素的下标
+                oContentLis[this.index].className = "show";
+            }
+        }
+    </script>
+</body>
+
+</html>

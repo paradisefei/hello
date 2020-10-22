@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            js数据类型：
+                基本：String Boolean Number Null Undefined Symbol BigInt
+                引用：Object
+        */
+
+        //BigInt 大整型  一定是整数
+
+        console.log((2 ** 53)) //计算不精确
+        console.log((2 ** 53) + 1) //计算不精确
+        console.log((2 ** 53) + 3) //计算不精确
+        console.log(2 ** 1023) //计算不了
+
+        //大整型 定义方法 在数字后添加一个n即可
+        const bi1 = 1n;
+        console.log(bi1) //1n
+        console.log(typeof bi1); //"bigint"
+        console.log((2n ** 53n) + 1n) //计算精确
+
+        console.log(1n == 1) //true
+        console.log(1n === 1) //false
+
+        //类型转换和number区别不大
+        console.log(Number(1n)) //number 1
+        console.log(String(1n)) //string 1
+        console.log(Boolean(1n)) //true
+        console.log(Boolean(0n)) //false
+    </script>
+</body>
+
+</html>

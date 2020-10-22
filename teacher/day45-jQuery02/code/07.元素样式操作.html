@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js'></script>
+    <style>
+        .box {
+            width: 800px;
+            height: 500px;
+            background-color: red;
+            padding: 50px;
+            border: 2px solid #000;
+            margin: 30px;
+
+            position: relative;
+        }
+
+        .inner {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 30px;
+            position: absolute;
+            left: 10px;
+            top: 20px;
+            overflow: auto;
+        }
+
+        .con {
+            width: 3000px;
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div class="box">
+        <div class="inner">
+            <div class="con"></div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            /* 
+                css()可以获取元素的某个属性值
+                css(a,b)可以设置元素的a属性为b
+                css({a:b,c:d})给元素设置多个样式  css方法的参数是对象
+
+
+                width和height方法用来获取和设置宽高
+
+                innerWidth()获取元素 内容+内边距
+                outerWidth()获取元素 内容+内边距+边框
+                outerWidth(true) 获取元素 内容+内边距+边框+外边距
+
+                offset() 获取元素到文档边缘的距离 返回是一个对象  left和top
+                position() 获取元素距离最近定位父级的距离 获取的是left和top的值
+            
+             */
+
+            $("#btn").click(function () {
+                /* console.log($(".box").css("width"))
+                console.log($(".box").css("background-color"))
+                $(".box").css({
+                    "fontSize": "20px",
+                    color: "#fff"
+                }) */
+
+
+                // console.log($(".box").width())//number类型的300  不带单位
+                // $(".box").width(500) //number类型的300  不带单位
+
+                /* console.log($(".box").innerWidth()) //400
+                console.log($(".box").outerWidth()) //404
+                console.log($(".box").outerWidth(true)) //464 */
+
+
+                // console.log($(".inner").offset())
+                // console.log($(".inner").position())
+
+
+                // console.log($(".inner").scrollLeft());
+                console.log($(".inner").scrollLeft(200));
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            鼠标点击事件：
+                onclick：鼠标左键单击事件
+                oncontextmenu:鼠标右键单击事件
+                ondblclick:鼠标双击事件
+        
+        */
+        var oBox = document.getElementById("box");
+        
+        //有一个变量num  每次点击num会进行加1
+        var num = 0;
+        oBox.onclick = function(){
+            num ++;
+            console.log(num)
+        }
+
+
+        //有一个变量num  每次点击num会进行减1
+        oBox.oncontextmenu = function(){
+            num --;
+            console.log(num);
+
+            //右键事件会有一个默认的菜单栏，可以在函数底部使用 return false 阻止默认事件
+            return false;
+        }
+
+        //每次双击就让num清零(双击的时候也会触发 两次单击)
+        oBox.ondblclick = function(){
+            num = 0;
+            console.log(num);
+        }
+    </script>
+</body>
+</html>

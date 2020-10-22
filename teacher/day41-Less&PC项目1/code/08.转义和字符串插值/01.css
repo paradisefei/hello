@@ -1,0 +1,8 @@
+.outer {
+  /* 
+        字符串插值：在字符串中嵌套变量  需要使用@{变量名}的格式
+        当属性值不是字符串的时候，需要把字符串转义 使用~
+    */
+  width: 30px;
+  background: url("http://baidu.com/img/01.png");
+}

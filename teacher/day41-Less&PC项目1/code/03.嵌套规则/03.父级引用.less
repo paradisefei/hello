@@ -1,0 +1,64 @@
+/* 
+    <div class="outer">
+        <ul class="list">
+            <p class="con">
+                <a href="">点击</a>
+                <span>1100</span>
+            </p>
+        </ul>
+    </div>
+*/
+
+.outer {
+    height: 300px;
+
+    //&代表父级引用  其实就是代表当前层级的父级
+    &>.list {
+        height: 200px;
+
+        >.con {
+            overflow: hidden;
+
+            &:hover {
+                background-color: #fff;
+            }
+        }
+
+
+        a {
+            color: #ccc;
+        }
+
+        span {
+            border: 1px solid #000;
+        }
+
+    }
+}
+
+
+
+
+ul {
+    width: 200px;
+
+    &>li {
+        overflow: hidden;
+
+        &:nth-child(1) {
+            color: #ccc;
+        }
+
+        &:nth-child(2) {
+            color: #ccc;
+        }
+
+        &:nth-child(3) {
+            color: #ccc;
+        }
+
+        &:nth-child(4) {
+            color: #ccc;
+        }
+    }
+}

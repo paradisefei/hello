@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .returnTop {
+            width: 200px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            font-size: 40px;
+            color: #fff;
+            background-color: red;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="con">
+
+    </div>
+
+    <div class="returnTop">回到顶部</div>
+    <script src="./my.js"></script>
+    <script>
+        //生成元素 撑开页面
+        var oCon = document.getElementById("con");
+        var str = "";
+        for (var i = 0; i < 200; i++) {
+            str += i + "<br>"
+        }
+        oCon.innerHTML = str;
+
+
+        var oReturnTop = document.querySelector('.returnTop');
+        var returnTopTimer = null;
+        //默认回到顶部按钮隐藏，当滚动条超过300的时候，显示  低于300的时候隐藏
+        window.onscroll = function () {
+            var winYScroll = my.getWinScroll().y;
+            if (winYScroll > 300) {
+                oReturnTop.style.display = "block";
+            } else {
+                oReturnTop.style.display = "none";
+            }
+        }
+
+
+        //当点击回到顶部的时候，实现直接回到顶部功能
+        oReturnTop.onclick = function () {
+            //每次设置计时器之前 先清除之前的计时器
+            //清除计时器放置内存泄漏
+            clearInterval(returnTopTimer);
+            //首先获取scroll滚动的距离，然后根据距离书写计时器 让这个距离慢慢变小
+            var winYSrcoll = my.getWinScroll().y;
+            returnTopTimer = setInterval(function () {
+                winYScroll -= 10; //每次让剩余的值 减去10
+                if (winYScroll <= 0) {
+                    //当低于临界值得时候 要当变量等于这个临界值
+                    winYScroll = 0;
+                    //到达临界值之后 清除计时器
+                    clearInterval(returnTopTimer);
+                }
+                //变量改变以后，赋值给滚动条的位置
+                window.scrollTo(0, winYScroll)
+            }, 1000 / 60)
+        }
+    </script>
+</body>
+
+</html>

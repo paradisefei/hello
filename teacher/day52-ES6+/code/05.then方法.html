@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            每一个promise的实例都有then、catch、finally三个方法，对promise的异步处理结果进行处理
+            then方法：
+                - 情况1：then方法中有两个参数，都是函数,第一个函数是成功处理函数，第二个函数是失败处理函数
+         */
+        const pro1 = new Promise((resolve, reject) => {
+            console.log("准备请求a数据")
+            setTimeout(() => {
+                console.log("已经请求完成")
+                //假设现在请求了数据为data
+                const data = {
+                    name: "xiaowang"
+                }
+                //resolve 和 reject两个同时书写，以第一个为准
+                reject("请求出错信息");
+                resolve(data);
+                //无论返回成功还是失败，后边的代码都会继续执行完成
+                console.log("最后的代码")
+            }, 1000)
+        });
+
+        pro1.then(() => {
+            console.log("success");
+        }, () => {
+            console.log("error");
+        })
+
+        console.log(pro1)
+        console.log("整个同步代码执行完成");
+    </script>
+</body>
+
+</html>

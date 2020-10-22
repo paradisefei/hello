@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+</head>
+<body>
+    <div id="outer">
+        <textarea id="text"></textarea>
+        <h3>还剩余 <span id="count">30</span> 个字</h3>
+    </div>
+    <script>
+        /* 
+            键盘事件：（一般绑定给可输入的表单元素 或者直接对document绑定）
+                1.onkeydown ： 键盘按下触发
+                2.onkeyup ： 键盘抬起触发
+
+            需求：当键盘输入的时候，实时监听输入框的文字长度，并且剩余字数会一直改变。并且当剩余字数小于0的时候，让剩余字数变红
+            
+            1.获取元素
+            2.给textarea绑定键盘事件（按下或抬起）
+            3.实时监听textarea中的文字数量
+            4.计算剩余字数，并赋值给span元素
+                
+        
+        */
+
+        var oText = document.getElementById("text");
+        var oOuter = document.getElementById("outer");
+        var oCount = document.getElementById("count");
+
+        //绑定键盘事件
+        oText.onkeydown = function(){
+            //通过value属性可以设置或获取表单的值（字符串类型） .length获取字符串的长度
+            var oTextLength = this.value.length;//获取输入文字的长度
+            console.log(oTextLength)
+
+            //计算剩余字数
+            var strCount = 30 - oTextLength;
+
+            //判断：如果剩余字数 strCount小于0  则让span变红
+            if(strCount < 0){
+                oCount.style.color = "red";
+            }else{
+                oCount.style.color = "#000";
+            }
+
+            //把剩余字数赋值给span标签
+            //设置或者读取元素的内容 通过innerHTML属性
+            oCount.innerHTML = strCount;
+        }
+
+    </script>
+</body>
+</html>

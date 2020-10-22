@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // console.dir(Promise)
+        //promise不是异步代码，而是盛放异步代码的工具
+        const pro1 = new Promise((resolve, reject) => {
+            //1.promise内的代码是同步的
+            console.log("准备请求a数据")
+            //2.实例化promise：为了把异步代码写到promise中，异步代码执行状态会返回出去
+            setTimeout(() => {
+                console.log("已经请求完成")
+                resolve();
+                // reject();
+            }, 1000)
+        });
+
+        //pro1一定是promise的实例化对象
+        //当代码正在执行的时候，promise中的值是{PromiseState：pending,PromiseResult:undefined}
+        //当代码执行完成后无论失败和成功 怎么通知这个返回值的状态发生改变呢？
+        //Promise的两个参数是两个函数，resolve是成功函数，reject是失败函数，
+        //当执行完成后，如果成功 则执行resolve函数，如果失败则执行reject函数，这样 Promise的返回值就会接到通知
+        //如果Promise失败，则返回的promise的状态就是rejected
+        //如果Promise成功，则返回的promise状态就是 fulfilled/resolved
+        //如果Promise正在执行，或者你没有调用成功失败函数，那么promise的状态将一直都是pending
+
+
+        //
+        console.log(pro1)
+        console.log("整个同步代码执行完成");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #reg::after{
+            content:'';
+            display:block;
+            clear:both;
+        }
+        #reg{
+            width:300px;
+            /* height:28px; */
+            /*border:1px solid green;*/
+        }
+        #reg div{
+            float: left;
+            position:relative;
+            width:150px;
+            height:28px;
+            text-align: center;
+            /*border:1px solid pink;*/
+            line-height:28px;
+            box-sizing: border-box;
+            font-weight:bold;
+        }
+        #reg .reg-mail{
+            background-color:#0479d6;
+			color:#FFF;
+        }
+        #reg .reg-mail span{
+			position:absolute;
+			left:50%;
+			margin-left:-5px;
+			top:28px;
+
+            /*display:block;*/
+            width:0;
+            height:0;
+            border:5px solid transparent;
+			border-top:5px solid #0479d6;
+            
+        }
+        #reg .reg-phone{
+			/*border:1px solid pink;*/
+            background-color:#ececec;
+			color:#656570;
+        }
+        #reg .reg-phone img{
+			position:absolute;
+			top:-10px;
+			right:-10px;
+		}
+    </style>
+</head>
+<body>
+    <div id="reg">
+        <div class="reg-mail">
+            注册新浪邮箱
+            <span></span>
+        </div>
+        <div class="reg-phone">
+            注册手机邮箱
+            <img src="./imgs/registerNew.gif" />
+        </div>
+    </div>
+</body>
+</html>

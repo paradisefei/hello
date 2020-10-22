@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        /* 
+            for of 是ES6提供的对数据结构统一的遍历方式
+            只要是部署了Iterator接口了类型，全部都可以使用for of 进行遍历迭代
+            
+            for of遍历拿到的是 value 而不是key
+         */
+
+        const oLis = document.querySelectorAll("ul li");
+        console.log(oLis) //nodeList对象拥有Iterator接口
+        for (let value of oLis) {
+            console.log(value);
+        }
+        /* for (let i in oLis) {
+            console.log(i);
+        } */
+
+
+
+        function fn1() {
+            console.log(arguments);
+            for (let value of arguments) {
+                console.log(value);
+            }
+        }
+        fn1(1, 2, 3, 4) //arguments 对象拥有Iterator接口
+
+        const arr = ["a", "b", "c", "d"]
+        console.log(arr); //Array 对象拥有Iterator接口
+        for (let value of arr) {
+            console.log(value);
+        }
+        for (let value of arr.entries()) {
+            console.log(value);
+        }
+
+        const set = new Set(["a", "b", "c", "e"])
+        console.log(set); //set 对象拥有Iterator接口
+        for (let value of set) {
+            console.log(value);
+        }
+
+
+        const map1 = new Map([
+            [{}, "haha"],
+            [true, "hehe"]
+        ])
+        console.log(map1); //Map 对象拥有Iterator接口
+        for (let value of map1) {
+            console.log(value);
+        }
+
+        const str = "123";
+        console.dir(new String("123")) //String 对象拥有Iterator接口
+        for (let value of str) {
+            console.log(value);
+        }
+
+
+        // console.log(new Number(1)); //number 没有Iterator接口
+
+        const obj = {
+            name: "laoli",
+            age: 18
+        }
+        console.log(obj); //Object 没有Iterator接口
+        for (let value of obj) {
+            console.log(value); //obj is not iterable
+        }
+
+
+
+        //
+    </script>
+</body>
+
+</html>

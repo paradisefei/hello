@@ -1,0 +1,46 @@
+//1.变量作为属性值
+@mainColor: #812b49;
+
+//2.变量作为选择器 使用：@{变量名}
+@s: con;
+
+//3.变量作为属性名 
+@b: box-shadow;
+
+//4.变量作为url
+@url: "https://i0.hdslb.com/bfs/archive/997fa41b88c0426808c6d6c8168d29da5251ff85.jpg@880w_388h_1c_95q";
+@url: url("https://i0.hdslb.com/bfs/archive/997fa41b88c0426808c6d6c8168d29da5251ff85.jpg@880w_388h_1c_95q");
+
+#box {
+    width: 300px;
+    height: 200px;
+    background-color: @mainColor;
+
+    .@{s} {
+        color: @mainColor;
+
+        span {
+            border: 1px solid @mainColor;
+            @{b}: 0px 0px 0px 0px red;
+            // background: url(@url) 0 0 no-repeat;
+            background: @url 0 0 no-repeat;
+        }
+    }
+}
+
+
+
+//变量延迟执行
+@var: 0;
+
+.class {
+    @var: 1;
+
+    .brass {
+        @var: 2;
+        three: @var;
+        @var: 3;
+    }
+
+    one: @var;
+}

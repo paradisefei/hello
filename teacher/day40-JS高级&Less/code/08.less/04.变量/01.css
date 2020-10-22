@@ -1,0 +1,19 @@
+#box {
+  width: 300px;
+  height: 200px;
+  background-color: #812b49;
+}
+#box .con {
+  color: #812b49;
+}
+#box .con span {
+  border: 1px solid #812b49;
+  box-shadow: 0px 0px 0px 0px red;
+  background: url("https://i0.hdslb.com/bfs/archive/997fa41b88c0426808c6d6c8168d29da5251ff85.jpg@880w_388h_1c_95q") 0 0 no-repeat;
+}
+.class {
+  one: 1;
+}
+.class .brass {
+  three: 3;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = ["a", "b", "c", "d"];
+
+        Array.prototype.myIterator = function () {
+            //声明一个累加器，用来判断遍历是否完成
+            let index = 0;
+            //原型对象的方法this指向实例化对象
+            //返回一个对象，对象中有next方法，可以依次拿到值
+            // console.log(this)
+            const _this = this; //保存当前的this指向，用来在其他地方使用
+            return {
+                // 调用next方法后返回一个对象：{value:XXX,done:false}
+                next: function () {
+                    // console.log(this) //指向的是当前next所在的对象，不是当前的数组
+                    if (index < _this.length) {
+                        return {
+                            value: _this[index++],
+                            done: false
+                        }
+                    } else {
+                        return {
+                            value: undefined,
+                            done: true
+                        }
+                    }
+                }
+            }
+        }
+
+        const re = arr.myIterator();
+        console.log(re)
+        console.log(re.next())
+        console.log(re.next())
+        console.log(re.next())
+        console.log(re.next())
+        console.log(re.next())
+        console.log(re.next())
+        console.log(re.next())
+    </script>
+</body>
+
+</html>

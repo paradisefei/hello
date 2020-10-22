@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //会算预产期。
+        //最后那次来大姨妈的时间  月数上+9或减3 ,日期上+7
+
+        //小花  最后来大姨妈的时间是2020 3月  8 日。  问其预产期是多少。
+
+        /* var date = new Date(1985,01,01);
+
+        var tmpMonth = date.getMonth();
+        var tmpDate = date.getDate();
+
+        // console.log(tmpMonth);
+        // console.log(tmpDate);
+        date.setMonth(tmpMonth + 9);
+        date.setDate(tmpDate + 7);
+
+        console.log("小花的预产期是：" + (date.getMonth() + 1)+ '月' + date.getDate() + '日'); */
+
+
+        var date = new Date(1985, 01, 01);
+        /*  console.log(date.getMonth());
+ 
+         date.setDate(35);//31 
+ 
+         console.log(date.getMonth()); */
+
+        console.log(date.getFullYear());
+        date.setMonth(15);
+        console.log(date.getFullYear());
+        console.log(date.getMonth());
+    </script>
+</body>
+
+</html>

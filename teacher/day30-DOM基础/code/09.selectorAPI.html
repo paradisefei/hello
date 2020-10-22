@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selectorAPI</title>
+</head>
+
+<body>
+    <div id="box">
+        <p class="content">蛋黄的长裙</p>
+        <p>锄禾和当午</p>
+        <p class="content">蓬松的头发</p>
+    </div>
+    <script>
+        /* 
+            HTML5规范 规定一个最新的获取元素的接口（Selector API）
+            这个接口有两个方式
+                方法中直接书写css获取元素的方法即可
+                document.querySelectorAll(选择器); //获取的是一个集合（哪怕选择器选择的只是一个元素 也是一个集合）
+                document.querySelector(选择器);//获取的是单个元素（无论选择器选中是多个还是单个，都是获取的是第一个）
+        
+         */
+        //获取的一定是一个单个元素
+        var oBox = document.querySelector("#box");
+        console.log(oBox);
+
+        //获取的一定是一个集合（NodeList对象，NodeList对象自身是伪数组，但是他的原型对象上有一个forEach的方法可以遍历）
+        var oContent = document.querySelectorAll("#box>.content");
+        console.log(oContent)
+        /* for(var i = 0;i<oContent.length;i++){
+            oContent[i].style.backgroundColor = "pink";
+        } */
+        oContent.forEach(function(item){
+            console.log(item);
+        })
+
+
+    </script>
+</body>
+
+</html>

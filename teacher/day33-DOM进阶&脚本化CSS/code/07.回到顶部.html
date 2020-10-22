@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .returnTop {
+            width: 200px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            font-size: 40px;
+            color: #fff;
+            background-color: red;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="con">
+
+    </div>
+
+    <div class="returnTop">回到顶部</div>
+    <script src="./my.js"></script>
+    <script>
+        //生成元素 撑开页面
+        var oCon = document.getElementById("con");
+        var str = "";
+        for (var i = 0; i < 200; i++) {
+            str += i + "<br>"
+        }
+        oCon.innerHTML = str;
+
+
+        var oReturnTop = document.querySelector('.returnTop');
+        //默认回到顶部按钮隐藏，当滚动条超过300的时候，显示  低于300的时候隐藏
+        window.onscroll = function () {
+            var winYScroll = my.getWinScroll().y;
+            if (winYScroll > 300) {
+                oReturnTop.style.display = "block";
+            } else {
+                oReturnTop.style.display = "none";
+            }
+        }
+
+
+        //当点击回到顶部的时候，实现直接回到顶部功能
+        oReturnTop.onclick = function () {
+            window.scrollTo(0, 0)
+        }
+    </script>
+</body>
+
+</html>

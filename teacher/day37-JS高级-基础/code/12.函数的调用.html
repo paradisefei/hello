@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定义函数</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            调用函数：
+                - fn() //一般调用
+                - new fn()//实例化调用
+                - obj.fn()//对象上下文调用
+                - fn.call()/fn.apply()/fn.bind()();//call方法。。调用
+         */
+        function fn() {
+
+        }
+
+        fn();
+        new fn();
+        var obj = {
+            fn: function () {
+
+            }
+        }
+        obj.fn
+        fn.call();
+    </script>
+</body>
+
+</html>

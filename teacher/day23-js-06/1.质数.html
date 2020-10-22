@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //质数：只能被1和自身整除的数叫质数。
+        /*
+            1. 只能被整除2次。
+
+            2. 整除的时只能被自身和1整除。
+
+            3. 1不是质数。
+
+        */
+        /*
+            //flag   判断这个数到底是不是质数。  false 就是质数   true的话不是质数。
+
+            i=1; i<=4 true
+                flag = false
+
+                j = 2 ; 2 < 1 false
+
+                //i为1的时 flag=false
+
+            i=2; i<=4 true
+                flag = false
+
+                j = 2 ; 2 < 2 false
+
+                //i为2时flag = false
+
+            i=3; i<=4 true
+                flag = false;
+
+                j=2 ; 2< 3 true
+
+                    if (3 % 2 == 0 ) false
+                
+                j=3 ; 3<3 false
+
+                //i为3时flag = false
+
+            i=4; i<=4 true
+                flag = false;
+
+                j=2; 2<4 true
+                    if (4 % 2 == 0) true
+                        flag = true
+
+                    //i为4时flag为true
+            
+            i=5 i<=4 false
+
+
+
+            //i为1的时 flag=false
+            //i为2时flag = false
+             //i为3时flag = false
+             //i为4时flag为true
+        */
+        for (var i = 1 ; i <= 100 ; i++) {
+
+            var flag = false;//作为标志。  默认的时候是质数。
+
+            //怎么样才能找出一个数是能够被1或自身（i）整除的
+            //将1和自身刨除去。
+            for(var j = 2 ; j < i ; j++){
+                if (i % j == 0) {//不是质数
+
+                    flag = true;
+                    break;
+                }
+            }
+
+            //现在来说如果为false的我才让他进入进来，为true的不让他进入。所以我加了一个取反。
+            if (!flag && i != 1) {
+                console.log(i);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

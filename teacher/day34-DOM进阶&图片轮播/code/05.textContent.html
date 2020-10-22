@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textContent</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <div class="box">
+        <span>span标签</span>
+        <span style="display: none;">none</span>
+    </div>
+    <script>
+        var oBox = document.querySelector(".box");
+        var oBtn = document.getElementById('btn');
+
+        /* 
+            textContent：
+                获取：直接获取文本内容
+                设置：不会解析标签
+
+            和innerText类似，
+                - textContent可以获取displaynone隐藏元素的内容,innerText不行
+                - textContent 获取的文本 带有格式的  innerText没有
+                - textContent兼容性是ie8 + 
+        */
+
+
+        oBtn.onclick = function () {
+            console.log(oBox.textContent)
+            // console.log(oBox.innerText);
+            // oBox.textContent = "<a href='###'>我是a标签</a>";
+        }
+    </script>
+</body>
+
+</html>

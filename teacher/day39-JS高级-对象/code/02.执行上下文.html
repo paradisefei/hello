@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            执行上下文：
+                1.js解析并不是真正的直接逐行解析，而是进入到一个新的作用域的时候，会有一个准备工作，这个准备工作被称作为‘执行上下文’，指向上下文还在内存中为函数执行创建一个空间
+
+                2.新的作用域可以是全局作用域和局部作用域
+
+                3.全局的执行上下文只有一个，局部的执行上下文可以有多个
+
+                4.因为有多个执行上下文，所以js会创建一个执行上下文栈（stack），用来管理所有的执行上下文
+
+                5.代码最开始指向是先执行全局，所以会现在stack中压入一个全局执行上下文，全局执行上下文等代码全部指向完毕才退出
+
+                6.当代码执行一个函数，此时就会创建一个新的局部执行上下文，并把它压入到stack中，当函数执行函数，就把当前执行上下文在stack中弹出
+
+                7.执行上下文包含3个内容：1.变量对象 2.确定this 3.激活作用域链
+
+         */
+
+        function fun3() {
+            console.log("fun3");
+        }
+
+        function fun2() {
+            fun3();
+        }
+
+        function fun1() {
+            fun2();
+        }
+        fun1();
+
+        /* 
+        //代码模拟执行上下文过程
+        var stack = [];//创建一个空栈 用来存放执行上下文
+        //进入全局作用域 压入全局执行上下文
+        stack.push([globalContext]);
+        //进入fn1 创建fn1 的执行上下文
+        stack.push(<fn1>context)
+        //进入fn2 创建fn2 的执行上下文
+        stack.push(<fn2>context)
+        //进入fn3创建fn3 的执行上下文
+        stack.push(<fn3>context)
+        //fn3执行完成 弹出fn3的执行上下文
+        stack.pop();
+        //fn2执行完成 弹出fn2的执行上下文
+        stack.pop();
+        //fn1执行完成 弹出fn1的执行上下文
+        stack.pop();
+        //代码执行完毕，全局也退出
+        
+        
+        */
+
+
+
+
+        var scope = "hello";
+
+        function checkscope() {
+            var scope = "world";
+
+            function f() {
+                return scope;
+            }
+            return f();
+        }
+        checkscope();
+        /* 
+            var stack = [];
+            stack.push([globalContext]);
+            stack.push(<checkscope>context);
+            stack.push(<f>context);
+            stack.pop();
+            stack.pop();
+        
+        
+        */
+
+
+
+        console.log('global begin: ' + i) //undefined
+        var i = 1
+        foo(1);
+
+        function foo(i) {
+            if (i == 4) {
+                return;
+            }
+            console.log('foo() begin:' + i);
+            foo(i + 1);
+            console.log('foo() end:' + i);
+        }
+        console.log('global end: ' + i);
+    </script>
+</body>
+
+</html>

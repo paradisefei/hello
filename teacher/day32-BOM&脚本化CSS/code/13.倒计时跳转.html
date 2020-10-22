@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="###" id="form">
+        用户名：<input type="text" id="user" name="user">
+        <br>
+        密码：<input type="pass" id="pass" name="pass">
+        <br>
+        <button id="submit">提交</button>
+    </form>
+    <p id="con">请登录</p>
+    <script>
+        var oSubmit = document.getElementById("submit");
+        var oUser = document.getElementById("user")
+        var oPass = document.getElementById("pass")
+        var oForm = document.getElementById("form")
+        var oCon = document.getElementById("con")
+
+        //form表单被提交事件 onsubmit   适用于form标签
+        oForm.onsubmit = function () {
+            var num = 3;
+            //判断账号密码是否正确
+            if (oUser.value === 'xiaowang' && oPass.value === "123") {
+                oCon.innerHTML = "登录成功，3秒后自动跳转";
+                setInterval(function () {
+                    num--;
+                    if (num <= 0) {
+                        location.href = "http://www.baidu.com"
+                    }
+                    oCon.innerHTML = "登录成功，" + num + "秒后自动跳转";
+                }, 1000)
+            }
+
+            //只要form表单被提交就会刷新页面，所以需要阻止默认事件
+            return false;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1" class="box"></div>
+    <div id="box2" class="box"></div>
+    <div id="box3" class="box"></div>
+    <div id="box4" class="box"></div>
+    <script>
+        function Drag(id) {
+            this.box = document.querySelector('#' + id);
+            var that = this; //用一个变量保存外边的this 这样在其他地方使用that就是当前的this
+            this.box.onmousedown = function (e) {
+                //事件中的this指向的是外边的this.box 而不是实例化对象
+                //所以直接书写this.mousedown() 是获取不到的
+                that.mousedown(e);
+            }
+        }
+        //鼠标按下方法
+        Drag.prototype.mousedown = function (e) {
+            this.mouseToBox = {
+                x: e.offsetX,
+                y: e.offsetY
+            }
+            var that = this;
+            //绑定鼠标移动事件
+            document.onmousemove = function (e) {
+                that.mousemove(e)
+            }
+
+            //绑定鼠标松开事件
+            document.onmouseup = function () {
+                that.mouseup()
+            }
+
+        }
+
+        //给Drag构造函数设置鼠标移动方法，当移动事件触发的时候，调用此方法
+        Drag.prototype.mousemove = function (e) {
+            var resultPoint = {
+                x: e.clientX - this.mouseToBox.x,
+                y: e.clientY - this.mouseToBox.y
+            }
+
+            //赋值操作
+            this.box.style.left = resultPoint.x + "px";
+            this.box.style.top = resultPoint.y + "px";
+        }
+
+        Drag.prototype.mouseup = function () {
+            //清除move事件，解除移动控制
+            document.onmousemove = null;
+            //清除自身，节省空间，下次点击的时候还要再次添加上去
+            document.onmouseup = null;
+        }
+
+        var a1 = new Drag("box1");
+        var a2 = new Drag("box2");
+        var a3 = new Drag("box3");
+        var a4 = new Drag("box4");
+        console.log(a1.mousemove === a2.mousemove)
+        console.log(a1.mouseup === a2.mouseup)
+        console.log(a1.mousedown === a2.mousedown)
+        
+        // console.log([1].sort === [2].sort)
+
+
+
+        /* function Drag(id) {
+            this.box = document.querySelector('#' + id);
+            this.box.onmousedown = function (e) {
+                that.mousedown(e);
+            }
+        }
+        //鼠标按下方法
+        Drag.prototype.mousedown = function (e) {
+            //....code
+            //绑定鼠标移动事件
+            document.onmousemove = function (e) {
+                that.mousemove(e)
+            }
+
+            //绑定鼠标松开事件
+            document.onmouseup = function () {
+                that.mouseup()
+            }
+
+        }
+
+        //给Drag构造函数设置鼠标移动方法，当移动事件触发的时候，调用此方法
+        Drag.prototype.mousemove = function (e) {
+        }
+
+        Drag.prototype.mouseup = function () {
+        } */
+    </script>
+</body>
+
+</html>

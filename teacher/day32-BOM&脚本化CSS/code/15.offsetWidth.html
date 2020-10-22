@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>offsetWidth</title>
+    <style>
+        .box {
+            width: 500px;
+            padding: 20px;
+            margin: 40px;
+            background-color: red;
+            border: 1px solid #000;
+            /* visibility: hidden; */
+        }
+
+        .con {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            /* visibility: visible; */
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">mao</button>
+    <div class="box">
+        小王去老王家吃饭<br>
+        老王说没有饭<br>
+        小王说你是我爸爸啊<br>
+        老王说不一定<br>
+        <div class="con"></div>
+    </div>
+    <script>
+        var oBox = document.querySelector(".box");
+        var oBtn = document.querySelector("#btn");
+
+        oBtn.onclick = function () {
+            //无论你是否设置了宽高，offsetWidth和Height都可以获得这个元素真实渲染的宽高
+            // offsetWidth获取的是(content + padding + border)
+
+            /* 
+                a:display:none && b:visibility:hidden
+                - a是从渲染中删除，不占用空间  b是隐藏了，但是还在渲染树中，并占用空间
+                - a中的子元素是因为父级被渲染树中移除，所以跟着消失
+                    b是因为父元素的visibility属性继承，导致子元素隐藏，只要给子元素visibility：visible属性 即可显示
+                - a不可以在js中获取宽高， b可以通过js获取宽高
+            
+            */
+            console.log(oBox.offsetWidth)
+            console.log(oBox.offsetHeight)
+
+        }
+    </script>
+</body>
+
+</html>

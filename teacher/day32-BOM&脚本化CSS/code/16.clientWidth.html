@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clientWidth</title>
+    <style>
+        .box {
+            width: 500px;
+            padding: 20px;
+            margin: 40px;
+            background-color: red;
+            border: 1px solid #000;
+            /* visibility: hidden; */
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">mao</button>
+    <div class="box">
+        小王去老王家吃饭<br>
+        老王说没有饭<br>
+        小王说你是我爸爸啊<br>
+        老王说不一定<br>
+    </div>
+    <script>
+        var oBox = document.querySelector(".box");
+        var oBtn = document.querySelector("#btn");
+
+        oBtn.onclick = function () {
+            //clientWidth获取元素的宽高（content + padding）
+            console.log(oBox.clientWidth)
+            console.log(oBox.clientHeight)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* var arr = [
+            ['史帅乐', 2],
+            [3,
+                [4, '崔旺']
+            ]
+        ];
+
+        console.log(arr[0][0]);
+
+        console.log(arr[1][1][1]); */
+
+        var performeres = [
+            //编号,演员姓名,饰演角色,性格
+            [1, '孙红雷', '何辅堂', '为人正直不阿，欺强怜弱，善于机变。'],
+            [2, '巍子', '魏正先', '鹰视狼顾，心狠手黑。']
+        ];
+
+        document.write('<table border="1" width="811">');
+        for (var i = 0 ; i < performeres.length ; i++) {
+            document.write("<tr>");
+            document.write("<td>"+performeres[i][0]+"</td>");
+            document.write("<td>"+performeres[i][1]+"</td>");
+            document.write("<td>"+performeres[i][2]+"</td>");
+            document.write("<td>"+performeres[i][3]+"</td>");
+            document.write("</tr>");
+        }
+
+        document.write('</table>');
+
+        //我让你给我遍历成表格。
+
+       /*  for (var i = 0 ; i < performeres.length ;i++) {
+            // console.log(performeres[i]);
+
+            console.log(performeres[i]);
+        } */
+
+        /* document.write('<table border="1" width="811">');
+        var str = '';
+        for (var i = 0 ; i < performeres.length ;i++) {
+            // document.write('<tr></tr>');
+            str += "<tr>";
+            str += "<td>"+performeres[i][0]+"</td>";
+            str += "<td>"+performeres[i][1]+"</td>";
+            str += "<td>"+performeres[i][2]+"</td>";
+            str += "<td>"+performeres[i][3]+"</td>";
+            str += "</tr>";
+        }
+        document.write(str);
+        document.write('</table>'); */
+        /*
+        str = "<tr><td>1</td><td>孙红雷</td><td>何辅堂</td><td>为人正直不阿，欺强怜弱，善于机变。</td></tr><tr><td>2</td><td>巍子</td><td>魏正先</td><td>鹰视狼顾，心狠手黑。</td></tr>"
+
+        */
+        /*
+        <table border="1" width="811">
+            <tr><td>1</td><td>孙红雷</td><td>何辅堂</td><td>为人正直不阿，欺强怜弱，善于机变。</td></tr><tr><td>2</td><td>巍子</td><td>魏正先</td><td>鹰视狼顾，心狠手黑。</td></tr>
+        </table>
+
+        */
+    </script>
+</body>
+
+</html>

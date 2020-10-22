@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>根据id获取元素</title>
+</head>
+
+<body>
+    <div id="box">box</div>
+    <script>
+        /* 
+            获取元素后可以对元素进行操作
+            获取的元素是一个对象类型
+            如果获取不到则打印为null
+
+            document.getElementById
+            - 从document对象中获取元素 通过id的方式
+
+
+            错误类型：
+                - SyntaxError：出现语法错误时抛出
+                - ReferenceError：读取不存在的变量时抛出
+                - TypeError：值的类型发生错误的时候抛出
+
+            try...catch 异常处理
+                把代码卸载try中，如果try中出现问题，则会把错误抛出到catch接受，不会影响其他代码运行
+        
+         */
+        var oBox = document.getElementById("box");
+        console.log(oBox);
+        console.log(typeof oBox); //object
+
+        try {
+            var oBox1 = document.getElementById("box1");
+            console.log(oBox1); //null 
+            ////TypeError: Cannot read property 'style' of null
+            //无法读取null的style属性 所以可以查看oBox1是否获取成功
+             oBox1.style.background = "red";
+             console.log("err");//当try中出现错误  会停止try的其他代码运行
+        } catch (err) {
+            console.log("出错啦" + err);
+        }
+
+        console.log("hello")//异常处理后 不会影响其他代码运行
+
+    </script>
+</body>
+
+</html>

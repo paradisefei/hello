@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js'></script>
+    <style>
+        .con {
+            width: 300px;
+            background-color: red;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <button id="show">显示</button>
+        <button id="hide">隐藏</button>
+        <button id="toogle">开关</button>
+        <div class="con">
+            除了直接使用毫秒来控制速度外, jQuery 还提供了三种预设速度参数字符串: slow 、normal 和 fast ,分别对应 600 毫秒、400 毫秒和 200
+            毫秒，不管是传递毫秒数还是传递预设字符串,如果不小心传递错误或者传递空字符串。 那么它将采用默认值:400 毫秒除了直接使用毫秒来控制速度外, jQuery 还提供了三种预设速度参数字符串: slow 、normal
+            和 fast ,分别对应 600 毫秒、400 毫秒和 200 毫秒，不管是传递毫秒数还是传递预设字符串,如果不小心传递错误或者传递空字符串。 那么它将采用默认值:400 毫秒
+        </div>
+
+    </div>
+    <script>
+        $(function () {
+            /* //show hide toggle
+            //3个参数 1.时间（毫秒为单位，也可以书写slow fast normal） 2.动画方式easing，linear 3.回调函数，当动画执行完成后执行函数
+            $("#show").click(function () {
+                $(".con").show(1000, "linear")
+            })
+            $("#hide").click(function () {
+                $(".con").hide("fast", function () {
+                    alert("隐藏完毕")
+                })
+            })
+            $("#toogle").click(function () {
+                $(".con").toggle(1000)
+            }) */
+
+
+            /*  $("#show").click(function () {
+                 $(".con").fadeIn(1000, "linear")
+             })
+             $("#hide").click(function () {
+                 $(".con").fadeOut(1000, function () {
+                     alert("隐藏完毕")
+                 })
+             })
+             $("#toogle").click(function () {
+                 $(".con").fadeToggle(1000)
+             }) */
+
+            /*  $("#show").click(function () {
+                 $(".con").slideDown(1000, "linear")
+             })
+             $("#hide").click(function () {
+                 $(".con").slideUp(1000, function () {
+                     alert("隐藏完毕")
+                 })
+             })
+             $("#toogle").click(function () {
+                 $(".con").slideToggle(1000)
+             }) */
+
+
+            $("#hide").click(function () {
+                /* 
+                   animate方法是动画的底层方法
+                       params：改变的属性参数 是一个对象
+                       speed：速度
+                       callback：回调函数
+                */
+                $(".con").animate({
+                    width: "400px",
+                    opacity: ".5"
+                }, 2000, function () {
+                    $(".con").css("background", "green")
+                })
+            })
+
+        })
+    </script>
+</body>
+
+</html>

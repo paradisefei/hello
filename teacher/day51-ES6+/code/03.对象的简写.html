@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const name = "lily";
+        const age = 18;
+
+        const obj = {
+            name: name,
+            age: age,
+            do: function () {
+                console.log(this.name);
+            }
+        }
+        console.log(obj)
+
+
+
+        //如果对象的key 和 value（必须是变量） 相同,则可以简写一个key即可
+        //函数不建议简写为箭头函数，而是省略function的简写
+        const obj1 = {
+            name,
+            age,
+            do() {
+                console.log(this.name);
+            },
+            say() {
+                console.log("wang")
+            }
+        }
+        console.log(obj1)
+    </script>
+</body>
+
+</html>

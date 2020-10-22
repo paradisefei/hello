@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        const oLis = document.querySelectorAll("ul li");
+        console.log(oLis) //nodeList对象拥有Iterator接口
+
+        function fn1() {
+            console.log(arguments);
+        }
+        fn1(1, 2, 3, 4) //arguments 对象拥有Iterator接口
+
+
+        console.log([]); //Array 对象拥有Iterator接口
+
+        console.log(new Set()); //set 对象拥有Iterator接口
+
+        console.log(new Map([])); //Map 对象拥有Iterator接口
+
+        console.dir(new String("123")) //String 对象拥有Iterator接口
+
+        console.log(new Number(1)); //number 没有Iterator接口
+
+        console.log({}); //Object 没有Iterator接口
+
+
+
+        //其实for of 就是对Iterator接口的消费
+        //手动获取它们的Iterator接口  模拟for of运行过程
+        const arr = ["a", "b", "c", "d"];
+        //凡是拥有iterator接口的对象，都有一个Symbol(Symbol.iterator)方法，调用这个方法即可得到遍历当前对象的迭代器对象
+        //直接通过arr的Symbol.iterator属性，获取获取到这个方法
+        const re = arr[Symbol.iterator](); //获取到了数组的迭代器对象
+        console.log(re);
+        console.log(re.next());
+        console.log(re.next());
+        console.log(re.next());
+        console.log(re.next());
+        console.log(re.next());
+        console.log(re.next());
+    </script>
+</body>
+
+</html>

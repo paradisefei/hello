@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div id="box">box</div>
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+
+        /* 
+            IE绑定事件：
+                attachEvent：
+                    
+                    两个参数（没有捕获和冒泡的选择） 默认冒泡
+                    - 事件类型 事件类型需要加on
+                    - 事件函数
+                    
+                移除事件使用detachEvent()
+         */
+        function fn() {
+            alert(1);
+        }
+        oBox.attachEvent("onclick", fn)
+
+
+        oBtn.onclick = function () {
+            oBox.detachEvent("onclick", fn)
+        }
+    </script>
+</body>
+
+</html>

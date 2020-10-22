@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        /*默认的元素取位置时不考虑在它之前的浮动元素的位置（就当浮动元素不存在），但浮动元素取位时会考虑它之前的普通块元素的位置。*/
+        #f1 {
+            float: left;
+            width: 300px;
+            height: 300px;
+            background-color: tomato;
+        }
+
+        #f2 {
+
+            width: 350px;
+            height: 350px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="f1"></div>
+    <div id="f2"></div>
+</body>
+
+</html>

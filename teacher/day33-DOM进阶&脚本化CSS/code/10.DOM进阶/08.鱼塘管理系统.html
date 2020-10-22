@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理系统</title>
+    <style>
+        .addFish {
+            width: 400px;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+
+        table {
+            margin-top: 40px;
+            width: 440px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <form class="addFish" action="###">
+            <div>
+                <label for="user">请输入姓名</label>
+                <input type="text" id="user">
+            </div>
+            <div>
+                <label>
+                    请输入年龄
+                    <input type="text" id="age">
+                </label>
+            </div>
+            <div>
+                <label>
+                    打分
+                    <input type="text" id="score">
+                </label>
+            </div>
+            <div>
+                <label>
+                    身价
+                    <input type="text" id="price">
+                </label>
+            </div>
+
+            <button id="add">添加到我的鱼塘</button>
+        </form>
+
+        <table id="table">
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>打分</th>
+                <th>身价</th>
+                <th>操作</th>
+            </tr>
+            <!-- <tr>
+                <td>小王</td>
+                <td>18</td>
+                <td>1</td>
+                <td>1000</td>
+                <td>删除</td>
+            </tr> -->
+        </table>
+    </div>
+
+    <script>
+        var oAdd = document.getElementById('add');
+        var oUser = document.getElementById('user')
+        var oAge = document.getElementById('age')
+        var oScore = document.getElementById('score')
+        var oPrice = document.getElementById('price')
+        var oTable = document.getElementById('table')
+
+        oAdd.onclick = function () {
+            //获取输入的内容 前后去空格
+            var oUserCon = oUser.value.trim();
+            var oAgeCon = oAge.value.trim();
+            var oScoreCon = oScore.value.trim();
+            var oPriceCon = oPrice.value.trim();
+
+            //所有的内容不能为空
+            if (oUserCon && oAgeCon && oScoreCon && oPriceCon) {
+                //创建一个tr
+                var oNewTr = document.createElement("tr");
+
+                //给oNewTr添加内容 innerHTML是可以解析标签的
+                oNewTr.innerHTML = "<td>" + oUserCon + "</td>\
+                <td>" + oAgeCon + "</td>\
+                <td>" + oScoreCon + "</td>\
+                <td>" + oPriceCon + "</td>\
+                <td>删除</td>";
+
+                //把创建的内容添加到表格中
+                oTable.appendChild(oNewTr);
+
+                // 给所有的删除按钮绑定删除事件
+                var oDelete = document.querySelectorAll("table tr td:last-child");
+                console.log(oDelete)
+                //使用forEach遍历所有的删除按钮，给他们绑定点击事件
+                oDelete.forEach(function (item, index) {
+                    console.log(item, index);
+                    item.onclick = function () {
+                        //删除当前删除按钮的父元素tr
+                        //被删除的元素是this.parentNode
+                        //removeChild方法必须是被删除元素的父级调用
+                        //所以需要this.parentNode.parentNode调用
+                        this.parentNode.parentNode.removeChild(this.parentNode);
+                    }
+                })
+            } else {
+                alert("不能有空的")
+            }
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>

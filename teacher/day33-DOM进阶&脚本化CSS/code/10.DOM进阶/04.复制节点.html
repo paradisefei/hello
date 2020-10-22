@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复制节点</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var oList = document.querySelector('.list');
+        var oListLis = document.querySelectorAll('.list li')
+        var oBtn = document.getElementById('btn');
+        /* 
+            复制节点：
+                node.cloneNode(boolean)  
+                - 复制了node节点
+                - boolean  如果为true，则代表深复制（复制当前节点及所有的内部元素）
+                            如果为false（默认） 则代表浅复制（只复制当前节点）
+
+            当元素复制好以后，会保存在内容中，不属于任何元素 需要我们插入他
+            没有复制事件 需要重新添加
+            注意：如果复制的元素有id属性，需要修改复制元素的id属性（因为id是唯一的）
+         */
+        oBtn.onclick = function () {
+
+            //点击以后复制ul
+            var oListClone = oList.cloneNode(true);
+            console.log(oListClone)
+
+            //插入复制的元素
+            document.body.appendChild(oListClone);
+
+        }
+
+        oList.onclick = function () {
+            alert("你好");
+        }
+    </script>
+</body>
+
+</html>

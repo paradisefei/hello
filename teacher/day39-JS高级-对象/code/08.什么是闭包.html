@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+什么是闭包:
+    - 函数嵌套函数，闭包就是内部嵌套的函数
+    - 闭包 是一个包含内部函数引入外部函数变量的那个对象
+    - 闭包是函数内部和函数外部的连接的桥梁（间接的让函数外部读取函数内部的局部变量）
+
+构成闭包的条件：
+    - 函数嵌套
+    - 内部函数使用外部函数的变量
+    - 调用外部函数
+        
+         */
+
+
+        function fn1() {
+            var a = 2;
+            var b = 3;
+            var c = 4;
+
+            function inner() {
+                console.log(a);
+                console.log(b);
+            }
+            inner();
+        }
+
+        fn1();
+    </script>
+</body>
+
+</html>

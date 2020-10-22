@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            每一个对象都有一个__proto__属性，我们把这个属性称作为隐式原型
+            在ES6之前，我们是不能操作隐式原型的
+
+
+            基础原型链总结：  
+                每一个函数都有一个显示原型 prototype 
+                每一个对象都有一个隐式原型 __proto__
+                对象的隐式原型 指向 对象构造函数的 显式原型
+        
+        */
+
+        var arr = [];
+        console.log(arr.constructor.prototype) //数组的 构造函数的 原型对象
+        console.log(arr.constructor.prototype === Array.prototype) //数组的 构造函数的 原型对象
+
+        console.log(arr.__proto__); //arr的构造函数的原型对象
+        console.log(arr.__proto__ === arr.constructor.prototype); //arr的构造函数的原型对象
+        console.log(arr.__proto__ === Array.prototype); //arr的构造函数的原型对象
+
+
+        /* 
+            画图
+        
+        */
+        function Person() {
+
+        }
+        Person.prototype.do = function () {
+
+        }
+        var p = new Person();
+
+        console.log(Person.prototype === p.__proto__)
+    </script>
+</body>
+
+</html>

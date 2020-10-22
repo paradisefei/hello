@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* const arr = [3, 5, 7, 9];
+        let a = arr[0];
+        let b = arr[1];
+        let c = arr[2];
+        let d = arr[3];
+        console.log(a, b, c, d) */
+
+        //1.解构赋值方法
+        {
+            const arr = [3, 5, 7, 9];
+            let [a, b, c, d] = arr; //声明了 a b c d 4个变量  放在数组结构中，去接受数组的值
+            console.log(a, b, c, d)
+        }
+
+
+        //2.解构失败 返回undefined
+        {
+            let [a, b] = [1];
+            console.log(a, b) // 1 undefined
+        }
+
+        //3.不完全解构 也可以完成
+{
+    let [a] = [1, 2];
+    console.log(a) //1
+}
+
+        //4.可以给解构赋值的变量设置默认值(可设可不设)
+{
+    const [a = 2, b = 1] = [9];
+    console.log(a, b) //9 1
+}
+
+
+        //5.可以使用rest参数（...）  必须书写在最后一个  是一个数组，包含了剩余没有解构的元素
+{
+    const [a, b, ...c] = [1, 2, 3, 4, 45, 6, 7, 8, 99];
+    console.log(a, b, c) //1 2 [3, 4, 45, 6, 7, 8, 99]
+}
+
+        //6.多维数组也可以进行匹配
+{
+    const arr = [1, [2, 3, [4, [5]], 6], 7];
+    const [a, [b, c, [d, [e]], f], g] = arr;
+    console.log(a, b, c, d, e, f, g)
+}
+
+        //解构赋值练习1：
+        // 交换两个变量
+{
+    let a = 1;
+    let b = 2;
+    [a, b] = [b, a];
+    console.log(a, b) //2 1
+}
+
+        //解构赋值练习2：
+        {
+            let [foo = hoo, hoo = 2] = [];
+            console.log(foo, hoo) //Cannot access 'hoo' before initialization
+        }
+    </script>
+</body>
+
+</html>

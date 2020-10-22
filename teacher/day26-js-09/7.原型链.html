@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* function Person(name,sex){
+            this.name = name;
+            this.sex = sex;
+        }
+        var p = new Person('张三','nan');
+ */
+        // console.log(Object.prototype.__proto__);//null
+
+        // console.log(Person.prototype.__proto__.__proto__);//null
+        // console.log(Object.prototype.__proto__ == Person.prototype.__proto__);
+
+
+
+        function Person(name, sex) {
+            this.name = name;
+            this.sex = sex;
+        }
+        var p = new Person('张三', 'nan');
+
+        Object.prototype.say = function(){
+            console.log('Object.prototype.say');
+        }
+        /* Person.prototype.say = function(){
+            console.log('Person.prototype.say');
+        } */
+
+        p.say();
+    </script>
+</body>
+
+</html>

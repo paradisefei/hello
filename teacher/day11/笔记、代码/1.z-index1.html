@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            border:1px solid green;
+            position:absolute;
+            z-index:auto;
+        }
+        #f1{
+            background-color:yellow;
+            top:10px;
+            left:10px;
+        }
+        #f2{
+            background-color:green;
+            top:10px;
+            left:10px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 在文档当中 z-index都是auto的情况下  谁在后面出现谁就在浏览器的最上层显示。 -->
+    <div id="f2">
+
+    </div>
+    <div id="f1">
+
+    </div>
+
+</body>
+</html>

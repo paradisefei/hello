@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js'></script>
+</head>
+
+<body>
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>
+            <span>3</span>
+        </li>
+        <li>4</li>
+    </ul>
+    <script>
+        $(function () {
+            document.onclick = function () {
+                /* js */
+                // var oList = document.querySelector('#list');
+                // var oLis = oList.querySelectorAll("li");
+                // var newLi = document.createElement("li");
+                // newLi.innerHTML = "新的";
+                // newLi.setAttribute("study", "jq");
+                // newLi.className = "red";
+                // oList.appendChild(newLi)
+
+
+                /* jq */
+                // $("<li study='jq' class='red'>新的</li>").appendTo($("#list"))
+                // $("#list").append($("<li study='jq' class='red'>新的</li>"))
+
+                // $("<li study='jq' class='red'>新的</li>").prependTo($("#list"))
+                // $("#list").prepend($("<li study='jq' class='red'>新的</li>"))
+
+                // $("<li study='jq' class='red'>新的</li>").insertAfter($("#list li").eq(2))
+                // $("#list li").eq(2).after($("<li study='jq' class='red'>新的</li>"))
+
+                // $("<li study='jq' class='red'>新的</li>").insertBefore($("#list li").eq(2))
+                // $("#list li").eq(2).before($("<li study='jq' class='red'>新的</li>"))
+
+                // $("#list li").eq(2).remove();
+
+                // $("<li study='jq' class='red'>新的</li>").replaceAll($("#list li"));
+                // $("<li study='jq' class='red'>新的</li>").replaceAll($("#list li").eq(2));
+
+                // console.log($("#list li").eq(2).clone())
+                $("#list li").eq(2).clone(true).appendTo($("#list"))
+
+
+            }
+
+            $("#list li").eq(2).mouseenter(function () {
+                console.log("移入")
+            })
+
+        })
+    </script>
+</body>
+
+</html>

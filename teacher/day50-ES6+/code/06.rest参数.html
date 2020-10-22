@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            rest参数 ...
+        */
+        {
+            //...相当于整合了后边没有接受的值，只能放在最后一个
+            const [a, ...b] = [1, 2, 3, 4, 5, 6];
+            console.log(b); //[2,3,4,5,6];
+        }
+
+        {
+            function fn1(...rest) {
+                //arguments获取所有实参 是类数组类型
+                // console.log(arguments)
+
+                //使用rest参数 是数组类型
+                console.log(rest);
+            }
+            fn1(1, 2, 3, 4, 5)
+        }
+
+        {
+            function fn1(a, b, ...rest) {
+                //arguments获取所有实参 是类数组类型
+                // console.log(arguments)
+
+                //使用rest参数 是数组类型
+                console.log(rest); //[3,4,5]
+            }
+            fn1(1, 2, 3, 4, 5)
+        }
+
+
+        {
+            // 封装一个函数，让函数计算所有实参的和
+            function sum(...rest) {
+                /* const re = rest.reduce(function (p, c) {
+                    return p + c;
+                },0)
+                return re; */
+
+                return rest.reduce(function (p, c) {
+                    return p + c;
+                }, 0)
+            }
+            console.log(sum(1, 2, 3, 4, 5, 6)) //21
+        }
+    </script>
+</body>
+
+</html>

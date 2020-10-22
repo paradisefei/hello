@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            常量：不会变化的数据，以后不允许被修改 
+            常量使用const定义
+        */
+
+        {
+            const PI = 3.1415926;
+            console.log(PI)
+            //常量不允许被修改（不允许修改栈中 常量保存的值）
+            // PI = 3.14159265352344265253423; //Assignment to constant variable.
+        }
+
+        {
+            const obj = {
+                name: "lucy",
+                sex: "nv"
+            }
+            //obj常量 保存的地址值没有被修改  所以可以正常执行
+            obj.age = 14;
+            console.log(obj)
+            // obj = {}
+        }
+
+
+        {
+            //常量在声明的时候 必须赋值操作 
+            // const a; //Uncaught SyntaxError: Missing initializer in const declaration
+            // a = 1;
+        }
+
+
+        {
+            //常量是块作用域  并且不能提升 并且不能重复声明
+            // console.log(a);//Cannot access 'a' before initialization
+            const a = 1;
+            // const a = 1;//Identifier 'a' has already been declared
+        }
+        // console.log(a); //报错
+
+        //使用const let 声明的全局变量 不再是window的属性了
+        // var a = 1;
+        // let a = 1;
+        const a = 1;
+        console.log(window.a);
+    </script>
+</body>
+
+</html>

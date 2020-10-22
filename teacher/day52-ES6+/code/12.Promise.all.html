@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            需求： 同时请求三个数据，全部请求成功了，才OK，只要有一个失败，就失败
+        
+         */
+        /* let count = 0;
+        const pro1 = new Promise((resolve, reject) => {
+            console.log("请求a~")
+            setTimeout(() => {
+                count++;
+                if (count === 3) {
+                    console.log(ok);
+                }
+                console.log("a请求成功")
+            }, 1000)
+        })
+        const pro2 = new Promise((resolve, reject) => {
+            console.log("请求b~")
+            setTimeout(() => {
+                count++;
+                console.log("b请求成功")
+                if (count === 3) {
+                    console.log("ok");
+                }
+            }, 2000)
+        })
+        const pro3 = new Promise((resolve, reject) => {
+            console.log("请求c~")
+            setTimeout(() => {
+                count++;
+                if (count === 3) {
+                    console.log(ok);
+                }
+                console.log("c请求成功")
+            }, 1500)
+        }) */
+
+
+        /* 
+            Promise.all([xx,xx,xx]):    
+                检测所有传入all中的promise对象，等待所有promise执行，当有一个返回rejected，则all方法返回rejected的promise对象
+                当所有的promise对象全部为fulfilled的时候 则all方法返回fulfilled状态的promise对象
+
+            当Promise.all方法返回一个成功状态的promise对象的时候，他的PromiseResult的值是一个数组，保存的时候all方法中所有promise对象resolve的输出的值
+
+            当Promise.all方法返回一个失败状态的promise对象的时候，他的promise状态就是第一个失败的promise的状态
+         */
+
+        const pro1 = new Promise((resolve, reject) => {
+            console.log("请求a~")
+            setTimeout(() => {
+                console.log("a请求成功");
+                resolve("a数据");
+                // reject("GG");
+            }, 1000)
+        })
+        const pro2 = new Promise((resolve, reject) => {
+            console.log("请求b~")
+            setTimeout(() => {
+                console.log("b请求成功")
+                resolve("b数据");
+
+            }, 2000)
+        })
+        const pro3 = new Promise((resolve, reject) => {
+            console.log("请求c~")
+            setTimeout(() => {
+                console.log("c请求成功")
+                resolve("c数据");
+            }, 1500)
+        })
+
+        const resultePor = Promise.all([pro1, pro2, pro3]);
+        console.log(resultePor);
+
+
+        resultePor.then((success) => {
+            console.log(success);
+        }).catch((err) => {
+            console.log(err); //GG
+        })
+    </script>
+</body>
+
+</html>

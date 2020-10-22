@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js'></script>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div class="box"></div>
+    <script>
+        $(function () {
+            /* 
+                delay可以延迟动画执行
+
+                is()方法 里边书写:animated选择器 可以判断某个元素是否在动画
+            
+             */
+            $(".box").click(function () {
+                $(this).delay(1000).animate({
+                    height: "500px"
+                }, 5000)
+            })
+
+            $("#btn").click(function () {
+                console.log($(".box").is(":animated"))
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 400px;
+            margin: 50px auto;
+        }
+
+        .city {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .chooseTit {
+            height: 40px;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+        }
+
+        .chooseArea {
+            width: 400px;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: red;
+            display: none;
+
+        }
+
+        .chooseArea li {
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <h1 class="city">郑州</h1>
+        <div class="choose">
+            <p class="chooseTit" id="chooseTit">请选择城市</p>
+            <ul class="chooseArea" id="chooseArea">
+                <li>郑州</li>
+                <li>天津</li>
+                <li>黑龙江</li>
+                <li>北京</li>
+                <li>草围</li>
+                <li>深圳</li>
+                <li>广州</li>
+                <li>淡水</li>
+                <li>东莞</li>
+                <li>惠州</li>
+                <li>后瑞</li>
+                <li>宝安</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oChooseTit = document.querySelector('.chooseTit');
+        var oChooseArea = document.querySelector('.chooseArea');
+        var oCity = document.querySelector('.city');
+
+        //冒泡到了整个文档
+        document.onclick = function (e) {
+            if (e.target.id === 'chooseTit') {
+                //当点击的是 请选择城市的时候  把选择城市列表显示
+                oChooseArea.style.display = "flex";
+                return;
+            }
+            if (e.target.nodeName.toLowerCase() === "li" && e.target.parentNode.id === "chooseArea") {
+                oCity.textContent = e.target.textContent;
+                oChooseArea.style.display = "none";
+                return;
+            }
+            oChooseArea.style.display = "none";
+
+        }
+    </script>
+</body>
+
+</html>

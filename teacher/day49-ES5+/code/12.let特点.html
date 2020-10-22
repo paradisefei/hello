@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //let特点
+
+        //1.没有声明提升
+        /* {
+            console.log(a);
+            let a = 1; //ReferenceError: Cannot access 'a' before initialization
+        } */
+
+        //2.不允许重复声明
+        /* {
+            let a = 1;
+            let a = 2; //Identifier 'a' has already been declared
+        } */
+
+        //3.块级作用域的出现，实际上使得获得广泛应用的匿名立即执行函数表达式（匿名 IIFE）不再必要了
+        {
+            let a = 1;
+            console.log(a);
+        }
+    </script>
+</body>
+
+</html>

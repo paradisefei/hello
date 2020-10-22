@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        /* 
+            滚轮事件：
+                在ie/谷歌中是（火狐打印 document.onmousewheel是undefined）
+                    onmousewheel事件
+                    event事件对象中的wheelDelta属性保存的是正负 代表滚轮的方向
+                        - 正：上滚
+                        - 负：下滚
+
+                在火狐中是：
+                    DOMMouseScroll事件
+                    event事件对象中 detail属性保存的滚轮方向
+                        - 正：下滚
+                        - 负：上滚
+        
+         */
+
+        var oBox = document.querySelector('.box');
+        var i = 200;
+        /* oBox.onmousewheel = function (e) {
+            console.log(e);
+            if (e.wheelDelta > 0) {
+                console.log("你上滚")
+                i += 10;
+            }
+            if (e.wheelDelta < 0) {
+                console.log("他下滚")
+                i -= 10;
+            }
+
+            oBox.style.width = i + "px";
+            oBox.style.height = i + "px";
+        }
+        oBox.addEventListener("DOMMouseScroll", function (e) {
+            console.log(e)
+            if (e.detail > 0) {
+                console.log("下滚")
+                i -= 10;
+            } else {
+                console.log("上滚")
+                i += 10;
+            }
+            oBox.style.width = i + "px";
+            oBox.style.height = i + "px";
+        }) */
+
+        function mouseScroll(e) {
+            //无论是火狐还是谷歌都用的是这个函数，所以e是公用的
+            //可以根据是否支持e的 detail或者wheelDelta 来判断浏览器
+            if (e.detail) {
+                //火狐
+                if (e.detail > 0) {
+                    console.log("下滚")
+                    i -= 10;
+                } else {
+                    console.log("上滚")
+                    i += 10;
+                }
+            } else {
+                //谷歌
+                if (e.wheelDelta > 0) {
+                    console.log("你上滚")
+                    i += 10;
+                }
+                if (e.wheelDelta < 0) {
+                    console.log("他下滚")
+                    i -= 10;
+                }
+            }
+
+
+            oBox.style.width = i + "px";
+            oBox.style.height = i + "px";
+        }
+        oBox.addEventListener("DOMMouseScroll", mouseScroll);
+        oBox.onmousewheel = mouseScroll;
+    </script>
+</body>
+
+</html>

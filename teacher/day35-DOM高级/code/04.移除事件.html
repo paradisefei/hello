@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移除事件</title>
+</head>
+
+<body>
+    <button id="btn">移除事件</button>
+    <div class="box">box</div>
+    <script>
+        var oBox = document.querySelector('.box');
+        var oBtn = document.querySelector('#btn');
+        /* 
+            移除事件：
+                - DOM0
+                    直接把事件函数给覆盖，设置事件属性的值为null
+
+                - DOM2
+                    移除DOM2事件需要使用 removeEventListener();
+                    * 参数1 ：要移除的事件类型
+                    * 参数2 ： 要移除的事件函数
+
+         */
+
+        /* oBox.onclick = function () {
+            alert("瞅你咋滴")
+        } */
+
+        function fn() {
+            alert("再瞅试试");
+        }
+        oBox.addEventListener("click", fn)
+        
+        oBtn.onclick = function () {
+            //移除DOM0事件
+            // oBox.onclick = null;
+
+            //DOM2移除事件
+            oBox.removeEventListener("click", fn)
+        }
+    </script>
+</body>
+
+</html>

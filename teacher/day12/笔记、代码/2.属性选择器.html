@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* a{
+            color:hotpink;
+        } */
+       /*  a[href]{
+            color:indianred;
+        } */
+        /* a[href="http://www.baidu.com"]{
+            color:lime;
+        } */
+        /*有href属性值为http://www.baidu.com 并且有title属性的a标签会被选中*/
+        /* a[href="http://www.baidu.com"][title]{
+            color:lime;
+        } */
+        /* a[href *= "www.baidu.com"]{
+            color:mediumspringgreen;
+        } */
+        /* a[name="HeHe"]{
+            color:navy;
+        } */
+
+        /* a[href ^= "www"]{
+            color:mediumspringgreen;
+        } */
+        a[href$='com']{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://www.baidu.com">闫海静真英俊！</a>
+    <a href="http://www.baidu">闫海静真英俊！</a>
+    <a href="://www.baidu.com">闫海静真英俊！</a>
+    <a href="www.baidu.com">闫海静真英俊！</a>
+    <a href="www.163.com">闫海静真英俊！</a>
+    <a href="http://www.baidu.com" title="对，真英俊!">闫海静真英俊！</a>
+    <a href="#">闫海静真英俊！</a>
+    <a name="hehe">闫海静真英俊！</a>
+    <a>闫海静真英俊！</a>
+</body>
+</html>

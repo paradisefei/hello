@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        /* .c{
+            color:pink;
+        }
+        b.c{
+            font-size:150px;
+        } */
+
+        /* .c{
+            font-size:200px;
+        }
+        .d {
+            color:indianred;
+        } */
+        /*代表的是同时具有c和d两个类名才会被选中。*/
+        .c.d{
+            font-size:200px;
+            color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <b class="c">ABC</b>
+    <i class="c">ABC</i>
+    <b>BCD</b> -->
+
+    <!-- <b class="c d">ABC</b>
+    <i class="c">ABC</i> -->
+
+    <b class="d c">ABC</b>
+    <i class="c">ABC</i>
+    <b>BCD</b>
+</body>
+
+</html>

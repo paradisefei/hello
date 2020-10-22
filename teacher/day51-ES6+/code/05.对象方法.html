@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Object.is 相当于 ===   只不过修复了NaN不等NaN
+        console.log(Object.is(1, 1)) //true
+        console.log(Object.is(1, 2)) //false
+        console.log(Object.is(1, "1")) //false
+        console.log(Object.is({}, {})) //false
+        console.log(Object.is({}, [])) //false
+        console.log(Object.is(true, true)) //true
+        console.log(Object.is(undefined, null)) //false
+        console.log(Object.is(NaN, NaN)) //true
+
+
+        /* 
+            Object.assign()
+         */
+        const obj1 = {
+            a: 1,
+            b: 2,
+        }
+        const obj2 = {
+            c: 3,
+            d: 4
+        }
+        const obj3 = {
+            a: 5,
+            e: 6
+        }
+
+        //Object.assign是把后边的所有对象合并到第一个参数中去了，并没有创建一个新的对象
+        const re1 = Object.assign(obj1, obj2);
+        console.log(re1 === obj1) //true
+        console.log(re1 === obj2) //false
+
+
+        //合并对象的时候，如果有重名的则会覆盖
+        const re2 = Object.assign(obj1, obj2, obj3);
+        console.log(re2);
+
+
+
+
+
+        //原始深拷贝和浅拷贝（让你复制一个对象）
+        const obj4 = {
+            a: 1,
+            b: 2,
+            c: {
+                d: 1
+            }
+        }
+        //浅拷贝一份obj4
+        const obj5 = {};
+        for (let key in obj4) {
+            obj5[key] = obj4[key]; //如果是基本类型值，则直接赋值，如果是引用类型值，则把地址赋值过去了
+        }
+        console.log(obj5 === obj4) //false 
+        console.log(obj5.c === obj4.c) //true
+
+
+        //Object.assign()的拷贝作用
+        const obj6 = {
+            a: 1,
+            b: 2,
+            c: {
+                d: 1
+            }
+        }
+        const obj7 = Object.assign({}, obj6); //把Obj6合并到空对象中，就得到一次拷贝(浅拷贝)
+        console.log(obj7 === obj6); //false
+        console.log(obj7.c === obj6.c); //true
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+new操作符做了什么事情：
+    1.创建一个空对象 将来会返回这个对象
+    2.调用构造函数，并将构造函数的this指向新创建的对象o
+    3.把原型对象的方法给新创建的o，把o的__proto__指向构造函数的显式原型
+    4.判断构造函数的返回值，来决定new的返回值是（构造函数的返回值还是实例化对象）
+        */
+
+        function Car(color, speed) {
+            this.color = color;
+            this.speed = speed;
+            return {
+                name: "lily"
+            }
+        }
+
+        Car.prototype.run = function () {
+            console.log("驾~")
+        }
+
+        //封装一个手写new函数，当把构造函数传进去，就会模拟new 把它给实例化了
+        function writeNew(Car) {
+            //1
+            var o = {};
+            //2 arguments是实参，要的是取掉第一个实参的值
+            //把arguments转成数组，并从下标为1开始切割  即可得到实例化对象的参数
+            //result是调用car的返回值
+            var result = Car.apply(o, Array.prototype.slice.call(arguments, 1));
+            //3
+            o.__proto__ = Car.prototype;
+            //判断Car构造函数的返回值，如果是Object类型  则丢弃o 如果是基本类型 则返回o
+            var isObj = typeof result === 'object' && result != null;
+            var isFun = typeof result === 'function';
+
+            return (isObj || isFun) ? result : o;
+        }
+        
+        var car1 = writeNew(Car, "red", "200");
+        var car2 = writeNew(Car, "green", "220");
+        console.log(car1)
+        console.log(car1 instanceof Car)
+        console.log(car2 instanceof Car)
+        console.log(car1.constructor)
+        console.log(car2.constructor)
+        console.log(car1.run === car2.run)
+
+
+        //new:1.返回一个对象  2.对象上还有属性和方法
+        var car3 = new Car("red", "200");
+        var car4 = writeNew(Car, "green", "220")
+        console.log(car3, car4)
+    </script>
+</body>
+
+</html>

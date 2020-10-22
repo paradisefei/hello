@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const {
+            log
+        } = console;
+
+        const arr = [1, 2, 1, 2, 1, 2, 4, 3, 4, 5, 6, 2, 3, 4];
+        const set4 = new Set(arr);
+
+        //size:长度
+        log(set4.size); //6
+
+        //add添加  返回添加后的set类型
+        set4.add(11);
+        const re1 = set4.add(2);
+        log(set4)
+        log(re1)
+
+        //delete 删除
+        const re2 = set4.delete(2);
+        console.log(re2) //返回值是 布尔值 代表是否删除成功
+        console.log(set4)
+
+        //has()判断是否存在
+        console.log(set4.has(9)) //false
+
+        //clear清空
+        // log(set4.clear()) //undefined  clear没有返回值
+        // log(set4) //被清空了
+
+
+        //entries  //set类型的key和value都是相等的
+        const re3 = set4.entries();
+        log(re3)
+        // log(re3.next())
+        // log(re3.next())
+        // log(re3.next())
+        // log(re3.next())
+        // log(re3.next())
+        // log(re3.next())
+
+        for (let keys1 of re3) {
+            console.log(keys1)
+        }
+
+
+        //keys
+        const re4 = set4.keys();
+        log(re4)
+
+        //values
+        const re5 = set4.values();
+        log(re5)
+
+        //set除了自身的entries keys values可以被forof遍历，自身也可以被遍历 得到一个value值
+        for (let values1 of set4) {
+            console.log(values1)
+        }
+
+
+        //set也可以被forEach遍历
+        set4.forEach((item, index) => {
+            console.log(item, index);
+        })
+
+
+
+        //遍历100次 每次随机生成0-9的数字，看能不能把所有的0-9数字全部输出
+        const set5 = new Set();
+        for (let i = 0; i < 100; i++) {
+            set5.add(Math.floor(Math.random() * 10))
+        }
+        if (set5.size === 10) {
+            console.log("ok~")
+        } else {
+            console.log("no~")
+        }
+        console.log(set5)
+    </script>
+</body>
+
+</html>

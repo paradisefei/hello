@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            margin:0;
+            padding:0;
+            height:100%;
+        }
+        #content{
+            width:100%;
+            height:100%;
+            background-color:pink;
+        }
+
+        #right{
+            width:100%;
+            height:100%;
+            background-color:blue;
+
+            float:left;
+        }
+        
+        #left{
+            width:300px;
+            height: 100%;
+            background-color:plum;
+
+            float:left;
+            margin-left:-100%;
+        }
+
+        #c{
+            /*
+            将某一边的外边距和width设置auto，外边距auto的那边为0，width被设置为填满父元素的宽度所需要的值。
+            */
+            height:100%;
+            background-color: royalblue;
+
+            margin-left:300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div id="right">
+            <div id="c">
+                崔旺真英俊！崔旺真英俊！闫海静真英俊！闫海静真英俊！闫海静真英俊！闫海静真英俊！闫海静真英俊！闫海静真英俊！闫海静真英俊！
+            </div>
+        </div>
+        <div id="left">
+
+        </div>
+    </div>
+</body>
+</html>

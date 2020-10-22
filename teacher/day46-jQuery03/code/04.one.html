@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <button id="btn">事件</button>
+    <button id="btn2">事件</button>
+    <script>
+        $(function () {
+            $("#btn").one("click", fn1)
+
+            function fn1() {
+                console.log("one")
+            }
+            // $("#btn").on("click", "", "", fn1, 1)
+
+            $("#btn2").click(function () {
+                $("#btn").off("click", fn1)
+            })
+        })
+    </script>
+</body>
+
+</html>

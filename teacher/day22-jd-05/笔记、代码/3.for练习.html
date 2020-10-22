@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1. 想100-999 打印三位数上有3或有7的数字。
+
+        /* for (var i = 100; i <= 999; i++) {
+            // console.log(i);
+            //获得个位数
+            var g = parseInt(i / 1 % 10);
+            //获得十位数
+            var s = parseInt(i / 10 % 10);
+            //获得百位数
+            var b = parseInt(i / 100 % 10);
+
+            if (b === 3 || b === 7 || s===3 || s === 7 || g === 3 || g ===7) {
+                console.log(i);
+            }
+        } */
+
+        //2. 100~999之间数，百位数的三次方+十位数的三次方+个位数的三次方正好等于这个数。
+        //abc = a^3 + b^3 + c^3
+        //前提我还得获得abc每一位都是几
+
+        /* for (var i = 100; i <= 999; i++) {
+            // console.log(i);
+            //获得个位数
+            var g = parseInt(i / 1 % 10);
+            //获得十位数
+            var s = parseInt(i / 10 % 10);
+            //获得百位数
+            var b = parseInt(i / 100 % 10);
+
+            if (b * b * b + s * s * s + g * g * g === i) {
+                console.log(i);
+            }
+        } */
+    </script>
+</body>
+
+</html>

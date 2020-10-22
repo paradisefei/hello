@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+</head>
+
+<body>
+    <script>
+        var message = '{"name":"lily","sex":"nv","age":"18"}';
+        console.log(typeof message) //string
+        // console.log(message.name)
+
+        //eval把json字符串转换为json对象
+        console.log(eval("(" + message + ")"));
+
+        //JSON.parse() 把json字符串转换成json对象
+        console.log(JSON.parse(message));
+
+        var message1 = {
+            "name": "lily",
+            "sex": "nv",
+            "age": "18"
+        };
+
+        //JSON.stringify() 把JSON对象转换为JSON字符串
+        console.log(JSON.stringify(message1))
+    </script>
+</body>
+
+</html>

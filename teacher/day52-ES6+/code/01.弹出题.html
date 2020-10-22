@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* var a = 1;
+
+        function test() {
+            alert(a); //undefined
+            a = 4;
+            alert(a); //4
+            var a = 2;
+            alert(a); //2
+        }
+        test();
+        alert(a); //1 */
+
+
+        /* var foo = "11" + 2 - "1";
+        console.log(foo); //111
+        console.log(typeof foo); //111 */
+
+        /* var foo = "11" + 2 + "1";
+        console.log(foo); //1121
+        console.log(typeof foo); //string */
+
+
+        /* var a = 10;
+        a.pro = 10;
+        console.log(a.pro + a); //NaN
+
+
+        var s = "hello";
+        s.pro = "world";
+        console.log(s.pro + s); //'undefinedhello' */
+
+        /* function show() {
+            console.log(this);
+        }
+        var arr = [1, 2, 3];
+        arr.a = show;
+        setTimeout(arr.a, 100) //window
+        arr.a(); //arr
+        var fn1 = arr.a;
+        document.onclick = function () {
+            arr.a(); //arr
+            fn1(); //window
+        } */
+
+
+        var length = 2;
+
+        function fn() {
+            console.log(this.length);
+        }
+        var obj = {
+            length: 5,
+            method: function (fn) {
+                fn(); //2
+                arguments[0](); //4
+            } 
+        };
+
+        obj.method(fn, 1, 2);
+
+
+
+
+        /* var obj = {
+            fn: function () {
+
+            }
+        }
+        obj.fn()
+
+        var obj = {
+            0: function () {
+                this
+            }
+        }
+        // obj.0()
+        obj[0]() */
+    </script>
+</body>
+
+</html>

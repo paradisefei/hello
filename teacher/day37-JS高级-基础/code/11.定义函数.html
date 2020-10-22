@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定义函数</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            定义函数：
+                1. new Function
+                2. function声明
+                3. 函数表达式
+
+        
+         */
+        var fn1 = new Function("a", "alert(a)");
+        fn1(1);
+
+        function fn2() {
+            alert(2);
+        }
+
+        var fn3 = function () {
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            ES5定义类 和 继承
+         */
+
+        /* function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.eat = function () {
+            console.log("吃饭");
+        }
+
+        function Student(project, name, age) {
+            this.project = project;
+            //构造函数继承
+            Person.call(this, name, age)
+        }
+        //改变子类的原型对象为 父类的实例化对象， 可以实现原型链继承
+        Student.prototype = new Person();
+        //修正了原型链  因为 构造函数和 原型对象是互相关联的（prototype和contructor）
+        Student.prototype.constructor = Student;
+        Student.prototype.study = function () {
+            alert("我爱学习 学习不爱我");
+        } */
+
+        /* 
+            ES6语法糖 
+            使用class 定义类
+        
+         */
+
+        class Person {
+            //constructor:当new的时候，会自动调用这个方法，必须存在（书写公有属性）
+            constructor(name, age) {
+                //其实写在构造函数中的属性 都放在了constructor中
+                this.name = name;
+                this.age = age;
+            }
+            //直接书写在class中的方法 其实就是原型对象上的公有方法
+            eat() {
+                console.log("吃饭");
+            }
+
+            //如果直接在class中书写属性，则还是实例化对象所有的（这样写无法传参）
+            sex = "男";
+
+            // static定义的属性和方法 其实都是静态属性和方法  是构造函数对象上的
+            static hi = "hello";
+        }
+
+        //也可以通过原型对象扩展原型方法
+        Person.prototype.drink = function () {
+            console.log("大乌苏");
+        }
+
+        //定义一个Student类 继承 Person类
+        class Student extends Person {//extends实现原型对象的继承
+            constructor(project, name, age) {
+                // ES6中继承的子类中，如果使用构造函数constructor()那么就必须使用super()方法初始化，这样下面才可以调用this关键字。super()只能用在子类的构造函数之中，用在其他地方就会报错,这是因为子类自己的this对象，必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工，加上子类自己的实例属性和方法。
+                super(name, age);//super实现构造函数的继承
+                this.project = project;
+            }
+            study() {
+                console.log("我最喜欢ES6了")
+            }
+        }
+
+        const s1 = new Student("nodejs", "xiaozhang", 19);
+        console.log(s1)
+        s1.eat()
+    </script>
+</body>
+
+</html>

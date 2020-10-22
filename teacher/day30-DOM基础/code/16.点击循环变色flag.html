@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15.点击循环变色.html</title>
+    <style>
+        #box{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            需求：点击循环变色，默认box是红色，然后点击后变成黄色，再点击恢复红色
+
+
+
+            //方法2 flag开关 - true和false（如果是两个条件 则非常适用）
+            1.获取元素
+            2.定义一个开关
+            3.给box绑定点击事件
+            4.判断开关的值 决定操作
+            5.开关取反
+        
+        */
+       
+        //方法1 计数器
+        var oBox = document.getElementById("box");
+        var flag = true;//定义一个开关 true代表红色
+        oBox.onclick = function(){
+            if(flag){
+                this.style.backgroundColor = "yellow";
+            }
+            if(!flag){
+                this.style.backgroundColor = "red";
+            }
+
+            //无论上边执行了哪一个if操作，都要将flag取反
+            flag = !flag;
+        }
+
+       
+    </script>
+</body>
+</html>

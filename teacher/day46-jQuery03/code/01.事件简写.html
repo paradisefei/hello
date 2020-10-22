@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <input type="text" id="ipt">
+    <script>
+        $(function () {
+            //源码没有提供input事件简写，可以在源码中添加
+            $("input").input(function () {
+                console.log("表单改变")
+            })
+        })
+    </script>
+</body>
+
+</html>

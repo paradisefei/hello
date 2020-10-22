@@ -1,0 +1,14 @@
+@var: 40;
+
+.outer {
+    width: (100% - 30px); //70%
+    width: calc(~'100% - 30px'); //如果使用calc计算 则需要转义字符串
+    height: (1000px / 2);
+
+    .con {
+        width: 1000 + 50px;
+        width: 1000 * (50px - 30);
+        border: 1px + 5 solid #000 + 40;
+        height: @var + 60px;
+    }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打开和关闭窗口</title>
+</head>
+
+<body>
+    <button id="btn1">点击打开新窗口</button>
+    <button id="btn2">点击关闭新窗口</button>
+    <button id="btn3">关闭自身</button>
+    <script>
+        var oBtn1 = document.getElementById("btn1");
+        var oBtn2 = document.getElementById("btn2")
+        var oBtn3 = document.getElementById("btn3")
+
+        oBtn1.onclick = function () {
+            /* 
+                window.open() 可以打开指定url的窗口
+                    - url ：要打开的地址
+                    - _self _blank 
+                    - 窗口的位置和大小
+                返回值就是新打开的窗口的名称（代表的新窗口的window）
+            */
+            // var result = window.open("https://www.baidu.com", "_blank", "width=500,height=300,left=100,top=100")
+            var result = window.open("https://www.baidu.com", "_blank")
+            console.log(result);
+
+            oBtn2.onclick = function () {
+                //每一个窗口的名称 都有一个close方法  可以关闭当前的窗口
+                result.close();
+            }
+        }
+
+        oBtn3.onclick = function () {
+            window.close(); //关闭自身 （新浏览器有兼容问题）
+        }
+    </script>
+</body>
+
+</html>

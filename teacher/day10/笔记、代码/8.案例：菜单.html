@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #menu{
+            margin: 0;
+            padding:0;
+            list-style-type:none;
+
+            border:1px solid green;
+            width:210px;
+            position:relative;
+
+            background-color:#fafafa;
+        }
+
+        #menu li{
+            height:30px;
+            line-height: 30px;
+            padding-left:20px;
+            box-sizing: border-box;
+            font-size:14px;
+        }
+        #menu a{
+            text-decoration: none;
+        }
+        #menu div.menu-content{
+            display:none;
+            position:absolute;
+            /* display: block; */
+            width:500px;
+
+            top:0px;
+            bottom:0px;
+            
+            border:1px solid pink;
+
+            left:210px;
+            top:0;
+        }
+
+        #menu li:hover div.menu-content{
+            display:block;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu">
+        <li>
+            <a href="#">家用电器</a>
+            <div class="menu-content">崔旺真妖娆!</div>
+        </li>
+        <li>
+            <a href="#">手机 / 运营商 / 数码</a>
+            <div class="menu-content">闫海静真帅气</div>
+        </li>
+        <li>
+            <a href="#">电脑 / 办公</a>
+            <div class="menu-content">闫海静真英俊！</div>
+        </li>
+        <li>
+            <a href="#">安装 / 维修 / 清洗 / 二手</a>
+            <div class="menu-content">呵呵呵呵</div>
+        </li>
+    </ul>
+</body>
+
+</html>

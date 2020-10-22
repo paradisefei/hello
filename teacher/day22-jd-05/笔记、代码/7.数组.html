@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var colors = new Array('red','blue','green');
+        // console.log(colors);
+        // console.log(typeof colors);
+
+
+        /* var colors = new Array(20);
+        console.log(colors);//[empty*20]//这里面有20个元素但是每个元素都是空的。
+        var colors1 = new Array('red');
+        console.log(colors1);//colors这个里面只有一个元素，这个元素是red */
+
+        /* var colors = Array('red');
+
+        console.log(colors); */
+
+        /* var colors = ['red','green','blue'];
+        console.log(colors);
+
+        console.log(colors.length);//数组.属性 */
+
+        /* var c = [];
+
+        console.log(c); */
+
+
+        // var colors = ['red','green','blue'];
+        //colors的最后一个元素  colors.length - 1
+
+
+        // var colors1 = ['red', 'green', 'blue', 'orange','pink','skyblue'];
+        //colors1的最后一个元素  colors.length - 1
+        // console.log(colors);
+
+        // console.log(colors1[0]);
+        // console.log(colors1[20]);
+
+        /* console.log(colors1['0']);
+        console.log(colors1[1 + 1]);
+        console.log(colors1[25 - 25 + 25 - 25]);
+
+        console.log(colors1[colors1.length - 1]); */
+
+
+        var colors1 = ['red', 'green', 'blue','pink'];
+        /**
+        length = 0;   length < colors1.length  0<4
+            colors1[0]----->red
+        length = 1;   length < colors1.length   1 < 4
+            colors1[1]----->green
+        length = 2    length < colors1.length  2< 4
+            colors1[2]------>blue
+        length = 3    length < colors1.length  3< 4 true
+            colors1[3]------->pink
+        
+        length = 4   length < colors1.length  4<4  false   
+        */
+
+        //正序遍历  0 1 2 3 
+/*         for (var length = 0 ; length < colors1.length ;length++) {
+            console.log(colors1[length]);
+        } */
+        //倒叙遍历 3 2 1 0 
+        /* for (var i = colors1.length-1 ; i >=0 ; i--) {
+            console.log(colors1[i]);
+        } */
+
+        /* var colors = ['red', 'green', 'blue'];
+        colors[5] = 'pink';
+        console.log(colors); */
+
+        //不定长  很多语言中数组的长度都是定长的(c)
+        /* var colors = ['red', 'green', 'blue','yellow','white'];
+        colors[colors.length] = 'pink';//colors[5] = pink
+        colors[colors.length] = 'black';//colors[6] = black
+        console.log(colors); */
+
+        //刚才是往数组的最后添加。这回我想让他在最刚开始添加。
+        // var colors = ['red', 'green', 'blue'];
+        //1. 找位置。
+        /*
+        i = 3   3>=0  true
+            colors[i]=colors[i-1]   colors[3] = colors[2]
+        i = 2   2>=0  true
+            colors[2] = colors[1]
+        i = 1   1>=0  true
+            colors[1] colors[0]
+        i =0    0>=0 true
+            colors[0] = colors[-1]
+
+        i = -1  -1 >=0  false
+
+
+        ------------------------
+        colors[3] = colors[2]
+        ['red', 'green', 'blue','blue'];
+
+        colors[2] = colors[1]
+        ['red', 'green', 'green','blue'];
+
+        colors[1] colors[0]
+        ['red', 'red', 'green','blue'];
+
+
+
+        colors[0] = colors[-1]
+        [undefined, 'red', 'green','blue'];
+        */
+        /* for (var i = colors.length; i >=0 ;i--) {
+            colors[i] = colors[i-1];
+        }
+
+        console.log(colors);
+        colors[0] = 'pink';
+
+        console.log(colors);
+
+        colors[0] = 'dabianse';
+        console.log(colors); */
+
+        /* var colors = ['red', 'green', 'blue'];
+
+        colors.unshift('shise');
+        console.log(colors); */
+
+
+
+
+        /*
+        var colors = ['red', 'green', 'blue','yellow'];
+        i= 4  4 >=0  true
+            i===2 false
+            colors[4] = colors[3]
+        i=3  3>=0  true
+            i===2 false
+            colors[3] = colors[2]
+        i=2 2>=0 true
+            i===2 true  break;
+
+
+        ['red', 'green', 'blue','yellow']
+
+
+        colors[4] = colors[3]
+        ['red', 'green', 'blue','yellow','yellow']
+
+
+        colors[3] = colors[2]
+        ['red', 'green', 'blue','blue','yellow']
+
+        */
+
+        /* var colors = ['red', 'green', 'blue','yellow'];
+        for (var i = colors.length; i>=0 ; i-- ){
+            if (i === 2) {
+                break;
+            }
+            colors[i] = colors[i-1];
+        }
+
+        console.log(colors);
+
+        colors[2] = 'hotpink';
+
+        console.log(colors); */
+
+        var colors = ['red', 'green', 'blue'];
+        /* colors.length = 2; */
+        colors.length--;
+
+        console.log(colors);
+    </script>
+</body>
+
+</html>

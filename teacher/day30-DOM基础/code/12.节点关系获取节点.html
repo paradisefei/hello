@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="wrap">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var oWrap = document.getElementById("wrap");
+        var oWrapLis = oWrap.children;
+
+        //children 获取所有的子元素节点
+        //兼容性：在ie678中 可以获取到注释节点（解决方法：在ie678中不写注释，或者不使用children）
+        console.log(oWrap.children) //获取到是一个集合
+        console.log(oWrapLis) //获取到是一个集合
+
+
+        //parentNode（全兼容）
+        console.log(oWrapLis[0].parentNode) //直接获取到元素节点
+
+
+        //nextSibling：ie678获取下一个兄弟节点，在其他浏览器获取的是下一个节点（可能是文本节点）
+        //nextElementSibling:IE678获取的是undefined  在其他浏览器获取的是元素节点
+        console.log(oWrapLis[1].nextSibling)
+        console.log(oWrapLis[1].nextElementSibling)
+
+        //兼容性封装 封装一个获取下一个兄弟节点的函数
+        function getNextSilbling(ele) {
+            //nextElementSibling要书写前边，因为如果在低版本浏览器中获取不到 则返回false 从而可以执行或后边的语句
+            return ele.nextElementSibling || ele.nextSibling;
+        }
+        var result = getNextSilbling(oWrapLis[1]);
+        console.log(result);
+
+
+        //兼容性封装 封装一个获取上一个兄弟节点的函数
+        function getPreviousSilbling(ele) {
+            return ele.previousElementSibling || ele.previousSibling;
+        }
+        var result = getPreviousSilbling(oWrapLis[1]);
+        console.log(result);
+
+
+        //兼容性封装 封装一个获取第一个子元素的函数
+        function getFirstChild(ele) {
+            return ele.firstElementChild || ele.firstChild;
+        }
+        var result = getFirstChild(oWrap);
+        console.log(result);
+
+        //兼容性封装 封装一个获取最后一个子元素的函数
+        function getLastChild(ele) {
+            return ele.lastElementChild || ele.lastChild;
+            
+            // return ele.lastElementChild ? ele.lastElementChild : ele.lastChild;
+
+            // if(ele.lastElementChild){
+            //     return ele.lastElementChild;
+            // }else{
+            //     return ele.lastChild;
+            // }
+        }
+        var result = getLastChild(oWrap);
+        console.log(result);
+    </script>
+</body>
+
+</html>

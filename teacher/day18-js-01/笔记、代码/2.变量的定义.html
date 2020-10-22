@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* var a;//定义了一个容器。
+        a = 10;
+        a = 20;
+
+        console.log(a); */
+
+        /* var a = 10;
+        a = 20;
+        console.log(a); */
+
+        /* c = 200;
+        console.log(c);//200    undefined   找不到 */
+
+        //完全等价于 var d=1; var e=2;
+        /* var d = 1,e = 2;
+
+        console.log(d);
+        console.log(e); */
+
+        /*
+        1. 声明一个变量e（不带var的）容器，将30放进去。
+        2. 声明了一个变量d（带var的）然后等于e；相当于 var d = e;
+        3. 拿到e中的值30，将其放入到d中。
+        */
+       /*
+        var d = (e = 30);
+       */
+        /* var d = e = 30;
+        console.log(d);
+        console.log(e); */
+
+        /* var class = 1; */
+
+        /* var int = 1;
+        console.log(int); */
+
+        /* 人呐，不作死就不会死。
+
+        var 帅哥 = '崔旺';
+        console.log(帅哥);
+        */
+
+        /* var shuaige = '闫海静';
+        console.log(shuaige); */
+
+        /*衬衫的颜色*/
+        /* var chenshancolor = '红的';
+        console.log(chenshancolor); */
+
+        //背景颜色
+        //大驼峰
+        // var BackgroundColor;
+        //小驼峰
+        // var backgroundColor;
+        //下划线
+        /* var background_color; */
+
+        var a = 100;
+        var b = 200;
+
+        /*
+            最后的结果变为：
+            a = 200;
+            b = 100;
+        */
+
+        //方法一：声明一个第三方的变量
+
+        /* var a = 100;
+        var b = 200;
+        var c;
+
+        c = a;//将a里面的值放到c里面存起来
+
+        //这个时候a已经没用了。
+        a = b;//将b里面的值放到a里面 a = 200
+
+        //然后再讲c里面（存储的是原来在没有交换之前的a的值）的值赋值给b
+        b = c;
+
+        console.log(a);
+
+        console.log(b); */
+
+        //方法二：使用加减法。
+
+        var a = 100;
+        var b = 200;
+
+        a = a + b;//现在a里面存储的是a和b的和。但是b的值没有改变。
+
+        b = a - b;//这个时候能够得到以前的a的值，然后赋值给b。 100
+
+        a = a - b;//上一步已经得到了b的值是多少----100。 然后现在的a的值还是a+b的和呢。 然后我用和减去现在的b的值，得到的就应该是现在的a的值。
+
+
+        console.log(a);
+        console.log(b);
+
+
+    </script>
+</body>
+</html>

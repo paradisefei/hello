@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* function bar(){
+            console.log('is bar');
+        }
+
+        function foo(fn){
+            console.log('!!!!!');
+            console.log(fn);
+            fn();
+        }
+
+        foo(bar); */
+
+        /* function foo(){
+            function bar(){
+                console.log('foo ---------> bar');
+            }
+
+            return bar;//bar不加括号是获得的值，如果bar加括号 bar()  执行这个函数。
+        }
+
+        var res = foo();
+        res(); */
+
+
+        /*需求循环0~指定的数，然后使用各种规则过滤掉我指定的数（
+        
+            1. 和5取余为0的去掉。
+
+
+
+
+            2. 最后一位带3的去掉。
+        
+        ）*/
+
+
+        //通用的调用函数
+        //大嘴巴子
+
+        //你们没有男朋友或女朋友是有原因的。
+
+
+
+        function getNumber(num,fn){//5
+            //i=3 i <= 5  true
+            //i=4 i <=5 true
+            //i=5 i<=5 true
+            //i=6 i<=5  false
+            for (var i = 3; i <= num; i++) {
+                if (fn(i)) {//if(rules1(3))  if(true)//if(rules1(4))  if(true)//if(rules1(5))  if(false)
+                    console.log(i);// 3 4
+                }
+            }
+        }
+
+        getNumber(100,rules3);
+
+        //我现在写的是有可能以后遇到的规则。
+        function rules1(n){//3//4 //5
+            if (n % 5 === 0) {//3%5   3 ===0  false  //4%5 =4  4===0 false  //5%5 =0   0===0 true
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function rules2(n){
+            var pos = n / 1 % 10;
+
+            if (pos === 3) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        //十位数带5的都去掉。
+        function rules3(n){
+            // console.log(n /10 % 10);
+            if (parseInt(n /10 % 10) === 5) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+    </script>
+</body>
+</html>

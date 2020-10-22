@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超时调用</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            window.setTimeout(code,time)超时调用
+                - code 字符串类型的代码，
+                - time 延迟的事件 以毫秒为单位
+        
+        */
+        // eval可以把一个字符串类型的js代码给运行（但是如果只是字符串的代码，是不会自己运行的，需要借助eval）
+        // eval('var a = 1;a++;alert(a)');
+
+        //计时器code写法1
+        // setTimeout('alert(1)', 1000);
+
+
+        //计时器code写法2
+        //当计时器的code部分代码过多的时候，就不方便书写了，需要使用函数来包含代码
+        /* function fn1(a,b) {
+            alert(a+b);
+        }
+        setTimeout('fn1(1,2)', 1000) */
+
+
+        /* //计时器code写法3
+        //直接把code写成一个函数名称，等待时间到了以后，就会主动去调用这个函数
+        function fn1(a, b) {
+            alert(a + b);
+        }
+        setTimeout(fn1, 1000) */
+
+        //计时器code写法4
+        //setTimeout 的第三个参数开始，就是计时器调用code函数的参数
+        function fn1(a, b) {
+            alert(a + b);
+        }
+        setTimeout(fn1, 1000, 1, 2)
+
+
+        //计时器code写法5
+        //setTimeout 的第三个参数开始，就是计时器调用code函数的参数
+        function fn(a, b) {
+            return function () {
+                alert(a + b);
+            }
+        }
+        setTimeout(fn(1, 2), 1000);
+    </script>
+</body>
+
+</html>

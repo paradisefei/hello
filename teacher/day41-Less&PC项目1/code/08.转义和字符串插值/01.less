@@ -1,0 +1,12 @@
+@num: 30;
+@url: "http://baidu.com/img/";
+
+.outer {
+    // width: @num + 0px; //low
+    /* 
+        字符串插值：在字符串中嵌套变量  需要使用@{变量名}的格式
+        当属性值不是字符串的时候，需要把字符串转义 使用~
+    */
+    width:~"@{num}px";
+    background: url("@{url}01.png");
+}

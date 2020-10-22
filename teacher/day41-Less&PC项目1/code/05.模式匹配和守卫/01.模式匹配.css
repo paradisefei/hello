@@ -1,0 +1,16 @@
+/* 
+    模式匹配
+        一个混合可能有多种形式，可以根据调用混合时传递的参数 选择使用哪一个混合
+        混合的参数是@_是必选
+        其他的可选
+
+
+*/
+.outer {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  line-height: 20px;
+  box-sizing: border-box;
+  color: pink;
+}

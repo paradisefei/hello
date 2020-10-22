@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: #111;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            js对象和jq对象互换
+                js转jq
+                    - 直接使用$()把js对象包裹住就行了
+
+                jq转js
+                    - 直接获取下标
+                    - 使用get方法获取某一个值
+        */
+
+        //js转jq
+        var oBox1 = document.getElementById("box");
+        // oBox1.css("background-color", "pink");//报错
+        // $(oBox1).css("background-color", "pink")
+
+        //jq转js(jq是类数组，类数组中保存的是js对象)
+        $("#box")[0].style.backgroundColor = "red";
+        $("#box").get(0).style.backgroundColor = "red";
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06.间歇调用.html</title>
+</head>
+
+<body>
+    <button id="btn">取消</button>
+    <script>
+        /* 
+            setInterval() 间歇调用计时器
+
+            clearInterval() 取消间歇调用计时器
+        */
+        var timer = setInterval(function () {
+            console.log("hello world");
+        }, 1000)
+
+        var oBtn = document.getElementById("btn");
+        oBtn.onclick = function () {
+            clearInterval(timer);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标位置</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 10px solid #000;
+            margin: 50px;
+        }
+
+        #con {
+            width: 30px;
+            height: 30px;
+            background-color: yellow;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="con"></div>
+    </div>
+    <script>
+        var oBox = document.getElementById('box')
+        oBox.onclick = function (e) {
+            /* 
+                clientX ：获取鼠标到窗口的位置信息
+                offsetX：获取鼠标 到 事件发生的目标元素的左上角的距离（不一定是当前发生事件的对象）
+                pageX: 获取鼠标 到 文档 左上角的距离（低版本ie没有）
+                screenX：获取鼠标 到 电脑屏幕边缘的距离（低版本ie没有）
+             */
+            // console.log(e.clientY);
+            // console.log(e.offsetY);
+            // console.log(e.pageY);
+            console.log(e.screenY);
+        }
+    </script>
+</body>
+
+</html>

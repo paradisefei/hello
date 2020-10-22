@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(Date.now());
+        function getTime(){
+            var nowDate = new Date();
+            // console.log(nowDate);
+            //获得当前的日期和时间，格式为：`yyyy-mm-dd H:i:s`
+            var year = nowDate.getFullYear();//取得年份
+            // console.log(nowDate.getFullYear());//取得年份
+            // console.log(nowDate.getMonth() + 1);//获得月份，但是0表示1月，11表示12月。
+            var month = nowDate.getMonth() + 1;//获得月份，但是0表示1月，11表示12月。
+            var date = nowDate.getDate();//1~31日期
+            // console.log(nowDate.getDate());//1~31日期
+            // console.log(nowDate.getDay());//获得星期几 如果是0表示的是星期日  1~6表示从星期1~星期6
+            var day = nowDate.getDay();//获得星期几 如果是0表示的是星期日  1~6表示从星期1~星期6
+            // console.log(nowDate.getHours());//小时  返回的是0~23
+            var hour = nowDate.getHours();//小时  返回的是0~23
+            // console.log(nowDate.getMinutes());//分钟
+            var mintues = nowDate.getMinutes();//分钟
+            // console.log(nowDate.getSeconds());//获得秒数
+            var seconds = nowDate.getSeconds();//获得秒数
+
+            console.log(year + '年' + month + '月' + date + '日(星期'+ day +')' + hour + ':' + mintues + ':' + seconds);
+        }
+
+        getTime();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .outer {
+            width: 600px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 50px auto 0;
+            display: flex;
+        }
+
+        .left {
+            width: 200px;
+            background-color: blueviolet;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .center {
+            width: 200px;
+            text-align: center;
+        }
+
+        .right {
+            width: 200px;
+            background-color: hotpink;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <ul class="left">
+            <li>left Con1</li>
+            <li>left Con2</li>
+            <li>left Con3</li>
+            <li>left Con4</li>
+            <li>left Con5</li>
+        </ul>
+        <div class="center">
+            <button class="toRight">&gt;&gt;&gt;&gt;&gt;&gt;</button>
+            <br>
+            <button class="toLeft">&lt;&lt;&lt;&lt;&lt;&lt;</button>
+        </div>
+        <ul class="right">
+            <li>right con1</li>
+            <li>right con2</li>
+            <li>right con3</li>
+            <li>right con4</li>
+            <li>right con5</li>
+        </ul>
+    </div>
+    <script>
+        var oLeft = document.querySelector('.left');
+        var oRight = document.querySelector('.right');
+        var oToRight = document.querySelector('.toRight')
+        var oToLeft = document.querySelector('.toLeft')
+
+
+        oLeft.onclick = function (e) {
+            if (e.target.nodeName === "LI") {
+                e.target.className = "red";
+                //给当前选中的元素做标记
+                e.target.dataset.on = "true";
+            }
+        }
+
+
+        oRight.onclick = function (e) {
+            if (e.target.nodeName === "LI") {
+                e.target.className = "red";
+                //给当前选中的元素做标记
+                e.target.dataset.on = "true";
+            }
+        }
+
+        oToRight.onclick = function () {
+            //每次点击移动的时候，重新获取所有的左侧元素，并遍历 查看哪一个拥有标记
+            var oLeftLis = document.querySelectorAll('.left li');
+            oLeftLis.forEach(function (item, index) {
+                //如果某一个li拥有标记，则把它移过去（appendChild）
+                if (item.dataset.on) {
+                    //首先清除标记，清除颜色
+                    delete item.dataset.on;
+                    item.className = ""; 
+                    oRight.appendChild(item);
+                }
+            })
+        }
+
+
+
+        oToLeft.onclick = function () {
+            //每次点击移动的时候，重新获取所有的左侧元素，并遍历 查看哪一个拥有标记
+            var oRightLis = document.querySelectorAll('.right li');
+            oRightLis.forEach(function (item, index) {
+                //如果某一个li拥有标记，则把它移过去（appendChild）
+                if (item.dataset.on) {
+                    //首先清除标记，清除颜色
+                    delete item.dataset.on;
+                    item.className = "";
+                    oLeft.appendChild(item);
+                }
+            })
+        }
+
+
+        
+    </script>
+</body>
+
+</html>

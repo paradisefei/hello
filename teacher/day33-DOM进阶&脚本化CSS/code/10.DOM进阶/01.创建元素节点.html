@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建节点</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var oList = document.querySelector('.list');
+        var oBtn = document.getElementById('btn');
+        /* 
+            创建一个元素：
+                document.createElement('元素名称')
+                当创建的元素没有被插入的时候，暂时保存在内存中，等待被插入
+        
+        */
+        oBtn.onclick = function () {
+            //创建一个新的li元素
+            var newLi = document.createElement("li");
+            console.log(newLi)
+        }
+    </script>
+</body>
+
+</html>

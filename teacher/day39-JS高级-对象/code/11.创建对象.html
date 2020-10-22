@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            创建对象：
+                1.Object构造函数创建 / 字面量的方法创建
+                    特点：语句太多，每次创建一个车都要执行一遍代码
+
+                2.工厂模式
+                    封装函数
+                    特点：无法区分当前对象是谁的。生成的对象没有具体的类型，都是Object
+
+                3.构造函数模式
+                    使用构造函数+实例化
+                    特点：所有的对象共同的方法都是各自私有的，占用内存
+
+                4.原型模式
+                    使用原型添加属性和方法
+                    特点：无法给对象定制一些属性（无法传参）
+
+                5.构造函数+原型
+                    构造函数可以定制属性（传参）
+                    原型对象可以书写共同的方法
+        
+        */
+
+        // 1、Object构造函数创建 / 字面量的方法创建
+        /* var car1 = new Object();
+        var car1 = {};
+        car1.color = "red";
+        car1.speed = "300";
+        car1.name = "BMW-X3";
+        car1.run = function () {
+            console.log("最高时速" + this.speed);
+        } */
+
+        //2 工厂模式
+        /* function car(name, color, speed) {
+            var o = {};
+            o.name = name;
+            o.color = color;
+            o.speed = speed;
+            o.run = function () {
+                console.log("最高时速" + this.speed);
+            }
+            return o;
+        }
+
+        var car1 = car("BMX-X1", "red", 300);
+        var car2 = car("BMX-X3", "red", 330);
+
+        console.log(car1 instanceof car); //false
+        console.log(car1 instanceof Object); //false
+        console.log(car1.constructor); //Object */
+
+
+        //构造函数模式
+        /* function Car(name, color, speed) {
+            //如果当前的函数被new调用了，当前函数就是一个构造函数
+            //构造函数中的this指向其实例化对象
+            //构造函数不需要先创建一个对象，因为实例化的时候本身就创建了一个对象
+            this.name = name;
+            this.color = color;
+            this.speed = speed;
+            this.run = function () {
+                console.log("最高时速" + this.speed);
+            }
+        }
+
+        var car1 = new Car("BMX-X1", "red", 300);
+        var car2 = new Car("BMX-X3", "red", 330);
+        console.log(car1, car2);
+
+        console.log(car1.run === car2.run) //false */
+
+
+        //4.原型对象模式
+         /*function Car() {
+
+        }
+        Car.prototype.color = "red";
+        Car.prototype.name = "BMX-X1";
+        Car.prototype.speed = "200";
+        Car.prototype.run = function () {
+            console.log("最高时速" + this.speed);
+        }
+
+        var car1 = new Car();
+        var car2 = new Car();
+        console.log(car1.run === car2.run) */
+
+        //5构造函数+原型
+        function Car(name, color, speed) {
+            this.name = name;
+            this.color = color;
+            this.speed = speed;
+        }
+        Car.prototype.run = function () {
+            console.log("最高时速" + this.speed);
+        }
+
+        var car1 = new Car("BMX-X1", "red", 300);
+        var car2 = new Car("BMX-X3", "red", 330);
+
+        console.log(car1 instanceof Car); //true
+        console.log(car1.constructor); //Car
+        console.log(car1.run === car2.run); //true
+    </script>
+</body>
+
+</html>

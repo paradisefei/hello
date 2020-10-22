@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul {
+            width: 50px;
+            height: 250px;
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        ul li {
+            width: 50px;
+            height: 50px;
+            position: relative;
+
+        }
+
+        ul li span {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: cornflowerblue;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+            line-height: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        ul li p {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 120px;
+            height: 50px;
+            line-height: 50px;
+            text-align: left;
+            background-color: crimson;
+            color: #fff;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="sideBar">
+        <li>
+            <span>反馈</span>
+            <p>我的反馈</p>
+        </li>
+        <li>
+            <span>反馈</span>
+            <p>我的反馈</p>
+        </li>
+        <li>
+            <span>反馈</span>
+            <p>我的反馈</p>
+        </li>
+    </ul>
+    <script>
+        var oSideBarLis = document.querySelectorAll('.sideBar li');
+        var oSideBarLisPs = document.querySelectorAll('.sideBar li p');
+
+        oSideBarLis.forEach(function (item, index) {
+            var i = 0; //默认侧边栏的值
+            var sideBarTimer = null; //声明一个计时器
+            item.onmouseenter = function () {
+                clearInterval(sideBarTimer)
+                sideBarTimer = setInterval(function () {
+                    i--;
+                    if (i <= -120) {
+                        clearInterval(sideBarTimer)
+                    }
+                    oSideBarLisPs[index].style.left = i + "px";
+                }, 1)
+            }
+
+            item.onmouseleave = function () {
+                clearInterval(sideBarTimer)
+                sideBarTimer = setInterval(function () {
+                    i++;
+                    if (i > 0) {
+                        clearInterval(sideBarTimer)
+                    }
+                    oSideBarLisPs[index].style.left = i + "px";
+                }, 1)
+            }
+        })
+    </script>
+</body>
+
+</html>

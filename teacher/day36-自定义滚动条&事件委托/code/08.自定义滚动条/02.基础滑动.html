@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            /* 禁止系统滚动条 */
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .outer {
+            position: relative;
+            height: 100%;
+        }
+
+        .con {
+            position: absolute;
+        }
+
+        .bar {
+            width: 40px;
+            height: 100%;
+            background-color: pink;
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+
+        .bar .box {
+            width: 100%;
+            height: 60px;
+            background-color: yellowgreen;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="con"></div>
+        <div class="bar">
+            <div class="box"></div>
+        </div>
+    </div>
+    <script>
+        //生成内容
+        var oCon = document.querySelector('.con');
+        var str = ""
+        for (var i = 0; i < 300; i++) {
+            str += i + "<br>";
+        }
+        oCon.innerHTML = str;
+
+        //自定义滚动条
+        var oBar = document.querySelector('.bar');
+        var oBox = document.querySelector('.box');
+
+        oBox.onmousedown = function (e) {
+            e.preventDefault();
+            //获取鼠标按下的时候 到 box上边缘的距离
+            var mouseToBox = e.offsetY;
+
+            //鼠标移动事件
+            document.onmousemove = function (e) {
+                e.preventDefault();
+                //移动的时候得到滑块移动的位置
+                var resultPoint = e.clientY - mouseToBox;
+                //判断临界值
+                if (resultPoint >= oBar.clientHeight - oBox.offsetHeight) {
+                    resultPoint = oBar.clientHeight - oBox.offsetHeight;
+                } else if (resultPoint < 0) {
+                    resultPoint = 0;
+                }
+
+                //赋值
+                oBox.style.top = resultPoint + "px";
+
+                /* 
+                    resul tPoint就是滑块移动的距离：
+                        假设con向上移动的距离是x；
+                        x/con可以移动的总距离 = resultPoint / 滑块可以移动的总距离
+                        x = resultPoint / 滑块可以移动的总距离 *con可以移动的总距离
+                        
+                 */
+                //计算比例scale
+                var oBoxMax = oBar.clientHeight - oBox.offsetHeight; //滑块移动的总距离
+                var oConMax = oCon.offsetHeight - document.documentElement.clientHeight; //文档可以移动的总距离
+                var scale = resultPoint / oBoxMax;
+                var oConMoveResult = scale * oConMax;
+                //赋值
+                oCon.style.top = -oConMoveResult + "px";
+
+            }
+
+            document.onmouseup = function () {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

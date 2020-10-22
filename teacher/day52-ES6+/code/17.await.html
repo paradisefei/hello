@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            await：
+                await只会等待promise对象，其他的一概不等。
+                
+                如果等待的promise对象返回成功状态，则继续向下运行，最后async函数返回一个成功的promise对象
+                
+                如果等待的promise对象返回的是失败状态，则停止运行，async函数返回这个失败的promise对象
+        */
+        async function fn() {
+            console.log(1);
+
+            const aw1 = await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(2);
+                    resolve("2");
+                    // reject("2");
+                }, 1000)
+            })
+            //当上一个promise成功，则await的返回值就是 resolve的参数
+            console.log(aw1)
+
+            await new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(3);
+                    resolve("3");
+                    // reject("3");
+                }, 1000)
+            })
+        }
+
+        const re = fn();
+        console.log(re);
+    </script>
+</body>
+
+</html>

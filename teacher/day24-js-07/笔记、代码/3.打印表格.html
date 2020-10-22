@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function printTable(r, c, z) {
+
+            console.log(arguments);
+
+            /* var r = 5;
+            var c = 6; */
+            document.write('<table border="1" width="812">');
+            for (var row = 1; row <= r; row++) {
+                document.write('<tr>');
+                for (var col = 1; col <= c; col++) {
+                    document.write('<td>&nbsp;</td>');
+                }
+                document.write('</tr>');
+            }
+            document.write('</table>');
+        }
+        printTable(10, 6, 4, 5, 7, 9);
+
+        console.log(printTable.length);
+
+
+        /* console.log(arguments); */
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function test(){
+
+        }
+        var a = new test();
+
+        // console.log(str.length);//获得字符串长度 
+        //为什么能调用length属性。 不是说好 它是基本类型吗？
+
+        /* var str = new String('abc');
+
+        console.log(typeof str);
+
+        var str = 'abc';
+        console.log(typeof str); */
+
+       /*  var str = 'abc';//1. 声明字符串
+        console.log(str.length);//2. 当使用str.length的时候发现是对象属性方式调用 ，自动的将str 变为了new String('abc')生成了一个对象。  然后再执行 生成的对象.length   。当你执行完成获得到了这个字符串的长度之后，然后将刚才生成的那个对象又转换为了普通的字符串`abc`
+
+        console.log(typeof str);
+        console.log(str); */
+
+
+
+        var str = 'abc';//声明了一个字符串  abc
+
+        str.say = '崔旺真英俊!';//调用了一个属性  给属性里面加入内容  new String('abc').say = '崔旺真英俊!'   加入之后将这个对象释放掉了  str中存储的还是普通的字符abc。
+
+        console.log(str);//abc
+        console.log(str.say);//str.say  new String('abc').say  //没有say这个属性所以  查询到的值是undefined。
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fn1() {
+            console.log(1)
+        }
+
+        function fn2() {
+            console.log(2)
+        }
+
+        fn1.call(fn2); //1
+        /* 
+            把第一个call称作为call1
+            把第二个call 称作为 call2
+
+            fn1.call 只是拿到了call方法 call的this现在指向的是fn1
+
+            call2执行之后：
+                1.把call1的this指向了fn2
+                2.执行了call1 （因为call的源码中有一个 this(),call1的this指向fn2 所以fn2调用了）
+        
+         */
+        // call-- - this();
+        fn1.call.call(fn2); //2
+
+        /* 
+            fn1.call
+                说明fn1对象上有一个call方法
+                call方法的作用：
+                    - 执行fn1
+                        在call方法中怎么把fn1执行的？
+                        1. 要在call方法中获取到fn1
+                        2. 调用这个获取的fn1
+                        3. obj.f() f的this执行饭obj  fn1.call call的this指向fn1
+                        4.call内部的this 执行 this(),就相当于把fn1执行了
+                      
+                    - 将fn1的this指向fn2
+        
+         */
+
+
+
+
+        function fn1() {
+            alert(1)
+        }
+        /* 
+            给f扩展一个方法a，当a方法调用，那么f就调用了
+         */
+
+        fn1.call = function () {
+            this();
+        }
+        fn1.call();
+    </script>
+</body>
+
+</html>

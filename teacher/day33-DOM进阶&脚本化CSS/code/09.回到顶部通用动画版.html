@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .returnTop {
+            width: 200px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            font-size: 40px;
+            color: #fff;
+            background-color: red;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="con">
+
+    </div>
+
+    <div class="returnTop">回到顶部</div>
+    <script src="./my.js"></script>
+    <script>
+        //生成元素 撑开页面
+        var oCon = document.getElementById("con");
+        var str = "";
+        for (var i = 0; i < 200; i++) {
+            str += i + "<br>"
+        }
+        oCon.innerHTML = str;
+
+
+        var oReturnTop = document.querySelector('.returnTop');
+        //默认回到顶部按钮隐藏，当滚动条超过300的时候，显示  低于300的时候隐藏
+        window.onscroll = function () {
+            var winYScroll = my.getWinScroll().y;
+            if (winYScroll > 300) {
+                oReturnTop.style.display = "block";
+            } else {
+                oReturnTop.style.display = "none";
+            }
+        }
+
+        /* 
+        
+            通用动画版分析：
+                - 动画开始位置 
+                - 动画结束位置
+                - 动画的初始步数（一般都是0步）
+                - 动画结束步数 自己定义
+                - 每一步所走的距离 
+        
+        */
+        //当点击回到顶部的时候，实现直接回到顶部功能
+        oReturnTop.onclick = function () {
+            clearInterval(returnTopTimer);
+
+            //获取动画开始的位置：获取的滚动条当前的位置信息
+            var startPoint = my.getWinScroll().y;
+            //获取动画的结束位置：滚动条回到顶部 滚动条的位置是0
+            var endPoint = 0;
+            //设置初始步数 默认都是0 (每次计时器执行后累加，当达到最大步数，就说明走到终点)
+            var startStep = 0;
+            //设置总步数（步数越多，时间越慢）
+            var endStep = 30;
+            //求出每一步所走的距离
+            var everyStep = (endPoint - startPoint) / (endStep - startStep);
+
+            var returnTopTimer = setInterval(function () {
+                //计时器每走一次，就可以让步数加1
+                startStep++;
+                //判断临界值，动画结束
+                if (startStep >= endStep) {
+                    clearInterval(returnTopTimer);
+                }
+                //每次计时器执行后，把起始的位置 加上 每一步要走的距离
+                startPoint += everyStep;
+                //把计算好的 新的位置变量 赋值给 滚动条的位置信息
+                window.scrollTo(0, startPoint);
+            }, 20)
+        }
+    </script>
+</body>
+
+</html>

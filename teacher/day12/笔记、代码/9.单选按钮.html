@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #test {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        input[type="radio"][name="say"] {
+            display: none;
+        }
+
+        input[type="radio"][name="say"]:checked + label::before{
+            text-align:center;
+            content:'✔';
+            background-color:#DE8650;
+            color:#FFF;
+        }
+
+        label {
+            display: block;
+            width: 500px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+            /* border: 1px solid palevioletred; */
+            margin-top: 10px;
+        }
+
+        label::before {
+            content: '';
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #DE8650;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        #test input[type="radio"][id="say4"]:checked + label::after{
+            display:inline-block;
+            height:20px;
+            font-size:12px;
+            content:'年轻人，你的思想很危险呐！';
+            color:red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test">
+        <input type="radio" name="say" value="1" id="say1" />
+        <label for="say1">
+            闫英俊！
+        </label>
+        <input type="radio" name="say" value="2" id="say2" />
+        <label for="say2">
+            闫海静真英俊
+        </label>
+        <input type="radio" name="say" value="3" id="say3" />
+        <label for="say3">
+            闫海静真帅气！
+        </label>
+
+        <input type="radio" name="say" value="4" id="say4" />
+        <label for="say4">
+            上面说的都是屁话。
+        </label>
+    </div>
+
+    <!-- <div>
+        <img src="./img/kof-02.jpg" style="vertical-align: middle;"/>
+        x
+    </div> -->
+</body>
+
+</html>

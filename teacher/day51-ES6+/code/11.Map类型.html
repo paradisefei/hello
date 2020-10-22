@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            Map类型：解决了对象中 key必须被解析成字符串的问题
+            Map是一种类似于Object的数据结构，但是key可以是任意类型的值
+        
+         */
+        const obj1 = {};
+        const obj2 = {
+            a: 1
+        };
+
+        const map1 = new Map([
+            ["name", "lily"],
+            ["age", 18],
+            [obj1, "haha"],
+            [obj2, "hehe"],
+            [true, "heihei"],
+            [2, "gege"]
+        ])
+        console.log(map1);
+
+
+        //size:长度
+        console.log(map1.size);
+
+        //set设置
+        const arr = [1, 2, 3]
+        map1.set(arr, "shuzu")
+        console.log(map1)
+
+        //get 获取
+        const re1 = map1.get(obj1);
+        const re2 = map1.get(true);
+        console.log(re1);
+        console.log(re2);
+
+        //has 判断key是否存在
+        const re3 = map1.has([1, 2, 3]);
+        console.log(re3) //false
+
+        const re4 = map1.has(obj1);
+        console.log(re4) //true
+
+        //delete删除
+        map1.delete(obj2);
+        console.log(map1)
+
+        //clear清空
+        /* map1.clear();
+        console.log(map1) */
+
+        //entries
+        const re5 = map1.entries();
+        console.log(re5);
+        for (let values1 of re5) {
+            console.log(values1)
+        }
+
+
+        //keys
+        const re6 = map1.keys();
+        for (let values1 of re6) {
+            console.log(values1)
+        }
+
+        //values
+        const re7 = map1.values();
+        for (let values1 of re7) {
+            console.log(values1)
+        }
+
+
+        //forEach
+        map1.forEach((item, index) => {
+            console.log(item, index)
+        })
+
+        //map也可以自己使用forof
+        for (let values1 of map1) {
+            console.log(values1);
+        }
+    </script>
+</body>
+
+</html>

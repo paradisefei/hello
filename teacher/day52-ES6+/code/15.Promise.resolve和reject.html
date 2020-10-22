@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+          Promise.resolve():直接返回一个成功状态的promise对象
+          Promise.reject():直接返回一个失败状态的promise对象
+        
+         */
+
+        const reso1 = Promise.resolve();
+        console.log(reso1);
+        const reso2 = Promise.resolve("data数据");
+        console.log(reso2);
+
+
+        const reso3 = Promise.reject();
+        console.log(reso3);
+        const reso4 = Promise.reject("err");
+        console.log(reso4);
+    </script>
+</body>
+
+</html>

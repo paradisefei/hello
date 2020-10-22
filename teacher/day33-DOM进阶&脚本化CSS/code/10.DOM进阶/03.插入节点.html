@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插入节点</title>
+</head>
+
+<body>
+    <button id="btn">点我</button>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var oList = document.querySelector('.list');
+        var oListLis = document.querySelectorAll('.list li')
+        var oBtn = document.getElementById('btn');
+        /* 
+            插入节点：
+                方法1 ：向父元素内 最后边插入 appendChild
+                插入节点使用 【被插入位置的父元素.appendChild(被插入的元素)】   方法
+        
+                appendChild也可以插入已经存在的元素
+                当已经存在的元素被插入其他位置，原始位置已经没有这个元素了
+
+
+                方法2：
+                    insertBefore在父元素中的某一个子元素的前边插入
+                    【父元素.insertBefore(被插入的元素[新元素]，被插入元素的下一个兄弟[旧元素])】
+        */
+        oBtn.onclick = function () {
+            //创建一个新的li元素
+            var newLi = document.createElement("li");
+
+            //创建文本节点方法
+            newLi.innerHTML = "我是一个新的li";
+            console.log(newLi);
+
+            //插入方法1
+            //把新创建的li插入到ul中
+            // oList.appendChild(newLi);
+            //获取一个已经存在的元素，把他插到ul的末尾
+            // oList.appendChild(oBtn);
+
+            //插入方法2
+            // 把新创建的li插入到 第二个li之前
+            // oList.insertBefore(newLi, oListLis[1])
+
+            //封装一个插入到最前的方法
+            /* 
+                @params1 {eleobj}  被插入位置的父元素
+                @params2 {eleobj}  被插入的元素
+             */
+            function appendFirst(parent, child) {
+                //假如parent没有子元素  则直接使用appendChild
+                //如果parent有子元素，则使用insertBefore 插入到第一个元素之前
+                console.log(parent.children)
+                if (parent.children.length) {
+                    parent.insertBefore(child, parent.firstElementChild)
+                } else {
+                    parent.appendChild(child)
+                }
+            }
+            appendFirst(oList, newLi)
+        }
+    </script>
+</body>
+
+</html>

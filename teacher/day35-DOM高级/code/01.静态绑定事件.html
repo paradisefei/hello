@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div onclick="alert(1)">div1</div>
+    <div onclick="fn()">div2</div>
+    <script>
+        /* 
+            静态绑定：
+                在标签上进行对当前的元素绑定事件，属性值可以是js的语句，也可以是一个函数调用
+        
+         */
+        function fn() {
+            alert("你瞅啥")
+        }
+    </script>
+</body>
+
+</html>

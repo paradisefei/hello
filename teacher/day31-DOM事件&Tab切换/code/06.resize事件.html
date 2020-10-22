@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06.resize事件.html</title>
+    <style>
+        body{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /* 
+            onresize事件：当窗口的大小重置后触发事件
+            只能对window进行绑定
+        
+        */
+        function changeColor(){
+            //document.documentElement.clientWidth 获取窗口的宽度
+            // console.log(document.documentElement.clientWidth)
+
+            var winWidth = document.documentElement.clientWidth;
+            var oBody = document.body;
+            if(winWidth < 1200){
+                oBody.style.backgroundColor = "green";
+            }
+
+            if(winWidth < 1000){
+                oBody.style.backgroundColor = "yellow";
+            }
+
+            if(winWidth < 800){
+                oBody.style.backgroundColor = "pink";
+            }
+
+            if(winWidth < 600){
+                oBody.style.backgroundColor = "blue";
+            }
+        }
+        window.onload = window.onresize = changeColor;
+    
+        console.log(1);
+    </script>
+</body>
+</html>

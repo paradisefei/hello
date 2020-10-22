@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="ipt" value="请输入电话号码">
+    </div>
+    <script>
+        /* 
+            需求：模拟placeholder事件
+            1.获取input元素（默认有一个value值是“请输入电话号码”）
+            2.获取焦点的时候，判断value值是不是“请输入电话号码”，如果是 则清空
+            3.失去焦点的时候，判断value值是不是空字符串，如果是则恢复“请输入电话号码”
+
+            onfocus：获取焦点事件
+            onblur：失去焦点事件
+
+            DOM0级事件的绑定方法是：
+                ele.on事件名 = fn;
+                其中fn是一个函数，里边包含的是当事件发生的时候，所要执行的代码
+        */
+
+        //获取元素
+        var oIpt = document.getElementById("ipt");
+
+        //获取焦点事件
+        oIpt.onfocus = function(){
+            //判断当前input的内容是否是请输入电话号码
+            //通过input.value 可以设置或获取 表单的值
+
+            //事件函数中this一般指向 绑定事件的元素
+            if(this.value === '请输入电话号码'){
+                //清空input的值
+                this.value = '';
+            }
+            
+            (function(){
+                console.log(this);//window
+            })()
+        }
+
+        //失去焦点事件
+        oIpt.onblur = function(){
+            //判断input的值是否是空
+            if(this.value === ''){
+                //如果为空，则设置为请输入电话号码
+                this.value = "请输入电话号码";
+            }
+        }
+
+    </script>
+</body>
+</html>

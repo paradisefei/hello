@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='https://cdn.bootcdn.net/ajax/libs/jquery/1.11.3/jquery.js'></script>
+</head>
+
+<body>
+    <div class="outer">
+        <ul class="con1">
+            <li>1</li>
+            <li class="li2">2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>4</li>
+            <li>4</li>
+            <li>4</li>
+            <li></li>
+        </ul>
+        <ul class="con2">
+            <li>5</li>
+            <li>6</li>
+            <li>
+                <p class="p2">
+                    <span>1</span>
+                    <span>22</span>
+                </p>
+                <p>2</p>
+            </li>
+            <li>8</li>
+        </ul>
+        <ul>
+            <li>10</li>
+        </ul>
+        <div class="box">
+            <p>p1</p>
+            <h1>h1111</h1>
+            <span>span1</span>
+            <p>p2</p>
+            <span>span2</span>
+            <h4>h4444</h4>
+            <span>span3</span>
+        </div>
+        <div style="width: 100px;background-color: red;">
+            1111111111&nbsp;1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+        </div>
+    </div>
+    <script>
+        // 请说明过滤选择器中的:如何选择!
+        $(function () {
+            console.log($("ul li:first")) //first所有匹配元素中的第一个
+            console.log($("ul li:first-child")) //first-child 所有匹配元素中 是他父级中的第一个的
+
+            console.log($("ul li:not(ul .li2)")); //not中书写选择器，将匹配的元素 检出not中的匹配的元素  所剩下的集合
+            console.log($("ul li:not(ul li:first-child)")); //not中书写选择器，将匹配的元素 检出not中的匹配的元素  所剩下的集合
+            // 请说明类数组操作方法的如何使用?
+            // 有哪些类数组操作的方法？
+//             1.children()
+    // 返回前面获取的类数组中每一个元素所有的儿子元素组成的新包装集(不是后代元素)
+    // 参数是可以对获取到的这些儿子元素进行筛选
+// 2.parent()
+    // 返回前面获取的类数组中每一个元素的父亲元素组成的新包装集(不是祖辈元素)
+    // 参数是可以对获取到的这些父亲元素进行筛选
+// 3.siblings()
+//     返回前面获取的类数组中每一个元素的所有兄弟元素组成的新包装集
+//     参数是可以对获取到的这些兄弟元素进行筛选
+// 4.find()
+    // 前面会获取类数组,类数组中的每一个元素或许会有后代元素,find()方法就可以找到这些后代元素中满足条件的元素
+    // 参数只能从前面调用它的开始
+    // 会改变匹配元素
+// 5.prev()
+//     前面一个兄弟元素
+//     prevAll()
+//         前面所有兄弟元素
+// 6.next()
+//     后面一个兄弟元素
+//     nextAll()
+//         后面所有兄弟元素
+// 7.end()
+//     找到匹配对象的前一个对象
+            console.log($("ul li:nth-child(1)")); //获取匹配的元素中 是父级的第一个子元素的
+            console.log($("ul li:nth-child(2)")); //获取匹配的元素中 是父级的第二个子元素的
+            console.log($("ul li:nth-child(even)")); //获取匹配的元素中 是父级的第偶数个子元素的
+            console.log($("ul li:nth-child(odd)")); //获取匹配的元素中 是父级的第偶数个子元素的
+            console.log($("ul li:nth-child(3n+1)")); //获取匹配的元素中 是父级的第偶数个子元素的
+
+
+            console.log($(".box span:nth-child(2)"))
+            console.log($(".box span:nth-of-type(1)"))
+            console.log($(".box span:nth-of-type(odd)"))
+
+
+            console.log($(".outer li:odd")) //直接使用odd和even  索引从0开始
+            console.log($(".outer li:even")) //直接使用odd和even  索引从0开始
+
+            console.log($(".outer span:even")) //直接使用odd和even  索引从0开始
+            // 请说明过滤选择器中的:如何选择!
+            console.log($("ul li:eq(1)")); //eq就是下标 获取第一个，eq获取的下标也是一个jq对象
+            console.log($("ul li:eq(" + 0 + ")")); //eq就是下标 获取第一个，eq获取的下标也是一个jq对象
+            console.log($("ul li").eq(0)); //eq就是下标 获取第一个，eq获取的下标也是一个jq对象
+
+            console.log($("ul li:gt(4)")); //eq就是下标 获取第一个，eq获取的下标也是一个jq对象
+            console.log($("ul li:lt(4)")); //eq就是下标 获取第一个，eq获取的下标也是一个jq对象
+
+            console.log($("ul :nth-child(1)")) //p li
+            console.log($("ul li :nth-child(1)"))
+
+
+
+            console.log($(".box :header")) //box所有的后代元素 并且是标题元素的
+
+            console.log($("ul li:contains(1)")) //box所有的后代元素 并且是标题元素的
+
+            console.log($("ul li:empty")) //box所有的后代元素 并且是标题元素的
+
+            console.log($("ul:has(.li2)")) //匹配元素中（ul中） 后代元素 拥有某个选择器的ul
+
+            // 请说明过滤选择器中的:如何选择!
+            console.log($("ul li:parent")) //选中 非空的li
+
+            console.log($("ul li:only-child")) //li是他父级的唯一一个子元素
+
+        })
+    </script>
+</body>
+
+</html>

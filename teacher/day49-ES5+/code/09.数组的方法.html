@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 2, 3, 4, 6, 5, 5, 6, 7, 7];
+        //输出第一个6的下标
+        console.log(arr.indexOf(6));
+        //输出最后一次6的下标
+        console.log(arr.lastIndexOf(6));
+
+        // 输出所有元素的值和下标
+        arr.forEach(function (item, index, arr) {
+            console.log(item, index);
+        })
+
+        // 根据arr产生一个新数组,要求每个元素都比原来大10
+        var result = arr.map(function (item, index) {
+            return item + 10
+        });
+        console.log(result);
+
+        //根据arr产生一个新数组, 返回的每个元素要大于4
+        var result = arr.filter(function (item, index) {
+            return item > 4;
+        })
+        console.log(result)
+
+
+        //输出arr所有元素累加的结果
+        var result = arr.reduce(function (p, c) {
+            return p + c;
+        }, 0)
+        console.log(result)
+    </script>
+</body>
+
+</html>

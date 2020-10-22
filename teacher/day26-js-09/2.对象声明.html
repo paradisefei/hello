@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* var yanhaijing = {
+            name:'yanhaijing',
+            age:18,
+            sex:'nan',
+            say:function(){
+                console.log('哈哈!!!我在说话!!!');
+            }
+        }
+
+        console.log(yanhaijing); */
+
+        /* var cuiwang = {
+            name:'cuiwang',
+            "sex":'都行',
+            age:18,
+            undefined:'haha',
+            null:'world',
+            1:'hello',
+            'my category':'person'//因为my category中间有空格不符合变量命名规则所以要加上引号。
+        }; */
+
+        /* var cuiwang = new Object({
+            name: 'cuiwang',
+            "sex": '都行',
+            age: 18,
+            undefined: 'haha',
+            null: 'world',
+            1: 'hello',
+            'my category': 'person'//因为my category中间有空格不符合变量命名规则所以要加上引号。
+        }); */
+
+        /* console.log(cuiwang.name);
+        console.log(cuiwang.sex);
+        console.log(cuiwang.age);
+        console.log(cuiwang.undefined);
+        console.log(cuiwang.null);
+        console.log(cuiwang); */
+        // console.log(cuiwang.1);//不能这样用。 但是可以确定已经设置了上了1这个键。
+        // console.log(cuiwang.'my category');//不能这样用。
+
+        /* var dog1 = {
+            name:'小花',
+            color:'white',
+            age:5,
+            cate:'泰迪'
+        } */
+        /*
+
+        《国产凌凌漆》：凌凌漆：举个例子，这个型号F40，表面上是个大哥大，你看，这里有一层白色金属网膜，实际上它是一个刮胡刀，即使在我执行任务的时候，也可以神不知鬼不觉地刮胡子。至于这个，外观上看是一个刮胡刀，但它是一个吹风机。阿琴：那另外这个吹风机呢？凌凌漆：吹风机只不过是它表面的掩饰，实际上它还是一个刮胡刀！
+
+        */
+
+        /* var daGeDa = {
+            chang:10,
+            kuan:15,
+            zhong:'1KG',
+            tongHua:function(){
+                console.log('打电话');
+            },
+            tixu:function(){
+                console.log('剃须');
+            }
+        };
+
+        var tiXuDao = {
+            pinpai:'007',
+            xingHao:'F40',
+            tixu:function(){
+                console.log('剃须');
+            }
+        }
+
+        var chuiFengJi = {
+            pinPai:'007',
+            xingHao:'NB520 Plus',
+            chuiFeng:function(){
+                console.log('吹呀吹呀我骄傲的放纵!');
+            },
+            tixu:function(){
+                console.log('剃须');
+            }
+        }
+
+        chuiFengJi.tixu();
+        tiXuDao.tixu();
+        daGeDa.tixu();
+ */
+
+        //这是鸭子
+/*         var duck = {
+            duckSinging:function(){
+                console.log('嘎嘎嘎');
+            }
+        };
+        //还有个鸡
+        var chicken = {
+            duckSinging:function(){
+                console.log('嘎嘎嘎');
+            }
+        }
+
+        var choir = [duck,chicken];
+
+        for (var i = 0 ; i < choir.length ; i++) {
+            choir[i].duckSinging();
+        } */
+
+        var cuiwang = new Object({
+            name: 'cuiwang',
+            "sex": '都行',
+            age: 18,
+            undefined: 'haha',
+            null: 'world',
+            1: 'hello',
+            'my category': 'person',//因为my category中间有空格不符合变量命名规则所以要加上引号。
+            '1a':'haha'
+        });
+
+        /* console.log(cuiwang.name);
+        console.log(cuiwang.sex);
+        console.log(cuiwang.age);
+        console.log(cuiwang.undefined);
+        console.log(cuiwang['null']);
+        console.log(cuiwang);
+        console.log(cuiwang[1]);//不能这样用。 但是可以确定已经设置了上了1这个键。
+        console.log(cuiwang['my category']);//不能这样用。
+        console.log(cuiwang['1a']); */
+
+        /* var t1 = 'name';
+
+        console.log(cuiwang[t1]);//cuiwang['name']
+
+        console.log(cuiwang['s' + 'ex']);//cuiwang['sex'] */
+
+        /* console.log(cuiwang.dashuaige);
+
+        cuiwang.dashuaige = '对，你说的对!';//增加
+
+        console.log(cuiwang.dashuaige);
+
+        cuiwang.dashuaige = '呵呵';//修改
+        console.log(cuiwang.dashuaige); */
+
+        cuiwang['da shuai ge']= '呵呵';
+
+        console.log(cuiwang);
+
+        delete cuiwang.name;
+        console.log(cuiwang);
+        delete cuiwang.sex;
+
+        delete cuiwang['da shuai ge'];
+
+        console.log(cuiwang);
+    </script>
+</body>
+
+</html>

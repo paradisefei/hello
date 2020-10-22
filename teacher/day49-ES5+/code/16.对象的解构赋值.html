@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+const obj = {
+    name: "laoli",
+    age: 19,
+    sex: "nan",
+    fn1: function () {
+
+    }
+}
+
+        {
+            //解构对象，对象的key和value（变量名） 相等的时候 可以简写
+            //对象的解构主要也是掌握 key的一一对应关系
+            const {
+                name,
+                age,
+                sex,
+            } = obj;
+
+            console.log(name, sex, age);
+        }
+
+
+{
+    //对象解构也可以给默认值
+    const {
+        name = "xiaoli",
+            age,
+            score = 90
+    } = obj;
+    console.log(name, age, score) //laoli 19 90
+}
+
+        {
+            //可以嵌套解构
+            const obj = {
+                name: "laoli",
+                score: [100, 90, 80]
+            }
+            const {
+                name,
+                score: [ch, ma, en]
+            } = obj;
+            console.log(name, ch, ma, en) //laoli 100 90 80
+        }
+
+
+        {
+            //解构赋值的应用1
+            const {
+                log,
+                dir
+            } = console;
+
+            log(1);
+            dir(1);
+
+            const {
+                create
+            } = Object;
+            log(create(null))
+
+        }
+
+
+        {
+            // 解构赋值的应用2
+            const fn = function ([a, b, c, d]) {
+                console.log(a, b, c, d)
+            }
+            fn([1, 2, 3, 4])
+        }
+
+{
+    //函数的返回值接受
+    const fn = function () {
+        return {
+            left: 10,
+            right: 20
+        }
+    }
+
+    const {
+        left,
+        right
+    } = fn();
+}
+    </script>
+</body>
+
+</html>

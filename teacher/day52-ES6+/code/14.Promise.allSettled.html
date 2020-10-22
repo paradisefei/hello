@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            需求： 同时请求三个数据，当全部请求完成以后，接受所有请求的状态
+            Promise.allSettled():
+                只要里边的promise对象没有执行完成，则allSettled返回pending状态的promise对象
+                只要里边的promise对象全部完成了，则allSettled返回fulfilled状态的promise对象（无论是否所有的promise都失败了）
+            
+            当所有的请求完成，allSettled的状态值就是成功，allSettled的value就是一个数组，包含了所有的方法内返回promise对象
+
+
+            
+        
+         */
+
+
+        const pro1 = new Promise((resolve, reject) => {
+            console.log("请求a~")
+            setTimeout(() => {
+                console.log("a请求成功");
+                // resolve("a数据");
+                reject("GG");
+            }, 1000)
+        })
+        const pro2 = new Promise((resolve, reject) => {
+            console.log("请求b~")
+            setTimeout(() => {
+                console.log("b请求成功")
+                // resolve("b数据");
+                reject("GG");
+
+            }, 2000)
+        })
+        const pro3 = new Promise((resolve, reject) => {
+            console.log("请求c~")
+            setTimeout(() => {
+                console.log("c请求成功")
+                // resolve("c数据");
+                reject("GG");
+            }, 1500)
+        })
+
+        const resultePor = Promise.allSettled([pro1, pro2, pro3]);
+        console.log(resultePor);
+
+
+        /* resultePor.then((success) => {
+            console.log(success);
+        }).catch((err) => {
+            console.log(err); //GG
+        }) */
+    </script>
+</body>
+
+</html>

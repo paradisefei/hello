@@ -1,0 +1,74 @@
+### 9.12晨测
+- 说一下事件轮询机制
+
+  - 执行初始化同步代码，把相应的回调给到浏览器对应的管理模块（事件回调->事件管理模块 、计时器回调->计时器管理模块 、`ajax`回调->`ajax`管理模块）
+  - 当事件发生或计时器到期等等。。就会把相应的回调函数添加到回调队列中，等待执行
+  - 等初始化代码指向完毕，`js`引擎就会循环的检查回调队列中的回调函数，并执行
+
+- 说一下 进程和线程
+
+  - 进程
+    1. 进程是程序的某一次的执行，主要在内存开启一定空间。
+    2. 有的程序是单进程的，有的程序是多进程的。
+  - 线程
+    1. 线程是进程的一个独立单元，是`cpu`的基本调度单位
+    2. 有的进程是单线程的，有的进程是多线程的
+    3. 单线程
+       1. 编程简单
+       2. 效率低
+    4. 多线程
+       1. 可以提高`CPU`的利用率
+       2. 创建多个线程是会增加额外开销
+       3. 切换线程的时候也会有额外的开销
+       4. 容易产生死锁。
+
+- 书写一个组合继承
+
+  - ```js
+    function Animal(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            Animal.prototype.say = function () {
+                cosnole.log("吼~")
+            }
+            var ani = new Animal();
+            ani.do = function () {
+    
+            }
+    
+            function Cat(color, name, age) {
+                this.color = color;
+                //构造函数继承
+                Animal.call(this, name, age)
+            }
+            //原型链继承
+            Cat.prototype = new Animal();
+            Cat.prototype.constructor = Cat;
+            Cat.prototype.do = function () {
+                console.log("玩红外线");
+            }
+            var cat1 = new Cat("white", "wanan", "2");
+            console.log(cat1)
+            console.log(cat1.say)
+            console.log(cat1.constructor)
+            console.log(Cat.prototype.constructor);
+    ```
+
+    
+
+- 描述多态和封装
+
+  - 多态
+    - 调用同一个方法时，不同对象有不同发响应
+  - 封装
+    - 将实现某个功能的数据和方法包围起来，对外隐藏具体实现的细节
+
+- 简单描述`h5`新属性多线程的书写过程
+
+  - 创建一个分线程(并且把分线程的`js`代码传入构造函数中) 构造函数`Worker`
+  - 向分线程传输数据（如果不发送也要书写）
+  - `onmessage`事件用来接收主线程传递过来的数据 数据保存在事件函数的第一个参数上（`event`对象）
+  - 关闭分线程
+    - 关闭当前数据传输
+    - 关闭整个分线程

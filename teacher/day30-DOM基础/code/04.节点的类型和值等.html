@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="outer">
+        <p>锄禾日当午</p>
+        <span>旱地禾下土</span>
+        <!-- <em>床前明月光</em> -->
+        今天天气不错
+        <div>李白睡的香</div>
+        <strong>蛋黄的长裙</strong>
+        <p>蓬松的头发</p>
+    </div>
+    <script>
+        var oOuter = document.getElementById("outer");
+        console.log(oOuter);//获取到了div节点
+
+        //获取outer中所有的子节点
+        var oOuterChildNodes = oOuter.childNodes;
+        console.log(oOuterChildNodes);
+        
+        /* 
+        关于节点的几个方法：
+            nodeType：节点类型
+            nodeValue：节点的值
+            nodeName：节点名称
+         */
+
+        //1.文本节点
+        console.log(oOuterChildNodes[0].nodeType);//3 （所有文本节点的类型都是3）
+        console.log(oOuterChildNodes[0].nodeValue);//回车空格等等文本的内容
+        console.log(oOuterChildNodes[0].nodeName);//#text(所有文本节点的nodeName都是#text)
+
+
+        //2.元素节点
+        console.log(oOuterChildNodes[1].nodeType);//1 （所有元素节点的类型都是1）
+        console.log(oOuterChildNodes[1].nodeValue);//null (所有的元素节点的nodeValue都是null)
+        console.log(oOuterChildNodes[1].nodeName.toLowerCase());//P(所有元素节点的nodeName是当前元素的标签名 并且是大写)
+        
+        //3.注释节点
+        console.log(oOuterChildNodes[5].nodeType);//8 （所有注释节点的类型都是8）
+        console.log(oOuterChildNodes[5].nodeValue);// (所有的注释节点的nodeValue都是注释的内容)
+        console.log(oOuterChildNodes[5].nodeName);//#comment(所有注释节点的nodeName是#comment)
+
+        //4.文档节点
+        console.log(document.nodeType);//9 文档节点类型是9
+        console.log(document.nodeValue);// null 
+        console.log(document.nodeName);//#document
+
+
+        //创建一个属性节点：(不方便获取，所以自己创建一个查看他的 属性的内容)
+        var oDivAttr = document.createAttribute("study");
+        //给oDivAttr这个属性 添加value值  
+        oDivAttr.value = "javascript";
+        console.log(oDivAttr);
+
+        console.log(oDivAttr.nodeType);//2  所有属性节点类型都是2
+        console.log(oDivAttr.nodeValue);// javascript  所有属性节点nodeValue 都是属性的值
+        console.log(oDivAttr.nodeName);//study 所有属性节点nodeName 都是属性的key
+
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正方体</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        .list{
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            position: relative;
+            /* 开启3d */
+            transform-style: preserve-3d;
+
+            /* 旋转ul */
+            transform: rotateX(45deg) rotateY(45deg);
+        }
+        .list .item{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            font-size: 30px;
+            text-align: center;
+            line-height: 200px;
+
+            transition: all 1s;
+        }
+
+        .list .item:nth-child(1){
+            background-color: violet;
+            left: 0;
+            top: 0;
+        }
+        .list:hover .item:nth-child(1){
+            transform: rotateX(180deg);
+        }
+
+
+        .list .item:nth-child(2){
+            background-color: bisque;
+            left: 0;
+            top: 0;
+        }
+        .list:hover .item:nth-child(2){
+            transform: translateZ(200px);
+        }
+
+
+        .list .item:nth-child(3){
+            background-color: greenyellow;
+            left: 0;
+            top: -200px;
+            transform-origin: center bottom;
+        }
+        .list:hover .item:nth-child(3){
+            transform: rotateX(-90deg);
+        }
+
+        .list .item:nth-child(4){
+            background-color: darkred;
+            left: -200px;
+            top: 0;
+            transform-origin: right center;
+        }
+        .list:hover .item:nth-child(4){
+            transform: rotateY(90deg);
+        }
+
+        .list .item:nth-child(5){
+            background-color: hotpink;
+            right: -200px;
+            top: 0;
+            transform-origin: left center;
+        }
+        .list:hover .item:nth-child(5){
+            transform: rotateY(-90deg);
+        }
+
+
+        .list .item:nth-child(6){
+            background-color: green;
+            left: 0;
+            bottom: -200px;
+            transform-origin: center top;
+        }
+        .list:hover .item:nth-child(6){
+            transform: rotateX(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <ul class="list">
+            <li class="item">A</li>
+            <li class="item">B</li>
+            <li class="item">C</li>
+            <li class="item">D</li>
+            <li class="item">E</li>
+            <li class="item">F</li>
+        </ul>
+    </div>
+</body>
+</html>

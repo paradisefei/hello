@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <div class="box">
+        <span>span标签</span>
+    </div>
+    <script>
+        var oBox = document.querySelector(".box");
+        var oBtn = document.getElementById('btn');
+
+        /* 
+            innerHTML:
+                - 获取或设置某一个元素的内容（不包含当前的元素）
+                - 获取的时候，可以获取到里边的标签
+                - 设置的时候，直接把原有内容替换，并且可以解析标签
+
+            outerHTML：
+                - 获取或设置某一个元素的内容（包含当前的元素）
+                - 获取的时候，可以获取到里边的标签
+                - 设置的时候，直接把原有内容替换，并且可以解析标签
+         */
+        oBtn.onclick = function () {
+            // console.log(oBox.innerHTML)
+            // oBox.innerHTML = "<a href='###'>我是a标签</a>"
+            // oBox.innerHTML += "<a href='###'>我是a标签</a>"
+
+            // console.log(oBox.outerHTML)
+            oBox.outerHTML = "<a href='###'>我是a标签</a>"
+            // oBox.outerHTML += "<a href='###'>我是a标签</a>"
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            prototype：被称作为显式原型
+                1.每一个函数都有自己的显式原型（prototype属性）
+                2.函数只有在使用的时候如果是new调用 才是一个构造函数
+                3.显示原型（prototype其实是一个指针）指向的是 当前函数的原型对象
+                4.所以每一个自己定义函数都有自己的原型对象 默认是空对象
+
+            constructor：
+                1.构造器
+                    a.constructor  获取的是a的构造函数
+                    '123'.constructor  --> f String
+                    [].constructor  --> f Array
+
+                2. 每一原型对象都有一个constructor属性，指向当前原型对象的构造函数
+         */
+
+        console.log(Function.prototype,{})
+        console.log({})
+        console.log(Function.prototype)
+        console.log(Array.prototype)
+        console.log(Object instanceof Function);
+        console.log(Array.prototype.constructor)
+        console.log(Array.prototype.constructor === Array) //true
+        console.log(Date.prototype.constructor === Date) //true
+        console.log(String.prototype.constructor === String) //true
+
+        /* 
+            给所有数组对象扩展一个排序去重复
+         */
+        Array.prototype.sortOffRepeat = function () {
+            //原型对象中的this指向实例化对象
+            var arrSort = this.sort(function (a, b) {
+                return a - b;
+            }) //[1,1,1,1,1,2,2,3,3,4,4]
+
+            var result = arrSort.filter(function (item, index, arr) {
+                /* if (item === arr[index + 1]) {
+                    return false;
+                } else {
+                    return true;
+                } */
+                return item != arr[index + 1]
+            })
+
+            // arrSort.filter((item, index, arr) => item != arr[index + 1])
+
+
+            return result;
+
+        }
+        var arr = [4, 2, 4, 3, 1, 2, 3, 1];
+        console.log(arr.sortOffRepeat()) //[1,2,3,4]
+
+
+        //构造函数
+        function Fn(name) {
+            this.name = name;
+        }
+        //给构造函数Fn扩展原型对象
+        Fn.prototype.do = function () {
+            alert("hello world");
+        }
+        var f = new Fn();
+    </script>
+</body>
+
+</html>

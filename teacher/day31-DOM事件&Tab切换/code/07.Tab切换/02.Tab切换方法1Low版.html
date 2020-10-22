@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02.Tab切换方法1Low版.html</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+
+        #tab{
+            width: 606px;
+            margin: 50px auto 0;
+            border: 1px solid #000;
+        }
+
+        .title{
+            display: flex;
+        }
+        .title h2{
+            width: 200px;
+            height: 50px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+        }
+        /* 交集选择器 选择h2标签，并且h2标签还拥有active类名的 */
+        .title h2.active{
+            background-color: red;
+            color: #fff;
+        }
+
+        .content li{
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 40px;
+            display: none;
+        }
+        .content li.show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <!-- Tab切换外层 -->
+        <div id="tab">
+            <!-- Tab切换标题区域 -->
+            <div class="title">
+                <!-- 如果有特殊的样式，则直接给类名，然后点击切换类名即可 -->
+                <h2 class="active">标题一</h2>
+                <h2>标题二</h2>
+                <h2>标题三</h2>
+            </div>
+            <!-- Tab切换内容区域 -->
+            <ul class="content">
+                <li class="show">内容一</li>
+                <li>内容二</li>
+                <li>内容三</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        var oTitleH2s = document.querySelectorAll(".title>h2");
+        var oContentLis = document.querySelectorAll(".content>li");
+
+        //给标题2绑定点击事件
+        oTitleH2s[1].onclick = function(){
+            // className给元素重新设置类名
+            //把除了当前点击的元素 其他兄弟都设置为空
+            oTitleH2s[1].className = 'active';
+            oTitleH2s[0].className = '';
+            oTitleH2s[2].className = '';
+
+            oContentLis[1].className = "show";
+            oContentLis[0].className = "";
+            oContentLis[2].className = "";
+        }
+
+
+        //给标题2绑定点击事件
+        oTitleH2s[0].onclick = function(){
+            // className给元素重新设置类名
+            //把除了当前点击的元素 其他兄弟都设置为空
+            oTitleH2s[0].className = 'active';
+            oTitleH2s[1].className = '';
+            oTitleH2s[2].className = '';
+
+            oContentLis[0].className = "show";
+            oContentLis[1].className = "";
+            oContentLis[2].className = "";
+        }
+
+
+        //给标题2绑定点击事件
+        oTitleH2s[2].onclick = function(){
+            // className给元素重新设置类名
+            //把除了当前点击的元素 其他兄弟都设置为空
+            oTitleH2s[2].className = 'active';
+            oTitleH2s[0].className = '';
+            oTitleH2s[1].className = '';
+
+            oContentLis[2].className = "show";
+            oContentLis[0].className = "";
+            oContentLis[1].className = "";
+        }
+    </script>
+</body>
+</html>

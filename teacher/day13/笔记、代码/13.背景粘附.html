@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height:1800px;
+            margin:0px;
+
+        }
+        div{
+           /*  margin-top:20px; */
+            width:500px;
+            height:300px;
+            border:1px solid green;
+            /*就像背景图始终固定在body上面了，元素动了，背景图不动。但是随着这个元素在滚动条上移动走，背景图也会移动走。*/
+            background-image:url('./img/plmm.jpg');
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div style="background-image: url(./img/Frederik-the-Great1.jpg);background-repeat: no-repeat;"></div>
+</body>
+</html>

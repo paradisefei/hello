@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建属性节点并插入</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <div class="box" id="con" study="DOM">box</div>
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oBox = document.querySelector('.box');
+        /* 
+            getAttribute:
+                获取元素某个自定义属性的值
+                元素自有的属性，直接通过 ele.attr即可（class属性需要使用className获取） 
+
+            setAttribute:
+                设置一个新的属性
+                如果是自有属性，自己书写ele.attr
+
+            removeAttribute
+                删除某一个属性
+        
+         */
+        oBtn.onclick = function () {
+            //点击btn 获取box的某个属性的值
+            console.log(oBox.getAttribute("study"));
+            console.log(oBox.id);
+
+            //设置一个新的属性 eat = "pig";
+            oBox.setAttribute("eat", "pig");
+            oBox.setAttribute("eat", "ji"); //设置重复会覆盖
+
+            //删除一个属性
+            oBox.removeAttribute("study");
+        }
+    </script>
+</body>
+
+</html>

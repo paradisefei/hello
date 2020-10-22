@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            1.优先使用const 还是优先使用let
+                - 优先使用const，当这个值确定在未来修改的情况下，再改为let
+
+            2.var声明的变量是函数作用域，let和const声明的变量是块作用域，
+                但是声明函数只有function关键字
+
+                //ES5规定：局部函数和全局函数 不要写在块里 而是直接写在函数中或者全局中
+                //所以我们以后定义函数，避免在块作用域中定义，而是直接定义到函数作用域中
+                //如果非要在块中定义函数，请使用函数表达式
+        */
+
+
+
+        if (false) {
+            function fn1() {
+                console.log(1);
+            }
+        }
+        console.log(fn1)
+
+
+        /* function fn2() {
+
+            if (true) {
+
+                function fn3() {
+                    console.log(2);
+                }
+            }
+        }
+        fn2(); */
+
+        function fn2() {
+
+            if (true) {
+
+                const fn3 = function () {
+                    console.log(2);
+                }
+            }
+        }
+        fn2();
+    </script>
+</body>
+
+</html>

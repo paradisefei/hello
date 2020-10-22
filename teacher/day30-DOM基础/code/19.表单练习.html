@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单事件</title>
+</head>
+
+<body>
+    <div id="box">
+        <input type="text" id="ipt">
+        <p id="content"></p>
+    </div>
+    <script>
+        /* 
+            需求：模拟数据双向绑定（让表单的内容和p标签的内容实时跟随变化）
+        
+        */
+        var oIpt = document.getElementById("ipt")
+        var oContent = document.getElementById("content")
+
+        //实时发生变化 使用input事件
+        oIpt.oninput = function () {
+            //把表单的值赋值给p的内容
+            oContent.innerHTML = this.value;
+        }
+    </script>
+</body>
+
+</html>

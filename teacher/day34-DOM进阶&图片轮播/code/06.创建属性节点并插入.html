@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建属性节点并插入</title>
+</head>
+
+<body>
+    <div class="box" >box</div>
+    <script>
+        /* 
+            创建一个属性节点：
+                createAttribute();
+            给属性节点赋值
+                attr.value 
+            把创建的属性节点插入到元素中
+                setAttributeNode()
+         */
+
+        var oBox = document.querySelector('.box');
+        //建一个属性节点
+        var attr = document.createAttribute("study");
+        //给属性节点赋值
+        attr.value = "js";
+        console.log(attr);
+
+        //把创建的属性节点插入到元素中
+        oBox.setAttributeNode(attr);
+    </script>
+</body>
+
+</html>

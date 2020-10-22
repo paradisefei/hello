@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>懒加载</title>
+    <style>
+        .outer {
+            width: 1040px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .outer img {
+            width: 500px;
+            height: 300px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <!-- 
+            img标签只要拥有data-orc属性就可以加载，所以我们等需要加载的时候再添加data-orc属性
+            
+            把路径保存在当前元素的自定义属性上
+
+         -->
+        <img src="../images/loging.gif" data-orc="../images/01.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/02.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/03.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/04.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/05.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/06.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/07.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/08.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/09.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/10.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/11.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/12.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/13.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/14.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/15.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/16.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/17.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/18.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/19.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/20.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/21.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/22.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/23.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/24.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/25.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/26.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/27.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/28.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/29.jpg" alt="">
+        <img src="../images/loging.gif" data-orc="../images/30.jpg" alt="">
+
+    </div>
+
+    <script>
+        /* 
+            临界值判断：
+                当img元素距离屏幕顶部的距离  如果 小于等于  屏幕的高度，说明元素要进来了
+         */
+        var oImgs = document.querySelectorAll('.outer img');
+
+        //只要滚动条发生滚动，则就检测是否达到临界值
+        window.onload = window.onscroll = function () {
+            //获取每一个img 距离窗口顶部的距离
+            oImgs.forEach(function (item) {
+                var imgToWinTop = item.getBoundingClientRect().top;
+                var winHeight = document.documentElement.clientHeight;
+
+                if (imgToWinTop <= winHeight) {
+                    //当达到临界值的时候，把orc赋值给src
+                    item.src = item.dataset.orc;
+                }
+            })
+        }
+
+
+        /* oImgs.forEach(function (item) {
+            console.log(item.getBoundingClientRect().top);
+        }) */
+    </script>
+</body>
+
+</html>

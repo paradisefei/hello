@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <p id="con">点击按钮获取值</p>
+    <button>测试</button>
+    <script>
+        var oBtn = document.querySelector('#btn');
+        var oCon = document.querySelector('#con');
+        //单线程执行的时候会出现假死现象
+        /* oBtn.onclick = function () {
+            var num = 0;
+            for (var i = 0; i < 1000000000; i++) {
+                num += Math.sqrt(i)
+            }
+            console.log(num)
+        } */
+
+        //把大量运算放在分线程执行
+        oBtn.onclick = function () {
+            oCon.innerHTML = "请等待"
+            // 创建一个分线程(并且把分线程的js代码传入构造函数中) 构造函数Worker
+            var ww = new Worker("./index.js");
+            // 向分线程传输数据（如果不发送也要书写）
+            ww.postMessage(10000000)
+
+            ww.onmessage = function (e) {
+                console.log(e.data);
+                oCon.innerHTML = e.data;
+
+                //当分线程计算完成 并把数据发送回来，则可以关闭
+                ww.terminate();
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>

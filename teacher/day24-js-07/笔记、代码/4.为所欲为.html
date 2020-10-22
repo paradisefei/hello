@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* function test(){
+            console.log(arguments);
+
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[3]);
+        }
+
+        test(1,2,3,4);
+
+        test('a','b','c'); */
+
+        //不确定形参的个数的时候那么就可以使用arguments对象了。
+
+
+        //我现在要求给我定义一个函数，这个函数功能是计算传入值的和。  有可能是两个、有可能是3个有可能是100个。
+
+        function getTotal(){
+            //arguments有length   能用下标    那我就可以使用for来进行遍历。
+            var sum = 0;
+            for (var i = 0 ; i < arguments.length ; i++) {
+                sum += arguments[i];
+            }
+            console.log(sum);
+
+            console.log(arguments.callee);
+        }
+
+        /* getTotal(1,2);
+        getTotal(1,2,3,4);
+        getTotal(1,2,3,4,5,6,7,8,9,10); */
+
+/*         function t2(){
+            console.log(arguments.callee);
+        }
+
+        t2(); */
+
+        //求两个数的和
+        /* function test(a,b){
+            // console.log(a + b);//输出到控制台。
+
+            var num = a + b;
+
+           return num;
+        }
+        var res = test(1,2);//var res = 3
+        console.log(res);
+
+        console.log('放入到控制台' + res);
+        console.log('放入到数据库' + res);
+
+
+        function test1(a,b){
+            // console.log(a + b);//输出到控制台。
+
+            var num = a + b;
+
+           console.log('输出到控制台' + num);
+        }
+
+        test1(1,2); */
+
+        /* function test(){
+            //逻辑1
+            //逻辑2
+            //逻辑n......
+            console.log('闫海静真英俊!');
+            return 'haha';
+
+            console.log('崔旺真英俊!');//这行代码不会执行。
+        }
+
+        console.log(test()); */
+
+        function test(){
+            console.log('abc');
+            return ;
+        }
+
+        console.log(test());
+    </script>
+</body>
+</html>

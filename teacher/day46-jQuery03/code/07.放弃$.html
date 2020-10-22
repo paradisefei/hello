@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        $(function () {
+            //放弃$使用 返回值接受后 是一个新的jQuery的引用
+            // var _ = jQuery;
+            var _ = jQuery.noConflict();
+            var arr = ["a", "b", "c", "d"];
+            var obj = {
+                name: "lily",
+                age: "22"
+            };
+            _.each(arr, function (index, item) {
+                console.log(item, index);
+            })
+            _.each(obj, function (index, item) {
+                console.log(item, index);
+            })
+        })
+    </script>
+</body>
+
+</html>

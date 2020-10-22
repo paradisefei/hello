@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            ...在解构的时候 也可以代表未解构完成的对象key-value值
+         */
+        const obj = {
+            a: 1,
+            b: 2,
+            c: 3,
+            d: 4
+        }
+        const {
+            a,
+            ...rest
+        } = obj;
+        console.log(a, rest) //1  {b:2,c:3,d:4}
+
+        const arr = [1, 2, 3, 4, 5];
+        const [x, ...y] = arr;
+    </script>
+</body>
+
+</html>

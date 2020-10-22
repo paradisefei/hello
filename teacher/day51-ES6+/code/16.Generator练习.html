@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            先请求a数据 再请求b属性 再请求c数据
+            计时器模拟替代请求数据
+         */
+        function* getData() {
+            yield setTimeout(() => {
+                console.log("a数据请求成功");
+                re.next(); //当a请求完之后，自动调用next方法
+            }, 1000);
+            yield setTimeout(() => {
+                console.log("b数据请求成功")
+                re.next();
+            }, 1000);
+            yield setTimeout(() => {
+                console.log("c数据请求成功 全部完成~")
+            }, 1000);
+        }
+        const re = getData(); //只是返回一个迭代器对象
+        // console.log(re);
+        re.next("开启请求a了"); //当调用next方法的时候，就开始请求了
+
+
+        // function* getData() {
+        //     yield setTimeout(() => {
+        //         console.log("a数据请求成功");
+        //     }, 1000);
+        //     yield setTimeout(() => {
+        //         console.log("b数据请求成功")
+        //     }, 1000);
+        //     yield setTimeout(() => {
+        //         console.log("c数据请求成功 全部完成~")
+        //     }, 1000);
+        // }
+        // const re = getData(); //只是返回一个迭代器对象 
+        // for (let value of re) {
+        //     console.log(value)
+        // }
+    </script>
+</body>
+
+</html>

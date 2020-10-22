@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10.navigator对象.html</title>
+</head>
+
+<body>
+    <script>
+        console.log(window.navigator) //navigator对象
+
+        console.log(window.navigator.userAgent) //用户的代理字符串
+        //Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+
+        console.log(navigator.platform) //win32  centerOS  linux
+
+        console.log(navigator.onLine) //true 判断是否成功连入网络
+
+
+        /* 
+            判断浏览器：
+                1.特征检测法
+                    只需要检测某一个方法是否支持，如果支持则。。。。 否则就。。。
+                    if(ele.firstElementChild){
+                        return ele.firstElementChild
+                    }else{
+                         return ele.firstChild
+                    }
+        
+                2.判断浏览器
+                    var ua = navigator.userAgent.toLowerCase();//获取代理字符串并转换成小写
+                    var info = {
+                        ie:/msie/.test(ua) && !/opera/.test(ua),
+                        op:/opera/.test(ua),
+                        sa:/version.*safari/.test(ua),
+                        ch:/chrome/.test(ua),
+                        ff:/gecko/.test(ua) && !/webkit/.test(ua)
+                    }
+                    info.ie && console.log("ie");
+                    info.op && console.log("op");
+                    info.sa && console.log("sa");
+                    info.ch && console.log("ch");
+                    info.ff && console.log("ff");
+
+
+
+
+            判断操作系统
+                var isWin = (navigator.userAgent.indexOf("Win") != - 1);
+                // 如果是Windows系统，则返回true
+                var isMac = (navigator.userAgent.indexOf("Mac") != - 1); 
+                // 如果是Macintosh系统，则返回true 
+                var isUnix = (navigator.userAgent.indexOf("X11") != - 1); 
+                // 如果是UNIX系统，则返回true
+                var isLinux = (navigator.userAgent.indexOf("Linux") != - 1); 
+                // 如果是Linux系统， xc则返回true
+        */
+
+        var ua = navigator.userAgent.toLowerCase(); //获取代理字符串并转换成小写
+        var info = {
+            ie: /msie/.test(ua) && !/opera/.test(ua),
+            op: /opera/.test(ua),
+            sa: /version.*safari/.test(ua),
+            ch: /chrome/.test(ua),
+            ff: /gecko/.test(ua) && !/webkit/.test(ua)
+        }
+        info.ie && console.log("ie");
+        info.op && console.log("op");
+        info.sa && console.log("sa");
+        info.ch && console.log("ch");
+        info.ff && console.log("ff");
+    </script>
+</body>
+
+</html>

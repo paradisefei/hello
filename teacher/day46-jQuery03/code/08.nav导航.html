@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+    <script src="./jQuery.nav.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav1,
+        .nav2 {
+            width: 800px;
+            margin: 50px auto;
+            border: 1px solid #000;
+        }
+
+        ul {
+            width: 800px;
+            display: flex;
+        }
+
+        ul li {
+            width: 200px;
+            position: relative;
+        }
+
+        ul li h2 {
+            height: 40px;
+            background-color: #ccc;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        ul li .con {
+            position: absolute;
+            left: 0;
+            top: 42px;
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="outer">
+        <nav class="nav1">
+            <ul>
+                <li>
+                    <h2>新闻</h2>
+                    <div class="con">
+                        <p>新闻内容1</p>
+                        <p>新闻内容2</p>
+                        <p>新闻内容3</p>
+                        <p>新闻内容4</p>
+                        <p>新闻内容5</p>
+                    </div>
+                </li>
+                <li>
+                    <h2>新闻</h2>
+                    <div class="con">
+                        <p>新闻内容1</p>
+                        <p>新闻内容2</p>
+                        <p>新闻内容3</p>
+                        <p>新闻内容4</p>
+                        <p>新闻内容5</p>
+                    </div>
+                </li>
+                <li>
+                    <h2>新闻</h2>
+                    <div class="con">
+                        <p>新闻内容1</p>
+                        <p>新闻内容2</p>
+                        <p>新闻内容3</p>
+                        <p>新闻内容4</p>
+                        <p>新闻内容5</p>
+                    </div>
+                </li>
+                <li>
+                    <h2>新闻</h2>
+                    <div class="con">
+                        <p>新闻内容1</p>
+                        <p>新闻内容2</p>
+                        <p>新闻内容3</p>
+                        <p>新闻内容4</p>
+                        <p>新闻内容5</p>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <nav class="nav2">
+            <ul>
+                <li>
+                    <h2>新闻</h2>
+                    <div class="con">
+                        <p>新闻内容1</p>
+                        <p>新闻内容2</p>
+                        <p>新闻内容3</p>
+                        <p>新闻内容4</p>
+                        <p>新闻内容5</p>
+                    </div>
+                </li>
+                <li>
+                    <h2>新闻</h2>
+                    <div class="con">
+                        <p>新闻内容1</p>
+                        <p>新闻内容2</p>
+                        <p>新闻内容3</p>
+                        <p>新闻内容4</p>
+                        <p>新闻内容5</p>
+                    </div>
+                </li>
+                <li>
+                    <h2>新闻</h2>
+                    <div class="con">
+                        <p>新闻内容1</p>
+                        <p>新闻内容2</p>
+                        <p>新闻内容3</p>
+                        <p>新闻内容4</p>
+                        <p>新闻内容5</p>
+                    </div>
+                </li>
+                <li>
+                    <h2>新闻</h2>
+                    <div class="con">
+                        <p>新闻内容1</p>
+                        <p>新闻内容2</p>
+                        <p>新闻内容3</p>
+                        <p>新闻内容4</p>
+                        <p>新闻内容5</p>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <script>
+        $(function () {
+            /* $("ul li")
+                .mouseenter(function () {
+                    $(this).find(".con").stop(true, false).show(1000)
+                })
+                .mouseleave(function () {
+                    $(this).find(".con").stop(true, false).hide(1000)
+                }) */
+            /*  $.fn.extend({
+                 ani: function () {
+                     $(this).find("ul li")
+                         .mouseenter(function () {
+                             $(this).find(".con").stop(true, false).show(1000)
+                         })
+                         .mouseleave(function () {
+                             $(this).find(".con").stop(true, false).hide(1000)
+                         })
+                 }
+             }); */
+
+            $(".nav1").ani().css("color", "pink");
+            $(".nav2").ani();
+        })
+    </script>
+</body>
+
+</html>

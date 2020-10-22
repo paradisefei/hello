@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        var a = {
+            n: 1,
+            x: 3
+        };
+        var b = a;
+
+        //a.x先计算，把x的空间地址放在这个位置等待被赋值
+        //把新对象赋值给a，再把新对象赋值给 x的空间地址
+        a.x = a = {
+            n: 2
+        };
+        console.log(a.n, b.n); //2  1
+        console.log(a.x, b.x); //undefined {n:2}
+    </script>
+</body>
+
+</html>

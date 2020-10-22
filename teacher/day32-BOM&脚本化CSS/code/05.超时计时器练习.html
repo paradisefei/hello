@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05.超时计时器练习.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .dragDown {
+            width: 500px;
+            margin: 50px auto;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .title {
+            height: 40px;
+            background-color: red;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .content {
+            position: absolute;
+            width: 500px;
+            left: 0;
+            top: 41px;
+            background-color: #ccc;
+            display: none;
+        }
+
+        /* .dragDown:hover .content {
+            display: block;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <!-- 下拉列表 -->
+        <div class="dragDown">
+            <h2 class="title">娱乐列表</h2>
+            <div class="content">
+                <p>八佰上映</p>
+                <p>时间尽头上映</p>
+                <p>1921上映</p>
+                <p>抗疫大战上映</p>
+                <p>八佰上映</p>
+                <p>时间尽头上映</p>
+                <p>1921上映</p>
+                <p>抗疫大战上映</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var oDragDown = document.querySelector(".dragDown");
+        var oContent = document.querySelector(".content");
+        var oContentHideTimer = null; //声明一个计时器的句柄
+
+        //鼠标移入oDragDown 则让oContent显示
+        oDragDown.onmouseenter = function () {
+            //因为移入的时候可能会有让他500ms消失的计时器存在 所以需要把这个计时器给清掉
+            //等再次移出的时候再添加
+            clearTimeout(oContentHideTimer);
+            oContent.style.display = "block";
+        }
+
+        //鼠标移出oDragDown 则让oContent显消失
+        oDragDown.onmouseleave = function () {
+            //移出的时候要延迟500ms消失，则需要使用超时定时器
+            oContentHideTimer = setTimeout(function () {
+                oContent.style.display = "none";
+            }, 500)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            promise返回值：
+                promise对象：
+                    - PromiseState：pending fulfilled/resolved rejected
+                    - PromiseResulte:promise返回的信息
+                        - resolve的参数就是异步代码执行成功后需要给promise的数据
+                        - reject的参数就是异步代码执行失败的错误信息 发送给promise对象
+         */
+        const pro1 = new Promise((resolve, reject) => {
+            console.log("准备请求a数据")
+            setTimeout(() => {
+                console.log("已经请求完成")
+                //假设现在请求了数据为data
+                const data = {
+                    name: "xiaowang"
+                }
+                // resolve(data);
+                reject("请求出错啦");
+            }, 1000)
+        });
+
+
+
+        console.log(pro1)
+        console.log("整个同步代码执行完成");
+    </script>
+</body>
+
+</html>

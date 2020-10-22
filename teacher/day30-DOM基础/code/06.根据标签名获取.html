@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>根据标签名获</title>
+</head>
+
+<body>
+    <div id="box">
+        <p>蛋黄的长裙</p>
+        <p>蓬松的头发</p>
+        <p>锄禾和当午</p>
+    </div>
+
+    <p>李白睡的香</p>
+    <script>
+        /* 
+            通过标签名获取元素
+                document.getElementsByTagName();
+            
+            获取的值并不是某个元素  而是一个HTMLCollection对象
+            其实是一个元素的集合（伪数组）
+            集合中的每一个值才是你要获取的元素
+            所以对元素设置样式或者其他 需要根据下标选择到你要控制的元素(当只需要一个元素的时候，可以在获取的时候添加下标，也可以在时候的时候添加)
+
+            一般使用getElementsByTagName获取元素的时候，一般先获取父级，然后在调用，做一个限制
+        */
+
+        //这样获取不能限制
+        // var oPs = document.getElementsByTagName("p");
+        // console.log(oPs);
+
+        //做限制的获取
+        var oBox = document.getElementById("box");
+        var oPs = oBox.getElementsByTagName("p");
+        console.log(oPs);//HTMLCollection对象
+
+        //TypeError: oPs.forEach is not a function
+        //如果其他都正确的话，说明oPs没有forEach方法
+        /* oPs.forEach(function(item,index){
+            console.log(item);
+        }) */
+
+
+
+
+        //通过下标选择某一个元素设置
+        /* oPs[0].style.color = "red";       
+        oPs[1].style.color = "red";       
+        oPs[2].style.color = "red";   */
+
+        // 当碰到 对每一个元素。。。。   类似需求的时候，基本使用遍历操作
+        for (var i = 0; i < oPs.length; i++) {
+            oPs[i].style.color = "red";
+        }
+    </script>
+</body>
+
+</html>

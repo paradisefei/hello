@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* var i = 1;
+        while(i <= 2){
+            console.log(i);
+            i++;
+        } */
+
+        
+        
+        
+        //我要1~100之间的偶数。
+        /**
+        怎么区分出来奇数、偶数
+
+        x % 2 == 0
+        */
+
+        /* var i = 1;
+        while(i <= 100){
+            if (i % 2 == 0) {
+                console.log(i);
+            } else {
+                console.log('!');
+            }
+            i++;
+        } */
+
+        /*
+        var i = 2;
+        while( i <= 100){
+
+
+            console.log(i);
+
+            i+=2;
+        }*/
+
+        //计算1到100的和。
+        //写程序，就是先有思路、找规律。
+
+        var i = 1;
+        var num = 0;//这个变量用来存储和。
+        while(i <= 2){//1<=2 true//2 <=2 true//3<=2 false
+
+            // num = num + i;//num = 0 + 1 num=1//num = 1 + 2; num=3
+            num += i;
+            
+            i++;//2//3
+        }
+        console.log(num);
+    </script>
+</body>
+</html>

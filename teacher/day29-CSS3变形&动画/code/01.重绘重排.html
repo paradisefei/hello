@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import "reset.css";
+    </style>
+</head>
+<body>
+    <!-- 
+        页面打开过程
+        - 下载页面
+        - 根据页面生成DOM树
+        - 根据样式生成CSSOM树（样式树）
+        - 结合DOM树和CSSOM树 生成 Render Tree（渲染树）
+        - 渲染页面
+
+        1.link标签或者style标签可不可以书写在任意位置:
+        - 在技术上是可以的
+        - 在功能效率上不可取
+
+        2.@import引入css：
+        - 技术上可以使用
+        - 效率上不允许使用
+        @import要等到页面执行完成才回去下载
+
+
+        1和2两个问题都会引起重绘重排
+
+        重排（回流）：因为元素的大小，显示隐藏、位置等等的样式发生改变，会让渲染树（render tree）重新排列
+                这个过程被称作为重排
+
+        重绘：因为外观的更新，比如颜色，背景颜色等等，并没有对布局发生改变的时候，只改变元素的显示样式，被称作为重绘
+
+        重排一定会引起重绘，重绘不一定引起重排
+
+        无论是重绘该是重排都会影响效率，所以在开发过程中要减少重绘重排
+     -->
+
+     <div> 
+         <ul>
+
+         </ul>
+         <style></style>
+     </div>
+</body>
+</html>

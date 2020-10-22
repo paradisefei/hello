@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">删除</button>
+    <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        /* 
+            选中某个元素，标记变红 点击按钮删除所有标记的元素
+         */
+
+        var oListLis = document.querySelectorAll('.list li');
+        var oBtn = document.getElementById('btn');
+        //遍历所有的li，绑定事件 并标记
+        oListLis.forEach(function (item, index) {
+            item.onclick = function () {
+                //尽量不要使用颜色做判断依据
+                this.style.backgroundColor = "red";
+                //使用一个自定属性来标记元素
+                this.setAttribute("userClick", true);
+            }
+        })
+
+
+        //点击删除按钮
+        oBtn.onclick = function () {
+            //遍历所有的li 判断哪一个li拥有自定义属性
+            oListLis.forEach(function (item, index) {
+                //判断item自身的自定义属性是否存在
+                if (item.getAttribute("userClick") === 'true') {
+                    item.parentNode.removeChild(item);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

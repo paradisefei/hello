@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* function Person(){
+            this.name = 'yanhaijing';
+            this.sex = 'nan';
+
+            var b = 1;
+            var c = 'hehe';
+        }
+
+        var p1 = new Person();
+        var p2 = new Person();
+
+        console.log(p1);
+        console.log(p2); */
+
+        /* function Dog(){
+
+        } */
+
+        // var yanhaijing = new Person();
+        // console.log(yanhaijing);
+
+        // var xiaoHua = new Dog();
+
+        // console.log(xiaoHua);
+
+        // console.log(yanhaijing instanceof Dog);//false
+        // console.log(yanhaijing instanceof Person);//true
+
+
+        /* function Person() {
+
+            //这里有一个你即将要返回的对象。
+
+            //即将要返回的对象里面的name属性。
+            this.name = 'yanhaijing';
+            //即将要返回的对象里面的sex属性
+            this.sex = 'nan';
+
+
+            //这里有一个你将函数构造调用之后默认返回的一个对象。
+
+        }
+
+        var p1 = new Person();//new Person()
+
+        var p2 = new Person();
+
+        console.log(p1 == p2);//false  */
+        /*  console.log(p2); */
+
+        function Person(name,sex) {
+
+            //这里有一个你即将要返回的对象。
+
+            //即将要返回的对象里面的name属性。
+            this.name = name;
+            //即将要返回的对象里面的sex属性
+            this.sex = sex;
+
+            this.say = function(){
+                console.log('我叫' + this.name + '我是个美男子!' );
+            }
+
+
+            //这里有一个你将函数构造调用之后默认返回的一个对象。
+
+        }
+
+        var p1 = new Person('cuiwang','都行');
+        // p1.say();
+        console.log(p1.constructor);
+        var p2 = new Person('闫海静','都不行');
+        // p2.say();
+/*         console.log(p1);
+        console.log(p2); */
+
+
+        function Dog(){
+
+        }
+
+        var d1 = new Dog();
+
+        console.log(d1.constructor);
+
+
+        var p = {};//字面量方式声明的对象的构造函数是Object
+        p.name = 'yanhaijing';
+        console.log(p.constructor);
+
+        var a = [1,2,3];//数组方式声明的  数组（对象）它的构造函数是Array
+        console.log(a.constructor);
+
+        
+    </script>
+</body>
+
+</html>

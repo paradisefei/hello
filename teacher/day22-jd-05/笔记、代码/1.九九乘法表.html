@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //当前是第几行、总共有几个表达式、乘数就是几，这三个值是相同的。
+
+        //先找行数
+
+        var i = 1;
+
+        while(i <=9 ){
+            console.log(i+'-------------------');
+            var j = 1;
+            while(j<=i){
+                document.write(j + 'X' + i + '=' + (j*i) + '&nbsp;&nbsp;&nbsp;');
+
+                j++;
+            }
+
+            document.write('<br />');
+            i++;
+        }
+    </script>
+</body>
+</html>

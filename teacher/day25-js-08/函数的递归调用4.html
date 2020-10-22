@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* function say(a){
+            console.log(a);
+            if (a > 1) {
+                say(a - 1);
+            }
+            console.log(a);
+        }
+        say(2); */
+
+        /* function say1(a){
+            console.log(a);
+            if (a > 1) {
+                arguments.callee(a - 1);
+            }
+            console.log(a);
+        }
+        say1(2); */
+
+        //判断一个值是否是数组Array.isArray(变量);//如果是数组返回true否则返回false。
+        var a = [
+            1,
+            [1, [2]]
+        ];
+
+        //假设我也不知道总共有多少个元素，请使用递归方法给我计算出来应该有多少个元素。
+        //具体是几维数组我也不确定。
+
+        function countArray(arr) {
+
+            var count = 0;
+            for (var i = 0; i < arr.length; i++) {
+                //如果是数组，我要查看数组中有多少个元素。
+                if (Array.isArray(arr[i])) {
+                    count += countArray(arr[i]);
+                } else {//如果不是数组
+                    count++;
+                }
+
+            }
+
+            return count;
+        }
+
+        console.log(countArray(a));
+    </script>
+</body>
+
+</html>

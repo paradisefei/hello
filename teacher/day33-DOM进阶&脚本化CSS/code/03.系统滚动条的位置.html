@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统滚动条</title>
+    <style>
+        #con {
+            height: 4000px;
+
+        }
+
+        #btn {
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点击我</button>
+    <div id="con"></div>
+    <script>
+        /* 
+            获取整个文档的滚动条滚过去的距离(系统滚动条是属于html或body的滚动条)
+                - pageYOffset ie8及以下不兼容
+                - document.documentElement.scrollTop  兼容ie7及以上
+                - document.body.scrollTop 兼容ie6 及以下
+        
+        
+         */
+        console.log(self === window); //self在这里就是window
+        var oBtn = document.getElementById("btn");
+        oBtn.onclick = function () {
+            // console.log(window.pageYOffset)
+            // console.log(document.documentElement.scrollTop);
+            // console.log(document.body.scrollTop);
+            console.log(getWinScroll())
+        }
+
+        // 兼容性的函数封装
+        /* function getWinScroll() {
+            if (window.pageYOffset) {
+                return window.pageYOffset
+            } else if (document.documentElement.scrollTop) {
+                return document.documentElement.scrollTop
+            } else {
+                return document.body.scrollTop
+            }
+        } */
+
+        function getWinScroll() {
+            var doc = document.documentElement;
+            var dob = document.body;
+            var x = window.pageXOffset || doc.scrollLeft || dob.scrollLeft;
+            var y = window.pageYOffset || doc.scrollTop || dob.scrollTopt;
+            return {
+                x: x,
+                y: y
+            }
+        }
+    </script>
+</body>
+
+</html>

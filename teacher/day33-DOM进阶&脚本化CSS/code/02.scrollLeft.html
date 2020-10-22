@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scrollLeft</title>
+    <style>
+        #outer {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #000;
+            overflow: auto;
+        }
+
+        #con {
+            width: 1000px;
+            height: 180px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">点击我</button>
+    <div id="outer">
+        <div id="con"></div>
+    </div>
+    <script>
+        var oBtn = document.getElementById("btn");
+        var oOuter = document.getElementById("outer");
+        /* 
+            scrollLeft:获取滚动条滚过去的距离
+                    既可以设置也可以获取
+        
+        
+         */
+        oBtn.onclick = function () {
+            // console.log(oOuter.scrollLeft);
+            oOuter.scrollLeft = 100;
+
+        }
+    </script>
+</body>
+
+</html>

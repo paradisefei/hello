@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            #f{
+                width:300px;
+                height: 300px;
+                border:1px solid green;
+            }
+
+            #z{
+                /*width、margin-left、margin-right，其中的margin-left和margin-right都设置为具体的值、width设置为auto。这种情况下子元素的width也需要满足前面的公式，宽度被自动拉开。*/
+                width:auto;
+                height:100px;
+                margin-left:10px;
+                margin-right:20px;
+                border:1px solid blue;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="f">
+            <div id="z"></div>
+        </div>
+    </body>
+</html>
