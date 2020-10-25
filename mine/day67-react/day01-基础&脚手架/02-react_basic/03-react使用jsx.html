@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title {
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- /导包 -->
+    <!-- 核心包 -->
+    <script src="./js/react.development.js"></script>
+    <!-- 提供了react中操作dom的api -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- 将jsx语法转成浏览器认识的 -->
+    <script src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+        // 使用jsx创建一个react元素，虽然jsx看起来像html结构，但它依然是js，最终还是转成用React.createElement方式来创建React元素
+        const h1 = <h1 id="title" className="title">我是用jsx语法糖创建的React元素</h1>
+        
+        ReactDOM.render(h1,document.getElementById('root'));
+    </script>
+
+</body>
+</html>

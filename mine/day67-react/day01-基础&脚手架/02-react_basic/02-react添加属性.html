@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- /导包 -->
+    <!-- 核心包 -->
+    <script src="./js/react.development.js"></script>
+    <!-- 提供了react中操作dom的api -->
+    <script src="./js/react-dom.development.js"></script>
+
+    <script>
+        //创建一个react元素
+        // const p = React.createElement("p",{className:"title2",id:"title2"},"我是用react创建出来的p")
+        const h1 = React.createElement("h1",{className:"title1",id:"title1"},"我是用react创建出来的h1")
+        // console.log(h1)
+        const label = React.createElement("label",{htmlFor:"hello"},"我是用react创建出来的label")
+        console.log(label)
+        
+        ReactDOM.render(label,document.getElementById('root'));
+    </script>
+
+</body>
+</html>

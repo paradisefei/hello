@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hello {
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- /导包 -->
+    <!-- 核心包 -->
+    <script src="./js/react.development.js"></script>
+    <!-- 提供了react中操作dom的api -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- 将jsx语法转成浏览器认识的 -->
+    <script src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+        /* 
+            需求
+                把列表内容插入到页面中
+        */
+        let arr = [{
+            name: '呸hua',
+            age: 38,
+            gender: '不详细',
+            hobby: '抽烟喝酒植发'
+        }, {
+            name: '静哥',
+            age: 48,
+            gender: '男',
+            hobby: '京城会所'
+        }]
+        const lists = arr.map((item) => {
+            return <li key>{item.name}</li>;
+        })
+        console.log(lists)
+        // const ul = <ul id="title" className="title">{lists}</ul>
+        const ul = <ul id="title" className="title">{lists}</ul>
+        // const ul = <ul id="title" className="title">{[1,2,3,4,5]}</ul>
+        ReactDOM.render(ul, document.getElementById('root'));
+    </script>
+
+</body>
+
+</html>

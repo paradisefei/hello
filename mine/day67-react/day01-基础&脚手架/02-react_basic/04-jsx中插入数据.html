@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hello {
+            background:green;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- /导包 -->
+    <!-- 核心包 -->
+    <script src="./js/react.development.js"></script>
+    <!-- 提供了react中操作dom的api -->
+    <script src="./js/react-dom.development.js"></script>
+    <!-- 将jsx语法转成浏览器认识的 -->
+    <script src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+        // 
+        const data = "你好"
+        const flag = "hello"
+        // const h1 = <h1 id="title" className="title">{data}</h1>
+        // const h1 = <h1 id="title" className={flag}>{data}</h1>
+        // const h1 = <h1 id="title" className={flag}>{<span>我是h1中的span，我是从花括号中插进来的</span>}</h1>
+        const h1 = <h1 id="title" className={flag}><span>我是h1中的span，我不是从花括号中插进来的</span></h1>
+        
+        ReactDOM.render(h1,document.getElementById('root'));
+    </script>
+
+</body>
+</html>
