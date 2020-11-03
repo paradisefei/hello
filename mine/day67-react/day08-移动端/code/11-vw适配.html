@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 
+            要在iPhone6下出现正常效果时
+         */
+        .box {
+            width: 92vw;
+            height: 40vw;
+            background-color: red;
+            margin: 4vw;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="box"></div>
+    <script>
+        /*
+            vw适配
+                1vw = 布局视口宽度的1%
+            vw是在css中可以直接使用的单位
+         */
+        // window.onresize = function(){
+
+        //      const rootFontSize = document.documentElement.clientWidth / 10;
+        //      document.documentElement.style.fontSize = rootFontSize + 'px'
+        //      console.log(rootFontSize)
+        // }
+    </script>
+</body>
+
+</html>

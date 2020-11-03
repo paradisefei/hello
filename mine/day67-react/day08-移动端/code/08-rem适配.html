@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 
+            要在iPhone6下出现正常效果时
+         */
+        .box {
+            width: 3.45rem;
+            height: 1.5rem;
+            background-color: red;
+            margin: 0.15rem;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="box"></div>
+    <script>
+        /*
+            rem适配1
+                1.设计稿大小为375
+                2.要在iPhone6上有想要的效果
+                    给定值的话，其它手机上就不会是想要的效果
+                3.根元素字体大小
+                4.开发中涉及到宽高时，使用rem相对大小
+                5.因为设备独立像素的不同，导致布局视口的不同，导致定值的效果不同
+                    在不同的布局视口下，设置根元素的字体大小不同，这样的话使用相对情况最终就会出现相同的效果
+         */
+        window.onresize = function(){
+            /* 
+                视口改变时设置不同的根元素字体大小
+                    横向设备独立像素 * 100 / 设计稿宽度
+             */
+             const rootFontSize = document.documentElement.clientWidth * 100 / 375
+             document.documentElement.style.fontSize = rootFontSize + 'px'
+             console.log(rootFontSize)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 10000px;
+        }
+
+        .box {
+            width: 100%;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        /* 
+            1.布局视口
+                由于历史因素，所有移动端布局视口的宽度默认情况下都是980px
+            2.视觉视口
+                绝对宽度和设备屏幕一样宽
+                这个宽度里所包含的css像素值是变化的
+            3.理想视口
+                与设备独立像素等宽的布局视口称为理想视口
+         */
+         console.log(document.documentElement.clientWidth)
+         console.log(window.innerWidth)
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 10000px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        img {
+            width: 100px;
+        }
+        div {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="./imgs/1.jpg" alt="">
+    <img src="./imgs/2.jpg" alt="">
+    <img src="./imgs/3.jpg" alt="">
+    <img src="./imgs/4.jpg" alt="">
+    <div class="box"></div>
+    <script>
+        /* 
+            1.
+         */
+         console.log("布局视口",document.documentElement.clientWidth)
+         console.log("视觉视口",window.innerWidth)
+    </script>
+</body>
+</html>

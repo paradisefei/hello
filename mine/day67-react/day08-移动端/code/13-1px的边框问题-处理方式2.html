@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* html,body {
+            height: 100%;
+        } */
+
+
+        .box {
+            width: 3.45rem;
+            height: 1.50rem;
+            background-color: red;
+            margin: 0.15rem;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+
+
+<body>
+    <div class="box"></div>
+    <script>
+        /*
+            1.在普通屏中，1css像素使用1个物理像素渲染的
+            2.在高清屏中，1css像素使用不止1个物理像素渲染，这样的话最终的结果就会导致可能在高清屏下1px的边框会更宽
+            解决方案
+                1.媒体查询，根据像素比的不同，最终设置的大小就那个像素比下的1个物理像素去渲染
+                2. 先让布局视口变大，然后使根元素字体变大
+         */
+         function adapter (){
+            // 1. 动态的设置根字体的大小
+            //根字体 = ( 设备横向独立像素值 * 100 )  / 设计稿宽度
+            const rootFontSize = document.documentElement.clientWidth * 100 / 375
+            document.documentElement.style.fontSize = rootFontSize + 'px'
+        }
+        adapter()
+        window.onresize = adapter
+        //获取对应的meta
+        const viewport = document.querySelector("meta[name=viewport]")
+        const scale = 1 / window.devicePixelRatio
+        viewport.setAttribute("content","width=device-width, initial-scale=" + scale);
+        const fontSize = parseInt(document.documentElement.style.fontSize)
+        document.documentElement.style.fontSize = fontSize * window.devicePixelRatio + 'px'
+    </script>
+</body>
+
+</html>
