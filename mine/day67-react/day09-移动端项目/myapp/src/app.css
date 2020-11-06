@@ -1,0 +1,31 @@
+* {
+    margin:0;
+    padding:0
+}
+html{
+    height:100%;
+    background:#fff;
+}
+#root{
+    background:#fff;
+}
+#box {
+    width:345px;
+    height:150px;
+    margin:15px;
+    background-color:red;
+}
+/* 注册页面NavBar的箭头 */
+.NavBar_icon {
+    color:black;
+}
+/* 请输入手机号左边使用flex布局 */
+.inputPhoneNum_icon {
+    display:flex;
+    justify-content:space-evenly;
+}
+/* 登录按钮 */
+.login_button {
+    margin-top:20px;
+    border-radius:25px !important;
+}
