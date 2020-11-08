@@ -1,0 +1,13 @@
+.renderCountry {
+    padding-right:20px;
+}
+
+.aimToEach{
+    display:flex;
+    flex-direction:column;
+
+    position:fixed;
+    z-index:1;
+    right:10px;
+    top:80px;
+}

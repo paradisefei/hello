@@ -1,0 +1,53 @@
+* {
+    margin:0;
+    padding:0
+}
+html{
+    height:100%;
+    background:#fff;
+}
+#root{
+    background:#fff;
+}
+#box {
+    width:345px;
+    height:150px;
+    margin:15px;
+    background-color:red;
+}
+/* 注册页面NavBar的箭头 */
+.NavBar_icon {
+    color:black;
+}
+/* 请输入手机号左边使用flex布局 */
+.inputPhoneNum_icon {
+    display:flex;
+    justify-content:space-evenly;
+}
+/* 登录按钮 */
+.login_button {
+    margin-top:20px;
+    border-radius:25px !important;
+}
+/* 验证码 */
+.btn_getVerify {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.btn_getVerify button {
+    background-color:white;
+    border:0px;
+    color:#ccc;
+    height:30px;
+    border-left:1px solid #ccc;
+    padding-left:30px;
+}
+/* 注册过程中填写验证码和设置密码两个界面的小人图片 */
+.img {
+    margin:20px;
+    text-align:center;
+}
+.img img{
+    height:100px;
+}

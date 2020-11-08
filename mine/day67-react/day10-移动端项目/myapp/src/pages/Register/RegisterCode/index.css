@@ -1,0 +1,18 @@
+
+/* 可以点击获取验证码按钮获取验证码 */
+.btn_getVerify .canGet{
+    font-size:12px;
+    padding:8px;
+    color:white;
+    border-radius:20px;
+    text-align:center;
+    background:red
+}
+.btn_getVerify .canNotGet{
+    font-size:12px;
+    padding:8px;
+    color:white;
+    border-radius:20px;
+    text-align:center;
+    background:gray
+}
