@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+</head>
+
+<body>
+    <script src="./myPromise2.js"></script>
+    <script>
+        // const promise = new MyPromise((resolve, reject) => {
+        //     console.log(222);
+        //     resolve("我是resolve");
+        // });
+
+        // promise.then((res1) => {
+        //     console.log(res1)
+        // }).then((res2) => {
+        //     console.log(res2);
+        // })
+        // console.log(MyPromise.all)
+        // debugger;
+        // console.log(MyPromise.all);
+        // var p = MyPromise.all([1, 2, 3,4]);
+        var p2 = MyPromise.all([1,2,3, MyPromise.resolve(444)]);
+        // var p3 = MyPromise.all([1,2,3, Promise.reject(555)]);
+        // console.log(p)
+        console.log(p2)
+        // console.log(p3)
+    </script>
+</body>
+
+</html>

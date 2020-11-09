@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyPromise</title>
+</head>
+
+<body>
+    <script src="./myPromise.js"></script>
+    <script>
+        console.log(111);
+        const promise = new MyPromise((resolve, reject) => {
+            console.log(222);
+            resolve("我是resolve");
+            // debugger;
+            // reject("我是reject");
+        });
+        // promise.
+        //     then((res1) => {
+        //         console.log(res1);
+        //     })
+            /* 
+                1.promise执行reject,执行then的第二个回调函数，但此时没有第二个回调函数，因此结果为undefined，报错，因此第一个then的最终结果是失败状态，到了catch，执行catch的回调函数，没有return，返回的promise状态成功
+                2.promise执行resolve，执行then的第一个回调函数此时返回一个成功状态的promise，就会执行catch1的回调函数，此时成功状态的回调函数是undefined，出错，失败，再调用then的第二个回调，出错，失败，最后调用catch2的回调，打印出错结果
+                3.没有传入回调函数
+                4.catch和then的链式调用
+                    then和catch是被它们前面最近的这个promise调用的
+                    如果promise是成功的状态就通过then来得到其中的数据，如果promise是失败的状态就通过catch来得到其中的数据
+                    如果是失败状态，then中的回调还是会被注册，但由于是失败状态，所以会调用第二个参数的回调，此时这个回调的作用是把错误信息传到后面
+                    如果没有进行回调函数是否传入的判断，则从一开始就会出错
+            */
+           /* 
+            1.then中不传回调函数
+            2.promise失败但then传了第一个回调函数
+            
+           */
+        //   promise.then()
+        //   promise.then((res) => {
+            //   console.log("then")
+        //     console.log(res);
+        //   })
+        /* 
+            1.没有判断是否传入回调函数
+                原始promise是成功的
+            没有判断是一种情况，判断了是另一种情况，判断了的情况才是我们需要的情况
+            目的就是成功状态promise的数据用then接收，失败状态的promise的数据用catch接收
+        */
+        promise.
+            then((res1) => {
+                console.log(res1);
+                // return 2
+            })
+            .catch((err1) => {
+                console.log(err1);
+            })
+            .then((res2) => {
+                console.log(res2);
+            })
+            .catch((err2) => {
+                console.log(err2);
+            })
+        
+        // promise.then(
+        //   (value) => {
+        //     console.log("success", value);
+        //   },
+        //   (reason) => {
+        //     console.log("error", reason);
+        //   }
+        // )
+        // .then(
+        //   (value) => {
+        //     console.log("success", value);
+        //   },
+        //   (reason) => {
+        //     console.log("error", reason);
+        //   }
+        // );
+        console.log(333);
+        console.log(promise);
+    </script>
+</body>
+
+</html>
