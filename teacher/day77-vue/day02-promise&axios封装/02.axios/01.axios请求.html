@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>原生</title>
+</head>
+
+<body>
+    <button id="get">get</button>
+    <button id="post">post</button>
+    <button id="put">put</button>
+    <button id="patch">patch</button>
+    <button id="delete">delete</button>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
+    <script>
+        /* 
+            1.获取到post接口中的所有数据
+        */
+        get.onclick = function () {
+            // const p = axios.get("http://localhost:3000/posts",{
+            //     params:{
+            //         id:1
+            //     }
+            // })
+            /*  1.axios请求最后得到的返回值是一个promise对象
+                2.这个promise对象的值是一个对象
+                    config:是请求配置项
+                    data:要请求返回的数据，这个数据是一个数组，数组中保存的才是服务器中的返回的一条一条的数据
+                    headers:请求头
+            */
+            // console.log(p)
+
+            // axios.get("http://localhost:3000/posts", {
+            //     params: {
+            //         name: "zs",
+            //         age: 18
+            //     }
+            // })
+            const p = axios({
+                method: "GET",
+                url: "http://localhost:3000/posts",
+                params: {
+                    name: "zs",
+                    age: 18
+                }
+            })
+            console.log(p)
+        }
+        post.onclick = function () {
+            /* 
+                post表示增加
+            */
+            const p = axios({
+                method: "POST",
+                url: "http://localhost:3000/posts",
+                data: {
+                    name: "原生",
+                    age: 18
+                }
+            })
+
+            console.log(p)
+        }
+        /* 
+            put请求方式是修改，并且是整个替换的修改
+        */
+        // const pu = document.getElementById("put")
+        put.onclick = function () {
+            /* 
+                put表示修改，你修改的话就必须找到某一条具体的数据进行修改
+                接口中有1条或多条数据时，如果不进行路由选择的话就会报错404
+            */
+            console.log("原生put按钮")
+            const p = axios({
+                method: "PUT",
+                url: "http://localhost:3000/posts/19",
+                data: {
+                    add: "这里后面跟的数是19",
+                    //这里的id会自动变成12，后面的这个数就是找到对应的id
+                    id:1
+                }
+            })
+            console.log(p)
+        }
+        patch.onclick = function () {
+            /* 
+                put表示修改，你修改的话就必须找到某一条具体的数据进行修改
+                接口中有1条或多条数据时，如果不进行路由选择的话就会报错404
+            */
+            console.log("原生patch按钮")
+            const p = axios({
+                method: "PATCH",
+                url: "http://localhost:3000/posts/15",
+                data: {
+                    add: "这里后面跟的数是18",
+                    //这里的id会自动变成12，后面的这个数就是找到对应的id
+                    id:1
+                }
+            })
+            console.log(p)
+        }
+        const del = document.getElementById("delete")
+        del.onclick = function () {
+            console.log("我是delete")
+            const p = axios({
+                method: "DELETE",
+                url: "http://localhost:3000/posts/14",
+                data: {
+                    name: "zs",
+                    age: 18
+                }
+            })
+            console.log(p)
+        }
+
+    </script>
+</body>
+
+</html>

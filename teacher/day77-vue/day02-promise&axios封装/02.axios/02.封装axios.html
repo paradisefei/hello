@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>手写</title>
+</head>
+
+<body>
+    <button id="get">get</button>
+    <button id="post">post</button>
+    <button id="put">put</button>
+    <button id="patch">patch</button>
+    <button id="delete">delete</button>
+    <script>
+        /* 
+            1.参数
+                传入的是一个对象
+                对象中固定的属性有method,url,data,params，将该对象传入到方法中，然后在方法中对这些属性的值进行相应的操作
+                    怎样把一个对象作为参数传入到方法中
+                    在方法中要拿到这些对象的属性和操作这些值
+                        对象解构
+            params:{
+                name:"zs",
+                age:18
+            }
+            ?name=zs&age=18
+        */
+        function axios({ method, url, data, params }) {
+
+            method = method.toUpperCase();
+            console.log(method)
+            /* 
+                1.进行ajax请求
+                2.最终返回的是一个promise对象
+            */
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                /* 
+                     1.open中传入的参数
+                         请求方式
+                             GET/POST/DELETE/PUT/PATCH
+                         地址
+                     2.GET/DELETE请求需要把查询字符串加在地址后面，其它请求不需要,
+                        POST/PUT/PATCH可以有查询字符串参数，也可以没有
+                */
+                let qs = "";
+                if (method == "GET" || method==="DELETE") {
+                    if (params) {
+                        /* 如果是get请求，就会传入params参数，把这个对象变成查询字符串格式 */
+                        const parKeyArr = Object.keys(params);
+                        //[name,age]
+                        qs = parKeyArr.reduce((p, c) => {
+                            return p + c + "=" + params[c] + "&"
+                        }, "?").slice(0, -1);
+                    }
+                }
+                /* 
+                      如果我用的是POST请求但却传入了params的话
+                */
+                xhr.open(method, url + qs);
+                // console.log(url+qs)
+                /* 
+                     如果不是GET请求的话，请求数据应该放在send中，但要是一个JSON字符串的格式
+                */
+                if (method === "POST" || method === "PUT" || method==="PATCH") {
+                    xhr.setRequestHeader("content-type", "application/json")
+                    xhr.send(JSON.stringify(data));
+                } else {
+                    xhr.send();
+                }
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status >= 200 && xhr.status <= 299) {
+
+                            const res = {
+                                request: xhr,
+                                data: JSON.parse(xhr.responseText),
+                                status: xhr.status
+                            }
+                            resolve(res);
+                        } else {
+                            reject("error");
+                        }
+                    }
+                }
+            })
+        }
+        //进行数据请求-GET
+        get.onclick = function () {
+            const p = axios({
+                method: "GET",
+                url: "http://localhost:3000/posts",
+                params: {
+                    name: "zs",
+                    age: 18
+                }
+            })
+            console.log(p)
+        }
+
+        //进行数据请求-POST
+        post.onclick = function () {
+            console.log("post按钮")
+            const p = axios({
+                method: "POST",
+                url: "http://localhost:3000/posts",
+                data: {
+                    name: "封装",
+                    age: 18
+                }
+            })
+            console.log(p)
+        }
+        put.onclick = function () {
+            /* 
+                put方式是对数据进行全部修改，在这里就是把原本对象中的除id以外所有数据都拿掉，换上新的数据
+            */
+            const p = axios({
+                method: "PUT",
+                url: "http://localhost:3000/posts/13",
+                data: {
+                    age: "修改id为13这条数据",
+                    hello: "我是hello"
+                }
+            })
+            console.log(p)
+        }
+
+        patch.onclick = function () {
+            /* 
+                patch方式是对数据进行全部局部修改
+            */
+            const p = axios({
+                method: "PATCH",
+                url: "http://localhost:3000/posts/13",
+                data: {
+                    age: "修改id为13这条数据",
+                    hello: "这次是patch方式",
+                    hi:"和原本对象中一样的数据保留，如果有修改的话修改，如果没有的话添加"
+                }
+            })
+            console.log(p)
+        }
+        const del = document.getElementById("delete")
+        del.onclick = function () {
+            /* 
+                delete
+                    如果不选具体的id的话，报错404
+                
+            */
+            const p = axios({
+                method: "DELETE",
+                url: "http://localhost:3000/posts/13",
+                data: {
+                    age: "修改id为13这条数据",
+                    hello: "这次是patch方式",
+                    hi:"和原本对象中一样的数据保留，如果有修改的话修改，如果没有的话添加"
+                }
+            })
+            console.log(p)
+        }
+
+    </script>
+</body>
+
+</html>
