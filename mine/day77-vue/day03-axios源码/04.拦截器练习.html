@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>拦截器</title>
+</head>
+
+<body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
+    <script>
+        /*
+        创建一个axios实例，这个实例化对象上的属性有
+          defaults
+          //拦截器属性，拦截器属性是一个对象，这个对象中有两个属性分别表示请求拦截器和响应拦截器，注意这两个拦截器是两次实例化的不同的两个拦截器对象，而不是同一个拦截器
+          interceptors = {
+            request: new InterceptorManager(),
+            response: new InterceptorManager()
+          }
+            //拦截器实例化对象
+              拦截器实例化对象上的属性有
+                  handles
+              拦截器原型对象上的属性有
+                  use
+                  eject
+                  forEach
+          axios原型对象上的属性有
+                request
+                    执行instance最终就是执行Axios实例化对象身上的request方法去进行请求，request中是调用dispatchRequest进行请求的，在这里面调用adapter方法进行Ajax请求
+        Axios原型对象上有哪些重要的属性
+            Axios.prototype.request
+            Axios.prototype.getUri
+            
+            Axios.prototype.get
+            Axios.prototype.delete
+            Axios.prototype.head
+            Axios.prototype.options
+    
+    
+            Axios.prototype.post
+            Axios.prototype.put
+            Axios.prototype.patch
+        Axios实例化对象上有哪些重要的属性
+        function Axios(instanceConfig) {
+            //默认配置
+            this.defaults = instanceConfig;
+            //拦截器属性
+            this.interceptors = {
+                request: new InterceptorManager(),
+                response: new InterceptorManager()
+            };
+        }
+        */
+        const instance = axios.create({
+            baseURL: "http://localhost:3000",
+        });
+        /* 
+            1.执行instance这个Axios实例化对象身上的拦截器属性，执行其use函数
+            2.执行instance.interceptors.request.use方法的结果就是在该请求拦截器对象的属性handles中push一个对象，对象中保存的是该use的两个回调函数
+            3.接着执行222，同样是在刚才的那个请求拦截器对象的属性handles中push一个对象，对象中保存的是该use的两个回调函数
+            4.执行333和444，在同一个响应拦截器对象的属性handles中push一个对象，对象中保存的是该use的两个回调函数
+            5.执行instance()函数，相当于执行Axios实例化对象上的request方法，这个方法中会定义一个chain数组初始化为保存[dispatch,undefined]
+            6.request中会调用拦截器对象上的forEach方法
+                执行this.interceptors.request.forEach方法，首先，这个请求拦截器对象中的handles数组保存的是通过request.use这个拦截器的方法push进来的
+                执行this.interceptors.response.forEach方法，首先，这个响应拦截器对象中的handles数组保存的是通过response.use这个拦截器的方法push进来的
+                但是上面两个方法都是操作的同一个chain数组，只是request.use每次都是把函数放在数组首部，response.use每次都是把函数放在数组尾部，最终的结果就是得到一个完整的chain数组
+            7.然后开始执行chain数组
+        */
+        instance.interceptors.request.use(
+            (config) => {
+                console.log("request success 111");
+                return config;
+            },
+            // (error) => {
+            //   console.log("request error 111", error);
+            //   return error;
+            // }
+        );
+
+        instance.interceptors.request.use(
+            (config) => {
+                console.log("request success 222");
+                return config;
+                // return Promise.reject();
+            },
+            (error) => {
+                console.log("request error 222");
+                return error;
+            }
+        );
+
+        instance.interceptors.response.use(
+            (response) => {
+                console.log("response success 333");
+                return response;
+            },
+            (error) => {
+                console.log("response error 333");
+                return error;
+            }
+        );
+
+        instance.interceptors.response.use(
+            (response) => {
+                console.log("response success 444");
+                return response;
+            },
+            (error) => {
+                console.log("response error 444");
+                return error;
+            }
+        );
+
+        instance({
+            url: "http://localhost:3000/comments",
+        })
+            .then(() => {
+                console.log("then 555");
+            })
+            .catch(() => {
+                console.log("catch 555");
+            });
+
+    </script>
+</body>
+
+</html>
