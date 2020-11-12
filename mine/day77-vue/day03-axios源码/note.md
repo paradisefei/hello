@@ -40,3 +40,37 @@ function forEach(obj, fn) {
 2. `creactInstance()`内部执行会创建`Axios`实例化对象，创建实例化对象时会传入默认的配置信息
 3. 执行`instance()`函数最终会执行`Axios`实例化对象上的`request()`方法，此时`request()`方法中的`this`执行创建出来的`Axios`实例化对象
 4. 此时实例化对象上就有默认值，拦截器以及后续的所有请求方式的方法
+
+#### `XMLHttpRequest.open()`
+
+1. 用于指定HTTP请求的参数，或者说初始化`XMLHttpRequest`实例化对象，初始化一个请求准备发送
+2. 将`readyState`赋值为1
+3. 使用`XMLHttpRequest`对象来实现Ajax这个技术，发送的其实是一个HTTP请求，习惯上来说就是发送Ajax请求
+4. open是`XMLHttpRequest`实例化对象上的方法，改变的是这个实例化对象身上的某些东西，也就是对该实例化对象进行初始化
+
+#### `XMLHttpRequest.send()`
+
+##### 调用`send()`之后发生了什么
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
