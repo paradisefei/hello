@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cancel</title>
+</head>
+
+<body>
+    <button id="btn1">发送请求</button>
+    <button id="btn2">取消请求</button>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
+    <script>
+        // const CancelToken = axios.CancelToken;
+        // const source = CancelToken.source();
+        // /*
+        //     发送请求
+        //         1.在请求中配置一个cancelToken属性，从source身上得到
+        // */
+        // btn1.onclick = function () {
+        //     axios({
+        //         url:"http://localhost:3000/comments",
+        //         cancelToken:source.token
+        //     }).then((result) => {
+        //         console.log("result", result.data)
+        //     }).catch((reason) => {
+        //         console.log("reason", reason)
+        //     })
+        // }
+        // /* 取消请求
+        //     1.得到axios对象上的CancelToken这个东西
+        //         它既是一个函数，也是一个对象
+        //     2.从同一个source身上调用cancel，就会找到上面那个请求把它取消了
+        // */
+
+
+        // btn2.onclick = function () {
+        //     console.log("hello")
+        //     source.cancel("请求取消了")
+        // }
+        // let p = null;
+        // let cancel = null;
+        // btn1.onclick = function () {
+        //     p = axios({
+        //         url: "http://localhost:3000/comments",
+        //         cancelToken: new axios.CancelToken(function (c) {
+        //             cancel = c
+        //         })
+        //     });
+        //     p.then((result) => {
+        //         console.log("result", result)
+        //     }).catch((reason) => {
+        //         console.log("reason", reason)
+        //     })
+        // }
+
+        // btn2.onclick = function () {
+        //     console.log(p)
+        //     cancel("请求取消了")
+        // }
+
+
+        const p = axios({
+            url: "http://localhost:3000/comments",
+            params: {
+                name: "zs"
+            }
+        });
+        p.then((res) => {
+            console.log(res);
+        }).catch((rea) => {
+            console.log(rea);
+        })
+        console.log(p)
+
+    </script>
+</body>
+
+</html>

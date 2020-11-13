@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>01_HelloWorld</title>
+</head>
+
+<body>
+  <!-- 使用了双花括号时，程序会对其进行解析，到js代码中去寻找对应的变量添加到这里来 -->
+
+  <div id="root">
+    <!--
+      v-model
+        1.双向绑定数据
+        2.vue指令
+        3.是vue指令的话，后面引号中的东西会当作是配置中的变量来解析
+        4.一般来说就是通过表单来输入数据，来改变内部的数据，也就是说数据从页面流向js的话是通过表单元素来实现，最多的就是input
+    -->
+    <input type="text" v-model="msg">
+    <h1>{{msg}}</h1>
+  </div>
+  <!-- 插件只对未压缩版本有效 -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+  <!--
+      1. 引入Vue.js
+      2. 创建Vue对象
+        el : 指定根element(选择器)
+        data : 初始化数据(页面可以访问)
+      3. 双向数据绑定 : v-model
+      4. 显示数据 : {{xxx}}
+      5. 理解vue的mvvm实现
+    -->
+  <script>
+    const vue = new Vue({
+      /* 
+          el选中了某个DOM元素，那此时这一整个Vue配置最终就是用在这个DOM元素内部的，模板页面中对于在这个元素内部的变量，解析的时候就会
+      */
+      el: "#root",
+      data: {
+        msg: "Hello World"
+      }
+    })
+    console.log(vue)
+    console.log(Vue)
+  </script>
+</body>
+
+</html>
