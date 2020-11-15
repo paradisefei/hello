@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>06_列表渲染</title>
+</head>
+
+<body>
+
+  <!--
+1. 列表显示
+  数组: v-for / index
+  对象: v-for / key
+2. 列表的更新显示
+  删除item
+  替换item
+-->
+
+  <div id="demo">
+    <h2>测试: v-for 遍历数组</h2>
+    <ul>
+      <!-- 
+        v-for
+          该指令的值必须使用特定语法 alias in expression
+          基于源数据多次渲染元素或模板块
+          把一个数组对应为一组元素
+            1.在这里的角色是li这个标签的自定义属性
+            2.表达式中表示的是遍历对应的数组时，取出数组中的每一项与元素
+            3.所以在这里有两个作用
+                从users这个数组中取出每一项元素
+                生成一个li标签，此时该标签内部就可以使用这项数组元素的值了
+
+            1.需求是需要进行列表渲染
+            2.给li添加一个v-for的指令，指令的值中是特定语法，包含了源数据和别名
+            3.源数据可以是数组，也可以是对象
+              如果源数据是数组
+                基于这个数组，把这个数组对应为一组元素，也就是需要多次渲染元素
+            
+            我的疑惑在于，你v-for是当前这个li元素的属性，按理说只能操作当前这个li啊，那你为什么可以生成多个li
+
+            要给每个元素绑定key值
+              为什么key里面可以用到v-for中的item
+              变成指令后，就是一个表达式了，既然是一个表达式的话，就要对这个表达式进行解析
+              v-for代码块中，我们可以访问所有父作用域的property
+                要知道，v-for是一个代码块，相当于就有了一个作用域，你在v-for这个指令后面的那句语法就相当于定义了一个变量，然后还给这个变量赋了值，key这个表达式在解析的时候就会去到作用域中找，当前作用域找不到就去父级作用域找，这里父作用域就是data中的数据，不对，methods中的也可以找得到
+       -->
+      <li v-for="item,index in users" :key="item.id">
+        <!-- <h1 v-for="item,index in users" > -->
+        {{item.id}} - {{item.name}} - {{item.age}} - {{a}} - {{index}}
+      </li>
+    </ul>
+    <h2>测试: v-for 遍历对象</h2>
+    <ul>
+      <li v-for="value,key,index in person">
+        <!-- 
+          遍历时就是按照我们在对象中写的顺序来进行遍历的
+          第一个参数表示这个键值对中的值
+          第二个参数表示这个键值对中的键 
+        -->
+        {{value}} - {{key}} - {{index}}
+      </li>
+    </ul>
+  </div>
+
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script type="text/javascript">
+    /*
+        1.数组保存在数组中，将这些数据渲染到页面上
+        2.动态渲染数据
+    */
+    new Vue({
+      el: "#demo",
+      data: {
+        users: [
+          { id: 1, name: "peihua", age: 38 },
+          { id: 2, name: "jingge", age: 48 },
+          { id: 3, name: "leige", age: 68 },
+        ],
+        person: {
+          age: 18,
+          name: "zs",
+          hobby: ["抽烟", "喝酒", "烫头"]
+        },
+        a: "hello"
+      },
+      methods: {
+        fn: function () {
+          console.log("hi")
+        }
+
+      }
+    })
+    const person = {
+      hobby: ["抽烟", "喝酒", "烫头"],
+      age: 18,
+      name: "zs",
+      
+    }
+    console.log(Object.keys(person));
+  </script>
+</body>
+
+</html>

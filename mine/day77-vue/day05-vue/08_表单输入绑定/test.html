@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>08_表单输入绑定</title>
+</head>
+
+<body>
+  <!--
+1. 使用v-model(双向数据绑定)自动收集数据
+  text/textarea
+  checkbox
+  radio
+  select
+-->
+  <div id="demo">
+    <form action="/xxx">
+      <span>用户名: </span>
+      <input type="text" v-model="users.username"><br>
+
+      <span>密码: </span>
+      <input type="password" v-model="users.password"><br>
+
+      <!-- 
+      1.一般上来的时候会有一个默认选择
+      2.v-model和value绑定
+          这个文本框的值是女，如果被选中时，那么传到后台去的就是这个value值
+          v-model指令会忽略value值，传入到后台的就是这里的值
+          这里是你先选择，你选中了哪个，相当于那个就被checked了，那这个时候这个文本框的值value就通过v-model传入到js中去了
+          现在的问题是，为什么users.sex写上女，女这个单选框就会被选中
+            数据从js流向页面
+            此时两个v-model的值都是"男"
+            value="男"的文本框被选中
+            也就是说，当v-model中的值和value中的值相同时，该单选框被选中
+     -->
+      <span>性别: </span>
+      <!-- 在vue中我们可以不用name属性，只需要给每个v-model绑定同一个数据就能保证同一时间只有一个被选中 -->
+      <!-- <input type="radio" id="female" v-model="users.sex" value="女"> -->
+      <input type="radio" id="female" value="女" v-model="users.sex">
+      <!-- <input type="radio" id="female" name="sex" value="女" :checked="users.sex === '女'" @change="(e) => {users.sex = e.target.value}"> -->
+      <label for="female">女</label>
+      <input type="radio" id="male" v-model="users.sex" value="男">
+      <label for="male">男</label><br>
+
+      <!-- 
+        要拿到多选框里面的值，是要拿到这个文本框的value值，
+        放在一个数组中，一开始的时候数组是空的，选中了之后，是把改值添加到users.hobby这个数组中去了，按选择的顺序来确定值在数组中的顺序，取消了选择，该值从数组中移除，后面的元素会自动向前移来自动补齐数组
+
+       -->
+      <span>爱好: </span>
+      <input type="checkbox" id="basket" value="basket" v-model="users.hobby">
+      <label for="basket">篮球</label>
+      <input type="checkbox" id="foot" value="foot" v-model="users.hobby">
+      <label for="foot">足球</label>
+      <input type="checkbox" id="pingpang" value="pingpang" v-model="users.hobby">
+      <label for="pingpang">乒乓</label><br>
+
+      <span>城市: </span>
+      <!-- 
+        收集select的数据
+          单选
+            选择了哪个下拉框，就把那个下拉框的值传入到js中
+            选中了哪个下拉框，这个select的value就是多少
+            给select绑定v-model，该表达式的值是哪个value，哪个option就被选中
+
+       -->
+      <select v-model="users.city">
+        <option value="">未选择</option>
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+        <option value="广州">广州</option>
+        <option value="深圳">深圳</option>
+      </select><br>
+      <span>介绍: </span>
+      <textarea rows="10" v-model="users.textArea"></textarea><br><br>
+
+      <input type="submit" value="注册">
+    </form>
+  </div>
+
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script type="text/javascript">
+    /* 
+         1.表单收集数据
+            input
+              输入文本的：要得到收集的数据就是得到value值和input事件
+                text
+                password
+              选择的：checked
+                radio
+                checkbox
+            textarea：value
+            select：value
+              单选
+              多选
+          2.收集数据，就是说数据是从页面流向js的，那就是要在data中定义变量来保存了，那就需要用到v-model
+          3.最终的结果是要得到我的输入和我的选择的数据的值
+
+          v-model
+              1.从文本框输入的值理论上来说就是value值，这个value值是怎么通过v-model指令保存到vue实例中去的
+              2.如果元素有v-model指令但却没有给该指令一个值，那么vue程序会报错，结合v-model的数据来源是Vue实例的数据这句话,也就是说如果你有v-model指令的话，就一定要给它一个Vue实例中的数据，不能是空的，而且这个数据一般是真 数据，所以是定义在data中的。总的来说，如果你有v-model指令，就一定要给它一个在data中定义的数据
+     */
+    new Vue({
+      el: "#demo",
+      data: {
+        users: {
+          username: "",
+          password: "",
+          sex: "男",
+          hobby:["basket"],
+          city:"北京",
+          textArea:""
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

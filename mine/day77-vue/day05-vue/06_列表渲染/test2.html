@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>06_列表渲染_过滤与排序</title>
+</head>
+
+<body>
+  <!--
+1. 列表过滤
+2. 列表排序
+-->
+  <div id="root">
+    <input type="text" v-model="searchText">
+    <ul>
+      <li v-for="item in resultUsers">
+        {{item.id}} - {{item.name}} - {{item.age}}
+      </li>
+    </ul>
+    <!-- 
+      点击升序，数据按年龄的升序排
+      点击降序，数据按年龄的降序排
+      点击原本顺序，数据按原本顺序排
+
+      事件函数
+        如果直接使用函数名的话，就和之前的是一样额
+        如果给了括号，并不是直接调用，而是给这个事件函数在执行时传入一个参数，并不会影响它原本的执行时机
+        如果括号中没有写任何东西，就相当于此时没有传入参数，和不加括号时是有区别的
+            不加括号，则事件函数在执行时实参列表中会接收到一个事件对象
+            加了括号没传东西的话，实参列表长度为0，没有事件对象
+        如果括号中写了东西，那就表示是当作实参传入到事件函数中去执行的
+
+        在data中定义了一个变量来保存顺序orderType的状态
+          如果为0，则为原本的顺序
+          如果为1，则为升序
+          如果为-1，则为降序
+          过滤之后再对元素进行排序，所以要把orderType传入到方法中进行判断
+            如果为0，则为原本的顺序
+            如果为1，则为升序
+            如果为-1，则为降序
+     -->
+    <button @click="orderType = 1">升序</button>
+    <button @click="orderType = -1">降序</button>
+    <button @click="orderType = 0">原本的顺序</button>
+  </div>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script type="text/javascript">
+    /* 
+        文本框
+        显示的数据
+        三个按钮
+        在文本框中输入数据，显示筛选后的数据
+          1.输入数据
+          2.获取到这个数据
+          3.使用计算属性
+            遍历源数据，判断输入的数据是否被包含在name中，如果包含在name中则该元素将被渲染
+            页面加载，渲染的是源数据，输入内容时重新渲染
+
+        点击升序，降序，原本顺序得到最终效果
+     */
+    new Vue({
+      el: "#root",
+      data: {
+        users: [
+          { id: 1, name: "jack", age: 38 },
+          { id: 2, name: "rose", age: 16 },
+          { id: 3, name: "tom", age: 27 },
+          { id: 4, name: "jerry", age: 40 },
+          { id: 5, name: "lucy", age: 22 },
+          { id: 6, name: "lilei", age: 29 },
+        ],
+        searchText: "",
+        /* 默认情况为原本的顺序 */
+        orderType: 0
+      },
+      computed: {
+        /* 这个是在文本框输入内容时被渲染的数据 */
+        resultUsers: function () {
+          /* 
+            遍历数组
+            判断searchResult是否被包含在name中
+            渲染这个新的数组
+            有内容的话就渲染匹配上的，没内容的话就全部渲染
+           */
+          const filterUsers = this.users.filter((item) => {
+            if (item.name.includes(this.searchText)) {
+              return true;
+            }
+          })
+          if (this.orderType === 0) return filterUsers;
+
+          const sortUsers = filterUsers.sort((item1, item2) => {
+              return this.orderType === 1 ? item1.age - item2.age : item2.age - item1.age
+          })
+          return sortUsers;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
