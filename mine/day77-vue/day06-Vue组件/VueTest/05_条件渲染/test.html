@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>08_条件渲染</title>
+  </head>
+  <body>
+    <!--
+      1. 条件渲染指令
+        v-if
+        v-else
+        v-show
+      2. 比较v-if与v-show
+        如果需要频繁切换 v-show 较好
+      -->
+
+    <div id="app">
+      <!-- 
+        isShow为true，Hello World被渲染
+
+       -->
+      <p v-if="isShow === 'a' ">Welcome to the new World</p>
+      <p v-else-if="isShow === 'b' ">It sucks</p>
+      <p v-else>But you gonna love it</p>
+      <span v-show="myShow === 'b'">How you doing</span>
+      <button @click="handleShow">切换</button>
+    </div>
+
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        /* 
+            v-if
+                后面的表达式会被转成布尔值
+                    为true，则该元素处在DOM树上
+                    为false，则该元素从DOM树上移除了
+                    结果就是确定该元素是否在DOM树上，实现显示隐藏
+                在if语句中，条件为真时，语句可以有各种逻辑，但在这里就相当于语句只有一种情况：元素在DOM树上
+            v-else
+                不需要表达式
+                真＊前一兄弟元素必须有v-if或v-else-if，如果没有，该元素将会被忽略
+            条件渲染
+              所谓条件渲染就是满足某个条件就渲染，不满足某个条件就不渲染
+            样式绑定
+              还有就是满足某个条件是一种样式，满足另一个条件是另一种样式
+
+            v-show
+        */
+         new Vue({
+           el:"#app",
+           data:{
+             isShow:"",
+             myShow:"a"
+           },
+           methods:{
+            handleShow(){
+              this.myShow = 'b'
+            }
+           }
+         })
+    </script>
+  </body>
+</html>

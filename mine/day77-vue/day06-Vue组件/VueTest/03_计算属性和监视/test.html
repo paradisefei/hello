@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>03_计算属性和监视</title>
+</head>
+
+<body>
+  <!--
+      1. 计算属性
+        在computed属性对象中定义计算属性的方法
+        在页面中使用{{方法名}}来显示计算的结果
+      2. 监视属性:
+        通过通过vm对象的$watch()或watch配置来监视指定的属性
+        当属性变化时, 回调函数自动调用, 在函数内部进行计算
+      3. 计算属性高级:
+        通过getter/setter实现对属性数据的显示和监视
+        计算属性存在缓存, 多次读取只执行一次getter计算
+    -->
+  <div id="app">
+    姓: <input type="text" placeholder="First Name" v-model="first" /><br />
+    名: <input type="text" placeholder="Last Name" v-model="last" /><br />
+    姓名1: <input type="text" placeholder="Full Name1" /><br />
+    姓名2: <input type="text" placeholder="Full Name2" v-model="fullName1" /><br />
+  </div>
+
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script type="text/javascript">
+    /* 
+      1.计算属性
+        computed
+      2.需求
+          1.修改first last name，最终结果显示在fullName1中
+          2.一开始f和l中有默认值，full中也有
+          3.修改first 和 last时，full中也修改
+          4.对first和last进行一些操作，得到的数据赋给fullName
+    */
+    Object.defineProperty(computed, "fullName", {
+      get: function () {
+        return this.first + " " + this.last;
+      },
+      set: function (newVal) {
+        const [firstName, lastName] = newVal.split(" ");
+        this.first = firstName;
+        this.last = lastName;
+      }
+    });
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        first: "xu",
+        last: "yaoFei"
+      },
+      computed: {
+        /* 
+          1.first中的数据发生变化
+          2.fullName里面的数据就要发生变化
+          3.fullName中的数据就会用到first和last中的数据
+          4.first中的数据发生了变化，因为fullName这个计算属性中用到了first这个数据，所以这个变化会被监测到，那么fullName这个属性的值就发生了变化
+          5.访问fullName这个属性的值就是通过调用get方法来得到
+          6.修改fullName这个属性的值就是通过调用set这个方法
+          7.修改fullName这里面的数据，就可以收集到数据将其传到js，传到js的话就传入到了set中来执行这个方法了
+          8.计算属性中，如果get和set方法都有，那么就既可以修改也可以读取；如果是只读，则表示没有set方法，此时可以直接return
+        */
+        fullName: {
+          get: function () {
+            return this.first + " " + this.last;
+          },
+          set: function (newVal) {
+            const [firstName, lastName] = newVal.split(" ");
+            this.first = firstName;
+            this.last = lastName;
+          }
+        },
+        fullName1: {
+          get: function () {
+            return this.first + " " + this.last;
+          }
+        },
+        /* 可以直接写成下面这种 */
+        // fullName1(){
+        //   return this.first + " " + this.last;
+        // }
+      },
+      methods: {
+        handleClick: function () {
+          console.log(1)
+        }
+      }
+    })
+    console.log(vm)
+      /*
+      监视属性
+        属性名是被监视的数据，属性值是回调函数
+        一旦被监视的数据发生变化时就会触发这里面相应的回调来执行
+        Vue实例化时会调用$watch()，遍历watch对象的每一个property，那如果watch对象中有不是data中的数据的话就会报错了
+  */
+
+      //  const vm = new Vue({
+      //     el:"#app",
+      //     data:{
+      //       first:"xu",
+      //       last:"yaoFei",
+      //       fullName1:"xu yaoFei"
+      //     },
+      //     watch:{
+      //       /* 
+
+      //       */
+      //       first:function(){
+      //         // console.log("徐")
+      //         this.fullName1 = this.first + " " + this.last;
+      //       },
+      //       last:function(){
+      //         // console.log("耀飞")
+      //         this.fullName1 = this.first + " " + this.last;
+      //       }
+      //     }
+      //  })
+      //  console.log(vm)
+  </script>
+</body>
+
+</html>

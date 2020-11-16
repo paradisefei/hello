@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>响应式</title>
+</head>
+
+<body>
+  <div id="demo">
+
+    <ul>
+      <li v-for="(value,key) in person" :key="key">
+        {{key}} - {{value}}
+      </li>
+    </ul>
+
+    <ul>
+      <li v-for="(value,index) in people" :key="value">
+          {{index}} - {{value}}
+        <!-- {{value.id}} - {{value.name}} -->
+      </li>
+    </ul>
+
+    <button @click="update">更新</button>
+    <!-- <button @click="add">add</button> -->
+  </div>
+
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script type="text/javascript">
+    /* 
+        什么叫响应式
+            只要数据改了，用户界面就会重新渲染
+            这里所说的数据只是data中的数据
+            并且不管是外层数据还是对象的里层数据，只要修改了，就会这里面的值就会重新渲染
+        
+        1.修改data中的对象的数据
+        2.给对象添加一个属性
+          直接扩展
+            vue插件中对象会添加一个属性
+            但是页面不会渲染
+          this.$set(this.person,"score",100)添加的属性是响应式的
+          Vue.set(this.person,"score",100)也是响应式的
+        3.数组
+          改变数组中的元素的值
+            this.hobby[1] += "~"直接使用下标没有响应式
+
+    */
+    new Vue({
+      el: "#demo",
+      data: {
+        person: {
+          name: "zs",
+          age: 23
+        },
+        people: ["抽烟","喝酒","烫头"]
+        // [
+        //   { id: 1, name: "jack" },
+        //   { id: 2, name: "rose" }
+        // ]
+      },
+      methods: {
+        update: function () {
+          /* 还是在原来的person对象自己的地址中改变它的值
+               1.对象的引用地址没有变
+               2.该对象中的某个属性值改变了
+          */
+          // console.log(this.$refs.btnUpdate)
+          // this.person.name += "~";
+          // this.person.score = 100;
+          // this.people = "li"
+
+          // this.$set(this.person,"score",100)
+          // Vue.set(this.person,"score",10)
+          // console.log(this.hobby[1].name)
+          this.people[1].name += "~"
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

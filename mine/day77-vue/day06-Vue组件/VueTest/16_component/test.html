@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>组件</title>
+</head>
+
+<body>
+  <div id="demo">
+    <h1>app...</h1>
+    <test-component></test-component>
+  </div>
+
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script type="text/javascript">
+    /* 
+      Vue组件
+        1.自定义组件，放在模板页面中使用
+        2.局部extend
+
+        3.全局组件component
+    */
+
+    /* 
+      1.extend中传入的对象和new实例传入的对象基本相似
+      2.Vue.extend()创建一个组件构造器
+          可以直接将该构造器传入到vm中
+          也可以通过new这个构造器然后再把对应的实例挂载到某个元素上
+     */
+    const TestComponent = Vue.extend({
+      //data必须是一个方法
+      // data:{
+      //   msg:"Fuck you"
+      // },
+      data() {
+        return {
+          msg: "Fuck you",
+          num:0
+        }
+      },
+      methods:{
+        plus:function(){
+          /*
+              这里面的this指向VueComponent实例，vue组件实例
+          */
+          console.log(this);
+          this.num++
+        }
+      },
+      // template就是这个组件最终使用到模板页面后渲染出来的是一个什么样的结构，会解析其中的标签
+      //这里面的这个msg找的是这个组件中而不是new这个Vue实例是配置对象中的
+      template: "<div><p>{{num}}</p><button @click='plus'>按钮</button></div>"
+    });
+
+    new TestComponent().$mount("#demo")
+    const vm = new Vue({
+      el: "#demo",
+      data: {
+        msg: "Hello World"
+      },
+      //components中的东西不会代理到vm上
+      components: {
+        /*
+          键：
+            可以是横杠取名
+            也可以大驼峰
+          值：传入的具体哪个组件
+        */
+        "test-component": TestComponent
+      }
+    })
+    // console.log(vm)
+  </script>
+</body>
+
+</html>

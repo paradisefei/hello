@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>11_过滤器</title>
+  <style>
+    [v-cloak] {
+      display: none
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+1. 理解过滤器
+  功能: 对要显示的数据进行特定格式化后再显示
+  注意: 并没有改变原本的数据, 可是产生新的对应的数据
+2. 编码
+  1). 定义过滤器
+    Vue.filter(filterName, function(value[,arg1,arg2,...]){
+      // 进行一定的数据处理
+      return newValue
+    })
+  2). 使用过滤器
+    <div>{{myData | filterName}}</div>
+    <div>{{myData | filterName(arg)}}</div>
+-->
+  <!--需求: 对当前时间进行指定格式显示-->
+  <div id="test">
+    <h2>显示格式化的日期时间</h2>
+    <div v-cloak>{{data | formatDate("YYYY-MM-DD")}}</div>
+    <div v-cloak>{{data | formatDate("HH:mm:ss")}}</div>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.9.4/dayjs.min.js"></script>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script>
+    /*
+      过滤器
+          1.filters是配置vue实例的可选项
+          2.在这里面定义的属性会被代理到vm上
+          3.vue的配置中有一些选项可供选择，这些选项是一个个对象，对象中是key-value的键值对，这些个属性最终会被代理到vm上
+          4.这些属性的值可以是数据，可以是方法，可以是对象
+          5.而对于对象来说的话，里面才会有getter和setter用于获取
+
+          getter和setter
+              get
+                1.将对象的属性绑定到查询该属性时将被调用的函数
+                2.如果要查询对象中的这个属性，那么就会调用这个get方法
+                3.在js中，get后面直接跟的就是我们要查询的属性名和调用的方法
+                4.在Vue中
+                    当需要获取和设置该属性值时，get和set作为属性放在这个要被查询的属性的里面，此时这个要被查询的属性是一个对象
+                    当只有get的时候，这个方法可以直接跟在被查询的属性后面，此时可以简写，此时这个要被查询的属性是一个方法
+                5.字面量的方式其实就是使用Object.defineProperty()方法来进行的绑定
+                6.Vue中实现也是通过Object.defineProperty()来实现
+                只是两种不同的形式
+
+    */
+    /* 
+      调用Vue上的filter方法
+     */
+    Vue.filter("formatDate", (value, str) => {
+      return dayjs(value).format(str);
+    })
+    const vm = new Vue({
+      el: "#test",
+      data: {
+        data: Date.now()
+      },
+      filters: {
+        formatDate(value, str) {
+          /* 
+            根据传入的str的格式返回对应的数据
+           */
+          return dayjs(value).format(str);
+          // console.log(value)
+        }
+        /* 
+          相当于formatDate这个属性中只有getter没有setter
+         */
+        // formatDate:function(value){
+        //   return dayjs(value).format("YYYY-MM-DD HH:m:ss");
+        // }
+        /* 
+          这个方式时，formatDate是一个对象而不是一个方法
+
+          把这些 property 全部转为 getter/setter来获取或设置该属性的值。
+          首先它是一个数据，然后才是有getter和setter来获取和设置该数据的值
+         */
+        // formatDate: {
+        //   get: function (value) {
+        //     return dayjs(value).format("YYYY-MM-DD HH:m:ss");
+        //   }
+        // }
+      }
+    })
+    console.log(vm)
+  </script>
+</body>
+
+</html>

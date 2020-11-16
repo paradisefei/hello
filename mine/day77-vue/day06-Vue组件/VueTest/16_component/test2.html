@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>组件</title>
+  </head>
+  <body>
+    <div id="demo">
+      <h1>app...</h1>
+      <test-component></test-component>
+    </div>
+
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        /* 
+            全局组件
+            定义好全局组件之后，不能直接去模板页面中使用，因为此时它还不是一个Vue实例，要是一个Vue实例才能使用
+        */
+       Vue.component("test-component",{
+         data(){
+            return {
+              msg:"hello"
+            }
+         },
+         template:"<div>{{msg}}</div>"
+       })
+       new Vue({
+         el:"#demo"
+       })
+    </script>
+  </body>
+</html>

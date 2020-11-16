@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>12_指令_内置指令</title>
+  <style>
+    [v-cloak] { display: none }
+  </style>
+</head>
+
+<body>
+  <!--
+常用内置指令
+  v-text : 更新元素的 textContent
+  v-html : 更新元素的 innerHTML
+  v-if : 如果为true, 当前标签才会输出到页面
+  v-else: 如果为false, 当前标签才会输出到页面
+  v-show : 通过控制display样式来控制显示/隐藏
+  v-for : 遍历数组/对象
+  v-on : 绑定事件监听, 一般简写为@
+  v-bind : 强制绑定解析表达式, 可以省略v-bind
+  v-model : 双向数据绑定
+  ref : 为某个元素注册一个唯一标识, vue对象通过$refs属性访问这个元素对象
+  v-cloak : 使用它防止闪现表达式, 与css配合: [v-cloak] { display: none }
+-->
+  <div id="example">
+    <!-- <p v-text="msg"></p>
+    <p v-upper-text="msg"></p>
+    <span v-upper-text="a"></span>
+    <p v-upper-text="b"></p> -->
+    <p v-cloak ref="pName">{{msg}}</p>
+    <p v-pre>{{msg}}</p>
+    <p v-once>{{num}}</p>
+    <p>{{num}}</p>
+    <!-- ref后面的btn就是注册到$refs对象上的表示该DOM元素的键值对中的键，值就是该DOM元素 -->
+    <button @click="num++" >按钮</button>
+    <!-- <button @click="handle" ref="btnName">按钮</button> -->
+  </div>
+
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script type="text/javascript">
+    /* 
+      1.v-text
+        解析表达式，并把值写入到标签中
+        不解析HTML标签
+      2.自定义指令
+          让该值所有字母都大写
+          directive
+          全局指令
+          局部指令
+            所谓局部指令就是只能在该vm实例中使用
+      3.ref
+        注册引用信息
+     */
+    Vue.directive("upper-text",function (el, binding) {
+          console.log(el, binding)
+          el.innerText = binding.value.toUpperCase();
+        })
+    new Vue({
+      el: "#example",
+      data: {
+        msg: "Hello World",
+        a:"a",
+        b:"b",
+        num:0
+      },
+      methods:{
+        handle:function(){
+          /* 
+            所有ref都会注册到实例的$refs对象上
+            $refs是挂载在实例对象上的属性
+           */
+          console.log(this.$refs)
+          console.log(this.$refs.btn)
+          this.num++
+        }
+      }
+      // directives: {
+      //   /* 
+      //      自定义指令 
+      //        一般只用来实现某一项功能
+      //        命名
+      //        函数内实现逻辑
+      //         el：表示该指令所在的DOM元素，如果该指令在多个DOM元素中使用，则只是每一次使用的时候会调用该指令函数，也就是说会输出多个，但每个只是输出自己的
+      //         binding：
+      //           1.是一个对象{
+      //             expression: "msg"//表示该指令绑定的哪个表达式
+      //             modifiers: {}
+      //             name: "upper-text"
+      //             rawName: "v-upper-text"
+      //             value: "Hello World"//表示该指令绑定的表达式的值
+      //           }
+
+
+
+      //    */
+      //   "upper-text": function (el, binding) {
+      //     console.log(el, binding)
+      //     el.innerText = binding.value.toUpperCase();
+      //   }
+      // }
+    })
+  </script>
+</body>
+
+</html>

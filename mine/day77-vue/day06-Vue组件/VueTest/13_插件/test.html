@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>17_插件</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script type="text/javascript" src="./MyPlugin.js"></script>
+  <script type="text/javascript">
+    /* 
+      插件引入之后还要经过use才能使用
+    */
+    Vue.use(MyPlugin)
+    Vue.h()
+    new Vue({
+      el:"#app",
+      mounted(){
+        this.$instanceMethod()
+      }
+    })
+  </script>
+</body>
+
+</html>

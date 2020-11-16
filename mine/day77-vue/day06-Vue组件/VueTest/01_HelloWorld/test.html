@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>01_HelloWorld</title>
+</head>
+
+<body>
+
+  <div id="root">
+    <h1>{{msg}}</h1>
+    <!-- 
+      1.双向数据绑定
+      2.表单控件
+      3.解析msg这个变量，把它的值放在这个位置
+      4.和把这个值赋给value属性一样的效果，显示在文本框中
+      5.另一个标签中也放了这个变量，解析后得到msg的值，所以此时这两个地方的数据是一样的，都是从vm中流过来的
+      6.我现在改变文本框的值，是如何同时也把标签中的数据也改了的
+      7.我改变文本框中的值是改变了value的值
+
+      v-model
+        1.监听用户的输入事件以更新数据
+     -->
+    <input type="text" v-model="msg">
+  </div>
+  <script src="../js/vue.js"></script>
+  <!--
+      1. 引入Vue.js
+      2. 创建Vue对象
+        el : 指定根element(选择器)
+        data : 初始化数据(页面可以访问)
+      3. 双向数据绑定 : v-model
+      4. 显示数据 : {{xxx}}
+      5. 理解vue的mvvm实现
+    -->
+  <script>
+    /* 
+        1.在页面上渲染Hello World
+        2.配置对象的属性名固定
+        3.data里面的数据只可以是用于渲染的数据吗，可以是方法吗
+    */
+    const vm = new Vue({
+      el:"#root",
+      /* 
+          1.data是Vue实例的数据对象，可以通过vm.$data访问到这个对象
+          2.Vue实例上也代理了data对象上的所有property，因此访问vm.a相当于访问vm.$data.a
+      */
+      data:{
+        /* 
+          Vue将data的property转为getter和setter，从而让data的property能够响应数据的变化
+          什么叫把property转为getter，setter
+          msg:{
+            get:function(){
+              return this.msg;
+            },
+            set:function(){
+              
+            }
+          }
+        */
+        msg:"Hello World"
+
+      }
+    })
+    console.log(vm)
+    console.log(vm.$data)
+    console.log(vm.$data.msg)
+    console.log(vm.msg)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>02_模板语法</title>
+</head>
+
+<body>
+  <!--
+      1. 模板的理解:
+        动态的html页面
+        包含了一些JS语法代码
+          双大括号表达式
+          指令(以v-开头的自定义标签属性)
+      2. 双大括号表达式
+        语法: {{exp}} 或 {{{exp}}}
+        功能: 向页面输出数据
+        可以调用对象的方法
+      3. 指令一: 强制数据绑定
+        功能: 指定变化的属性值
+        完整写法:
+          v-bind:xxx='yyy'  //yyy会作为表达式解析执行
+        简洁写法:
+          :xxx='yyy'
+      4. 指令二: 绑定事件监听
+        功能: 绑定指定事件名的回调函数
+        完整写法:
+          v-on:click='xxx'
+        简洁写法:
+          @click='xxx'
+      -->
+  <div id="app">
+    <!-- 
+      1.程序碰到双括号，就会将里面的东西当作表达式来解析，可以将其理解为当作变量来解析
+      2.就会到vm中去找
+
+     -->
+    <h2>1. 双大括号表达式</h2>
+     <div>{{msg}}</div>
+    <h2>2. 指令一: 强制数据绑定</h2>
+    <!-- 
+        v-bind
+          数据绑定，将数据绑定到元素的某个属性上
+          这个属性既可以是原有属性，也可以是自定义属性
+          数据只是从js流向模板页面，并不存在修改模板页面的该处数据的操作
+          v-bind:value 首先是数据绑定了value这个属性，然后改value的效果是显示在表单元素中，所以最终效果就是在页面上显示
+       -->
+    <input type="text" v-bind:value="msg">
+    <input type="text" :flag="flag">
+    <div v-bind:id="id">{{msg}}</div>
+    <h2>3. 指令二: 绑定事件监听</h2>
+    <!-- 
+      1.指令
+      2.简写
+      3.事件函数
+        1.在Vue的实例中配置了methods，事件函数就放在这个对象中
+        2.这里面的函数可以在Vue实例上访问得到
+        3.在定义函数时注意不要使用箭头函数方式定义，我们的期望是让这些函数中的this执行Vue实例
+
+     -->
+    <button v-on:click="handleClick">没简写</button>
+    <button @click="handleClick1">简写</button>
+    <button @click="handleClick3">箭头函数</button>
+  </div>
+  <script src="../vue.js"></script>
+  <script>
+    const vue = new Vue({
+      /* 
+          el选中了某个DOM元素，那此时这一整个Vue配置最终就是用在这个DOM元素内部的，模板页面中对于在这个元素内部的变量，解析的时候就会
+      */
+      el: "#app",
+      data: {
+        msg: "Hello World",
+        id: "div1",
+        flag:true
+      },
+      methods:{
+        handleClick(){
+          console.log("我没简写");
+          console.log(this);
+        },
+        handleClick1(){
+          console.log("我是简写的形式");
+        },
+        handleClick3:() => {
+          console.log("handleClick3");
+          console.log(this);
+        }
+      }
+    })
+    console.log(vue)
+  </script>
+</body>
+
+</html>
