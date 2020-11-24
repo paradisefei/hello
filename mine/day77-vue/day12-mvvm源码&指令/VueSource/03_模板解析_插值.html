@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03_模板解析_表达式_vue</title>
+</head>
+<body>
+  <div id="app">
+    id : {{person.id}}
+    name : {{person.name}}
+  </div>
+  <script src="./js/observer.js"></script>
+  <script src="./js/watcher.js"></script>
+  <script src="./js/compile.js"></script>
+  <script src="./js/mvvm.js"></script>
+  <script>
+    /*
+      模板解析
+        1.解析插值语法
+          1.将根元素(#app)中所有的子节点全部添加到文档碎片节点中
+            1.文档碎片中的节点就是模板页面中未解析前的样子，通过while循环把元素插入到fragment中
+            2.元素节点
+              获取所有属性并进行后续操作
+            3.文本节点并且存在插值语法时才需要解析，也就是说不存在插值语法的文本节点不会被解析
+              this.compileText->this.bind->textUpdater(node,this._getVMVal):在节点中添加解析后的值
+              插值语法中表达式才会被传入到compileText函数中，如果文本节点中同时存在普通文本和插值文本
+            4.节点的节点
+          2.将文档碎片中解析后的节点全部插入到根DOM中，从而渲染到页面中
+
+        如果碰到插值语法，取其中的表达式，也就是data中的一层一层的属性名，根据这样的表达式去到data中获取到对应的值，你访问对象的属性一直点下去最总就会得到一个值，是点到哪个位置就获取到那个值，然后把这个值插入到这个节点中
+
+
+    */
+    debugger;
+    new MVVM({
+      el: "#app",
+      data: {
+        msg: "hello mvvm",
+        person: {
+          id: 1,
+          name: "zs",
+          age: 23,
+        }
+      },
+    });
+  </script>
+</body>
+</html>

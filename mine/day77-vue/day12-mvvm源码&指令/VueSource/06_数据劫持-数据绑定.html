@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>06_数据劫持-数据绑定</title>
+  <!--
+    1. 数据绑定
+      * 初始化显示: 页面(表达式/指令)能从data读取数据显示 (编译/解析)
+      * 更新显示: 更新data中的属性数据==>页面更新
+  -->
+</head>
+
+<body>
+  <div id="app">
+    <p>{{num}}</p>
+    <p>{{person.name}}</p>
+    <p>{{person.age}}</p>
+    <p>{{person.score.yu}}</p>
+    <button v-on:click="handle">更新</button>
+  </div>
+  <script src="./js/observer.js"></script>
+  <script src="./js/watcher.js"></script>
+  <script src="./js/compile.js"></script>
+  <script src="./js/mvvm.js"></script>
+  <script>
+    /*
+      data中的数据具有响应式，修改了data中的数据，源数据会被修改，页面会重新渲染
+      先进行数据代理，数据代理只是把data中的第一层的每一个属性代理到了mvvm实例上
+        获取属性的值是从源数据中获取
+        设置属性的值也是给源数据中设置
+      把数据传入到Observer()中
+        1.把data传入到Observer()中，使用Object.keys()获取到data中的每一个属性，然后对这每一个属性作为参数传入到defineReactive中把它变成响应式的属性
+        2.执行defineReactive(data, key, val)
+          递归调用observe(),如果这个属性的值val还是一个对象的话，就继续指定Observer()
+            把深度属性也转成getter/setter
+            这些属性一开始的时候是没有被代理到实例上的
+
+          使用Object.definedProperty()把属性转成getter/setter
+            是把key再一次添加到data上，说再一次是因为原本通过代理已经把属性代理到实例上了，但是代理的只有data中最外层的属性
+            如果已经有的话就会修改原来的那个，变成新的这个
+
+        
+    */
+    // debugger;
+    const mvvm = new MVVM({
+      el: "#app",
+      data: {
+        num: 0,
+        person: {
+          name: "zs",
+          age: 18,
+          score: {
+            yu: 100,
+            shu: 100,
+            ying: 100,
+          }
+        }
+      },
+      methods: {
+        handle() {
+          console.log(this.yu);
+          this.person.score.yu += 1;
+        },
+        update() {
+          this.num += 1;
+        },
+      },
+    });
+    console.log(mvvm);
+  </script>
+</body>
+
+</html>

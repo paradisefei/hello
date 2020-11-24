@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>04_模板解析_事件指令</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <button v-on:click="handleClick">按钮</button>
+  </div>
+  <script src="./js/observer.js"></script>
+  <script src="./js/watcher.js"></script>
+  <script src="./js/compile.js"></script>
+  <script src="./js/mvvm.js"></script>
+  <script>
+    /*
+      要解析指令，就得先从元素中获取到所有的属性，然后才能对每一个属性进行判断和相应的解析
+1.获取元素的所有属性
+  element.attributes
+  是一个伪数组
+2.将伪数组转成一个真数组，遍历数组，数组的每一项就是元素的每一个属性，包括等号左边、右边和等号本身
+  attr.name是等号左边的属性名，是一个字符串
+  attr.name是等号右边的属性值，是一个字符串
+      3.根据每一次得到的属性名和属性值来进行后续的解析
+      指令
+        这里的指令并不是所有指令，只包含事件指令v-on和一般指令v-text,v-html,v-class,v-model
+        元素节点
+          解析指令
+        文本节点
+          解析插值语法
+        1.事件指令
+
+        2.一般指令
+    */
+    // debugger;
+    new MVVM({
+      el: "#app",
+      data: {
+        msg: "hello mvvm",
+      },
+      methods: {
+        handleClick() {
+          console.log(this.msg);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>07_数据双向绑定</title>
+</head>
+
+<body>
+  <div id="app">
+    <button v-on:click="handleClick" id="btn">按钮</button>
+  </div>
+
+  <script>
+    const oBtn = document.getElementById("btn");
+    const person = "张三";
+    // {
+    //   name: "张三",
+    //   age: 23,
+    //   sex: "男"
+    // }
+    const score = 100;
+    // {
+    //   math: 100,
+    //   en: 100,
+    //   history: 100
+    // }
+    console.log(person);
+    /* 
+      获取到的是一个伪数组
+        伪数组中的每一项就是元素中的每一个属性名
+      属性也是一个节点
+      得到是一个NameNodeMap对象，这个对象中的属性为从0开始的数字，值为原节点中的属性名
+    */
+    const attr = oBtn.attributes;
+    const scoreAttr = [score, person];
+    console.log(scoreAttr);
+
+    /*
+      将伪数组转成数组，数组为[v-on:click,id]，也就是元素中属性名组成的集合
+      这个数组还可以再展开，并不是一个只有这两个元素的数组，这两个属性还是对象，也就是说这里面保存的是两个对象，对象名组成一个数组
+    */
+
+    //  是伪数组转数组，而不是通过Object.keys()获取对象中的属性名
+    const newAttr = [].slice.call(oBtn.attributes);
+    newAttr.forEach((attr) => {
+      /* 
+        1.把通过attributes获取到的伪数组转成了数组
+        2.数组中的每一项就是每一个属性包括等号左边、右边和等号本身
+        3.attr.name是等号左边的，是一个字符串
+        4.attr.value是等号右边的，也是一个字符串
+      */
+      console.log(attr, attr.name, attr.value);
+    })
+    console.log(newAttr);
+    console.log(oBtn.attributes);
+  </script>
+</body>
+
+</html>
