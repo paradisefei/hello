@@ -6,8 +6,52 @@
     <title>Document</title>
     <style>
         #f {
-            /* width: 602px; */
-            /* height: 500px; */
+            /* 
+                1.默认情况下，当弹性盒子的宽度小于所有弹性元素的宽度之和时，每一个弹性项都会被压缩
+                2.我给每一个盒子都设置了宽度，但是当所有盒子之和大于弹性容器的宽度时，盒子并不会换行，而是压缩
+                3.positive free space
+                    当剩余空间时，元素不会自动拉伸
+                        flex-grow默认值为0，表示不允许拉伸
+                    当不足空间时，元素会被自动压缩
+                        flex-shrink默认值为1，表示
+                4.negative free space
+                    当不足空间时，可以有两种处理方式：压缩flex-shrink和换行flex-wrap
+                    flex-shrink
+                        默认值为1，表示不足空间时会压缩
+                    flex-wrap
+                        默认值为nowrap，表示不换行
+                flex
+                    1.设置flex
+                        1.display:flex;不能继承
+                            flex-direction:row
+                                有主轴和交叉轴两条轴
+                                弹性元素始终是沿着主轴排放的，只是flex-direction可以定义主轴的方向
+                            此时，就可以看到弹性布局最大的特性-弹性元素的伸缩性了
+                            flex-wrap
+                                跟css3宽度有关
+                                    是根据哪一个宽度来确定弹性元素宽度之和大于弹性容器时会换行的，暂时理解为根据显示设置的width来确定是否换行
+                                如果主轴一行排不下，就可以换行
+                                容器宽度，弹性元素宽度
+                                无法换行时，就会压缩自己的宽度
+                                可以换行时就不会压缩，
+                        2.直接子元素变成弹性元素
+                            flex-grow:0
+                            flex-shrink:1
+                        3.其它空间
+                            当剩余空间时，由于flex-grow的默认值是0，表示不拉伸，所以此时不会拉伸
+                            当恰好空间时，就刚好
+                            当不足空间时，由于flex-shrink的默认值是1，就会压缩
+                                但是如果此时flex-wrap:wrap;设置为可换行，元素就会按照自己的宽度换行
+                                可换行，
+                            
+                            容器宽度-元素宽度-所有弹性元素宽度之和-是否换行-是否压缩-最终表现出来
+                        属性都会被加上，只是在相应的情况下能看到效果
+
+             */
+            width: 300px;
+            /* width: 702px; */
+            height: 300px;
+            /* height: 50px; */
             border: 1px solid black;
             /* box-sizing: border-box; */
 
@@ -18,68 +62,85 @@
             /* flex-direction: column-reverse; */
 
             /* flex-wrap: nowrap; */
-            /* flex-wrap: wrap; */
+            flex-wrap: wrap;
             /* flex-wrap: wrap-reverse; */
 
             /* justify-content: flex-start; */
             /* justify-content: flex-end; */
-            /* justify-content: center; */
+            justify-content: center;
             /* justify-content: space-between; */
             /* justify-content: space-evenly; 每个空白区大小相等 */
             /* justify-content: space-around; 每个弹性元素左右两面（周围）的大小相等 */
 
+            /* 
+                弹性容器设置了高度，交叉轴方向有剩余空间，align-items设置的就是元素才交叉轴方向上的对齐方式
+                    主轴上不换行，视觉上只有主轴只有一行
+                    换行了之后是一个元素还是两个元素
+             */
             /* align-items: flex-start; */
             /* align-items: flex-end; */
             /* align-items: center; */
+            /* 
+                弹性元素在交叉轴方向上被拉伸到与容器相同的宽度或高度，注意此时弹性元素自己不要设置高度，如果自己设置了的话就无法拉伸
+                对齐方式，并不是说两个同级的元素之间的对齐方式，而是此时的弹性元素在弹性容器中的对齐方式
+                交叉轴对齐方式分单行和多行两种情况
+            */
             /* align-items: stretch; */
-            
         }
         #f > div {
-            /* width: 100px;
-            height: 100px; */
-            
+            width: 100px;
+            height: 100px;
+            flex-basis: 100px;
+            /* 
+                flex-grow的默认值是0
+             */
+             /* flex-shrink: 0; */
         }
         #f > div:first-of-type{
             background-color: #00adb5;
             /* width: auto; */
 
-            display: flex;
-            width: 100px;
-            height: 100px;
+            /* display: flex; */
+            /* width: 100px;
+            height: 100px; */
+             /* 不收缩 */
+            /* flex-shrink: 0; */
+            /* flex-basis: auto; */
         }
         #f > div:nth-of-type(2){
-            width: 100px;
-            height: 100px;
+            /* width: 100px;
+            height: 100px; */
+            /* height: 300px; */
             background-color: #f6f7d7;
             /* margin: 10px 20px; */
 
-            align-self: center;
+            /* align-self: center; */
         }
         #f > div:nth-of-type(3){
-            width: 100px;
-            height: 100px;
+            /* width: 100px;
+            height: 100px; */
             background-color: #f08a5d;
         }
         #f > div:nth-of-type(4){
-            width: 100px;
-            height: 100px;
+            /* width: 100px;
+            height: 100px; */
             background-color: #ff2e63;
         }
         #f > div:nth-of-type(5){
-            width: 100px;
-            height: 100px;
+            /* width: 100px;
+            height: 100px; */
             background-color: #a8d8ea;
         }
         #f > div:nth-of-type(6){
-            width: 100px;
-            height: 100px;
+            /* width: 100px;
+            height: 100px; */
             background-color: #ffcfdf;
         }
-        #f > div > div {
+        /* #f > div > div {
             width: 30px;
             height: 30px;
-        }
-        #f > div > div:first-of-type{
+        } */
+        /* #f > div > div:first-of-type{
             background-color: #99ddcc;
         }
         #f > div > div:nth-of-type(2){
@@ -87,21 +148,21 @@
         }
         #f > div > div:nth-of-type(3){
             background-color: #ffe2e2;
-        }
+        } */
     </style>
 </head>
 <body>
     <div id="f">
         <div>
-            <div>a</div>
+            <!-- <div>a</div>
             <div>b</div>
-            <div>c</div>
+            <div>c</div> -->
         </div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
 </body>
 </html>
